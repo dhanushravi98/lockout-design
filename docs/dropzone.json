@@ -1,0 +1,140 @@
+{
+ "id": "dropzone",
+ "title": "Drag and drop file upload",
+ "component": "Dropzone",
+ "file": "components/Dropzone.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,180px",
+ "previewWidth": "100%",
+ "description": "Area where a user drops files or clicks to browse. Dropped file names appear as chips that can be removed. Built for uploading documents; no screen uses it yet.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Drag and drop files here"
+  },
+  {
+   "label": "Hint",
+   "type": "text",
+   "prop": "hint",
+   "default": "or click to browse. PDF, CSV or PNG, up to 10 MB."
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 280,
+   "items": [
+    {
+     "label": "idle",
+     "props": {
+      "minHeight": 150
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "minHeight": 150,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "dragover",
+     "props": {
+      "minHeight": 150,
+      "state": "dragover"
+     }
+    },
+    {
+     "label": "uploaded",
+     "props": {
+      "minHeight": 150,
+      "state": "uploaded"
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "minHeight": 150,
+      "state": "error"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "title",
+   "t": "string",
+   "d": "\"Drag and drop files here\"",
+   "x": "Main line. Changes to Drop to upload while dragging."
+  },
+  {
+   "n": "hint",
+   "t": "string",
+   "d": "\"or click to browse...\"",
+   "x": "Accepted types and size."
+  },
+  {
+   "n": "minHeight",
+   "t": "number (px)",
+   "d": "180",
+   "x": "Zone height."
+  },
+  {
+   "n": "error",
+   "t": "string",
+   "d": "-",
+   "x": "Shows a red message and red border."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'dragover' | 'uploaded' | 'error'",
+   "d": "-",
+   "x": "Documentation only."
+  },
+  {
+   "n": "onFiles",
+   "t": "(names: string[]) => void",
+   "d": "-",
+   "x": "Fires with the dropped or picked file names. Wire file contents in the product."
+  }
+ ],
+ "values": [
+  {
+   "k": "Zone",
+   "v": "radius 14px, padding 24px, dashed 1.5px #b4bcc8, fill #fff"
+  },
+  {
+   "k": "Hover",
+   "v": "border #25395c, fill #f4f6fa"
+  },
+  {
+   "k": "Drag over",
+   "v": "solid border, fill #eef2f8"
+  },
+  {
+   "k": "Error",
+   "v": "border #ef4444, fill #fef2f2, message 13px #b91c1c"
+  },
+  {
+   "k": "Icon",
+   "v": "44px circle #eaeef5, Icon upload-simple, regular, 20px, #25395c"
+  },
+  {
+   "k": "File chip remove",
+   "v": "Icon x, bold, 10px, #25395c"
+  },
+  {
+   "k": "Title / hint",
+   "v": "15px / 600 #111827; 13px #6b7280"
+  },
+  {
+   "k": "File chip",
+   "v": "#eaeef5 / #25395c, 13px / 600, removable"
+  }
+ ],
+ "usedIn": "Not on a screen yet. Reordering a list by dragging is a different pattern and is not in the library."
+}

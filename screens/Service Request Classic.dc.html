@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="260" y="120" width="680" height="560" rx="40" fill="#fff"></rect><rect x="320" y="200" width="560" height="70" rx="20" fill="#e8ebf0"></rect><rect x="320" y="300" width="270" height="90" rx="16" fill="#e8ebf0"></rect><rect x="610" y="300" width="270" height="90" rx="16" fill="#e8ebf0"></rect><rect x="680" y="580" width="200" height="60" rx="30" fill="#25395c"></rect></svg></template>
+</helmet>
+<sc-if value="{{ showTrigger }}" hint-placeholder-val="{{ true }}"><div style="box-sizing:border-box;min-height:100vh;background:#dfe3ea;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;display:flex;align-items:flex-start;justify-content:flex-end;padding:24px">
+  <div onClick="{{ openModal }}" style="display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 24px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;cursor:pointer" style-hover="background:#1c2c48">Service Requests</div>
+</div></sc-if>
+
+<sc-if value="{{ isOpen }}" hint-placeholder-val="{{ true }}">
+<div style="position:fixed;inset:0;background:rgba(17,24,39,.45);display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;z-index:100">
+  <div style="width:820px;max-width:100%;height:min(800px,94vh);background:#fff;border-radius:20px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)">
+
+    <div style="padding:28px 36px 12px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex:none">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:24px;font-weight:700">{{ title }}</span><span style="font-size:15px;color:#4b5563">{{ subtitle }}</span></div>
+      <div onClick="{{ closeModal }}" style="width:36px;height:36px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280;cursor:pointer;flex:none" style-hover="background:#f3f4f6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+    </div>
+
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:4px 36px 24px">
+
+      <sc-if value="{{ showSelect }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:4px 4px 16px">
+                <div style="position:relative;display:inline-flex"><select value="{{ zoneVal }}" onChange="{{ setZone }}" style="height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 38px 0 16px;font-size:14px;font-family:inherit;color:#111827;background:#f8f9fb url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>') no-repeat right 14px center;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none">
+                  <sc-for list="{{ zones }}" as="z" hint-placeholder-count="6"><option value="{{ z.value }}">{{ z.label }}</option></sc-for>
+                </select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:12px;pointer-events:none"><path d="M6 9l6 6 6-6"></path></svg></div>
+                <input type="text" value="{{ q }}" onInput="{{ setQ }}" placeholder="Search by name or room" style="flex:1;min-width:160px;height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 16px;font-size:14px;font-family:inherit;color:#111827;outline:none;background:#f8f9fb">
+              </div>
+        <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+          <div style="border-top:1px solid #eceef2">
+            <div onClick="{{ s.toggle }}" style="display:flex;align-items:center;gap:14px;padding:18px 4px;cursor:pointer" style-hover="background:#f8f9fb">
+              <div style="{{ s.iconStyle }}"></div>
+              <span style="font-size:17px;font-weight:600">{{ s.label }}</span>
+              <span style="font-size:15px;color:#6b7280">{{ s.count }}</span>
+              <div style="flex:1"></div>
+              <sc-if value="{{ s.hasSel }}" hint-placeholder-val="{{ false }}"><span style="background:#eaeef5;color:#25395c;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600">{{ s.selText }}</span></sc-if>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="{{ s.chev }}"><path d="M6 9l6 6 6-6"></path></svg>
+            </div>
+            <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 4px 24px;display:flex;flex-direction:column;gap:18px">
+              
+              <sc-if value="{{ s.bulkShow }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;background:#f5f7fa;border-radius:14px;padding:14px 16px">
+                <span style="font-size:14px;color:#374151">{{ s.bulkText }}</span>
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ s.bulkIssues }}" as="b" hint-placeholder-count="4"><div onClick="{{ b.onClick }}" style="{{ b.style }}">{{ b.label }}</div></sc-for></div>
+              </div>
+              </sc-if>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+                <sc-for list="{{ s.devices }}" as="d" hint-placeholder-count="6">
+                  <div style="{{ d.cardStyle }}">
+                    <div onClick="{{ d.onToggle }}" style="display:flex;align-items:center;gap:12px;cursor:pointer">
+                      <div style="{{ d.boxStyle }}"><sc-if value="{{ d.checked }}" hint-placeholder-val="{{ false }}"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></sc-if></div>
+                      <div style="display:flex;flex-direction:column;gap:1px;min-width:0;flex:1"><span style="font-size:15px;font-weight:600">{{ d.name }}</span><span style="font-size:13px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.loc }}</span></div>
+                      <span style="flex:none;font-size:12px;color:#6b7280;white-space:nowrap">Zone {{ d.zone }}</span>
+                    </div>
+                    <sc-if value="{{ d.checked }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:10px;padding:14px 0 2px 34px">
+                      <sc-if value="{{ d.showSame }}" hint-placeholder-val="{{ false }}"><div onClick="{{ d.onSame }}" style="display:inline-flex;align-items:center;gap:8px;width:fit-content;max-width:100%;box-sizing:border-box;background:#eef2f8;color:#25395c;border-radius:999px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#e1e8f3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.sameText }}</span></div></sc-if>
+                      <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ d.issues }}" as="i" hint-placeholder-count="5"><div onClick="{{ i.onClick }}" style="{{ i.style }}">{{ i.label }}</div></sc-for></div>
+                      <sc-if value="{{ d.hasOther }}" hint-placeholder-val="{{ false }}"><textarea value="{{ d.otherText }}" onInput="{{ d.setOther }}" placeholder="Describe the issue" style="min-height:68px;resize:none;box-sizing:border-box;border:1px solid #d5dae2;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.4;font-family:inherit;color:#111827;background:#fff;outline:none;width:100%" style-focus="border-color:#25395c;box-shadow:0 0 0 3px rgba(37,57,92,.12)"></textarea></sc-if>
+                    </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-size:13px;color:#6b7280">{{ s.shownText }}</div>
+            </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ showReview }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;flex-direction:column;gap:12px;background:#f5f7fa;border-radius:16px;padding:18px 20px">
+          <span style="font-size:15px;color:#374151">{{ summaryText }}</span>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ summaryChips }}" as="c" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dfe3ea;border-radius:999px;padding:6px 8px 6px 14px;font-size:13px;font-weight:600;color:#25395c">{{ c.label }}<span style="background:#25395c;color:#fff;border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 6px;box-sizing:border-box">{{ c.count }}</span></span></sc-for></div>
+        </div>
+        <sc-for list="{{ reviewGroups }}" as="g" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;border:1px solid #eceef2;border-radius:16px;overflow:hidden">
+            <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;background:#fafbfc">
+              <div style="{{ g.iconStyle }}"></div>
+              <span style="font-size:16px;font-weight:600">{{ g.label }}</span><span style="font-size:14px;color:#6b7280">{{ g.count }}</span>
+            </div>
+            <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid #eceef2">
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">{{ r.name }}</span><span style="font-size:13px;color:#6b7280">{{ r.loc }}</span></div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:55%"><sc-for list="{{ r.chips }}" as="ch" hint-placeholder-count="2"><span style="background:#eaeef5;color:#25395c;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;white-space:nowrap">{{ ch.label }}</span></sc-for></div>
+                <div onClick="{{ r.onRemove }}" style="width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280;cursor:pointer;flex:none" style-hover="background:#f3f4f6"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:600">Additional comments <span style="font-weight:400;color:#6b7280">(optional)</span></span><textarea value="{{ comments }}" onInput="{{ setComments }}" placeholder="Anything else the technician should know?" style="min-height:96px;resize:vertical;border:1px solid #dfe3ea;border-radius:14px;padding:12px 16px;font-size:15px;font-family:inherit;color:#111827;outline:none;background:#f8f9fb"></textarea></div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ showDone }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:48px 20px">
+        <div style="width:60px;height:60px;border-radius:999px;background:#eaeef5;display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#25395c" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></div>
+        <span style="font-size:22px;font-weight:700">Request sent</span>
+        <span style="font-size:15px;color:#4b5563;max-width:420px;line-height:1.5">{{ doneText }}</span>
+      </div>
+      </sc-if>
+    </div>
+
+    <div style="flex:none;border-top:1px solid #eceef2;background:#fff;padding:16px 36px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <span style="flex:1;min-width:200px;font-size:14px;color:#4b5563">{{ footerNote }}</span>
+      <sc-if value="{{ showBack }}" hint-placeholder-val="{{ false }}"><div onClick="{{ goBack }}" style="height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;font-size:15px;font-weight:600;color:#25395c;cursor:pointer" style-hover="background:#eef2f8">Back</div></sc-if>
+      <div onClick="{{ closeModal }}" style="height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;font-size:15px;font-weight:600;color:#374151;cursor:pointer" style-hover="background:#f3f4f6">{{ cancelLabel }}</div>
+      <sc-if value="{{ showPrimary }}" hint-placeholder-val="{{ true }}"><div onClick="{{ primaryClick }}" style="{{ primaryStyle }}">{{ primaryLabel }}</div></sc-if>
+    </div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { isOpen: true, step: 'select', open: null, zone: 'all', q: '', sel: {}, last: null, comments: '', doneId: null, n: 1043 };
+  ISSUES = ['Device not functioning', 'Device malfunctioning', 'Replace Battery', 'Other Issues'];
+  TABLET_ISSUES = ['Tablet Damaged', 'Tablet not responding', 'Replace charger', 'Other Issues'];
+  issuesFor(type) { return type === 'tablet' ? this.TABLET_ISSUES : this.ISSUES; }
+  types() {
+    if (this._t) return this._t;
+    const mk = (id, label, total, nameFn, locs) => ({ id, label, total, list: Array.from({ length: Math.min(total, 40) }, (_, i) => ({ id: id + i, type: id, name: nameFn(i), loc: locs[i % locs.length] + ' – ' + ['East Wing', 'North Corridor', 'Near Main Office', 'South Stairwell', 'Beside Gym'][i % 5], zone: String((i * 3) % 5 + 1) })) });
+    const tn = ['UES Tab-3', 'AMES 511', 'ES Tab-5', 'HS 401', 'HS 402', 'HS 411', 'HS 412', 'HS 413', 'HS 414', 'HS 415'];
+    this._t = [
+      mk('tablet', 'Tablets', 110, i => tn[i] || 'HS ' + (416 + i), ['Room 114', 'Room 202', 'Library', 'Room 401', 'Room 402', 'Room 411']),
+      mk('boot', 'Smart Boot', 195, i => 'Smart Boot ' + String(i + 1).padStart(2, '0'), ['Room 534', 'Room MS Copy Rm', 'Room 331', 'Room MS G Lckr R', 'Room Pac Gr Br', 'Room 222']),
+      mk('pull', 'Pull Box', 17, i => 'Pull Box ' + String(i + 1).padStart(2, '0'), ['Room HS Main Off', 'Room MS Main Off', 'Room ES Kitchen', 'Room Annex', 'Room ES Commons', 'Room MS Gym Hall']),
+      mk('light', 'Smart Light', 155, i => 'Smart Light ' + String(i + 1).padStart(2, '0'), ['Hall E508', 'Hall HS Counsler', 'Hall HS410', 'Hall MS208', 'Room Exit536', 'Room HS Wrkshop'])
+    ];
+    return this._t;
+  }
+  pill(on) { return 'cursor:pointer;user-select:none;border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;' + (on ? 'background:#25395c;color:#fff;border:1px solid #25395c' : 'background:#fff;color:#374151;border:1px solid #d5dae2'); }
+  zpill(on) { return 'cursor:pointer;user-select:none;border-radius:999px;font-weight:600;padding:7px 14px;font-size:13px;' + (on ? 'background:#eaeef5;color:#25395c' : 'background:transparent;color:#4b5563'); }
+  toggleIssue(id, x) { this.setState(s => { const cur = s.sel[id].issues; const issues = cur.includes(x) ? cur.filter(i => i !== x) : [...cur, x]; return { sel: { ...s.sel, [id]: { ...s.sel[id], issues } }, last: issues.length ? issues : s.last }; }); }
+  renderVals() {
+    const emb = !!this.props.embedded;
+    const R = (k, f) => (window.__resources && window.__resources[k]) || f;
+    const icons = { iconTablet: R('tabletIcon', '../uploads/Tablet Icon.png'), iconBoot: R('bootIcon', '../uploads/Boot.png'), iconPull: R('pullIcon', '../uploads/PullBLE.png'), iconDome: R('domeIcon', '../uploads/DomeBLE.png') };
+    const iconOf = id => ({ tablet: icons.iconTablet, boot: icons.iconBoot, pull: icons.iconPull, light: icons.iconDome })[id];
+    const iconStyle = (id, w) => 'width:' + w + 'px;height:' + w + 'px;flex:none;background:url("' + iconOf(id) + '") center/contain no-repeat';
+    const st = this.state, sel = st.sel, ids = Object.keys(sel), types = this.types();
+    const nSel = ids.length, nTagged = ids.filter(k => sel[k].issues.length).length, allTagged = nSel > 0 && nTagged === nSel;
+    const byId = {}; types.forEach(t => t.list.forEach(d => { byId[d.id] = d; }));
+    const sections = types.map(t => {
+      const open = st.open === t.id, mine = ids.filter(k => byId[k].type === t.id);
+      let devices = [], shown = '';
+      if (open) {
+        const q = st.q.trim().toLowerCase();
+        const list = t.list.filter(d => (st.zone === 'all' || d.zone === st.zone) && (!q || (d.name + ' ' + d.loc).toLowerCase().includes(q)));
+        shown = 'Showing ' + list.length + ' of ' + t.total + (t.total > 40 ? '. Search or filter by zone to narrow the list.' : '');
+        devices = list.map(d => {
+          const on = !!sel[d.id], iss = on ? sel[d.id].issues : [];
+          return { name: d.name, loc: d.loc, zone: d.zone, checked: on,
+            cardStyle: 'padding:16px 16px;box-sizing:border-box;min-width:0;' + (on ? 'border-radius:14px;background:#f3f6fa' : 'border-radius:0;box-shadow:0 1px 0 #eceef2'),
+            boxStyle: 'width:20px;height:20px;border-radius:999px;flex:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;' + (on ? 'background:#25395c;border:1px solid #25395c' : 'background:#fff;border:1px solid #c4cad4'),
+            onToggle: () => this.setState(s => { const n = { ...s.sel }; if (n[d.id]) delete n[d.id]; else n[d.id] = { type: d.type, issues: [] }; return { sel: n }; }),
+            hasOther: iss.includes('Other Issues'), otherText: on ? (sel[d.id].other || '') : '', setOther: (e) => { const v = e.target.value; this.setState(s => ({ sel: { ...s.sel, [d.id]: { ...s.sel[d.id], other: v } } })); },
+            showSame: !iss.length && !!st.last, sameText: 'Same as previous: ' + (st.last || []).join(', '), onSame: () => this.setState(s => ({ sel: { ...s.sel, [d.id]: { ...s.sel[d.id], issues: [...s.last].filter(x => this.issuesFor(d.type).includes(x)) } } })),
+            issues: this.issuesFor(t.id).map(x => ({ label: x, style: this.pill(iss.includes(x)), onClick: () => this.toggleIssue(d.id, x) })) };
+        });
+      }
+      const allHave = x => mine.length > 0 && mine.every(k => sel[k].issues.includes(x));
+      return { label: t.label, count: t.total, iconStyle: iconStyle(t.id, 26), open, devices, shownText: shown,
+        chev: 'flex:none;transition:transform .15s;transform:rotate(' + (open ? 180 : 0) + 'deg)',
+        toggle: () => this.setState({ open: open ? null : t.id }),
+        hasSel: mine.length > 0, selText: mine.length + ' selected',
+        bulkShow: mine.length > 0, bulkText: 'Apply to all ' + mine.length + ' selected. Choose one or more, then adjust individual devices below if needed.',
+        bulkIssues: this.issuesFor(t.id).map(x => ({ label: x, style: this.pill(allHave(x)), onClick: () => this.setState(s => { const rm = mine.every(k => s.sel[k].issues.includes(x)); const n = { ...s.sel }; mine.forEach(k => { const c = n[k].issues; n[k] = { ...n[k], issues: rm ? c.filter(i => i !== x) : c.includes(x) ? c : [...c, x] }; }); return { sel: n, last: n[mine[0]].issues.length ? n[mine[0]].issues : s.last }; }) })) };
+    });
+    const zones = ['all', '1', '2', '3', '4', '5'].map(z => ({ label: z === 'all' ? 'All zones' : 'Zone ' + z, value: z }));
+    const groups = types.map(t => ({ t, rows: ids.filter(k => byId[k].type === t.id) })).filter(g => g.rows.length).map(g => ({
+      label: g.t.label, iconStyle: iconStyle(g.t.id, 22), count: g.rows.length + (g.rows.length === 1 ? ' device' : ' devices'),
+      rows: g.rows.map(k => ({ name: byId[k].name, loc: byId[k].loc, chips: sel[k].issues.map(x => ({ label: x === 'Other Issues' && sel[k].other ? 'Other Issues: ' + sel[k].other : x })), onRemove: () => this.setState(s => { const n = { ...s.sel }; delete n[k]; return { sel: n }; }) })) }));
+    const tally = {}; ids.forEach(k => sel[k].issues.forEach(x => { tally[x] = (tally[x] || 0) + 1; }));
+    const summaryChips = [...this.ISSUES, ...this.TABLET_ISSUES].filter((x, i, a) => a.indexOf(x) === i && tally[x]).map(x => ({ label: x, count: tally[x] }));
+    const summaryText = nSel + (nSel === 1 ? ' device' : ' devices') + ' across ' + groups.length + (groups.length === 1 ? ' device type' : ' device types') + '. Issues reported:';
+    const step = st.step, showSelect = step === 'select', showReview = step === 'review', showDone = step === 'done';
+    let footerNote = '', primaryLabel = 'Review request', primaryClick = () => this.setState({ step: 'review' }), enabled = allTagged, cancelLabel = 'Cancel', showPrimary = true;
+    if (showSelect) footerNote = nSel === 0 ? 'No devices selected yet' : allTagged ? nSel + (nSel === 1 ? ' device' : ' devices') + ' ready to review' : nTagged + ' of ' + nSel + ' devices have an issue. Choose an issue for the rest.';
+    if (showReview) { footerNote = nSel + (nSel === 1 ? ' device' : ' devices') + ' in this request'; primaryLabel = 'Submit Request'; enabled = nSel > 0;
+      primaryClick = () => this.setState(s => ({ step: 'done', doneId: 'SR-' + s.n, n: s.n + 1, sel: {}, last: null, comments: '' })); }
+    if (showDone) { cancelLabel = 'Close'; showPrimary = false; }
+    return {
+      ...icons, isOpen: emb ? !!this.props.open : st.isOpen, showTrigger: !emb, openModal: () => this.setState({ isOpen: true }), closeModal: () => { this.setState({ step: 'select', sel: {}, last: null, comments: '', isOpen: false }); if (this.props.onClose) this.props.onClose(); },
+      title: showReview ? 'Review your request' : 'Service Request',
+      subtitle: showReview ? 'Check the devices and issues before you submit.' : showDone ? '' : 'Open a device type, select the devices that need service, then choose the issues.',
+      showSelect, showReview, showDone, sections, zones, zoneVal: st.zone, setZone: (e) => this.setState({ zone: e.target.value }), q: st.q, setQ: (e) => this.setState({ q: e.target.value }),
+      reviewGroups: groups, summaryChips, summaryText, comments: st.comments, setComments: (e) => this.setState({ comments: e.target.value }),
+      doneText: 'Your request ' + (st.doneId || '') + ' was sent to the service team.',
+      footerNote, cancelLabel, showPrimary, primaryLabel, primaryClick: enabled ? primaryClick : () => {},
+      showBack: showReview, goBack: () => this.setState({ step: 'select' }),
+      primaryStyle: 'height:44px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 28px;border-radius:999px;font-size:15px;font-weight:600;' + (enabled ? 'background:#25395c;color:#fff;cursor:pointer' : 'background:#e8ebf0;color:#7b8494;cursor:not-allowed')
+    };
+  }
+}
+</script>
+</body>
+</html>

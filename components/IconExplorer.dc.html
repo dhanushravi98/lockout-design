@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+</helmet>
+<div style="background:#fff;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;box-sizing:border-box;width:100%">
+  <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:22px;font-weight:800">Icon explorer</span><span style="font-size:14px;line-height:1.65;color:#374151">The full Phosphor set, {{ total }} icons in six weights, from the Phosphor web package. Search, pick a weight, size and color, then click an icon for its code. Use the Icon component with the icon name, never paste path data into a screen.</span></div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;background:#f4f6f9;border-radius:14px;padding:18px 20px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+      <input type="text" value="{{ q }}" onInput="{{ setQ }}" placeholder="Search icons" style="flex:1;min-width:200px;height:40px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 18px;font-size:14px;font-family:inherit;color:#111827;background:#fff;outline:none">
+      <sc-if value="{{ catsFailed }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280">Categories unavailable: the Phosphor catalog could not be loaded. Search still works.</span></sc-if>
+      <sc-if value="{{ hasCats }}" hint-placeholder-val="{{ false }}"><div style="position:relative;display:inline-flex"><select value="{{ cat }}" onChange="{{ setCat }}" style="height:40px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 40px 0 16px;font-size:14px;font-family:inherit;color:#111827;background:#fff;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none"><sc-for list="{{ cats }}" as="c" hint-placeholder-count="0"><option value="{{ c.value }}">{{ c.label }}</option></sc-for></select><span style="position:absolute;right:15px;top:13px;pointer-events:none"><dc-import name="Icon" icon="caret-down" weight="bold" size="14" color="#6b7280" hint-size="14px,14px"></dc-import></span></div></sc-if>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:700;color:#6b7280">Weight</span><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ weights }}" as="w" hint-placeholder-count="6"><div onClick="{{ w.onClick }}" style="{{ w.style }}">{{ w.label }}</div></sc-for></div></div>
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:180px"><span style="font-size:12px;font-weight:700;color:#6b7280">Size: {{ size }}px</span><input type="range" min="16" max="96" step="4" value="{{ size }}" onInput="{{ setSize }}" style="accent-color:#25395c;width:200px"></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:700;color:#6b7280">Color</span><div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><sc-for list="{{ swatches }}" as="s" hint-placeholder-count="6"><div onClick="{{ s.onClick }}" style="{{ s.style }}" title="{{ s.hex }}"></div></sc-for><input type="text" value="{{ hex }}" onInput="{{ setHex }}" style="width:92px;height:32px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:10px;padding:0 10px;font-size:13px;font-family:ui-monospace,Menlo,monospace;color:#111827;background:#fff;outline:none"></div></div>
+    </div>
+  </div>
+
+  <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+  <div style="display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;border:2px solid #eaeef5;border-radius:14px;padding:18px 20px;align-items:start">
+    <div style="height:120px;border-radius:12px;background:#f4f6f9;display:flex;align-items:center;justify-content:center;overflow:hidden"><i class="{{ selCls }}" style="{{ selStyle }}"></i></div>
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <div style="display:flex;align-items:center;gap:12px"><span style="font-size:18px;font-weight:800">{{ selName }}</span><span onClick="{{ closeSel }}" style="margin-left:auto;font-size:13px;font-weight:600;color:#6b7280;cursor:pointer;padding:4px 10px;border-radius:999px" style-hover="background:#f3f4f6">Close</span></div>
+      <sc-for list="{{ snippets }}" as="sn" hint-placeholder-count="0"><div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:700;color:#6b7280;width:76px;flex:none">{{ sn.label }}</span><code style="flex:1;min-width:0;background:#111827;color:#e5e7eb;border-radius:8px;padding:8px 12px;font-size:12px;overflow-x:auto;white-space:nowrap">{{ sn.text }}</code><span onClick="{{ sn.onCopy }}" style="flex:none;font-size:13px;font-weight:600;color:#25395c;background:#eef2f8;border-radius:999px;padding:6px 14px;cursor:pointer;min-width:60px;text-align:center" style-hover="background:#e1e8f3">{{ sn.btn }}</span></div></sc-for>
+      <sc-if value="{{ hasTags }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280">Categories: {{ selCats }}</span></sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;color:#6b7280">{{ loadingText }}</span></sc-if>
+  <span style="font-size:13px;color:#6b7280">{{ countText }}</span>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px">
+    <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="0"><div onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="{{ t.hover }}" title="{{ t.name }}"><div style="height:{{ boxH }}px;display:flex;align-items:center;justify-content:center;overflow:hidden"><i class="{{ t.cls }}" style="{{ iconStyle }}"></i></div><span style="font-size:11px;color:#4b5563;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.name }}</span></div></sc-for>
+  </div>
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}"><div onClick="{{ showMore }}" style="align-self:center;font-size:14px;font-weight:600;color:#25395c;border:1.5px solid #25395c;border-radius:999px;padding:10px 24px;cursor:pointer" style-hover="background:#eef2f8">Show more</div></sc-if>
+
+  <span style="font-size:12px;color:#6b7280;line-height:1.6">Icons by <a href="https://phosphoricons.com" target="_blank" rel="noopener">Phosphor Icons</a>, MIT license. Loaded from the Phosphor web package, so this page needs an internet connection.</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { names: [], cats: {}, weight: 'regular', size: 32, hex: '#25395c', q: '', cat: 'all', limit: 180, sel: null, copied: '', loading: true, err: '', catsFailed: false };
+  componentDidMount() {
+    fetch('https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css').then(r => r.text()).then(css => {
+      const set = new Set(); const re = /\.ph-([a-z0-9-]+)::?before/g; let m; while ((m = re.exec(css))) set.add(m[1]);
+      this.setState({ names: Array.from(set).sort(), loading: false });
+    }).catch(() => this.setState({ loading: false, err: 'Could not load the icon list. Check your internet connection.' }));
+    const urls = ['https://raw.githubusercontent.com/phosphor-icons/core/main/src/icons.ts', 'https://cdn.jsdelivr.net/gh/phosphor-icons/core@main/src/icons.ts'];
+    const parse = (t) => { const out = {}; const re = /name:\s*"([a-z0-9-]+)"[\s\S]*?categories:\s*\[([^\]]*)\]/g; let m;
+      while ((m = re.exec(t))) { const cs = []; const r2 = /IconCategory\.([A-Z_]+)|"([a-z -]+)"/g; let k; while ((k = r2.exec(m[2]))) cs.push((k[1] || k[2]).toLowerCase().replace(/_/g, ' ')); out[m[1]] = cs; }
+      return out; };
+    const tryNext = (i) => { if (i >= urls.length) { this.setState({ catsFailed: true }); return; }
+      fetch(urls[i]).then(r => r.ok ? r.text() : Promise.reject()).then(t => { const o = parse(t); if (Object.values(o).filter(a => a.length).length > 100) this.setState({ cats: o }); else tryNext(i + 1); }).catch(() => tryNext(i + 1)); };
+    tryNext(0);
+  }
+  cls(w, n) { return ({ regular: 'ph', bold: 'ph-bold', fill: 'ph-fill', light: 'ph-light', thin: 'ph-thin', duotone: 'ph-duotone' }[w] || 'ph') + ' ph-' + n; }
+  pascal(n) { return n.split('-').map(x => x.charAt(0).toUpperCase() + x.slice(1)).join(''); }
+  copy(text, key) { try { navigator.clipboard.writeText(text); } catch (e) {} this.setState({ copied: key }); setTimeout(() => this.setState(s => s.copied === key ? { copied: '' } : null), 1200); }
+  renderVals() {
+    const st = this.state, q = st.q.trim().toLowerCase();
+    const hex = /^#[0-9a-fA-F]{6}$/.test(st.hex) ? st.hex : '#25395c';
+    const all = st.names.filter(n => (!q || n.includes(q)) && (st.cat === 'all' || (st.cats[n] || []).includes(st.cat)));
+    const shown = all.slice(0, st.limit);
+    const catSet = Array.from(new Set([].concat(...Object.values(st.cats)))).sort();
+    const W = ['thin', 'light', 'regular', 'bold', 'fill', 'duotone'];
+    const sw = ['#25395c', '#111827', '#6b7280', '#027a48', '#92600a', '#b91c1c', '#3b6fd4', '#ffffff'];
+    const sel = st.sel, selSize = Math.min(st.size, 96);
+    const snippets = sel ? [
+      { label: 'Name', text: sel, key: 'n' },
+      { label: 'Component', text: '<dc-import name="Icon" icon="' + sel + '" weight="' + st.weight + '" size="' + st.size + '" color="' + hex + '" hint-size="' + st.size + 'px,' + st.size + 'px"></dc-import>', key: 'c' },
+      { label: 'Web font', text: '<i class="' + this.cls(st.weight, sel) + '"></i>', key: 'w' },
+      { label: 'React', text: '<' + this.pascal(sel) + ' weight="' + st.weight + '" size={' + st.size + '} color="' + hex + '" />', key: 'r' }
+    ].map(x => ({ label: x.label, text: x.text, btn: st.copied === x.key ? 'Copied' : 'Copy', onCopy: () => this.copy(x.text, x.key) })) : [];
+    return { total: st.names.length || '1,248', q: st.q, setQ: e => this.setState({ q: e.target.value, limit: 180 }),
+      catsFailed: st.catsFailed && catSet.length === 0, hasCats: catSet.length > 0, cat: st.cat, setCat: e => this.setState({ cat: e.target.value, limit: 180 }), cats: [{ value: 'all', label: 'All categories' }].concat(catSet.map(c => ({ value: c, label: c.charAt(0).toUpperCase() + c.slice(1) }))),
+      weights: W.map(w => ({ label: w, onClick: () => this.setState({ weight: w }), style: 'cursor:pointer;user-select:none;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;text-transform:capitalize;' + (st.weight === w ? 'background:#25395c;color:#fff;border:1px solid #25395c' : 'background:#fff;color:#374151;border:1px solid #d5dae2') })),
+      size: st.size, setSize: e => this.setState({ size: Number(e.target.value) }), hex: st.hex, setHex: e => this.setState({ hex: e.target.value }),
+      swatches: sw.map(h => ({ hex: h, onClick: () => this.setState({ hex: h }), style: 'width:28px;height:28px;border-radius:999px;cursor:pointer;box-sizing:border-box;background:' + h + ';border:' + (hex.toLowerCase() === h ? '2px solid #25395c;box-shadow:0 0 0 2px #fff inset' : '1px solid #d5dae2') })),
+      loading: st.loading || !!st.err, loadingText: st.err || 'Loading icons…', countText: all.length ? 'Showing ' + shown.length + ' of ' + all.length + ' icons' : (st.loading ? '' : 'No icons match.'),
+      iconStyle: 'display:inline-block;line-height:1;font-size:' + st.size + 'px;color:' + hex, boxH: Math.max(48, st.size + 16),
+      tiles: shown.map(n => ({ name: n, cls: this.cls(st.weight, n), onClick: () => this.setState({ sel: n }),
+        style: 'display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px 10px;border-radius:12px;cursor:pointer;box-sizing:border-box;min-width:0;border:1px solid ' + (sel === n ? '#25395c' : '#eceef2') + ';background:' + (hex.toLowerCase() === '#ffffff' ? '#25395c' : '#fff'), hover: 'border-color:#b4bcc8' })),
+      hasMore: all.length > shown.length, showMore: () => this.setState(s => ({ limit: s.limit + 240 })),
+      hasSel: !!sel, selName: sel || '', closeSel: () => this.setState({ sel: null }), selCls: sel ? this.cls(st.weight, sel) : '', selStyle: 'line-height:1;font-size:' + selSize + 'px;color:' + hex,
+      snippets, hasTags: !!(sel && st.cats[sel] && st.cats[sel].length), selCats: sel && st.cats[sel] ? st.cats[sel].join(', ') : '' };
+  }
+}
+</script>
+</body>
+</html>

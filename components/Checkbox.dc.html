@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div onClick="{{ onToggle }}" style="{{ style }}" style-hover="{{ hover }}" style-active="{{ active }}" style-focus="{{ focus }}" tabindex="0"><sc-if value="{{ checked }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="check" weight="bold" size="11" color="#fff" hint-size="11px,11px"></dc-import></sc-if></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:24,&quot;height&quot;:24},&quot;checked&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onToggle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, on = !!p.checked, st = p.state, dis = !!p.disabled || st === 'disabled';
+    const H = on ? 'background:#1c2c48;border-color:#1c2c48' : 'border-color:#25395c;background:#f4f6f9', A = on ? 'background:#15233b;border-color:#15233b' : 'background:#e8ebf0;border-color:#25395c', F = 'box-shadow:0 0 0 3px rgba(37,57,92,.25)';
+    let style = 'width:20px;height:20px;border-radius:999px;flex:none;box-sizing:border-box;display:flex;align-items:center;justify-content:center;outline:none;' + (dis ? 'background:#e8ebf0;border:1px solid #dfe3ea;cursor:not-allowed' : (on ? 'background:#25395c;border:1px solid #25395c' : 'background:#fff;border:1px solid #c4cad4') + ';cursor:pointer');
+    if (!dis && st === 'hover') style += ';' + H;
+    if (!dis && st === 'pressed') style += ';' + A;
+    if (!dis && st === 'focus') style += ';' + F;
+    return { checked: on, onToggle: dis ? (() => {}) : (p.onToggle || (() => {})), style, hover: dis || st ? '' : H, active: dis || st ? '' : A, focus: dis || st ? '' : F };
+  }
+}
+</script>
+</body>
+</html>

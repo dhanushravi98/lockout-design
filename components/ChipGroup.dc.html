@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ items }}" as="it" hint-placeholder-count="0"><dc-import name="Chip" label="{{ it.label }}" selected="{{ it.selected }}" onClick="{{ it.onClick }}" hint-size="0px,32px"></dc-import></sc-for></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:50},&quot;options&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;},&quot;value&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string | string[]&quot;},&quot;mode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;multi&quot;,&quot;options&quot;:[&quot;multi&quot;,&quot;single&quot;],&quot;tsType&quot;:&quot;'multi'|'single'&quot;},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(value: string | string[]) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { sel: null };
+  renderVals() {
+    const p = this.props, opts = p.options || [], single = p.mode === 'single';
+    const sel = this.state.sel || (Array.isArray(p.value) ? p.value : (p.value ? [p.value] : []));
+    const set = (next) => { this.setState({ sel: next }); if (p.onChange) p.onChange(single ? next[0] : next); };
+    return { items: opts.map(o => ({ label: o, selected: sel.includes(o),
+      onClick: () => set(single ? [o] : (sel.includes(o) ? sel.filter(x => x !== o) : [...sel, o])) })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+ "name": "LockOut USA Component Library",
+ "version": "0.9.0",
+ "categories": [
+  {
+   "name": "Foundations",
+   "kind": "foundations",
+   "file": "foundations"
+  },
+  {
+   "name": "Buttons",
+   "entries": [
+    "button"
+   ]
+  },
+  {
+   "name": "Chips, pills and badges",
+   "entries": [
+    "chip",
+    "chip-group",
+    "pill",
+    "badge"
+   ]
+  },
+  {
+   "name": "Form fields",
+   "entries": [
+    "text-field",
+    "text-area",
+    "checkbox",
+    "radio",
+    "dropzone"
+   ]
+  },
+  {
+   "name": "Tabs",
+   "entries": [
+    "tab"
+   ]
+  },
+  {
+   "name": "Cards",
+   "entries": [
+    "user-card"
+   ]
+  },
+  {
+   "name": "Tables and pagination",
+   "entries": [
+    "data-table",
+    "pagination"
+   ]
+  },
+  {
+   "name": "Icons",
+   "explorer": true,
+   "entries": [
+    "icon"
+   ]
+  }
+ ],
+ "queued": [
+  {
+   "name": "Modals and overlays",
+   "note": "Modal shell, dropdown with checkboxes, confirmation dialog, review layout. Values are on the two spec pages in reference/."
+  },
+  {
+   "name": "Device card",
+   "note": "The device card from the Service Request overlay."
+  }
+ ]
+}

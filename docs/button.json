@@ -1,0 +1,423 @@
+{
+ "id": "button",
+ "title": "Button",
+ "component": "Button",
+ "file": "components/Button.dc.html",
+ "status": "Approved",
+ "hintSize": "180px,46px",
+ "description": "Use primary (filled navy) for the one main action on a screen, secondary (navy outline) for the second action beside it, and tertiary (no fill or border) for low-emphasis actions such as Back or Cancel. A left icon names the action; a right icon signals moving on. Never both. Corner radius is always fully rounded.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Service Requests"
+  },
+  {
+   "label": "Variant",
+   "type": "seg",
+   "prop": "variant",
+   "options": [
+    [
+     "primary",
+     "primary"
+    ],
+    [
+     "secondary",
+     "secondary"
+    ],
+    [
+     "tertiary",
+     "tertiary"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "default",
+     ""
+    ],
+    [
+     "hover",
+     "hover"
+    ],
+    [
+     "pressed",
+     "pressed"
+    ],
+    [
+     "focus",
+     "focus"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Disabled",
+   "type": "seg",
+   "prop": "disabled",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Icon",
+   "type": "seg",
+   "prop": "_icon",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Icon position",
+   "type": "seg",
+   "prop": "iconPosition",
+   "options": [
+    [
+     "left",
+     "left"
+    ],
+    [
+     "right",
+     "right"
+    ]
+   ],
+   "default": 0,
+   "when": "_icon"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "wrench",
+   "keep": true,
+   "when": "_icon"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 140,
+   "items": [
+    {
+     "label": "primary default",
+     "props": {
+      "label": "Button",
+      "variant": "primary"
+     }
+    },
+    {
+     "label": "primary hover",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "primary pressed",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "primary focus",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "primary disabled",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "state": "disabled"
+     }
+    },
+    {
+     "label": "secondary default",
+     "props": {
+      "label": "Button",
+      "variant": "secondary"
+     }
+    },
+    {
+     "label": "secondary hover",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "secondary pressed",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "secondary focus",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "secondary disabled",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "state": "disabled"
+     }
+    },
+    {
+     "label": "tertiary default",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary"
+     }
+    },
+    {
+     "label": "tertiary hover",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "tertiary pressed",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "tertiary focus",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "tertiary disabled",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "state": "disabled"
+     }
+    }
+   ]
+  },
+  {
+   "title": "Icon variants",
+   "note": "Left icon names the action. Right icon signals direction or onward movement. Icon is 18px Phosphor fill, gap 10px, same color as the label.",
+   "cellWidth": 170,
+   "items": [
+    {
+     "label": "primary, no icon",
+     "props": {
+      "label": "Button",
+      "variant": "primary"
+     }
+    },
+    {
+     "label": "primary, icon left",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "icon": "wrench",
+      "iconPosition": "left"
+     }
+    },
+    {
+     "label": "primary, icon right",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "icon": "arrow-right",
+      "iconPosition": "right"
+     }
+    },
+    {
+     "label": "secondary, no icon",
+     "props": {
+      "label": "Button",
+      "variant": "secondary"
+     }
+    },
+    {
+     "label": "secondary, icon left",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "icon": "wrench",
+      "iconPosition": "left"
+     }
+    },
+    {
+     "label": "secondary, icon right",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "icon": "arrow-right",
+      "iconPosition": "right"
+     }
+    },
+    {
+     "label": "tertiary, no icon",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary"
+     }
+    },
+    {
+     "label": "tertiary, icon left",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "icon": "wrench",
+      "iconPosition": "left"
+     }
+    },
+    {
+     "label": "tertiary, icon right",
+     "props": {
+      "label": "Button",
+      "variant": "tertiary",
+      "icon": "arrow-right",
+      "iconPosition": "right"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Button\"",
+   "x": "Button text."
+  },
+  {
+   "n": "variant",
+   "t": "'primary' | 'secondary' | 'tertiary'",
+   "d": "'primary'",
+   "x": "Visual style."
+  },
+  {
+   "n": "height",
+   "t": "number (px)",
+   "d": "46",
+   "x": "Use 44 in modal footers."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greyed, not clickable."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
+   "d": "-",
+   "x": "Forces a state for documentation. Leave unset in product code; real hover, press and focus work automatically."
+  },
+  {
+   "n": "icon",
+   "t": "string (icon name)",
+   "d": "\"\"",
+   "x": "Name from the icon library (Phosphor, fill weight), drawn at 18px. Omit for a text-only button."
+  },
+  {
+   "n": "iconPosition",
+   "t": "'left' | 'right'",
+   "d": "'left'",
+   "x": "Side the icon sits on. Ignored when there is no icon."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Click handler."
+  }
+ ],
+ "values": [
+  {
+   "k": "Padding / radius",
+   "v": "0 24px / 999px"
+  },
+  {
+   "k": "Font",
+   "v": "14px / 700"
+  },
+  {
+   "k": "Primary",
+   "v": "fill #25395c, text #fff, hover #1c2c48"
+  },
+  {
+   "k": "Secondary",
+   "v": "fill #fff, text and 1.5px border #25395c, hover #eef2f8"
+  },
+  {
+   "k": "Tertiary",
+   "v": "transparent, text #25395c, hover #eef2f8"
+  },
+  {
+   "k": "Icon gap",
+   "v": "10px"
+  },
+  {
+   "k": "Icon",
+   "v": "18px, Phosphor fill, color follows label"
+  },
+  {
+   "k": "Hover",
+   "v": "primary #1c2c48 / secondary and tertiary bg #eef2f8"
+  },
+  {
+   "k": "Pressed",
+   "v": "primary #15233b / secondary and tertiary bg #e1e8f3"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Disabled",
+   "v": "fill #e8ebf0, text #7b8494, no hover, not-allowed"
+  }
+ ],
+ "usedIn": "School Screen (school strip), Service Request overlay (footer, 44px height)."
+}

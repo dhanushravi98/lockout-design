@@ -1,0 +1,230 @@
+{
+ "id": "badge",
+ "title": "Badge",
+ "component": "Badge",
+ "file": "components/Badge.dc.html",
+ "status": "Approved",
+ "hintSize": "30px,20px",
+ "description": "A small number or a dot, never a text label. Use it to show how many (selected items, notifications) or that something is new. It sits inline next to a label, or in the corner of another element such as an avatar or icon. Counts above max show as 99+.",
+ "base": {
+  "count": 7
+ },
+ "controls": [
+  {
+   "label": "Count (number)",
+   "type": "text",
+   "prop": "count",
+   "default": "7",
+   "numeric": true
+  },
+  {
+   "label": "Max before overflow (number)",
+   "type": "text",
+   "prop": "max",
+   "default": "99",
+   "numeric": true
+  },
+  {
+   "label": "Dot only",
+   "type": "seg",
+   "prop": "dot",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "tone",
+   "options": [
+    [
+     "navy",
+     "navy"
+    ],
+    [
+     "neutral",
+     "neutral"
+    ],
+    [
+     "error",
+     "error"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Placement",
+   "type": "seg",
+   "prop": "placement",
+   "options": [
+    [
+     "inline",
+     "inline"
+    ],
+    [
+     "corner",
+     "corner"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Tones and overflow",
+   "cellWidth": 120,
+   "items": [
+    {
+     "label": "navy",
+     "props": {
+      "count": 7
+     }
+    },
+    {
+     "label": "neutral",
+     "props": {
+      "count": 7,
+      "tone": "neutral"
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "count": 7,
+      "tone": "error"
+     }
+    },
+    {
+     "label": "two digits",
+     "props": {
+      "count": 42
+     }
+    },
+    {
+     "label": "overflow 99+",
+     "props": {
+      "count": 120
+     }
+    }
+   ]
+  },
+  {
+   "title": "Dot only",
+   "cellWidth": 120,
+   "items": [
+    {
+     "label": "navy dot",
+     "props": {
+      "dot": true
+     }
+    },
+    {
+     "label": "neutral dot",
+     "props": {
+      "dot": true,
+      "tone": "neutral"
+     }
+    },
+    {
+     "label": "error dot",
+     "props": {
+      "dot": true,
+      "tone": "error"
+     }
+    }
+   ]
+  },
+  {
+   "title": "Attached to another element",
+   "note": "placement corner positions the badge at the top right with a white ring. Put it inside a parent with position: relative.",
+   "cellWidth": 120,
+   "items": [
+    {
+     "label": "count on avatar",
+     "props": {
+      "count": 3,
+      "tone": "error",
+      "placement": "corner"
+     },
+     "frame": "position:relative;width:40px;height:40px;border-radius:999px;background:#25395c;margin:8px 0 0 0"
+    },
+    {
+     "label": "dot on avatar",
+     "props": {
+      "dot": true,
+      "tone": "error",
+      "placement": "corner"
+     },
+     "frame": "position:relative;width:40px;height:40px;border-radius:999px;background:#25395c;margin:8px 0 0 0"
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "count",
+   "t": "number",
+   "d": "-",
+   "x": "Number to show. Ignored when dot is on."
+  },
+  {
+   "n": "max",
+   "t": "number",
+   "d": "99",
+   "x": "Counts above this show as max+, for example 99+."
+  },
+  {
+   "n": "dot",
+   "t": "boolean",
+   "d": "false",
+   "x": "Show only an 8px dot."
+  },
+  {
+   "n": "tone",
+   "t": "'navy' | 'neutral' | 'error'",
+   "d": "'navy'",
+   "x": "Color."
+  },
+  {
+   "n": "placement",
+   "t": "'inline' | 'corner'",
+   "d": "'inline'",
+   "x": "Corner is absolutely positioned at top -6px, right -6px."
+  }
+ ],
+ "values": [
+  {
+   "k": "Count badge",
+   "v": "min 20px wide, 20px high, padding 0 6px, 12px / 700, radius 999px"
+  },
+  {
+   "k": "Dot",
+   "v": "8px circle"
+  },
+  {
+   "k": "Navy",
+   "v": "fill #25395c, text #fff"
+  },
+  {
+   "k": "Neutral",
+   "v": "fill #cfd5de, text #111827"
+  },
+  {
+   "k": "Error",
+   "v": "fill #ef4444, text #fff"
+  },
+  {
+   "k": "Corner ring",
+   "v": "0 0 0 2px #fff"
+  }
+ ],
+ "usedIn": "Tab counts (same styling), selected counts on section headers, facility +N counters."
+}

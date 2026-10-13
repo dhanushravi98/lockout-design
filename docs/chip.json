@@ -1,0 +1,293 @@
+{
+ "id": "chip",
+ "title": "Chip",
+ "component": "Chip",
+ "file": "components/Chip.dc.html",
+ "status": "Approved",
+ "hintSize": "150px,32px",
+ "description": "Clickable. Use for choices the user makes: toggling an issue on or off, picking a filter, or removing an applied filter with the x. Off is outlined, on is filled navy. For a single choice from a set, put chips in a Chip group. Chips are never used for status; use a Pill for that.",
+ "base": {
+  "label": "Replace charger"
+ },
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Replace charger"
+  },
+  {
+   "label": "Selected",
+   "type": "seg",
+   "prop": "selected",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Removable (x)",
+   "type": "seg",
+   "prop": "removable",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Leading icon",
+   "type": "seg",
+   "prop": "_icon",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "check",
+   "keep": true,
+   "when": "_icon"
+  },
+  {
+   "label": "Count (number, optional)",
+   "type": "text",
+   "prop": "count",
+   "default": "",
+   "numeric": true
+  }
+ ],
+ "interactive": [
+  {
+   "handler": "onClick",
+   "toggle": "selected"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 180,
+   "items": [
+    {
+     "label": "unselected default",
+     "props": {
+      "label": "Replace charger",
+      "selected": false
+     }
+    },
+    {
+     "label": "unselected hover",
+     "props": {
+      "label": "Replace charger",
+      "selected": false,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "unselected pressed",
+     "props": {
+      "label": "Replace charger",
+      "selected": false,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "unselected focus",
+     "props": {
+      "label": "Replace charger",
+      "selected": false,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "selected default",
+     "props": {
+      "label": "Replace charger",
+      "selected": true
+     }
+    },
+    {
+     "label": "selected hover",
+     "props": {
+      "label": "Replace charger",
+      "selected": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "selected pressed",
+     "props": {
+      "label": "Replace charger",
+      "selected": true,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "selected focus",
+     "props": {
+      "label": "Replace charger",
+      "selected": true,
+      "state": "focus"
+     }
+    }
+   ]
+  },
+  {
+   "title": "With icon, count and remove",
+   "note": "Remove shows an x. Clicking the x fires onRemove and does not toggle the chip.",
+   "cellWidth": 200,
+   "items": [
+    {
+     "label": "leading icon",
+     "props": {
+      "label": "Verified",
+      "icon": "check",
+      "selected": true
+     }
+    },
+    {
+     "label": "count",
+     "props": {
+      "label": "Low battery",
+      "count": 12
+     }
+    },
+    {
+     "label": "count, selected",
+     "props": {
+      "label": "Low battery",
+      "count": 12,
+      "selected": true
+     }
+    },
+    {
+     "label": "removable, off",
+     "props": {
+      "label": "Zone 3",
+      "removable": true
+     }
+    },
+    {
+     "label": "removable, on",
+     "props": {
+      "label": "Zone 3",
+      "removable": true,
+      "selected": true
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Chip\"",
+   "x": "Text."
+  },
+  {
+   "n": "selected",
+   "t": "boolean",
+   "d": "false",
+   "x": "On state, filled navy."
+  },
+  {
+   "n": "removable",
+   "t": "boolean",
+   "d": "false",
+   "x": "Shows an x at the right end."
+  },
+  {
+   "n": "icon",
+   "t": "string (icon name)",
+   "d": "-",
+   "x": "Name from the icon library (Phosphor, fill weight), drawn at 14px before the label."
+  },
+  {
+   "n": "count",
+   "t": "number",
+   "d": "-",
+   "x": "Optional count shown inside."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus'",
+   "d": "-",
+   "x": "Forces a state for documentation only."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Toggle handler."
+  },
+  {
+   "n": "onRemove",
+   "t": "() => void",
+   "d": "-",
+   "x": "Fires from the x."
+  }
+ ],
+ "values": [
+  {
+   "k": "Font / radius / padding",
+   "v": "13px / 600 / 999px / 6px 14px (6px 8px 6px 14px when removable)"
+  },
+  {
+   "k": "Off",
+   "v": "fill #fff, text #374151, border 1px #d5dae2"
+  },
+  {
+   "k": "On",
+   "v": "fill and border #25395c, text #fff"
+  },
+  {
+   "k": "Hover off / on",
+   "v": "bg #f4f6f9, border #b4bcc8 / bg #1c2c48"
+  },
+  {
+   "k": "Pressed off / on",
+   "v": "bg #e8ebf0 / bg #15233b"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Icon",
+   "v": "14px, Phosphor fill, gap 8px"
+  },
+  {
+   "k": "Count",
+   "v": "20px high circle, 12px; off #eaeef5 / #25395c, on #fff / #25395c"
+  },
+  {
+   "k": "Remove x",
+   "v": "18px circle, Icon x, bold, 10px, follows label color; hover #e8ebf0"
+  }
+ ],
+ "usedIn": "Service Request overlay issue choices."
+}

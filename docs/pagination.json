@@ -1,0 +1,113 @@
+{
+ "id": "pagination",
+ "title": "Pagination",
+ "component": "Pagination",
+ "file": "components/Pagination.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,60px",
+ "previewWidth": "100%",
+ "previewStyle": "background:#fff;border-radius:12px",
+ "description": "Record count on the left, page controls on the right. Prev and Next grey out at the ends. Long lists collapse to the first page, the last page and the pages around the current one, joined by an ellipsis. The Items per page pill opens a menu of 10, 25 and 50 that opens upward; picking one resets to page 1, and clicking anywhere outside closes it.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Total records",
+   "type": "text",
+   "prop": "total",
+   "default": "110",
+   "numeric": true
+  },
+  {
+   "label": "Per page",
+   "type": "seg",
+   "prop": "perPage",
+   "options": [
+    [
+     "10",
+     10
+    ],
+    [
+     "25",
+     25
+    ],
+    [
+     "50",
+     50
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "total",
+   "t": "number",
+   "d": "110",
+   "x": "Total records."
+  },
+  {
+   "n": "perPage",
+   "t": "number",
+   "d": "10",
+   "x": "Starting page size. The pill cycles 10, 25, 50."
+  },
+  {
+   "n": "page",
+   "t": "number",
+   "d": "1",
+   "x": "Starting page."
+  },
+  {
+   "n": "onChange",
+   "t": "(page: number) => void",
+   "d": "-",
+   "x": "Fires when the page changes."
+  },
+  {
+   "n": "onPerPage",
+   "t": "(n: number) => void",
+   "d": "-",
+   "x": "Fires when a page size is chosen from the menu."
+  }
+ ],
+ "values": [
+  {
+   "k": "Layout",
+   "v": "space-between, padding 14px 20px, 13px #6b7280"
+  },
+  {
+   "k": "Count text",
+   "v": "range and total in #111827 bold"
+  },
+  {
+   "k": "Page chip",
+   "v": "28px circle, 12px; others border 1px #e5e7eb, hover #f4f6f9"
+  },
+  {
+   "k": "Current page",
+   "v": "#25395c, #fff, 700"
+  },
+  {
+   "k": "Prev / Next",
+   "v": "border 1px #e5e7eb, radius 999px, 7px 14px; Icon caret-left / caret-right, bold, 12px, follows text color, gap 4px"
+  },
+  {
+   "k": "Prev / Next disabled",
+   "v": "text #9aa1ac, not-allowed"
+  },
+  {
+   "k": "Per page pill",
+   "v": "border 1px #e5e7eb, radius 999px, padding 7px 12px 7px 14px, Icon caret-down, bold, 12px, #6b7280, aligned right, turns up when open, hover #f4f6f9"
+  },
+  {
+   "k": "Per page menu",
+   "v": "#fff, border 1px #e5e7eb, radius 12px, shadow 0 8px 24px rgba(0,0,0,.12), opens upward; selected #eef2f8 / #25395c / 700; hover #f4f6f9"
+  },
+  {
+   "k": "Many pages",
+   "v": "1 ... current-1, current, current+1 ... last"
+  }
+ ],
+ "usedIn": "School screen, below the data table."
+}

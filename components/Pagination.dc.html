@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;font-size:13px;color:#6b7280;font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;width:100%">
+  <span>Showing <b style="color:#111827">{{ range }}</b> of <b style="color:#111827">{{ total }}</b> Records</span>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+    <span>Items per page:</span>
+    <div style="position:relative">
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:10"></div></sc-if>
+      <div onClick="{{ toggleMenu }}" style="{{ pillStyle }}" style-hover="background:#f4f6f9" tabindex="0"><span>{{ perPage }}</span><span style="{{ chevStyle }}"><dc-import name="Icon" icon="caret-down" weight="bold" size="12" color="#6b7280" hint-size="12px,12px"></dc-import></span></div>
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;bottom:calc(100% + 6px);left:0;min-width:100%;box-sizing:border-box;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:4px;z-index:11;display:flex;flex-direction:column;gap:2px"><sc-for list="{{ options }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.onClick }}" style="{{ o.style }}" style-hover="{{ o.hover }}">{{ o.label }}</div></sc-for></div></sc-if>
+    </div>
+    <span onClick="{{ prev }}" style="{{ prevStyle }}" style-hover="{{ prevHover }}"><dc-import name="Icon" icon="caret-left" weight="bold" size="12" color="currentColor" hint-size="12px,12px"></dc-import>Prev</span>
+    <sc-for list="{{ pages }}" as="g" hint-placeholder-count="5"><span onClick="{{ g.onClick }}" style="{{ g.style }}" style-hover="{{ g.hover }}">{{ g.label }}</span></sc-for>
+    <span onClick="{{ next }}" style="{{ nextStyle }}" style-hover="{{ nextHover }}">Next<dc-import name="Icon" icon="caret-right" weight="bold" size="12" color="currentColor" hint-size="12px,12px"></dc-import></span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:760,&quot;height&quot;:120},&quot;total&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:110,&quot;tsType&quot;:&quot;number&quot;},&quot;perPage&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;tsType&quot;:&quot;number&quot;},&quot;page&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(page: number) =&gt; void&quot;},&quot;onPerPage&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(n: number) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { page: null, per: null, menu: false };
+  renderVals() {
+    const p = this.props, total = Number(p.total || 110), per = this.state.per || Number(p.perPage || 10), open = this.state.menu;
+    const last = Math.max(1, Math.ceil(total / per)), page = Math.min(last, this.state.page || Number(p.page || 1));
+    const go = n => { const v = Math.max(1, Math.min(last, n)); this.setState({ page: v }); if (p.onChange) p.onChange(v); };
+    let seq = [];
+    if (last <= 7) seq = Array.from({ length: last }, (_, i) => i + 1);
+    else if (page <= 4) seq = [1, 2, 3, 4, 5, '…', last];
+    else if (page >= last - 3) seq = [1, '…', last - 4, last - 3, last - 2, last - 1, last];
+    else seq = [1, '…', page - 1, page, page + 1, '…', last];
+    const pages = seq.map(n => n === '…' ? { label: '…', style: 'color:#9aa1ac;padding:0 4px', hover: '', onClick: () => {} } : { label: String(n), onClick: () => go(n),
+      style: 'width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;cursor:pointer;user-select:none;' + (n === page ? 'background:#25395c;color:#fff;font-weight:700' : 'border:1px solid #e5e7eb;color:#111827'), hover: n === page ? '' : 'background:#f4f6f9' });
+    const nav = (dis) => 'display:inline-flex;align-items:center;gap:4px;border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;user-select:none;' + (dis ? 'color:#9aa1ac;cursor:not-allowed' : 'color:#111827;cursor:pointer');
+    const from = (page - 1) * per + 1, to = Math.min(total, page * per);
+    const options = (p.perOptions || [10, 25, 50]).map(o => ({ label: String(o), onClick: () => { this.setState({ per: o, page: 1, menu: false }); if (p.onPerPage) p.onPerPage(o); },
+      style: 'padding:8px 12px;border-radius:8px;font-size:13px;cursor:pointer;user-select:none;' + (o === per ? 'background:#eef2f8;color:#25395c;font-weight:700' : 'color:#111827'), hover: o === per ? '' : 'background:#f4f6f9' }));
+    return { total, perPage: per, range: from + '-' + to, pages, options, menuOpen: open, prev: () => page > 1 && go(page - 1), next: () => page < last && go(page + 1),
+      prevStyle: nav(page === 1), nextStyle: nav(page === last), prevHover: page === 1 ? '' : 'background:#f4f6f9', nextHover: page === last ? '' : 'background:#f4f6f9',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      pillStyle: 'display:inline-flex;align-items:center;justify-content:space-between;gap:8px;min-width:64px;box-sizing:border-box;border:1px solid ' + (open ? '#25395c' : '#e5e7eb') + ';border-radius:999px;padding:7px 12px 7px 14px;color:#111827;cursor:pointer;user-select:none;line-height:16px' + (open ? ';box-shadow:0 0 0 3px rgba(37,57,92,.12)' : ''),
+      chevStyle: 'display:flex;flex:none;transition:transform .15s;transform:rotate(' + (open ? 180 : 0) + 'deg)' };
+  }
+}
+</script>
+</body>
+</html>

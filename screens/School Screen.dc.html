@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/Tablet Icon.png" data-resource-id="tabletIcon">
+<meta name="ext-resource-dependency" content="../uploads/Boot.png" data-resource-id="bootIcon">
+<meta name="ext-resource-dependency" content="../uploads/PullBLE.png" data-resource-id="pullIcon">
+<meta name="ext-resource-dependency" content="../uploads/DomeBLE.png" data-resource-id="domeIcon">
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="120" y="120" width="200" height="560" fill="#fff" opacity=".4"></rect><rect x="360" y="120" width="720" height="140" rx="20" fill="#fff"></rect><rect x="360" y="300" width="720" height="380" rx="20" fill="#fff"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+
+  <!-- Sidebar -->
+  <div style="width:14.85%;min-width:220px;max-width:382px;flex:none;background:#fff;border-right:1px solid #eef0f3;display:flex;flex-direction:column;height:100vh;overflow:hidden">
+    <div style="height:56px;display:flex;align-items:center;gap:10px;padding:0 24px;border-bottom:1px solid #eef0f3"><img src="../uploads/LockOut Logo.png" style="width:26px;height:26px;object-fit:contain"><span style="font-size:18px;font-weight:800;color:#111827">LockOut USA</span></div>
+    <div style="display:flex;flex-direction:column;padding:10px 0;flex:1">
+      <sc-for list="{{ menu }}" as="m" hint-placeholder-count="10">
+        <div style="{{ m.style }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ m.path }}"></path></svg><span style="font-size:15px">{{ m.label }}</span></div>
+      </sc-for>
+    </div>
+    <div style="padding:16px 24px;font-size:11px;color:#6b7280;border-top:1px solid #eef0f3">Copyright LockOut USA© | 2026</div>
+  </div>
+
+  <!-- Main -->
+  <div style="flex:1;min-width:0;height:100vh;display:flex;flex-direction:column;overflow:hidden">
+    <!-- Header -->
+    <div style="height:56px;background:#fff;border-bottom:1px solid #eef0f3;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 16px;flex:none">
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="width:28px;height:28px;border:1px solid #e5e7eb;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 6l-6 6 6 6"></path></svg></div>
+        <div style="display:flex;align-items:center;gap:7px;color:#3f8f4f;font-size:13px;font-weight:600"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>No Active Alerts</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;border:1px solid #e5e7eb;border-radius:12px;padding:6px 12px">
+        <div style="width:28px;height:28px;border-radius:999px;background:#25395c;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">LA</div>
+        <div style="display:flex;flex-direction:column"><span style="font-size:11px;color:#6b7280">Welcome back, <strong style="color:#111827">Lockout Dev Super Ad...</strong></span><span style="font-size:10px;color:#6b7280">Last login: Oct 12 · 09:33 AM</span></div>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg>
+      </div>
+    </div>
+
+    <div style="padding:16px 24px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;flex:1;min-height:0;overflow:hidden">
+      <!-- Breadcrumb -->
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px;margin-bottom:-4px;flex:none">
+        <div style="display:inline-flex;align-items:center;gap:6px;color:#25395c;font-weight:600;cursor:pointer;padding:4px 10px 4px 4px;border-radius:999px" style-hover="background:#eaeef5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Back</div>
+        <span style="width:1px;height:14px;background:#cbd2dc"></span>
+        <div style="display:flex;align-items:center;gap:8px"><span style="color:#6b7280">Schools</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg><span style="color:#6b7280">MI</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg><span style="color:#111827;font-weight:600">49221</span></div>
+      </div>
+
+      <!-- School strip (current design) -->
+      <div style="flex:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:22px 24px;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px 24px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:260px;flex:1 1 420px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px"><span style="font-size:clamp(24px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">ADRIAN MADISON SCHOOLS</span><span style="border:1px solid #bcd0f5;background:#eaf1fe;color:#25395c;flex:none;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:5px 14px">SYSTEM CLEAR</span></div>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=227+N+Madison+St+Adrian+MI+49221" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:-8px;font-size:14px;color:#25395c;text-decoration:none" style-hover="text-decoration:underline"><svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path></svg><span style="min-width:0">227 N Madison St, Adrian, MI 49221&nbsp;<svg style="vertical-align:-1px;display:inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span></a>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;font-size:13px">
+            <span style="white-space:nowrap">DISPATCH: LENAWEE COUNTY</span><span style="white-space:nowrap">DISTRICT: ADRIAN MADISON SCHOOL DISTRICT</span><span style="white-space:nowrap">DEVICES: 477</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px;flex:0 1 auto;min-width:210px">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
+          <sc-for list="{{ mainActions }}" as="a" hint-placeholder-count="2">
+            <div onClick="{{ a.onClick }}" style="{{ a.style }}" style-hover="{{ a.hover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.path }}"></path></svg>{{ a.label }}</div>
+          </sc-for>
+        </div>
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;justify-content:flex-end;margin-right:-12px">
+            <sc-for list="{{ refLinks }}" as="a" hint-placeholder-count="4">
+              <div onMouseEnter="{{ a.enter }}" onMouseLeave="{{ a.leave }}" style="{{ a.style }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="{{ a.fill }}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.path }}"></path></svg>{{ a.label }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs + table -->
+      <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:flex-end;gap:2px;background:#e8ebf0;border-radius:14px 14px 0 0;padding:10px 12px 0;border:1px solid #e5e7eb;border-bottom:none;flex:none">
+          <div style="flex:1;min-width:0;display:flex;align-items:flex-end;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);padding-right:28px;box-sizing:border-box">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+              <div onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="{{ t.hover }}">
+                <div style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex:none">
+                  <sc-if value="{{ t.isTablet }}" hint-placeholder-val="{{ false }}"><img src="../uploads/Tablet Icon.png" style="{{ t.imgStyle }}"></sc-if>
+                  <sc-if value="{{ t.isBoot }}" hint-placeholder-val="{{ false }}"><img src="../uploads/Boot.png" style="width: 17px; height: 16px"></sc-if>
+                  <sc-if value="{{ t.isPull }}" hint-placeholder-val="{{ false }}"><img src="../uploads/PullBLE.png" style="width: 31px; height: 25px"></sc-if>
+                  <sc-if value="{{ t.isLight }}" hint-placeholder-val="{{ false }}"><img src="../uploads/DomeBLE.png" style="width: 20px; height: 19px"></sc-if>
+                  <sc-if value="{{ t.isAlerts }}" hint-placeholder-val="{{ false }}"><img src="../uploads/alarm-1a88b0cc.png" style="width: 18px; height: 22px; object-fit: contain; display: block"></sc-if>
+                  <sc-if value="{{ t.isFacility }}" hint-placeholder-val="{{ false }}"><img src="../uploads/school.png" style="width: 19px; height: 22px; object-fit: contain; display: block"></sc-if>
+                  <sc-if value="{{ t.path }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg></sc-if>
+                </div>
+                <span style="font-size:13px;font-weight:600;white-space:nowrap">{{ t.label }}</span>
+                <sc-if value="{{ t.hasCount }}" hint-placeholder-val="{{ true }}"><span style="{{ t.countStyle }}">{{ t.count }}</span></sc-if>
+              </div>
+              <sc-if value="{{ t.hasSlot }}" hint-placeholder-val="{{ true }}"><div style="{{ t.divStyle }}"></div></sc-if>
+            </sc-for>
+          </div>
+          <div style="flex:none;width:36px;height:36px;margin-bottom:6px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280;cursor:pointer" style-hover="background:#dfe3ea"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg></div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 14px 14px;overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column">
+          <sc-if value="{{ showTable }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:none;display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3">
+            <div style="flex:1;max-width:520px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><span style="font-size:13px;color:#9aa1ac">Search by device ID, field, or classification</span></div>
+            <sc-if value="{{ showZone }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;font-weight:600;color:#6b7280">Filter by Zone</span>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;font-size:13px;min-width:120px;display:flex;justify-content:space-between;align-items:center;gap:12px">All Zones<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+            <div style="width:36px;height:36px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+          </div>
+          <div style="{{ gridStyle }};flex:none;padding:14px 20px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280;border-bottom:1px solid #eef0f3;text-transform:uppercase"><sc-for list="{{ cols }}" as="c" hint-placeholder-count="6"><span>{{ c }}</span></sc-for></div>
+          <div style="flex:1;min-height:0;overflow-y:auto">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+            <div style="{{ gridStyle }};padding:15px 20px;font-size:14px;border-bottom:1px solid #f0f1f3"><sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="6"><span style="{{ c.style }};justify-self:start">{{ c.v }}</span></sc-for></div>
+          </sc-for>
+          </div>
+          <div style="flex:none;border-top:1px solid #eef0f3;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-size:13px;color:#6b7280">
+            <span>Showing <b style="color:#111827">1-10</b> of <b style="color:#111827">{{ total }}</b> Records</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span>Items per page:</span><span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#111827">10 ⌄</span>
+              <span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#9aa1ac">‹ Prev</span>
+              <sc-for list="{{ pages }}" as="p" hint-placeholder-count="6"><span style="{{ p.style }}">{{ p.n }}</span></sc-for>
+              <span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#111827">Next ›</span>
+            </div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ showFacility }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow-y:auto">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #eef0f3"><span style="font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Facility Info</span><span style="display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Edit</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+              <sc-for list="{{ facCards }}" as="f" hint-placeholder-count="3"><div style="background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.04em;color:#6b7280;text-transform:uppercase">{{ f.k }}</span><span style="font-size:15px;font-weight:500">{{ f.v }}</span></div></sc-for>
+            </div>
+            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
+              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
+                <div onClick="{{ s.toggle }}" style="display:flex;align-items:center;gap:14px;padding:12px 16px;cursor:pointer" style-hover="background:#fafbfc">
+                  <div style="width:34px;height:34px;border-radius:8px;background:#eef0f4;color:#25395c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none"><sc-if value="{{ s.hasIc }}" hint-placeholder-val="{{ false }}">{{ s.ic }}</sc-if><sc-if value="{{ s.hasBld }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"></path></svg></sc-if></div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700">{{ s.title }}</span><span style="font-size:13px;color:#6b7280">{{ s.sub }}</span></div>
+                  <div style="width:28px;height:28px;border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="{{ s.chev }}"><path d="M6 9l6 6 6-6"></path></svg></div>
+                </div>
+                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 20px">
+                    <sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><span style="font-size:14px;color:#9aa1ac">-</span></div></sc-for>
+                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">No contacts added yet.</span></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<dc-import name="Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'tablet', svc: false };
+  renderVals() {
+    const defs = [
+      { id: 'tablet', label: 'Tablet List', count: 110 },
+      { id: 'boot', label: 'Smart Boot', count: 195 },
+      { id: 'pull', label: 'Pull Box', count: 17 },
+      { id: 'light', label: 'Smart Light', count: 155 },
+      { id: 'alerts', label: 'Recent Alerts', count: 27 },
+      { id: 'facility', label: 'Facility Information' }
+    ];
+    const tabs = defs.map((d, di) => {
+      const on = this.state.active === d.id;
+      const nextOn = defs[di + 1] && defs[di + 1].id === this.state.active;
+      const showDiv = di < defs.length - 1 && !on && !nextOn;
+      return {
+        label: d.label, count: d.count, hasCount: d.count != null, path: d.path || '',
+        isTablet: d.id === 'tablet', isBoot: d.id === 'boot', isPull: d.id === 'pull', isLight: d.id === 'light', isAlerts: d.id === 'alerts', isFacility: d.id === 'facility',
+        imgStyle: 'flex:none;width:' + (d.id === 'tablet' ? '24.2px' : d.id === 'pull' ? '19.8px' : '22px') + ';height:' + (d.id === 'tablet' ? '24.2px' : d.id === 'pull' ? '19.8px' : '22px') + ';object-fit:contain;display:block;' + '',
+        onClick: () => this.setState({ active: d.id }),
+        hasSlot: di < defs.length - 1,
+        divStyle: 'flex:none;align-self:center;width:1px;height:24px;margin:0 6px;background:' + (showDiv ? '#b4bcc8' : 'transparent'),
+        style: 'position:relative;flex:none;display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:12px 12px 0 0;cursor:pointer;user-select:none;padding-bottom:12px;' + (on ? 'background:#fafbfc;color:#25395c;border:2px solid #25395c;border-bottom:2px solid #fafbfc;box-shadow:none' : 'background:transparent;color:#111827;border:2px solid transparent'),
+        hover: on ? '' : 'background:rgba(255,255,255,.7);color:#111827',
+        countStyle: 'font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;' + (on ? 'background:#25395c;color:#fff' : 'background:#cfd5de;color:#111827')
+      };
+    });
+    const act = this.state.active;
+    const P = '00:A0:50:';
+    const mono = 'color:#6b7280;font-family:ui-monospace,Menlo,monospace;font-size:13px';
+    const G = '0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr';
+    const SUF = ['EAST WING, 1ST FLOOR', 'NORTH CORRIDOR, 2ND FLOOR', 'NEAR MAIN OFFICE ENTRANCE', 'SOUTH STAIRWELL LANDING', 'WEST WING, BESIDE GYMNASIUM', 'CAFETERIA SERVICE HALLWAY', 'LIBRARY & MEDIA CENTER LEVEL', 'ADMIN BUILDING, 3RD FLOOR', 'FIELD HOUSE LOBBY', 'AUDITORIUM BACKSTAGE ACCESS'];
+    const dev = (cols, total, label, pre, vers, list) => ({ cols, total, grid: G, rows: list.map(([loc, z, id], i) => [
+      { v: i + 1 }, { v: z, s: 'color:#374151' }, { v: label + ' ' + String(i + 1).padStart(2, '0'), s: 'font-weight:500' }, { v: loc + ' – ' + SUF[i % 10], s: 'color:#374151' }, { v: pre + id, s: mono }, { v: vers[i], s: 'color:#374151' }]) });
+    const DC = ['ID', 'Zone', 'Device Name', 'Location', 'Device ID', 'Firmware Version'];
+    const dis = 'padding:5px 14px;border-radius:999px;background:#f3f4f6;color:#c4c9d1;font-size:12px;font-weight:700;border:1px solid #eef0f3', ena = 'padding:5px 14px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700';
+    const al = [['Room MS COPY RM', 'SmartBoot Low Battery (R)', 'SmartBoot', 'MS Tab-2', 'September 09, 2026 04:55 PM', 0], ['Room MS COPY RM', 'SmartBoot Low Battery (R)', 'SmartBoot', 'HS Tab-4', 'September 09, 2026 04:55 PM', 0], ['Room MS COPY RM', 'SmartBoot Low Battery (R)', 'SmartBoot', 'UES Tab-3', 'September 09, 2026 04:55 PM', 0], ['Room MS COPY RM', 'SmartBoot Low Battery (R)', 'SmartBoot', 'ES Tab-5', 'September 09, 2026 04:55 PM', 0], ['Room MS COPY RM', 'SmartBoot Low Battery (R)', 'SmartBoot', 'MS Tab-7', 'September 09, 2026 04:55 PM', 0], ['Hall E303', 'System Clear (R)', 'Tablet Tab-3', 'HS Tab-4', 'August 26, 2026 03:18:47 PM', 0], ['Hall E303', 'System Clear (R)', 'Tablet Tab-3', 'ES Tab-5', 'August 26, 2026 03:18:42 PM', 0], ['Hall E303', 'System Clear (S)', 'UES Tab-3', 'UES Tab-3', 'August 26, 2026 03:18:30 PM', 1], ['Hall EENTRY13', 'All Clear (R)', 'Tablet Tab-5', 'HS Tab-4', 'August 26, 2026 03:13:20 PM', 0], ['Hall EENTRY13', 'All Clear (S)', 'ES Tab-5', 'ES Tab-5', 'August 26, 2026 03:12:58 PM', 1]];
+    const T = {
+      tablet: dev(['ID', 'Zone', 'Tablet Name', 'Location', 'Device ID', 'App Version'], 110, 'Tablet', P, ['3.3.3', '3.3.3', '3.3.2', '3.3.3', '3.3.3', '3.3.1', '3.3.3', '3.3.3', '3.3.2', '3.3.3'],
+        [['ROOM 114', '1', '4F:2A:91'], ['ROOM 202', '2', '4F:2B:07'], ['LIBRARY', '1', '4F:3C:5E'], ['ROOM 401', '4', '4F:4D:12'], ['ROOM 402', '4', '4F:4D:9A'], ['ROOM 411', '4', '4F:5E:33'], ['ROOM 412', '4', '4F:5E:71'], ['ROOM 413', '4', '4F:6A:08'], ['ROOM 414', '4', '4F:6A:C4'], ['ROOM 415', '4', '4F:7B:26']]),
+      boot: dev(DC, 195, 'Smart Boot', P, ['2.4.1', '2.4.1', '2.3.8', '2.4.1', '2.4.0', '2.4.1', '2.3.8', '2.4.1', '2.4.1', '2.4.0'],
+        [['ROOM 534', '3', '1A:9B:26'], ['ROOM MS COPY RM', '1', '1B:62:E4'], ['ROOM 331', '2', '3A:23:4C'], ['ROOM MS G LCKR R', '1', '3A:46:55'], ['ROOM PAC GR BR', '5', '3A:89:D8'], ['ROOM 222', '1', '3A:89:DD'], ['ROOM TEAM RM', '4', '3A:8A:1D'], ['ROOM WEIGHT RM', '4', '3A:8A:27'], ['ROOM 219', '1', '3A:8A:2A'], ['ROOM 215', '1', '3A:8A:4E']]),
+      pull: dev(DC, 17, 'Pull Box', P, ['1.9.2', '1.9.2', '1.9.0', '1.9.2', '1.8.7', '1.9.2', '1.9.2', '1.9.0', '1.9.2', '1.9.2'],
+        [['ROOM HSMAINOFF', '4', '45:69:17'], ['ROOM MSMAINOFF', '1', '3A:46:52'], ['ROOM ESKITCHEN', '1', '3B:67:AE'], ['ROOM ANNEX', '1', '44:3C:23'], ['ROOM ESCOMMONS', '3', '45:44:59'], ['ROOM MSGYMHALL', '1', '45:4B:97'], ['ROOM ESGYMNORTH', '3', '45:65:09'], ['ROOM ESGYMSOUTH', '3', '45:65:1F'], ['ROOM PACENTER', '5', '45:66:9C'], ['ROOM ESCAFE', '2', '45:69:0B']]),
+      light: dev(DC, 155, 'Smart Light', P, ['4.1.0', '4.1.0', '4.0.6', '4.1.0', '4.1.0', '4.0.6', '4.1.0', '4.1.0', '4.0.9', '4.1.0'],
+        [['HALL E508', '3', '02:2B:66'], ['HALL HSCOUNSLER', '-', '02:43:2A'], ['HALL HS410', '4', '02:56:51'], ['HALL MS208', '1', '16:88:6C'], ['ROOM EXIT536', '3', '16:89:D3'], ['ROOM HSWRKSHOP', '5', '16:8A:19'], ['ROOM MSGLCKRM', '1', '16:B5:48'], ['HALL EENTRY13', '3', '16:B5:69'], ['HALL HSPAC1', '5', '28:13:A6'], ['HALL HSPAC2', '5', '28:78:89']]),
+      alerts: { cols: ['ID', 'Location', 'Type', 'Actor', 'Informant', 'Date', 'User Interactions'], total: 27, grid: '0.5fr 1.5fr 1.7fr 1.2fr 1.2fr 2fr 1.2fr',
+        rows: al.map(([loc, type, actor, inf, date, on], i) => [{ v: i + 1 }, { v: loc }, { v: type }, { v: actor }, { v: inf }, { v: date, s: 'color:#374151' }, { v: 'VIEW', s: on ? ena : dis }]) }
+    };
+    const act2 = this.state.active;
+    const cfg = T[act2];
+    const isFac = act2 === 'facility';
+    const tableRows = cfg ? cfg.rows.map(cells => ({ cells: cells.map(c => ({ v: c.v, style: c.s || '' })) })) : [];
+    const lastPage = cfg ? Math.ceil(cfg.total / 10) : 1;
+    const pageNums = ['1', '2', '3', '4', '5', '...', String(lastPage)].filter((n, i) => lastPage > 6 || (n !== '...' && +n <= lastPage && i < 5));
+    const fo = this.state.facOpen || {};
+    const facCards = [['Facility Name', 'ADRIAN MADISON SCHOOLS'], ['District', 'ADRIAN MADISON SCHOOL DISTRICT'], ['Dispatch', 'LENAWEE COUNTY']].map(([k, v]) => ({ k, v }));
+    const facSections = [['details', '', 'Facility details', '0 of 5 fields completed', ['Address', 'City', 'ZIP Code', 'Main Phone', 'Principal']], ['contacts', 'DC', 'Direct contacts', '0 contacts added', []]].map(([id, ic, title, sub, fields]) => ({
+      ic, title, sub, hasIc: !!ic, hasBld: !ic, open: !!fo[id], fields: fields.map(f => ({ f })), noFields: !fields.length,
+      toggle: () => this.setState(s => ({ facOpen: { ...(s.facOpen || {}), [id]: !(s.facOpen || {})[id] } })),
+      chev: 'transform:rotate(' + (fo[id] ? 180 : 0) + 'deg)' }));
+    const types = ['ADMIN', 'TEACHER/USER', 'ADMIN', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER'];
+    const devs = ['UES Tab-3', 'AMES 511', 'ES Tab-5', 'HS 401', 'HS 402', 'HS 411', 'HS 412', 'HS 413', 'HS 414', 'HS 415'];
+    const rows = devs.map((dev, i) => ({ id: i + 1, dev, type: types[i] }));
+    const menuDefs = [
+      ['Home', 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z'], ['School', 'M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5'], ['Dispatch', 'M12 12h.01M8 8a5.7 5.7 0 0 0 0 8M16 8a5.7 5.7 0 0 1 0 8'],
+      ['Reports', 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5'], ['Texting', 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'],
+      ['User Management', 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'],
+      ['Services', 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z'], ['Assessments', 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 3h6v4H9zM9 14l2 2 4-4'],
+      ['Emergency Prep', 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'], ['Trainings', 'M22 10 12 5 2 10l10 5zM6 12v5c3 2 9 2 12 0v-5'], ['User Logs', 'M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2']
+    ];
+    const menu = menuDefs.map(([label, path]) => {
+      const on = label === 'School';
+      return { label, path, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (on ? 'background:#25395c;color:#fff' : 'color:#374151') };
+    });
+    const actions = [
+      ['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Service Requests', menuDefs[6][1]], ['Report Issue', menuDefs[4][1]], 
+      ['Trainings', menuDefs[9][1]], ['Emergency Prep', menuDefs[8][1]], ['Assessments', menuDefs[7][1]]
+    ].map(([label, path]) => ({ label, path }));
+    const refLinks = [['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Trainings', menuDefs[9][1]], ['Emergency Prep', menuDefs[8][1]], ['Assessments', menuDefs[7][1]]].map(([label, path]) => { const on = this.state.refHover === label; return { label, path, fill: on ? 'currentColor' : 'none', enter: () => this.setState({ refHover: label }), leave: () => this.setState({ refHover: null }), style: 'display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#25395c;cursor:pointer;transition:background .12s;background:' + (on ? '#eaeef5' : 'transparent') }; });
+    const mainActions = [
+      { label: 'Service Requests', onClick: () => this.setState({ svc: true }), path: menuDefs[6][1], style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c', hover: 'background:#1c2c48' },
+      { label: 'Report Issue', path: 'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01', style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#fff;color:#25395c;border:1.5px solid #25395c', hover: 'background:#eef2f8' }
+    ];
+    const pages = pageNums.map(n => ({ n, style: n === '...' ? 'color:#9aa1ac' : 'width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;' + (n === '1' ? 'background:#25395c;color:#fff;font-weight:700' : 'border:1px solid #e5e7eb;color:#111827') }));
+    return { svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? cfg.cols : [], gridStyle: 'display:grid;grid-template-columns:' + (cfg ? cfg.grid : G), total: cfg ? cfg.total : 0, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
+  }
+}
+</script>
+</body>
+</html>

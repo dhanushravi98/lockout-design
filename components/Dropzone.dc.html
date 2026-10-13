@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<label onDragOver="{{ onOver }}" onDragLeave="{{ onLeave }}" onDrop="{{ onDrop }}" style="{{ style }}" style-hover="{{ hover }}"><input type="file" multiple="{{ true }}" onChange="{{ onPick }}" style="display:none"><div style="width:44px;height:44px;border-radius:999px;background:#eaeef5;color:#25395c;display:flex;align-items:center;justify-content:center"><dc-import name="Icon" icon="upload-simple" weight="regular" size="20" color="currentColor" hint-size="20px,20px"></dc-import></div><span style="font-size:15px;font-weight:600;color:#111827">{{ title }}</span><span style="font-size:13px;color:#6b7280">{{ hint }}</span><sc-if value="{{ hasFiles }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding-top:4px"><sc-for list="{{ files }}" as="f" hint-placeholder-count="0"><span onClick="{{ f.onRemove }}" style="display:inline-flex;align-items:center;gap:8px;background:#eaeef5;color:#25395c;border-radius:999px;padding:4px 10px 4px 12px;font-size:13px;font-weight:600">{{ f.name }}<dc-import name="Icon" icon="x" weight="bold" size="10" color="currentColor" hint-size="10px,10px"></dc-import></span></sc-for></div></sc-if><sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#b91c1c">{{ error }}</span></sc-if></label>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:220},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Drag and drop files here&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;or click to browse. PDF, CSV or PNG, up to 10 MB.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;minHeight&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:180,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;error&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;dragover&quot;,&quot;uploaded&quot;,&quot;error&quot;],&quot;tsType&quot;:&quot;'hover'|'dragover'|'uploaded'|'error'&quot;},&quot;onFiles&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(names: string[]) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { over: false, files: [] };
+  renderVals() {
+    const p = this.props, st = p.state, demo = st === 'uploaded' ? ['floor-plan.pdf', 'roster.csv'] : [];
+    const names = demo.length ? demo : this.state.files;
+    const over = st === 'dragover' || this.state.over, err = st === 'error' ? 'This file type is not supported. Use PDF, CSV or PNG.' : (p.error || '');
+    const H = 'border-color:#25395c;background:#f4f6fa';
+    let style = 'display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;box-sizing:border-box;width:100%;min-height:' + (p.minHeight || 180) + 'px;padding:24px;border-radius:14px;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,sans-serif;border:1.5px dashed #b4bcc8;background:#fff';
+    if (over || st === 'hover') style += ';' + H;
+    if (over) style += ';background:#eef2f8;border-style:solid';
+    if (err) style += ';border-color:#ef4444;background:#fef2f2';
+    return { title: over ? 'Drop to upload' : (p.title || 'Drag and drop files here'), hint: p.hint || 'or click to browse. PDF, CSV or PNG, up to 10 MB.', style, hover: st || over ? '' : H,
+      files: names.map(n => ({ name: n, onRemove: (e) => { e.preventDefault(); this.setState(s => ({ files: s.files.filter(x => x !== n) })); } })), hasFiles: names.length > 0, error: err, hasError: !!err,
+      onOver: (e) => { e.preventDefault(); if (!this.state.over) this.setState({ over: true }); }, onLeave: () => this.setState({ over: false }),
+      onDrop: (e) => { e.preventDefault(); const f = Array.from((e.dataTransfer && e.dataTransfer.files) || []).map(x => x.name); this.setState(s => ({ over: false, files: [...s.files, ...f] })); if (p.onFiles) p.onFiles(f); },
+      onPick: (e) => { const f = Array.from(e.target.files || []).map(x => x.name); this.setState(s => ({ files: [...s.files, ...f] })); if (p.onFiles) p.onFiles(f); } };
+  }
+}
+</script>
+</body>
+</html>

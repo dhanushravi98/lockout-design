@@ -1,0 +1,265 @@
+{
+ "id": "icon",
+ "title": "Icon",
+ "component": "Icon",
+ "file": "components/Icon.dc.html",
+ "status": "Approved",
+ "hintSize": "48px,48px",
+ "description": "One icon from the Phosphor set, drawn by name. Use it everywhere a screen needs an icon; never paste path data. Default weight is regular. Use bold or fill for selected states, and match the size to the text beside it. Browse every icon and its code in the Icon explorer above.",
+ "base": {
+  "icon": "house"
+ },
+ "controls": [
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "house",
+   "keep": true
+  },
+  {
+   "label": "Weight",
+   "type": "seg",
+   "prop": "weight",
+   "options": [
+    [
+     "thin",
+     "thin"
+    ],
+    [
+     "light",
+     "light"
+    ],
+    [
+     "regular",
+     "regular"
+    ],
+    [
+     "bold",
+     "bold"
+    ],
+    [
+     "fill",
+     "fill"
+    ],
+    [
+     "duotone",
+     "duotone"
+    ]
+   ],
+   "default": 2
+  },
+  {
+   "label": "Size (px)",
+   "type": "text",
+   "prop": "size",
+   "default": "32",
+   "numeric": true
+  },
+  {
+   "label": "Color",
+   "type": "text",
+   "prop": "color",
+   "default": "#25395c"
+  }
+ ],
+ "grids": [
+  {
+   "title": "Weights",
+   "cellWidth": 100,
+   "items": [
+    {
+     "label": "thin",
+     "props": {
+      "icon": "wrench",
+      "weight": "thin",
+      "size": 32
+     }
+    },
+    {
+     "label": "light",
+     "props": {
+      "icon": "wrench",
+      "weight": "light",
+      "size": 32
+     }
+    },
+    {
+     "label": "regular",
+     "props": {
+      "icon": "wrench",
+      "weight": "regular",
+      "size": 32
+     }
+    },
+    {
+     "label": "bold",
+     "props": {
+      "icon": "wrench",
+      "weight": "bold",
+      "size": 32
+     }
+    },
+    {
+     "label": "fill",
+     "props": {
+      "icon": "wrench",
+      "weight": "fill",
+      "size": 32
+     }
+    },
+    {
+     "label": "duotone",
+     "props": {
+      "icon": "wrench",
+      "weight": "duotone",
+      "size": 32
+     }
+    }
+   ]
+  },
+  {
+   "title": "Sizes",
+   "cellWidth": 100,
+   "items": [
+    {
+     "label": "16px",
+     "props": {
+      "icon": "house",
+      "size": 16
+     }
+    },
+    {
+     "label": "20px",
+     "props": {
+      "icon": "house",
+      "size": 20
+     }
+    },
+    {
+     "label": "24px",
+     "props": {
+      "icon": "house",
+      "size": 24
+     }
+    },
+    {
+     "label": "32px",
+     "props": {
+      "icon": "house",
+      "size": 32
+     }
+    },
+    {
+     "label": "48px",
+     "props": {
+      "icon": "house",
+      "size": 48
+     }
+    }
+   ]
+  },
+  {
+   "title": "Used on screens",
+   "note": "These stand in for the outline icons now drawn by hand on the screens.",
+   "cellWidth": 120,
+   "items": [
+    {
+     "label": "Service Requests (wrench)",
+     "props": {
+      "icon": "wrench",
+      "size": 24
+     }
+    },
+    {
+     "label": "Report Issue (warning)",
+     "props": {
+      "icon": "warning",
+      "size": 24
+     }
+    },
+    {
+     "label": "Site Map (map-trifold)",
+     "props": {
+      "icon": "map-trifold",
+      "size": 24
+     }
+    },
+    {
+     "label": "Trainings (graduation-cap)",
+     "props": {
+      "icon": "graduation-cap",
+      "size": 24
+     }
+    },
+    {
+     "label": "Emergency Prep (shield-check)",
+     "props": {
+      "icon": "shield-check",
+      "size": 24
+     }
+    },
+    {
+     "label": "Assessments (clipboard-text)",
+     "props": {
+      "icon": "clipboard-text",
+      "size": 24
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"house\"",
+   "x": "Icon name in kebab-case, for example house, wrench, map-trifold."
+  },
+  {
+   "n": "weight",
+   "t": "'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'",
+   "d": "'regular'",
+   "x": "Stroke weight."
+  },
+  {
+   "n": "size",
+   "t": "number (px)",
+   "d": "24",
+   "x": "Width and height."
+  },
+  {
+   "n": "color",
+   "t": "string",
+   "d": "#25395c",
+   "x": "Any CSS color. Follows text color in the product if left to inherit."
+  }
+ ],
+ "values": [
+  {
+   "k": "Source",
+   "v": "Phosphor Icons, MIT license, six weights. The explorer shows the live count."
+  },
+  {
+   "k": "Default",
+   "v": "regular, 24px, brand navy #25395c"
+  },
+  {
+   "k": "Sizes in use",
+   "v": "10 to 14 small controls (checks, remove x, carets), 16 inline, 18 buttons, 20 dropzone, 22 tabs, 24 nav, 32 and up feature"
+  },
+  {
+   "k": "Weight for small controls",
+   "v": "bold for checks, remove x and carets (they replace 2.4 to 3px strokes); regular otherwise"
+  },
+  {
+   "k": "Loaded from",
+   "v": "@phosphor-icons/web 2.1.1 (CSS and font, needs internet in this reference page)"
+  },
+  {
+   "k": "Existing image icons",
+   "v": "tablet, boot, pull box, light, alerts and school remain image files in uploads/"
+  }
+ ],
+ "usedIn": "Button, Chip, Pill, Checkbox, Dropzone, Pagination, User card and the Icon explorer. The older screens still use hand-drawn outline icons and image files."
+}

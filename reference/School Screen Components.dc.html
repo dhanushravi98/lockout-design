@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="300" y="200" width="250" height="90" rx="45" fill="#fff"></rect><rect x="600" y="200" width="300" height="90" rx="45" fill="none" stroke="#fff" stroke-width="8"></rect><rect x="300" y="360" width="600" height="40" rx="20" fill="#cbd2dc"></rect><rect x="300" y="440" width="450" height="40" rx="20" fill="#cbd2dc"></rect></svg></template>
+<style>a{color:#25395c}a:hover{color:#1c2c48}body{margin:0}</style>
+</helmet>
+<div style="background:#f4f6f9;min-height:100vh;padding:40px 24px;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+<div style="max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+
+<div style="display:flex;flex-direction:column;gap:8px">
+  <span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280">Developer reference</span>
+  <span style="font-size:32px;font-weight:800">School screen and Service Request overlay: components</span>
+  <span style="font-size:16px;line-height:1.55;color:#4b5563">Each component shows a live example and the exact values used. Values are CSS pixels unless noted. Font is the system UI stack: -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif.</span>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:14px">
+  <span style="font-size:20px;font-weight:800">Foundations</span>
+  <div style="display:flex;flex-wrap:wrap;gap:12px">
+    <sc-for list="{{ colors }}" as="c" hint-placeholder-count="10"><div style="display:flex;align-items:center;gap:10px;border:1px solid #e5e7eb;border-radius:12px;padding:8px 14px 8px 8px"><div style="{{ c.sw }}"></div><div style="display:flex;flex-direction:column"><span style="font-size:13px;font-weight:700">{{ c.name }}</span><span style="font-size:12px;color:#6b7280;font-family:ui-monospace,Menlo,monospace">{{ c.hex }}</span></div></div></sc-for>
+  </div>
+  <div style="font-size:14px;line-height:1.7;color:#374151">Corner radius: 999 for buttons, pills, badges and inputs in the overlay; 16 for cards and the school strip; 14 for tab bar, tables and selected device cards; 12 for tabs; 10 for school-screen filter fields. Text sizes: 11 to 13 for labels and badges, 14 to 15 for body, 17 for section titles, 24 for overlay title, 32 for school name (fluid, clamp 24 to 32).</div>
+</div>
+
+<span style="font-size:24px;font-weight:800">School screen</span>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">1. Primary and secondary buttons</span><span style="font-size:14px;color:#4b5563">Service Requests (primary) and Report Issue (secondary). Same size and shape. Stack vertically on narrow screens.</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px">
+    <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-wrap:wrap;gap:12px;align-content:center">
+      <div style="display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c" style-hover="background:#1c2c48"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"></path></svg>Service Requests</div>
+      <div style="display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;background:#fff;color:#25395c;border:1.5px solid #25395c" style-hover="background:#eef2f8"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"></path></svg>Report Issue</div>
+    </div>
+    <div style="display:flex;flex-direction:column;font-size:14px"><sc-for list="{{ sButtons }}" as="r" hint-placeholder-count="8"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">2. Reference link</span><span style="font-size:14px;color:#4b5563">Site Map, Trainings, Emergency Prep, Assessments. Hover the example.</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px">
+    <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-wrap:wrap;gap:6px;align-content:center">
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#25395c;cursor:pointer;background:transparent" style-hover="background:#eaeef5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16"></path></svg>Site Map</div>
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#25395c;background:#eaeef5"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16"></path></svg>Hover state</div>
+    </div>
+    <div style="display:flex;flex-direction:column;font-size:14px"><sc-for list="{{ sRef }}" as="r" hint-placeholder-count="6"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">3. Status label and breadcrumb</span><span style="font-size:14px;color:#4b5563">System status pill beside the school name, and the quiet breadcrumb above the strip. Breadcrumb items are text only, not links.</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px">
+    <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:20px;justify-content:center">
+      <span style="align-self:flex-start;border:1px solid #bcd0f5;background:#eaf1fe;color:#25395c;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:5px 14px">SYSTEM CLEAR</span>
+      <div style="display:flex;align-items:center;gap:10px;font-size:13px">
+        <div style="display:inline-flex;align-items:center;gap:6px;color:#25395c;font-weight:600;padding:4px 10px 4px 4px;border-radius:999px" style-hover="background:#eaeef5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Back</div>
+        <span style="width:1px;height:14px;background:#cbd2dc"></span>
+        <span style="color:#6b7280">Schools</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg><span style="color:#6b7280">MI</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg><span style="color:#111827;font-weight:600">49221</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;font-size:14px"><sc-for list="{{ sStatus }}" as="r" hint-placeholder-count="8"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">4. Device tabs</span><span style="font-size:14px;color:#4b5563">Browser-style tabs with icon, label and count. The selected tab joins the filter row below it.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px">
+    <div style="display:flex;align-items:flex-end;gap:2px;background:#e8ebf0;border-radius:14px 14px 0 0;padding:10px 12px 0;border:1px solid #e5e7eb;border-bottom:none">
+      <div style="position:relative;display:flex;align-items:center;gap:8px;padding:11px 14px 12px;border-radius:12px 12px 0 0;background:#fafbfc;color:#25395c;border:2px solid #25395c;border-bottom:2px solid #fafbfc"><span style="font-size:13px;font-weight:600;white-space:nowrap">Tablet List</span><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#25395c;color:#fff">110</span></div>
+      <div style="flex:none;width:1px;height:24px;margin:0 6px;align-self:center;background:transparent"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:11px 14px 12px;border-radius:12px 12px 0 0;color:#111827;border:2px solid transparent" style-hover="background:rgba(255,255,255,.7)"><span style="font-size:13px;font-weight:600;white-space:nowrap">Smart Boot</span><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#cfd5de;color:#111827">195</span></div>
+      <div style="flex:none;width:1px;height:24px;margin:0 6px;align-self:center;background:#b4bcc8"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:11px 14px 12px;border-radius:12px 12px 0 0;color:#111827;border:2px solid transparent" style-hover="background:rgba(255,255,255,.7)"><span style="font-size:13px;font-weight:600;white-space:nowrap">Pull Box</span><span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#cfd5de;color:#111827">17</span></div>
+    </div>
+    <div style="background:#fafbfc;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 14px 14px;height:28px"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ sTabs }}" as="r" hint-placeholder-count="14"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">5. Filter row and table</span><span style="font-size:14px;color:#4b5563">Search, zone filter, column headers, data rows and pagination. Only the data rows scroll; every other part stays fixed.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px">
+    <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3">
+        <div style="flex:1;max-width:520px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><span style="font-size:13px;color:#9aa1ac">Search by device ID, field, or classification</span></div>
+        <span style="font-size:12px;font-weight:600;color:#6b7280">Filter by Zone</span>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;font-size:13px;min-width:120px;display:flex;justify-content:space-between;align-items:center;gap:12px">All Zones<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+      </div>
+      <div style="display:grid;grid-template-columns:0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr;padding:14px 20px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280;border-bottom:1px solid #eef0f3;text-transform:uppercase"><span>ID</span><span>Zone</span><span>Tablet Name</span><span>Location</span><span>Device ID</span><span>App Version</span></div>
+      <div style="display:grid;grid-template-columns:0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr;padding:15px 20px;font-size:14px;border-bottom:1px solid #f0f1f3"><span>1</span><span style="color:#374151">1</span><span style="font-weight:500">Tablet 01</span><span style="color:#374151">ROOM 114 – EAST WING, 1ST FLOOR</span><span style="color:#6b7280;font-family:ui-monospace,Menlo,monospace;font-size:13px">00:A0:50:4F:2A:91</span><span style="color:#374151">3.3.3</span></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">1-10</b> of <b style="color:#111827">110</b> Records</span><div style="display:flex;gap:6px;align-items:center"><span style="width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:#25395c;color:#fff;font-weight:700">1</span><span style="width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;border:1px solid #e5e7eb;color:#111827">2</span></div></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ sTable }}" as="r" hint-placeholder-count="14"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<span style="font-size:24px;font-weight:800">Service Request overlay</span>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">6. Modal shell</span><span style="font-size:14px;color:#4b5563">Fixed-size dialog. The header and footer stay in place; only the middle content scrolls. Steps: select devices, review, done.</span></div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ oShell }}" as="r" hint-placeholder-count="14"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">7. Zone dropdown and search</span><span style="font-size:14px;color:#4b5563">Global filters above the sections. They apply to every device type.</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px">
+    <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px;justify-content:center">
+      <div style="position:relative;display:inline-flex;align-self:flex-start"><div style="height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 38px 0 16px;font-size:14px;color:#111827;background:#f8f9fb;display:flex;align-items:center">All zones</div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:12px"><path d="M6 9l6 6 6-6"></path></svg></div>
+      <div style="height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 16px;font-size:14px;color:#9aa1ac;background:#f8f9fb;display:flex;align-items:center">Search by name or room</div>
+    </div>
+    <div style="display:flex;flex-direction:column;font-size:14px"><sc-for list="{{ oFilter }}" as="r" hint-placeholder-count="7"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">8. Collapsible section header</span><span style="font-size:14px;color:#4b5563">One per device type. All sections start collapsed. The chevron rotates 180 degrees when open. The badge shows only when devices are selected.</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:28px">
+    <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-direction:column;justify-content:center"><div style="background:#fff;border-radius:12px;padding:0 16px">
+      <div style="border-top:1px solid #eceef2;display:flex;align-items:center;gap:14px;padding:18px 4px;border-top:none"><div style="width:26px;height:26px;flex:none;background:#c4cad4;border-radius:6px"></div><span style="font-size:17px;font-weight:600">Tablets</span><span style="font-size:15px;color:#6b7280">110</span><div style="flex:1"></div><span style="background:#eaeef5;color:#25395c;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600">3 selected</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+    </div></div>
+    <div style="display:flex;flex-direction:column;font-size:14px"><sc-for list="{{ oSection }}" as="r" hint-placeholder-count="8"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">9. Device card and checkbox</span><span style="font-size:14px;color:#4b5563">Two columns. Unselected: flat row with a bottom divider. Selected: rounded tinted card that reveals the issue controls.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start">
+    <div style="background:#fff;padding:16px;box-shadow:0 1px 0 #eceef2;display:flex;align-items:center;gap:12px"><div style="width:20px;height:20px;border-radius:999px;box-sizing:border-box;background:#fff;border:1px solid #c4cad4;flex:none"></div><div style="display:flex;flex-direction:column;gap:1px;flex:1"><span style="font-size:15px;font-weight:600">Tablet 02</span><span style="font-size:13px;color:#6b7280">Room 202 – North Corridor</span></div><span style="font-size:12px;color:#6b7280">Zone 2</span></div>
+    <div style="border-radius:14px;background:#f3f6fa;padding:16px;display:flex;flex-direction:column;gap:12px"><div style="display:flex;align-items:center;gap:12px"><div style="width:20px;height:20px;border-radius:999px;box-sizing:border-box;background:#25395c;border:1px solid #25395c;display:flex;align-items:center;justify-content:center;flex:none"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></div><div style="display:flex;flex-direction:column;gap:1px;flex:1"><span style="font-size:15px;font-weight:600">Tablet 03</span><span style="font-size:13px;color:#6b7280">Library – Near Main Office</span></div><span style="font-size:12px;color:#6b7280">Zone 1</span></div><div style="padding-left:34px;display:flex;flex-wrap:wrap;gap:6px"><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#25395c;color:#fff;border:1px solid #25395c">Tablet Damaged</span><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#fff;color:#374151;border:1px solid #d5dae2">Replace charger</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ oCard }}" as="r" hint-placeholder-count="14"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">10. Issue chips, Same as previous, Apply to all</span><span style="font-size:14px;color:#4b5563">Issues are pill toggles. Several can be on at once. Tablets and other devices use different lists.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;flex-wrap:wrap;gap:6px"><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#25395c;color:#fff;border:1px solid #25395c">Device not functioning</span><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#fff;color:#374151;border:1px solid #d5dae2">Device malfunctioning</span><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#fff;color:#374151;border:1px solid #d5dae2">Replace Battery</span><span style="border-radius:999px;font-weight:600;padding:6px 14px;font-size:13px;background:#fff;color:#374151;border:1px solid #d5dae2">Other Issues</span></div>
+    <div style="display:inline-flex;align-items:center;gap:8px;width:fit-content;background:#eef2f8;color:#25395c;border-radius:999px;padding:6px 14px 6px 10px;font-size:13px;font-weight:600" style-hover="background:#e1e8f3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path></svg>Same as previous: Replace Battery</div>
+    <div style="background:#f5f7fa;border-radius:14px;padding:14px 16px;font-size:14px;color:#374151;border:1px solid #e5e9ef">Apply to all 3 selected. Choose one or more, then adjust individual devices below if needed.</div>
+    <div style="min-height:68px;box-sizing:border-box;border:1px solid #d5dae2;border-radius:12px;padding:12px 14px;font-size:14px;color:#9aa1ac;background:#fff">Describe the issue</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ oChips }}" as="r" hint-placeholder-count="14"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">11. Review step</span><span style="font-size:14px;color:#4b5563">Summary chips with counts, then one card per device type with a row per device.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="background:#f5f7fa;border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;border:1px solid #e5e9ef"><span style="font-size:15px;color:#374151">3 devices across 1 device type. Issues reported:</span><div style="display:flex;gap:8px"><span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dfe3ea;border-radius:999px;padding:6px 8px 6px 14px;font-size:13px;font-weight:600;color:#25395c">Tablet Damaged<span style="background:#25395c;color:#fff;border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 6px;box-sizing:border-box">2</span></span></div></div>
+    <div style="background:#fff;display:flex;flex-direction:column;border:1px solid #eceef2;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;gap:10px;padding:14px 20px;background:#fafbfc"><span style="font-size:16px;font-weight:600">Tablets</span><span style="font-size:14px;color:#6b7280">3 devices</span></div><div style="display:flex;align-items:center;gap:16px;padding:14px 20px;border-top:1px solid #eceef2"><div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;font-weight:600">Tablet 03</span><span style="font-size:13px;color:#6b7280">Library – Near Main Office</span></div><span style="background:#eaeef5;color:#25395c;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600">Tablet Damaged</span><div style="width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></div></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ oReview }}" as="r" hint-placeholder-count="12"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">12. Footer buttons</span><span style="font-size:14px;color:#4b5563">Always visible. Submit is grey until at least one device has an issue.</span></div>
+  <div style="background:#f4f6f9;border-radius:14px;padding:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+    <div style="height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;font-size:15px;font-weight:600;color:#25395c" style-hover="background:#eef2f8">Back</div>
+    <div style="height:44px;display:inline-flex;align-items:center;padding:0 20px;border-radius:999px;font-size:15px;font-weight:600;color:#374151" style-hover="background:#f3f4f6">Cancel</div>
+    <div style="height:44px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 28px;border-radius:999px;font-size:15px;font-weight:600;background:#25395c;color:#fff">Review request</div>
+    <div style="height:44px;box-sizing:border-box;display:inline-flex;align-items:center;padding:0 28px;border-radius:999px;font-size:15px;font-weight:600;background:#e8ebf0;color:#7b8494;cursor:not-allowed">Review request (disabled)</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ oFooter }}" as="r" hint-placeholder-count="10"><div style="display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid #eef0f3"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+<div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:14px">
+  <span style="font-size:20px;font-weight:800">Behavior and data</span>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;font-size:14px"><sc-for list="{{ behavior }}" as="r" hint-placeholder-count="12"><div style="display:flex;flex-direction:column;gap:2px;padding:9px 0;border-bottom:1px solid #eef0f3"><span style="font-weight:700">{{ r.k }}</span><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const R = (a) => a.map(([k, v]) => ({ k, v }));
+    const col = (name, hex) => ({ name, hex, sw: 'width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;background:' + hex });
+    return {
+      colors: [col('Brand navy', '#25395c'), col('Navy hover', '#1c2c48'), col('Navy tint', '#eaeef5'), col('Navy tint light', '#eef2f8'), col('Ink', '#111827'), col('Body text', '#374151'), col('Muted text', '#6b7280'), col('Placeholder', '#9aa1ac'), col('Border', '#e5e7eb'), col('Divider', '#eceef2'), col('Page ground', '#f8f9fb'), col('Selected tab / panel', '#fafbfc'), col('Tab bar', '#e8ebf0'), col('Selected card', '#f3f6fa')],
+      sButtons: R([['Height', '46px'], ['Padding', '0 24px'], ['Corner radius', '999px'], ['Font', '14px / 700'], ['Icon', '18px, stroke 1.8, gap 10px'], ['Filled: fill / text / border', '#25395c / #fff / 1.5px #25395c'], ['Filled hover', 'bg #1c2c48'], ['Outlined: fill / text / border', '#fff / #25395c / 1.5px #25395c'], ['Outlined hover', 'bg #eef2f8'], ['Layout', 'wrap, gap 12px, right aligned; stack vertically on narrow screens']]),
+      sRef: R([['Padding', '7px 14px'], ['Corner radius', '999px'], ['Font', '13px / 600, color #25395c'], ['Icon', '18px outline, gap 8px'], ['Hover background', '#eaeef5'], ['Hover icon', 'solid (fill: currentColor)'], ['Transition', 'background .12s'], ['Row layout', 'wrap, gap 4px 6px, below the primary buttons']]),
+      sStatus: R([['Label: font', '11px / 700, letter-spacing .04em'], ['Label: padding', '5px 14px'], ['Label: radius', '999px'], ['Label: fill / border / text', '#eaf1fe / 1px #bcd0f5 / #25395c'], ['Breadcrumb font', '13px'], ['Back: padding / text', '4px 10px 4px 4px / #25395c 600'], ['Back hover', 'bg #eaeef5, radius 999px'], ['Separator', '1px x 14px, #cbd2dc'], ['Crumb text', '#6b7280; current #111827 / 600'], ['Chevron between crumbs', '10px, #9aa1ac']]),
+      sTabs: R([['Tab bar fill', '#e8ebf0'], ['Tab bar radius', '14px 14px 0 0'], ['Tab bar padding', '10px 12px 0'], ['Tab padding', '11px 14px 12px'], ['Tab radius', '12px 12px 0 0'], ['Label', '13px / 600'], ['Icon box', '22 x 22px, gap 8px'], ['Selected', 'fill #fafbfc, text #25395c'], ['Selected border', '2px #25395c; bottom edge #fafbfc'], ['Unselected', 'transparent, text #111827'], ['Unselected hover', 'rgba(255,255,255,.7)'], ['Divider', '1 x 24px, #b4bcc8, margin 0 6px'], ['Divider hidden', 'next to the selected tab'], ['Count badge', '11px / 700, 2px 8px, radius 999px'], ['Count: selected', '#25395c bg, #fff text'], ['Count: unselected', '#cfd5de bg, #111827 text'], ['Icon sizes (w x h)', 'tablet 24.2 sq, boot 17x16, pull box 31x25, light 20x19, alerts 18x22, school 19x22'], ['Tabs', 'Tablet List, Smart Boot, Pull Box, Smart Light, Recent Alerts, Facility Information']]),
+      sTable: R([['Filter row fill', '#fafbfc, padding 16px 20px'], ['Filter row divider', '1px #eef0f3'], ['Search field', 'max 520px, #fff, 1px #e5e7eb, radius 10, 10px 14px, 13px'], ['Zone select', 'radius 10, 10px 14px, min 120px, 13px'], ['Header row', '12px / 700, uppercase, .04em, #6b7280'], ['Header padding', '14px 20px'], ['Data row', '14px, padding 15px 20px, bottom 1px #f0f1f3'], ['Device ID', 'monospace 13px, #6b7280'], ['Columns (devices)', '0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr'], ['Columns (alerts)', '0.5fr 1.5fr 1.7fr 1.2fr 1.2fr 2fr 1.2fr'], ['Version column', 'App Version for tablets, Firmware Version for others'], ['Pagination text', '13px #6b7280'], ['Page chip', '28px circle, 12px; active #25395c / #fff'], ['Scroll', 'only data rows scroll; filter row, header, pagination fixed'], ['Layout', 'screen is 100vh with overflow hidden; no page scroll']]),
+      oShell: R([['Backdrop', 'rgba(17,24,39,.45), padding 20'], ['Width', '820px, max 100%'], ['Height', 'min(800px, 94vh), constant on every step'], ['Radius', '20px'], ['Shadow', '0 20px 60px rgba(0,0,0,.25)'], ['Header padding', '28px 36px 12px'], ['Title', '24px / 700'], ['Close button', '36px circle, hover #f3f4f6'], ['Body padding', '4px 36px 24px, scrolls'], ['Footer', 'padding 16px 36px, top border 1px #eceef2, fixed'], ['Footer note', '14px #4b5563, left'], ['Steps', 'select, review, done'], ['Opens from', 'Service Requests button'], ['Props', 'embedded (bool), open (bool), onClose (fn)']]),
+      oFilter: R([['Height', '38px'], ['Corner radius', '999px'], ['Border / fill', '1px #dfe3ea / #f8f9fb'], ['Font', '14px'], ['Select padding', '0 38px 0 16px, chevron 14px at right 14px'], ['Search', 'flex 1, min 160px, padding 0 16px'], ['Zone options', 'All zones, Zone 1 to Zone 5'], ['Scope', 'global across all sections']]),
+      oSection: R([['Container', 'top border 1px #eceef2'], ['Header padding', '18px 4px'], ['Hover', 'bg #f8f9fb'], ['Icon', '26px, shown as background image'], ['Label', '17px / 600'], ['Count', '15px #6b7280'], ['Selected badge', '#eaeef5 / #25395c, 13px / 600, 4px 12px, radius 999px'], ['Chevron', '16px #6b7280, rotate 180deg when open, .15s'], ['Open content padding', '0 4px 24px, gap 18px'], ['Default state', 'collapsed']]),
+      oCard: R([['Grid', '2 columns, gap 12px'], ['Padding', '16px'], ['Unselected', 'radius 0, bottom line 0 1px 0 #eceef2'], ['Selected', 'radius 14px, fill #f3f6fa'], ['Name', '15px / 600'], ['Location', '13px #6b7280, one line, ellipsis'], ['Zone', '12px #6b7280'], ['Checkbox', '20px circle'], ['Checkbox off', 'fill #fff, border 1px #c4cad4'], ['Checkbox on', 'fill and border #25395c, check 11px white stroke 3'], ['Reveal indent', '34px left padding for controls below'], ['List limit', 'demo loads 40 devices per type; real totals in the header']]),
+      oChips: R([['Chip', 'padding 6px 14px, 13px / 600, radius 999px'], ['Chip off', '#fff, text #374151, border 1px #d5dae2'], ['Chip on', '#25395c, text #fff'], ['Tablet issues', 'Tablet Damaged, Tablet not responding, Replace charger, Other Issues'], ['Other device issues', 'Device not functioning, Device malfunctioning, Replace Battery, Other Issues'], ['Same as previous', '#eef2f8, text #25395c, 13px / 600, 6px 14px 6px 10px, hover #e1e8f3'], ['Same as previous label', 'Same as previous: and the issue names'], ['Apply to all panel', '#f5f7fa, radius 14px, padding 14px 16px, 14px #374151'], ['Apply to all', 'sets one or more issues on every selected device in that section'], ['Other Issues textarea', 'min height 68px, radius 12px, 1px #d5dae2, 14px, padding 12px 14px'], ['Textarea focus', 'border #25395c, ring 0 0 0 3px rgba(37,57,92,.12)']]),
+      oReview: R([['Summary panel', '#f5f7fa, radius 16px, padding 18px 20px'], ['Summary chip', '#fff, border 1px #dfe3ea, 13px / 600, #25395c'], ['Chip count', '22px high circle, #25395c / #fff, 12px'], ['Group card', 'border 1px #eceef2, radius 16px'], ['Group header', '#fafbfc, padding 14px 20px, 16px / 600'], ['Device row', 'padding 14px 20px, top border 1px #eceef2'], ['Row name / location', '15px / 600; 13px #6b7280'], ['Issue chip', '#eaeef5 / #25395c, 13px / 600, 4px 12px'], ['Remove', '32px circle, 14px X, hover #f3f4f6'], ['Comments', 'optional textarea, min 96px, radius 14px, 1px #dfe3ea']]),
+      oFooter: R([['Button height', '44px'], ['Radius', '999px'], ['Font', '15px / 600'], ['Primary padding', '0 28px'], ['Primary enabled', '#25395c / #fff'], ['Primary disabled', '#e8ebf0 / #7b8494, not-allowed'], ['Secondary padding', '0 20px'], ['Back', 'text #25395c, hover #eef2f8'], ['Cancel / Close', 'text #374151, hover #f3f4f6'], ['Select step', 'Review request, enabled when every selected device has an issue'], ['Review step', 'Back, Cancel, Submit Request'], ['Done step', 'Close only']]),
+      behavior: [
+        { k: 'Selection', v: 'Tick devices in any section. Each ticked device needs at least one issue. Several issues per device are allowed.' },
+        { k: 'Same as previous', v: 'Shown on a ticked device with no issue, after any device has been tagged. Copies the last issue set, keeping only issues valid for that device type.' },
+        { k: 'Apply to all', v: 'Appears when a section has selected devices. Toggles issues for every selected device in that section.' },
+        { k: 'Other Issues', v: 'Reveals a description box on that device. Review shows it as Other Issues with the text.' },
+        { k: 'Submit', v: 'Shows the Request sent confirmation with a request number, then clears the selections.' },
+        { k: 'Close', v: 'Cancel, X and Close clear the selections and shut the overlay.' },
+        { k: 'Device data (demo)', v: 'Tablets 110, Smart Boot 195, Pull Box 17, Smart Light 155. Zones 1 to 5. All names, rooms and MAC addresses are dummy.' },
+        { k: 'Tab counts (school screen)', v: 'Tablet List 110, Smart Boot 195, Pull Box 17, Smart Light 155, Recent Alerts 27. Facility Information has no count.' },
+        { k: 'Icons', v: 'Image files in uploads/: Tablet Icon.png, Boot.png, PullBLE.png, DomeBLE.png, alarm-1a88b0cc.png, school.png. Other icons are 24px outline SVG, stroke 1.8, round caps and joins.' },
+        { k: 'Responsive', v: 'Primary buttons stack vertically on narrow widths. Tab row scrolls horizontally with a fade at the right edge.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="250" y="180" width="180" height="440" rx="24" fill="#fff"></rect><rect x="470" y="180" width="480" height="90" rx="24" fill="#fff"></rect><rect x="470" y="310" width="480" height="90" rx="24" fill="#fff"></rect><rect x="470" y="440" width="480" height="180" rx="24" fill="#fff"></rect></svg></template>
+<style>a{color:#25395c}a:hover{color:#1c2c48}body{margin:0}</style>
+</helmet>
+<div style="display:flex;min-height:100vh;background:#f4f6f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+<div style="width:248px;flex:none;box-sizing:border-box;background:#fff;border-right:1px solid #e5e7eb;padding:28px 16px;display:flex;flex-direction:column;gap:20px;position:sticky;top:0;height:100vh;overflow-y:auto">
+  <div style="display:flex;flex-direction:column;gap:4px;padding:0 10px"><span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280">LockOut USA</span><span style="font-size:20px;font-weight:800">Component Library</span><span style="align-self:flex-start;font-size:11px;font-weight:700;color:#92600a;background:#fff7e0;border-radius:999px;padding:3px 10px;margin-top:2px">{{ versionLabel }}</span></div>
+  <div style="display:flex;flex-direction:column;gap:2px"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="0"><div onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="{{ n.hover }}"><span>{{ n.label }}</span><sc-if value="{{ n.queued }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:600;color:#6b7280;background:#eef0f3;border-radius:999px;padding:2px 8px">Queued</span></sc-if></div></sc-for></div>
+  <div style="font-size:12px;line-height:1.55;color:#6b7280;padding:0 10px">Single source of truth. New screens use only what is listed here.</div>
+</div>
+<div style="flex:1;min-width:0;padding:40px 40px 80px;box-sizing:border-box"><div style="width:100%;display:flex;flex-direction:column;gap:24px">
+  <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#6b7280">{{ loadingText }}</span></sc-if>
+  <sc-if value="{{ isFoundations }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:30px;font-weight:800">Foundations</span><span style="font-size:15px;color:#4b5563;line-height:1.55">Values shared by every component. School Screen values are the standard where earlier screens differed.</span></div>
+    <sc-for list="{{ families }}" as="f" hint-placeholder-count="0"><div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:18px;font-weight:800">{{ f.name }}</span><span style="font-size:14px;line-height:1.55;color:#4b5563">{{ f.use }}</span></div>
+      <div style="display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px"><sc-for list="{{ f.shades }}" as="c" hint-placeholder-count="0"><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><div style="{{ c.sw }}"><span style="font-size:12px;font-weight:700">{{ c.step }}</span><sc-if value="{{ c.inUse }}" hint-placeholder-val="{{ false }}"><span style="{{ c.dot }}"></span></sc-if></div><span style="font-size:11px;font-family:ui-monospace,Menlo,monospace;color:#374151">{{ c.hex }}</span><span style="font-size:11px;line-height:1.3;color:#6b7280;min-height:28px">{{ c.role }}</span></div></sc-for></div></div></sc-for>
+    <div style="font-size:13px;color:#6b7280;line-height:1.6">A dot marks a shade already used on a screen. Unmarked shades are reserved for new work: use them rather than inventing a new color.</div>
+    <div style="background:#fff;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column"><span style="font-size:18px;font-weight:800;padding-bottom:10px">Type, radius, spacing</span><sc-for list="{{ foundationRows }}" as="r" hint-placeholder-count="0"><div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-top:1px solid #eef0f3;font-size:14px"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+  </sc-if>
+  <sc-if value="{{ hasDocs }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:30px;font-weight:800">{{ catName }}</span></div>
+    <sc-if value="{{ showExplorer }}" hint-placeholder-val="{{ false }}"><dc-import name="IconExplorer" hint-size="100%,600px"></dc-import></sc-if>
+    <sc-for list="{{ docs }}" as="d" hint-placeholder-count="0"><dc-import name="LibraryEntry" doc="{{ d }}" hint-size="100%,400px"></dc-import></sc-for></sc-if>
+  <sc-if value="{{ isQueued }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:30px;font-weight:800">{{ catName }}</span><span style="font-size:15px;color:#4b5563">Not yet in the library.</span></div><div style="background:#fff;border-radius:16px;padding:24px 28px;font-size:14px;line-height:1.7;color:#374151">{{ queuedNote }}</div></sc-if>
+</div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { explorer: false, index: null, cat: 'Foundations', docs: [], found: null, loading: true, err: '' };
+  componentDidMount() {
+    fetch('../docs/index.json').then(r => r.json()).then(idx => { this.setState({ index: idx }); this.select('Foundations', idx); }).catch(e => this.setState({ loading: false, err: 'Could not load docs/index.json. Open this page through a local server (npx serve .).' }));
+  }
+  select(name, idx) {
+    idx = idx || this.state.index; const c = idx.categories.find(x => x.name === name);
+    this.setState({ cat: name, loading: true, docs: [], found: null, explorer: !!c.explorer });
+    if (!c) { this.setState({ loading: false }); return; }
+    if (c.kind === 'foundations') { fetch('../docs/' + c.file + '.json').then(r => r.json()).then(f => this.setState({ found: f, loading: false })); return; }
+    Promise.all(c.entries.map(id => fetch('../docs/' + id + '.json').then(r => r.json()))).then(docs => this.setState({ docs, loading: false }));
+  }
+  renderVals() {
+    const st = this.state, idx = st.index || { categories: [], queued: [] }, cat = st.cat;
+    const mk = (name, queued) => { const on = name === cat; return { label: name, queued, onClick: () => queued ? this.setState({ cat: name, docs: [], found: null, loading: false }) : this.select(name),
+      style: 'display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:10px;font-size:14px;cursor:pointer;' + (on ? 'background:#eaeef5;color:#25395c;font-weight:700' : 'color:#374151;font-weight:500'), hover: on ? '' : 'background:#f4f6f9' }; };
+    const nav = idx.categories.map(c => mk(c.name, false)).concat(idx.queued.map(q => mk(q.name, true)));
+    const q = idx.queued.find(x => x.name === cat);
+    const f = st.found;
+    return { versionLabel: 'v' + (idx.version || '0') + ' draft', nav, catName: cat, loading: st.loading || !!st.err, loadingText: st.err || 'Loading…',
+      isFoundations: !!f, families: f ? f.families.map(fa => ({ name: fa.name, use: fa.use, shades: fa.shades.map(s => { const dark = +s.step >= 500; return { step: s.step, hex: s.hex, role: s.role, inUse: !!s.role,
+        sw: 'height:56px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;box-sizing:border-box;background:' + s.hex + ';color:' + (dark ? '#fff' : '#111827') + (+s.step <= 100 ? ';box-shadow:inset 0 0 0 1px rgba(17,24,39,.08)' : ''),
+        dot: 'width:8px;height:8px;border-radius:999px;background:' + (dark ? '#fff' : '#25395c') }; }) })) : [], foundationRows: f ? f.rows : [],
+      showExplorer: st.explorer, hasDocs: st.docs.length > 0, docs: st.docs, isQueued: !!q, queuedNote: q ? q.note : '' };
+  }
+}
+</script>
+</body>
+</html>

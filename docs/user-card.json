@@ -1,0 +1,195 @@
+{
+ "id": "user-card",
+ "title": "User card",
+ "component": "UserCard",
+ "file": "components/UserCard.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,200px",
+ "previewWidth": "380px",
+ "description": "One person in the User Management grid. Shows avatar initials, name, username, Primary or Secondary label, role, facility and status. With more than one facility the first shows with a +N counter; clicking the counter lists the rest inside the card. The arrow button opens the Edit User overlay. Grid columns are 380px wide.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Name",
+   "type": "text",
+   "prop": "fullName",
+   "default": "Pavan Sai Lankalapalli"
+  },
+  {
+   "label": "Username",
+   "type": "text",
+   "prop": "username",
+   "default": "pavan.lankalapalli"
+  },
+  {
+   "label": "Label",
+   "type": "seg",
+   "prop": "rank",
+   "options": [
+    [
+     "Primary",
+     "Primary"
+    ],
+    [
+     "Secondary",
+     "Secondary"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Role",
+   "type": "seg",
+   "prop": "role",
+   "options": [
+    [
+     "Super Admin",
+     "Super Admin"
+    ],
+    [
+     "District Admin",
+     "District Admin"
+    ],
+    [
+     "Facility Admin",
+     "Facility Admin"
+    ],
+    [
+     "Facility User",
+     "Facility User"
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Facilities (comma separated)",
+   "type": "text",
+   "prop": "schools",
+   "default": "The Lockout Co, Annapolis High School"
+  },
+  {
+   "label": "Status",
+   "type": "seg",
+   "prop": "status",
+   "options": [
+    [
+     "Active",
+     "Active"
+    ],
+    [
+     "Deactivated",
+     "Deactivated"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Last activity",
+   "type": "text",
+   "prop": "date",
+   "default": "Sep 14, 2026 · 10:19 AM"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "fullName",
+   "t": "string",
+   "d": "-",
+   "x": "Person name. Initials are taken from it. Named fullName because name is reserved for the import."
+  },
+  {
+   "n": "username",
+   "t": "string",
+   "d": "-",
+   "x": "Shown under the name."
+  },
+  {
+   "n": "rank",
+   "t": "'Primary' | 'Secondary'",
+   "d": "'Primary'",
+   "x": "Small grey label under the username, no pill."
+  },
+  {
+   "n": "role",
+   "t": "string",
+   "d": "-",
+   "x": "Super Admin, District Admin, Facility Admin or Facility User."
+  },
+  {
+   "n": "schools",
+   "t": "string[] | comma string",
+   "d": "-",
+   "x": "First facility shows; extra ones sit behind a +N counter."
+  },
+  {
+   "n": "status",
+   "t": "'Active' | 'Deactivated'",
+   "d": "'Active'",
+   "x": "Status pill colors."
+  },
+  {
+   "n": "date",
+   "t": "string",
+   "d": "-",
+   "x": "Last activity, bottom left."
+  },
+  {
+   "n": "onOpen",
+   "t": "() => void",
+   "d": "-",
+   "x": "Arrow button, opens Edit User."
+  }
+ ],
+ "values": [
+  {
+   "k": "Card",
+   "v": "#fff, border 1px #e5e7eb, radius 16px, padding 20px, gap 16px"
+  },
+  {
+   "k": "Width",
+   "v": "fills its cell; grid cells are 380px"
+  },
+  {
+   "k": "Avatar",
+   "v": "44px circle, #25395c, white 14px / 700 initials"
+  },
+  {
+   "k": "Name",
+   "v": "15px / 700, max 170px, ellipsis"
+  },
+  {
+   "k": "Username",
+   "v": "13px #6b7280"
+  },
+  {
+   "k": "Primary / Secondary",
+   "v": "11px / 500 #9aa1ac"
+  },
+  {
+   "k": "Role",
+   "v": "11px / 600 #25395c"
+  },
+  {
+   "k": "Facility pill",
+   "v": "#f3f4f6 / #6b7280, 11px / 600, 3px 9px"
+  },
+  {
+   "k": "Counter",
+   "v": "#eef2f8 / #25395c, 11px / 700, min 26px; hover #e1e8f3; when open shows Icon caret-up, bold, 10px"
+  },
+  {
+   "k": "Status",
+   "v": "12px / 600, 4px 10px; Active #ecfdf3 / #027a48, Deactivated #fef2f2 / #b91c1c"
+  },
+  {
+   "k": "Date",
+   "v": "12px #9aa1ac"
+  },
+  {
+   "k": "Open button",
+   "v": "30px circle #25395c, hover #1c2c48; Icon caret-right, bold, 14px, #fff"
+  }
+ ],
+ "usedIn": "User Management (grid view). Status colors come from the Success and Error scales."
+}

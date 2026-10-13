@@ -1,0 +1,215 @@
+{
+ "id": "radio",
+ "title": "Radio",
+ "component": "Radio",
+ "file": "components/Radio.dc.html",
+ "status": "Approved",
+ "hintSize": "140px,20px",
+ "description": "Single choice from a short group, such as Read-only or Read-write. Only one option in a group is selected. For picking several, use Checkbox. Arrange options in a column or a row with a 16px gap.",
+ "base": {
+  "label": "Read-write"
+ },
+ "controls": [
+  {
+   "label": "Label (optional)",
+   "type": "text",
+   "prop": "label",
+   "default": "Read-write"
+  },
+  {
+   "label": "Selected",
+   "type": "seg",
+   "prop": "selected",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Disabled",
+   "type": "seg",
+   "prop": "disabled",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "interactive": [
+  {
+   "handler": "onSelect",
+   "toggle": "selected"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "off default",
+     "props": {
+      "label": "Option",
+      "selected": false
+     }
+    },
+    {
+     "label": "off hover",
+     "props": {
+      "label": "Option",
+      "selected": false,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "off pressed",
+     "props": {
+      "label": "Option",
+      "selected": false,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "off focus",
+     "props": {
+      "label": "Option",
+      "selected": false,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "off disabled",
+     "props": {
+      "label": "Option",
+      "selected": false,
+      "state": "disabled"
+     }
+    },
+    {
+     "label": "on default",
+     "props": {
+      "label": "Option",
+      "selected": true
+     }
+    },
+    {
+     "label": "on hover",
+     "props": {
+      "label": "Option",
+      "selected": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "on pressed",
+     "props": {
+      "label": "Option",
+      "selected": true,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "on focus",
+     "props": {
+      "label": "Option",
+      "selected": true,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "on disabled",
+     "props": {
+      "label": "Option",
+      "selected": true,
+      "state": "disabled"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "selected",
+   "t": "boolean",
+   "d": "false",
+   "x": "Selected option."
+  },
+  {
+   "n": "label",
+   "t": "string",
+   "d": "-",
+   "x": "Text beside the circle."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greyed, not clickable."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
+   "d": "-",
+   "x": "Forces a state for documentation only."
+  },
+  {
+   "n": "onSelect",
+   "t": "() => void",
+   "d": "-",
+   "x": "Fires when chosen."
+  }
+ ],
+ "values": [
+  {
+   "k": "Circle",
+   "v": "20px, fill #fff"
+  },
+  {
+   "k": "Off border",
+   "v": "1px #c4cad4"
+  },
+  {
+   "k": "On",
+   "v": "border 1.5px #25395c, dot 10px #25395c"
+  },
+  {
+   "k": "Hover",
+   "v": "border #25395c, bg #f4f6f9"
+  },
+  {
+   "k": "Pressed",
+   "v": "bg #e8ebf0"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Disabled",
+   "v": "fill #e8ebf0, border #dfe3ea, dot #9aa1ac"
+  },
+  {
+   "k": "Label",
+   "v": "14px #111827, gap 10px"
+  },
+  {
+   "k": "Group gap",
+   "v": "16px"
+  }
+ ],
+ "usedIn": "Not on a screen yet. The Access choice in the Edit User overlay uses buttons today and can move to Radio."
+}

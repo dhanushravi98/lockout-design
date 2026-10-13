@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-direction:column;gap:6px;width:100%;font-family:-apple-system,BlinkMacSystemFont,sans-serif"><sc-if value="{{ hasLabel }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:600;color:#374151">{{ label }}<sc-if value="{{ required }}" hint-placeholder-val="{{ false }}"><span style="color:#ef4444"> *</span></sc-if></span></sc-if><textarea value="{{ value }}" onInput="{{ onInput }}" placeholder="{{ placeholder }}" disabled="{{ disabled }}" style="{{ style }}" style-hover="{{ hover }}" style-focus="{{ focus }}"></textarea><sc-if value="{{ hasHelper }}" hint-placeholder-val="{{ false }}"><span style="{{ helperStyle }}">{{ helper }}</span></sc-if></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:150},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Describe the issue&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Describe the issue&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;required&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;helper&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;error&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;minHeight&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:96,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;focus&quot;,&quot;disabled&quot;,&quot;error&quot;],&quot;tsType&quot;:&quot;'hover'|'focus'|'disabled'|'error'&quot;},&quot;value&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onInput&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(e: Event) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, st = p.state, dis = !!p.disabled || st === 'disabled', err = p.error || (st === 'error' ? 'This field is required' : '');
+    const H = 'border-color:#b4bcc8', F = 'border-color:#25395c;box-shadow:0 0 0 3px rgba(37,57,92,.12)';
+    let style = 'width:100%;min-height:' + (p.minHeight || 96) + 'px;resize:none;box-sizing:border-box;border:1px solid #d5dae2;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.4;font-family:inherit;color:#111827;background:#fff;outline:none';
+    if (dis) style += ';background:#eef0f3;color:#9aa1ac;cursor:not-allowed';
+    if (err) style += ';border-color:#ef4444';
+    if (!dis && st === 'hover') style += ';' + H;
+    if (!dis && st === 'focus') style += ';' + F;
+    const helper = err || p.helper || '';
+    return { value: p.value, onInput: p.onInput || (() => {}), placeholder: p.placeholder || '', disabled: dis, label: p.label, hasLabel: !!p.label, required: !!p.required, style,
+      hover: dis || st ? '' : H, focus: dis || st ? '' : F, helper, hasHelper: !!helper, helperStyle: 'font-size:12px;color:' + (err ? '#b91c1c' : '#6b7280') };
+  }
+}
+</script>
+</body>
+</html>

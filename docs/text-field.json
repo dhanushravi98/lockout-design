@@ -1,0 +1,228 @@
+{
+ "id": "text-field",
+ "title": "Text field",
+ "component": "TextField",
+ "file": "components/TextField.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,38px",
+ "previewWidth": "320px",
+ "description": "Single-line input for search and forms. Optional label with a red star when required, helper or error text below. Pill shape for search and filters, rounded for forms.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label (optional)",
+   "type": "text",
+   "prop": "label",
+   "default": ""
+  },
+  {
+   "label": "Placeholder",
+   "type": "text",
+   "prop": "placeholder",
+   "default": "Search by name or room"
+  },
+  {
+   "label": "Required (red star)",
+   "type": "seg",
+   "prop": "required",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Shape",
+   "type": "seg",
+   "prop": "shape",
+   "options": [
+    [
+     "pill",
+     "pill"
+    ],
+    [
+     "rounded",
+     "rounded"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Error message (optional)",
+   "type": "text",
+   "prop": "error",
+   "default": ""
+  },
+  {
+   "label": "Disabled",
+   "type": "seg",
+   "prop": "disabled",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 240,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "placeholder": "Search by name or room"
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "placeholder": "Search by name or room",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "placeholder": "Search by name or room",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "disabled",
+     "props": {
+      "placeholder": "Search by name or room",
+      "state": "disabled"
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "placeholder": "Search by name or room",
+      "state": "error"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "-",
+   "x": "Field label above the input."
+  },
+  {
+   "n": "required",
+   "t": "boolean",
+   "d": "false",
+   "x": "Adds a red star after the label."
+  },
+  {
+   "n": "placeholder",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Hint text."
+  },
+  {
+   "n": "value",
+   "t": "string",
+   "d": "-",
+   "x": "Current text."
+  },
+  {
+   "n": "helper",
+   "t": "string",
+   "d": "-",
+   "x": "Grey helper line below."
+  },
+  {
+   "n": "error",
+   "t": "string",
+   "d": "-",
+   "x": "Shows the message in red and turns the border red."
+  },
+  {
+   "n": "shape",
+   "t": "'pill' | 'rounded'",
+   "d": "'pill'",
+   "x": "Pill is 999px radius, rounded is 10px."
+  },
+  {
+   "n": "height",
+   "t": "number (px)",
+   "d": "38",
+   "x": "Field height."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greyed, not editable."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'focus' | 'disabled' | 'error'",
+   "d": "-",
+   "x": "Documentation only."
+  },
+  {
+   "n": "onInput",
+   "t": "(e) => void",
+   "d": "-",
+   "x": "Every keystroke."
+  }
+ ],
+ "values": [
+  {
+   "k": "Height",
+   "v": "38px"
+  },
+  {
+   "k": "Radius / padding",
+   "v": "999px / 0 16px (rounded: 10px / 0 12px)"
+  },
+  {
+   "k": "Border / fill",
+   "v": "1px #dfe3ea / #f8f9fb"
+  },
+  {
+   "k": "Text",
+   "v": "14px #111827"
+  },
+  {
+   "k": "Hover",
+   "v": "border #b4bcc8"
+  },
+  {
+   "k": "Focus",
+   "v": "border #25395c, ring 0 0 0 3px rgba(37,57,92,.12)"
+  },
+  {
+   "k": "Error",
+   "v": "border #ef4444, message 12px #b91c1c"
+  },
+  {
+   "k": "Disabled",
+   "v": "fill #eef0f3, text #9aa1ac"
+  },
+  {
+   "k": "Label",
+   "v": "12px / 600 #374151, star #ef4444"
+  }
+ ],
+ "usedIn": "Service Request overlay (search)."
+}

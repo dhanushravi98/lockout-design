@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/light/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/thin/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/duotone/style.css">
+</helmet>
+<i class="{{ cls }}" style="{{ style }}" aria-hidden="true"></i>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:60,&quot;height&quot;:40},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;house&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;weight&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;regular&quot;,&quot;options&quot;:[&quot;thin&quot;,&quot;light&quot;,&quot;regular&quot;,&quot;bold&quot;,&quot;fill&quot;,&quot;duotone&quot;],&quot;tsType&quot;:&quot;'thin'|'light'|'regular'|'bold'|'fill'|'duotone'&quot;},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:24,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;color&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#25395c&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, w = p.weight || 'regular', size = Number(p.size || 24);
+    const base = { regular: 'ph', bold: 'ph-bold', fill: 'ph-fill', light: 'ph-light', thin: 'ph-thin', duotone: 'ph-duotone' }[w] || 'ph';
+    return { cls: base + ' ph-' + (p.icon || 'house'), style: 'display:block;flex:none;line-height:1;width:' + size + 'px;height:' + size + 'px;font-size:' + size + 'px;color:' + (p.color || '#25395c') };
+  }
+}
+</script>
+</body>
+</html>

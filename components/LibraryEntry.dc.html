@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+</helmet>
+<div style="background:#fff;border-radius:16px;padding:28px 32px;display:flex;flex-direction:column;gap:22px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;box-sizing:border-box;width:100%">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px"><span style="font-size:22px;font-weight:800">{{ title }}</span><span style="{{ statusStyle }}">{{ status }}</span><span style="font-size:12px;font-weight:700;color:#6b7280;background:#eef0f3;border-radius:999px;padding:3px 12px">{{ file }}</span></div>
+  <span style="font-size:14px;line-height:1.65;color:#374151">{{ description }}</span>
+
+  <div style="display:flex;flex-direction:column;gap:12px;border:2px solid #eaeef5;border-radius:14px;padding:18px 20px">
+    <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#25395c">Playground</span>
+    <div style="background:#f4f6f9;border-radius:12px;min-height:150px;padding:24px;display:flex;align-items:center;justify-content:center;box-sizing:border-box">
+      <div style="{{ previewWrap }}"><!-- REGISTRY: add one line per new component --><sc-if value="{{ isButton }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isPill }}" hint-placeholder-val="{{ false }}"><dc-import name="Pill" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isChip }}" hint-placeholder-val="{{ false }}"><dc-import name="Chip" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTextField }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTextArea }}" hint-placeholder-val="{{ false }}"><dc-import name="TextArea" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isCheckbox }}" hint-placeholder-val="{{ false }}"><dc-import name="Checkbox" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isRadio }}" hint-placeholder-val="{{ false }}"><dc-import name="Radio" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isDropzone }}" hint-placeholder-val="{{ false }}"><dc-import name="Dropzone" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTab }}" hint-placeholder-val="{{ false }}"><dc-import name="Tab" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isUserCard }}" hint-placeholder-val="{{ false }}"><dc-import name="UserCard" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isDataTable }}" hint-placeholder-val="{{ false }}"><dc-import name="DataTable" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isPagination }}" hint-placeholder-val="{{ false }}"><dc-import name="Pagination" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isBadge }}" hint-placeholder-val="{{ false }}"><dc-import name="Badge" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isChipGroup }}" hint-placeholder-val="{{ false }}"><dc-import name="ChipGroup" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isIcon }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" dc-props="{{ live }}" hint-size="0px,0px"></dc-import></sc-if></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 24px">
+      <sc-for list="{{ controls }}" as="c" hint-placeholder-count="0"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:700;color:#6b7280">{{ c.label }}</span>
+        <sc-if value="{{ c.isText }}" hint-placeholder-val="{{ false }}"><input type="text" value="{{ c.value }}" onInput="{{ c.onInput }}" style="height:36px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:10px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;outline:none"></sc-if>
+        <sc-if value="{{ c.isSeg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ c.options }}" as="o" hint-placeholder-count="0"><div onClick="{{ o.onClick }}" style="{{ o.style }}">{{ o.label }}</div></sc-for></div></sc-if>
+        <sc-if value="{{ c.isIcon }}" hint-placeholder-val="{{ false }}"><div style="position:relative"><div onClick="{{ c.onToggle }}" style="height:36px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:10px;padding:0 12px;display:flex;align-items:center;gap:10px;font-size:14px;color:#111827;background:#fff;cursor:pointer;user-select:none" style-hover="border-color:#b4bcc8"><sc-if value="{{ c.hasValue }}" hint-placeholder-val="{{ false }}"><i class="{{ c.valueCls }}" style="font-size:18px;line-height:1;color:#25395c"></i></sc-if><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.display }}</span><i class="ph ph-caret-down" style="font-size:14px;line-height:1;color:#6b7280"></i></div><sc-if value="{{ c.open }}" hint-placeholder-val="{{ false }}"><div onClick="{{ c.onClose }}" style="position:fixed;inset:0;z-index:20"></div><div style="position:absolute;top:42px;left:0;z-index:21;width:340px;max-width:calc(100vw - 48px);box-sizing:border-box;background:#fff;border:1px solid #dfe3ea;border-radius:12px;box-shadow:0 12px 32px rgba(17,24,39,.12);padding:12px;display:flex;flex-direction:column;gap:10px"><input type="text" value="{{ c.q }}" onInput="{{ c.onQ }}" placeholder="Search icons" style="height:36px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:10px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;background:#fff;outline:none"><span style="font-size:12px;color:#6b7280">{{ c.countText }}</span><div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;max-height:252px;overflow-y:auto"><sc-if value="{{ c.allowNone }}" hint-placeholder-val="{{ false }}"><div onClick="{{ c.onNone }}" title="None" style="{{ c.noneStyle }}" style-hover="border-color:#b4bcc8"><i class="ph-fill ph-prohibit" style="font-size:20px;line-height:1;color:#6b7280"></i></div></sc-if><sc-for list="{{ c.tiles }}" as="t" hint-placeholder-count="0"><div onClick="{{ t.onClick }}" title="{{ t.name }}" style="{{ t.style }}" style-hover="border-color:#b4bcc8"><i class="{{ t.cls }}" style="font-size:20px;line-height:1;color:#25395c"></i></div></sc-for></div></div></sc-if></div></sc-if></div></sc-for>
+    </div>
+    <pre style="margin:0;background:#111827;color:#e5e7eb;border-radius:12px;padding:16px 18px;font-size:12.5px;line-height:1.6;overflow-x:auto">{{ code }}</pre>
+  </div>
+
+  <sc-for list="{{ grids }}" as="g" hint-placeholder-count="0">
+    <div style="display:flex;flex-direction:column;gap:10px"><span style="font-size:14px;font-weight:800">{{ g.title }}</span>
+      <sc-if value="{{ g.note }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;line-height:1.6;color:#4b5563">{{ g.note }}</span></sc-if>
+      <div style="{{ g.gridStyle }}"><sc-for list="{{ g.items }}" as="it" hint-placeholder-count="0"><div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-width:0"><div style="{{ it.wrap }}"><sc-if value="{{ isButton }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isPill }}" hint-placeholder-val="{{ false }}"><dc-import name="Pill" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isChip }}" hint-placeholder-val="{{ false }}"><dc-import name="Chip" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTextField }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTextArea }}" hint-placeholder-val="{{ false }}"><dc-import name="TextArea" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isCheckbox }}" hint-placeholder-val="{{ false }}"><dc-import name="Checkbox" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isRadio }}" hint-placeholder-val="{{ false }}"><dc-import name="Radio" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isDropzone }}" hint-placeholder-val="{{ false }}"><dc-import name="Dropzone" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isTab }}" hint-placeholder-val="{{ false }}"><dc-import name="Tab" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isUserCard }}" hint-placeholder-val="{{ false }}"><dc-import name="UserCard" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isDataTable }}" hint-placeholder-val="{{ false }}"><dc-import name="DataTable" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isPagination }}" hint-placeholder-val="{{ false }}"><dc-import name="Pagination" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isBadge }}" hint-placeholder-val="{{ false }}"><dc-import name="Badge" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isChipGroup }}" hint-placeholder-val="{{ false }}"><dc-import name="ChipGroup" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if><sc-if value="{{ isIcon }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" dc-props="{{ it.props }}" hint-size="0px,0px"></dc-import></sc-if></div><span style="font-size:12px;color:#6b7280">{{ it.label }}</span></div></sc-for></div>
+    </div>
+  </sc-for>
+
+  <div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:800;padding-bottom:8px">Props</span>
+    <sc-for list="{{ props }}" as="r" hint-placeholder-count="0"><div style="display:grid;grid-template-columns:150px 200px 100px minmax(0,1fr);gap:12px;padding:9px 0;border-top:1px solid #eef0f3;font-size:13px"><b style="font-family:ui-monospace,Menlo,monospace">{{ r.n }}</b><span style="font-family:ui-monospace,Menlo,monospace;color:#374151">{{ r.t }}</span><span style="font-family:ui-monospace,Menlo,monospace;color:#6b7280">{{ r.d }}</span><span style="color:#4b5563">{{ r.x }}</span></div></sc-for></div>
+
+  <div style="display:flex;flex-direction:column"><span style="font-size:14px;font-weight:800;padding-bottom:8px">Values</span>
+    <sc-for list="{{ values }}" as="r" hint-placeholder-count="0"><div style="display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid #eef0f3;font-size:13px"><span style="color:#6b7280">{{ r.k }}</span><span style="font-family:ui-monospace,Menlo,monospace;text-align:right">{{ r.v }}</span></div></sc-for></div>
+
+  <span style="font-size:13px;line-height:1.6;color:#6b7280">Used in: {{ usedIn }}</span>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;doc&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;}}">
+class Component extends DCLogic {
+  state = { t: {}, s: {}, pick: null, pq: '', names: [], namesErr: false };
+  componentDidMount() {
+    if (!(this.doc().controls || []).some(c => c.type === 'icon')) return;
+    // One fetch per page: every entry shares the Phosphor name list the Icon explorer uses.
+    window.__phNames = window.__phNames || fetch('https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css').then(r => r.text()).then(css => {
+      const set = new Set(); const re = /\.ph-([a-z0-9-]+)::?before/g; let m; while ((m = re.exec(css))) set.add(m[1]); return Array.from(set).sort(); });
+    window.__phNames.then(names => this.setState({ names })).catch(() => { window.__phNames = null; this.setState({ namesErr: true }); });
+  }
+  doc() { return this.props.doc || { controls: [], grids: [], props: [], values: [], base: {} }; }
+  initial(c) { const st = this.state; return c.type === 'text' || c.type === 'icon' ? (st.t[c.label] !== undefined ? st.t[c.label] : (c.default || '')) : (st.s[c.label] !== undefined ? st.s[c.label] : (c.default || 0)); }
+  value(c) { const v = this.initial(c); return c.type === 'seg' ? c.options[v][1] : v; }
+  // A control with "when": "<prop>" shows, and sets its prop, only while that prop's control is on.
+  shown(c) { if (!c.when) return true; const g = (this.doc().controls || []).find(x => x.prop === c.when); return !g || !!this.value(g); }
+  liveProps() {
+    const d = this.doc(), p = { ...(d.base || {}) };
+    (d.controls || []).filter(c => this.shown(c)).forEach(c => {
+      const v = this.initial(c);
+      if (c.type === 'text' || c.type === 'icon') { if (v === '' && !c.keep) return; p[c.prop] = c.numeric ? Number(v) : v; }
+      else { const o = c.options[v][1]; if (c.prop) p[c.prop] = o; else Object.assign(p, o); }
+    });
+    if (p._rows && p.rows) { p.rows = p.rows.slice(0, p._rows); }
+    delete p._rows;
+    Object.keys(p).forEach(k => { if (k.charAt(0) === '_') delete p[k]; });
+    (d.interactive || []).forEach(h => {
+      const c = (d.controls || []).find(x => x.prop === h.toggle); if (!c) return;
+      p[h.handler] = () => { const cur = this.initial(c), idx = c.options.findIndex((o, i) => i !== cur); this.setState(s => ({ s: { ...s.s, [c.label]: idx } })); };
+    });
+    return p;
+  }
+  kebab(k) { return k.replace(/[A-Z]/g, m => '-' + m.toLowerCase()); }
+  renderVals() {
+    const d = this.doc(), st = this.state, live = this.liveProps();
+    const lines = [];
+    Object.keys(live).forEach(k => { const v = live[k]; if (typeof v === 'function' || v === '') return;
+      if (typeof v === 'boolean') lines.push(this.kebab(k) + '="{{ ' + v + ' }}"');
+      else if (typeof v === 'object') lines.push(this.kebab(k) + '="{{ ' + k + ' }}"');
+      else lines.push(this.kebab(k) + '="' + v + '"'); });
+    (d.interactive || []).forEach(h => lines.push(h.handler + '="{{ handler }}"'));
+    const code = '<dc-import name="' + (d.component || '') + '"\n  ' + lines.join('\n  ') + '\n  hint-size="' + (d.hintSize || '100%,40px') + '"></dc-import>';
+    const setT = (c, v) => this.setState(s => ({ t: { ...s.t, [c.label]: v } }));
+    const tile = on => 'display:flex;align-items:center;justify-content:center;height:44px;border-radius:10px;cursor:pointer;box-sizing:border-box;border:1px solid ' + (on ? '#25395c;background:#eaeef5' : '#eceef2;background:#fff');
+    const iconCtrl = c => { const v = this.initial(c), open = st.pick === c.label, q = st.pq.trim().toLowerCase();
+      const match = open ? st.names.filter(n => !q || n.includes(q)) : [], shown = match.slice(0, 120);
+      const choose = n => { setT(c, n); this.setState({ pick: null, pq: '' }); };
+      return { label: c.label, isText: false, isSeg: false, isIcon: true, value: v, onInput: () => {}, options: [], hasValue: !!v, valueCls: 'ph-fill ph-' + v, display: v || 'None',
+        open, q: st.pq, onQ: e => this.setState({ pq: e.target.value }), onToggle: () => this.setState({ pick: open ? null : c.label, pq: '' }), onClose: () => this.setState({ pick: null, pq: '' }),
+        allowNone: !c.keep && !q, onNone: () => choose(''), noneStyle: tile(!v),
+        countText: st.namesErr ? 'Could not load the icon list. Check your internet connection.' : !st.names.length ? 'Loading icons…' : match.length ? (match.length > shown.length ? 'Showing ' + shown.length + ' of ' + match.length + '. Search to narrow.' : match.length + ' icons') : 'No icons match.',
+        tiles: shown.map(n => ({ name: n, cls: 'ph-fill ph-' + n, onClick: () => choose(n), style: tile(n === v) })) }; };
+    const controls = (d.controls || []).filter(c => this.shown(c)).map(c => c.type === 'icon' ? iconCtrl(c) : c.type === 'text'
+      ? { label: c.label, isText: true, isSeg: false, isIcon: false, value: this.initial(c), onInput: e => setT(c, e.target.value), options: [] }
+      : { label: c.label, isText: false, isSeg: true, isIcon: false, value: '', onInput: () => {}, options: c.options.map(([l], i) => ({ label: l, onClick: () => this.setState(s => ({ s: { ...s.s, [c.label]: i } })),
+          style: 'cursor:pointer;user-select:none;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;' + (this.initial(c) === i ? 'background:#25395c;color:#fff;border:1px solid #25395c' : 'background:#fff;color:#374151;border:1px solid #d5dae2') })) });
+    const grids = (d.grids || []).map(g => ({ title: g.title, note: g.note || '', gridStyle: 'background:#f4f6f9;border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(' + (g.cellWidth || 160) + 'px,1fr));gap:22px 28px',
+      items: g.items.map(it => ({ label: it.label, props: it.props, wrap: 'width:' + (d.previewWidth ? '100%' : 'auto') + ';max-width:' + (g.cellWidth || 160) + 'px' + (it.frame ? ';' + it.frame : '') })) }));
+    const S = { Approved: 'background:#ecfdf3;color:#027a48', 'In review': 'background:#fff7e0;color:#92600a', Deprecated: 'background:#fef2f2;color:#b91c1c' }[d.status] || 'background:#ecfdf3;color:#027a48';
+    const flags = {}; ['Button','Pill','Chip','TextField','TextArea','Checkbox','Radio','Dropzone','Tab','UserCard','DataTable','Pagination','Badge','ChipGroup','Icon'].forEach(n => { flags['is' + n] = d.component === n; });
+    return { ...flags, title: d.title, file: d.file, status: d.status || 'Approved', statusStyle: 'font-size:12px;font-weight:700;border-radius:999px;padding:3px 12px;' + S, description: d.description, component: d.component || '', live, code, controls, grids,
+      previewWrap: 'width:' + (d.previewWidth || 'auto') + ';max-width:100%;' + (d.previewStyle || ''), props: d.props || [], values: d.values || [], usedIn: d.usedIn || '' };
+  }
+}
+</script>
+</body>
+</html>

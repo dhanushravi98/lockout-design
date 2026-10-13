@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<span style="{{ style }}"><sc-if value="{{ hasDot }}" hint-placeholder-val="{{ false }}"><span style="{{ dotStyle }}"></span></sc-if><sc-if value="{{ hasIcon }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="{{ icon }}" weight="fill" size="14" color="currentColor" hint-size="14px,14px"></dc-import></sc-if>{{ label }}</span>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:160,&quot;height&quot;:40},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Active&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;success&quot;,&quot;options&quot;:[&quot;tint&quot;,&quot;solid&quot;,&quot;success&quot;,&quot;warning&quot;,&quot;error&quot;,&quot;info&quot;],&quot;tsType&quot;:&quot;'tint'|'solid'|'success'|'warning'|'error'|'info'&quot;},&quot;size&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;md&quot;,&quot;options&quot;:[&quot;md&quot;,&quot;s&quot;],&quot;tsType&quot;:&quot;'md'|'s'&quot;},&quot;dot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, v = p.variant || 'tint', s = p.size || 'md';
+    const V = {
+      tint: ['background:#eaeef5;color:#25395c;border:1px solid #eaeef5', '#25395c'],
+      solid: ['background:#25395c;color:#fff;border:1px solid #25395c', '#fff'],
+      success: ['background:#ecfdf3;color:#027a48;border:1px solid #ecfdf3', '#12b76a'],
+      warning: ['background:#fff7e0;color:#92600a;border:1px solid #fff7e0', '#e09a0c'],
+      error: ['background:#fef2f2;color:#b91c1c;border:1px solid #fef2f2', '#ef4444'],
+      info: ['background:#eaf1fe;color:#25395c;border:1px solid #bcd0f5', '#3b6fd4']
+    }[v] || [];
+    const pad = s === 's' ? '4px 12px' : '6px 14px';
+    return { label: p.label || 'Pill', hasDot: !!p.dot, hasIcon: !!p.icon && !p.dot, icon: p.icon || '',
+      style: 'display:inline-flex;align-items:center;gap:6px;border-radius:999px;font-weight:600;font-size:' + (s === 's' ? 12 : 13) + 'px;white-space:nowrap;cursor:default;user-select:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:' + pad + ';' + V[0],
+      dotStyle: 'width:6px;height:6px;border-radius:999px;flex:none;background:' + V[1] };
+  }
+}
+</script>
+</body>
+</html>

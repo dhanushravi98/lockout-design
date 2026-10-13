@@ -1,0 +1,183 @@
+{
+ "id": "checkbox",
+ "title": "Checkbox",
+ "component": "Checkbox",
+ "file": "components/Checkbox.dc.html",
+ "status": "Approved",
+ "hintSize": "20px,20px",
+ "description": "Round 20px selector for list rows and dropdown options. Off: white with a grey border. On: navy with a white check. For one choice from a group, use Radio.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Checked",
+   "type": "seg",
+   "prop": "checked",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Disabled",
+   "type": "seg",
+   "prop": "disabled",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "interactive": [
+  {
+   "handler": "onToggle",
+   "toggle": "checked"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "off default",
+     "props": {
+      "checked": false
+     }
+    },
+    {
+     "label": "off hover",
+     "props": {
+      "checked": false,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "off pressed",
+     "props": {
+      "checked": false,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "off focus",
+     "props": {
+      "checked": false,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "off disabled",
+     "props": {
+      "checked": false,
+      "state": "disabled"
+     }
+    },
+    {
+     "label": "on default",
+     "props": {
+      "checked": true
+     }
+    },
+    {
+     "label": "on hover",
+     "props": {
+      "checked": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "on pressed",
+     "props": {
+      "checked": true,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "on focus",
+     "props": {
+      "checked": true,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "on disabled",
+     "props": {
+      "checked": true,
+      "state": "disabled"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "checked",
+   "t": "boolean",
+   "d": "false",
+   "x": "Selected state."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greyed, not clickable."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
+   "d": "-",
+   "x": "Documentation only."
+  },
+  {
+   "n": "onToggle",
+   "t": "() => void",
+   "d": "-",
+   "x": "Fires on click."
+  }
+ ],
+ "values": [
+  {
+   "k": "Size",
+   "v": "20px circle"
+  },
+  {
+   "k": "Off",
+   "v": "fill #fff, border 1px #c4cad4"
+  },
+  {
+   "k": "On",
+   "v": "fill and border #25395c, check: Icon check, bold, 11px, #fff"
+  },
+  {
+   "k": "Hover off / on",
+   "v": "border #25395c, bg #f4f6f9 / bg #1c2c48"
+  },
+  {
+   "k": "Pressed off / on",
+   "v": "bg #e8ebf0 / bg #15233b"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Disabled",
+   "v": "fill #e8ebf0, border #dfe3ea"
+  }
+ ],
+ "usedIn": "Service Request overlay device cards, User Management dropdowns."
+}

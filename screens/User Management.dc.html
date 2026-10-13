@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<style>details[data-sch][open] .sch-plus{display:none !important}details[data-sch][open] .sch-minus{display:inline-flex !important}details[data-sch]>summary::-webkit-details-marker{display:none}</style>
+<template id="__bundler_thumbnail" data-bg-color="#f8f9fb">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f8f9fb"></rect>
+    <rect x="60" y="60" width="1080" height="60" rx="12" fill="#25395c"></rect>
+    <rect x="60" y="150" width="360" height="500" rx="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="4"></rect>
+    <rect x="440" y="150" width="360" height="500" rx="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="4"></rect>
+    <rect x="820" y="150" width="320" height="500" rx="16" fill="#ffffff" stroke="#e5e7eb" stroke-width="4"></rect>
+    <circle cx="110" cy="200" r="30" fill="#111827"></circle>
+    <circle cx="490" cy="200" r="30" fill="#25395c"></circle>
+    <circle cx="860" cy="200" r="30" fill="#25395c"></circle>
+  </svg>
+</template>
+</helmet>
+<div style="width: 100%; box-sizing: border-box; background: #f8f9fb; padding: 32px; display: flex; flex-direction: column; gap: 24px; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; height: 100%">
+
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div style="font-size:20px;font-weight:700;color:#111827">User management</div>
+    <div style="display:flex;align-items:center;gap:20px">
+      <button onClick="{{ setInactiveTab }}" style="{{ inactiveTabStyle }}">Inactive (385+ days) <span style="{{ inactiveTabCountStyle }}">0</span></button>
+      <button onClick="{{ setRolesTab }}" style="{{ rolesTabStyle }}">Roles <span style="{{ rolesTabCountStyle }}">6</span></button>
+      <button style="display:inline-flex;align-items:center;gap:8px;background:#25395c;color:#fff;border:none;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#1c2c48">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"></path></svg>
+        Invite user
+      </button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isUsers }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+    <div style="display:flex;gap:8px;overflow-x:auto">
+      <button onClick="{{ setRoleAll }}" style="{{ chipAllStyle }}">All roles <span style="{{ chipAllCountStyle }}">8</span></button>
+      <button onClick="{{ setRoleSuper }}" style="{{ chipSuperStyle }}">Super Admin <span style="{{ chipSuperCountStyle }}">2</span></button>
+      <button onClick="{{ setRoleDistrict }}" style="{{ chipDistrictStyle }}">District Admin <span style="{{ chipDistrictCountStyle }}">3</span></button>
+      <button onClick="{{ setRoleFacilityAdmin }}" style="{{ chipFacilityAdminStyle }}">Facility Admin <span style="{{ chipFacilityAdminCountStyle }}">2</span></button>
+      <button onClick="{{ setRoleFacilityUser }}" style="{{ chipFacilityUserStyle }}">Facility User <span style="{{ chipFacilityUserCountStyle }}">1</span></button>
+    </div>
+    <div style="display:flex;gap:2px;background:#fff;border:1px solid #e5e7eb;padding:3px;border-radius:9px;flex:none">
+      <button onClick="{{ setGrid }}" style="{{ gridBtnStyle }}" aria-label="Grid view">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{{ gridIconColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg>
+      </button>
+      <button onClick="{{ setList }}" style="{{ listBtnStyle }}" aria-label="List view">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="{{ listIconColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <label style="display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px 14px; width: 685px; height: 23px">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+    <input type="text" placeholder="Search users…" style="border:none;outline:none;font-size:13px;color:#111827;flex-grow:1;font-family:inherit">
+  </label>
+
+  <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,380px);justify-content:start;gap:20px">
+
+    <sc-if value="{{ showLA }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#111827;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">LA</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Lockout Dev Super Admin</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">lockout-dev</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Primary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">Super Admin</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">The Lockout Co</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 18, 2026 · 10:00 AM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalLA }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showPL }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">PL</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Pavan Sai Lankalapalli</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">pavan.lankalapalli</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Secondary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">District Admin</span><details data-sch="1" style="min-width:0"><summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">The Lockout Co</span><span class="sch-plus" style="display:inline-flex;flex:none;align-items:center;justify-content:center;padding:3px 8px;border-radius:999px;background:#eef2f8;color:#25395c;font-size:11px;font-weight:700;min-width:26px;box-sizing:border-box">+1</span><span class="sch-minus" style="display:none;flex:none;align-items:center;justify-content:center;padding:3px 8px;border-radius:999px;background:#eef2f8;color:#25395c;font-size:11px;font-weight:700;min-width:26px;box-sizing:border-box"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 15l-6-6-6 6"></path></svg></span></summary><div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding-top:6px"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Annapolis High School</span></div></details></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 14, 2026 · 10:19 AM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalPL }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showJD }}" hint-placeholder-val="{{ true }}"><div style="background: #fafafa; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#d1d5db;color:#6b7280;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">JD</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Jordan Diaz</div>
+            <div style="font-size:13px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">jordan.diaz</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Secondary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#9aa1ac">Facility User</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#9aa1ac;font-size:11px;font-weight:600">Lincoln High School</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#fef2f2;color:#b91c1c;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#ef4444"></span>Deactivated</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Aug 29, 2026</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button style="border:none;background:none;color:#25395c;font-size:13px;font-weight:600;cursor:pointer;padding:6px 4px" style-hover="text-decoration:underline">Reactivate</button>
+          <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalJD }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+        </div>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showMC }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#111827;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">MC</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Maria Chen</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">maria.chen</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Primary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">Super Admin</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Roosevelt District</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 17, 2026 · 3:42 PM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalMC }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showTW }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">TW</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Tom Whitfield</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">tom.whitfield</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Secondary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">District Admin</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Roosevelt District</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 16, 2026 · 8:05 AM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalTW }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showAB }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">AB</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Angela Brooks</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">angela.brooks</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Primary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">District Admin</span><details data-sch="1" style="min-width:0"><summary style="list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Westview School District</span><span class="sch-plus" style="display:inline-flex;flex:none;align-items:center;justify-content:center;padding:3px 8px;border-radius:999px;background:#eef2f8;color:#25395c;font-size:11px;font-weight:700;min-width:26px;box-sizing:border-box">+3</span><span class="sch-minus" style="display:none;flex:none;align-items:center;justify-content:center;padding:3px 8px;border-radius:999px;background:#eef2f8;color:#25395c;font-size:11px;font-weight:700;min-width:26px;box-sizing:border-box"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 15l-6-6-6 6"></path></svg></span></summary><div style="display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding-top:6px"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Westview Elementary School</span><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Annapolis High School</span><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Westview Elementary School</span></div></details></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 12, 2026 · 1:27 PM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalAB }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showDO }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">DO</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Derek Osei</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">derek.osei</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Secondary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">Facility Admin</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Central High School</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 15, 2026 · 9:11 AM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalDO }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+    <sc-if value="{{ showSR }}" hint-placeholder-val="{{ true }}"><div style="background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; box-sizing: border-box; min-width: 0">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;flex:1;min-width:0">
+          <div style="width:44px;height:44px;border-radius:999px;background:#25395c;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">SR</div>
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">Samantha Ruiz</div>
+            <div style="font-size:13px;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px">samantha.ruiz</div>
+            <span style="font-size:11px;font-weight:500;color:#9aa1ac;line-height:1.2">Primary</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:2px;min-width:0"><span style="font-size:11px;font-weight:600;white-space:nowrap;flex:none;color:#25395c">Facility Admin</span><div style="display:flex;flex-wrap:wrap;gap:6px;min-width:0"><span style="display:inline-flex;align-items:center;padding:3px 9px;border-radius:999px;background:#f3f4f6;white-space:nowrap;color:#6b7280;font-size:11px;font-weight:600">Central High School</span></div></div>
+          </div>
+        </div>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px;color:#9aa1ac">Sep 10, 2026 · 11:50 AM</div>
+        <button style="width:30px;height:30px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalSR }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      </div>
+    </div></sc-if>
+
+  </div><div style="display: flex; justify-content: space-between; align-items: baseline">
+    <div style="font-size:12px;color:#9aa1ac">Showing 1–8 of 8 users</div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button style="width:28px;height:28px;border-radius:8px;border:1px solid #e5e7eb;background:#fff;color:#9aa1ac;cursor:not-allowed;font-size:13px">‹</button>
+      <button style="width:28px;height:28px;border-radius:8px;border:1px solid #25395c;background:#25395c;color:#fff;cursor:pointer;font-size:13px;font-weight:600">1</button>
+      <button style="width:28px;height:28px;border-radius:8px;border:1px solid #e5e7eb;background:#fff;color:#9aa1ac;cursor:not-allowed;font-size:13px">›</button>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="display:flex;align-items:center;background:#f8f9fb;border-bottom:1px solid #e5e7eb;padding:10px 16px">
+      <div style="flex:2.2;display:flex;align-items:center;gap:4px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac;cursor:pointer">User <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="3"><path d="M6 9l6 6 6-6"></path></svg></div>
+      <div style="flex:1.4;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac">Organization</div>
+      <div style="flex:1;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac">Role</div>
+      <div style="flex:1;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac">Status</div>
+      <div style="flex:1.2;display:flex;align-items:center;gap:4px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac;cursor:pointer">Last login <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="3"><path d="M6 15l6-6 6 6"></path></svg></div>
+      <div style="width:76px;flex:none;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac;text-align:right">Actions</div>
+    </div>
+
+    <sc-if value="{{ showLA }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#111827;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">LA</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Lockout Dev Super Admin</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">lockout-dev</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">The Lockout Co</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Super Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 18, 2026 · 10:00 AM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalLA }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showPL }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">PL</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Pavan Sai Lankalapalli</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">pavan.lankalapalli</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">The Lockout Co</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">District Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 14, 2026 · 10:19 AM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalPL }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showJD }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3;background:#fafafa">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#d1d5db;color:#6b7280;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">JD</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#6b7280;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Jordan Diaz</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">jordan.diaz</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#9aa1ac">Lincoln High School</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#f3f4f6;color:#6b7280">Facility User</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#fef2f2;color:#b91c1c"><span style="width:6px;height:6px;border-radius:999px;background:#ef4444"></span>Deactivated</span></div>
+      <div style="flex:1.2;font-size:13px;color:#9aa1ac">Aug 29, 2026</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end;gap:6px"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalJD }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showMC }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#111827;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">MC</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Maria Chen</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">maria.chen</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">Roosevelt District</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Super Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 17, 2026 · 3:42 PM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalMC }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showTW }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">TW</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Tom Whitfield</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">tom.whitfield</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">Roosevelt District</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">District Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 16, 2026 · 8:05 AM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalTW }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showAB }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">AB</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Angela Brooks</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">angela.brooks</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">Westview School District</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">District Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 12, 2026 · 1:27 PM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalAB }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showDO }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">DO</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Derek Osei</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">derek.osei</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">Central High School</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Facility Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 15, 2026 · 9:11 AM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalDO }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+
+    <sc-if value="{{ showSR }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;padding:12px 16px" style-hover="background:#fafbfc">
+      <div style="flex:2.2;display:flex;gap:10px;align-items:center;min-width:0"><div style="width:32px;height:32px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">SR</div><div style="min-width:0"><div style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Samantha Ruiz</div><div style="font-size:12px;color:#9aa1ac;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">samantha.ruiz</div></div></div>
+      <div style="flex:1.4;font-size:13px;color:#374151">Central High School</div>
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Facility Admin</span></div>
+      <div style="flex:1"><span style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span></div>
+      <div style="flex:1.2;font-size:13px;color:#6b7280">Sep 10, 2026 · 11:50 AM</div>
+      <div style="width:76px;flex:none;display:flex;justify-content:flex-end"><button style="width:28px;height:28px;border-radius:999px;border:none;background:#25395c;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#1c2c48" onClick="{{ openModalSR }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button></div>
+    </div></sc-if>
+  </div>
+  </sc-if>
+
+  
+  </sc-if>
+
+  <sc-if value="{{ isInactive }}" hint-placeholder-val="{{ false }}">
+  <button onClick="{{ setUsersTab }}" style="border:none;background:none;padding:0;font-size:13px;font-weight:600;color:#6b7280;display:flex;align-items:center;gap:6px;cursor:pointer;width:fit-content" style-hover="color:#111827">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+    Back to users
+  </button>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:80px 0;background:#fff;border:1px solid #e5e7eb;border-radius:12px">
+    <div style="font-size:14px;font-weight:600;color:#111827">No inactive users</div>
+    <div style="font-size:13px;color:#9aa1ac">Users inactive for 385+ days will show up here.</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isRoles }}" hint-placeholder-val="{{ false }}">
+  <button onClick="{{ setUsersTab }}" style="border:none;background:none;padding:0;font-size:13px;font-weight:600;color:#6b7280;display:flex;align-items:center;gap:6px;cursor:pointer;width:fit-content" style-hover="color:#111827">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+    Back to users
+  </button>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
+    <div style="display:flex;align-items:center;background:#f8f9fb;border-bottom:1px solid #e5e7eb;padding:10px 16px">
+      <div style="flex:1;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac">Role</div>
+      <div style="flex:2;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac">Description</div>
+      <div style="width:80px;flex:none;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac;text-align:right">Users</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid #f0f1f3">
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Super Admin</span></div>
+      <div style="flex:2;font-size:13px;color:#6b7280">Full access across every district and facility</div>
+      <div style="width:80px;flex:none;font-size:13px;color:#374151;text-align:right">2</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid #f0f1f3">
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">District Admin</span></div>
+      <div style="flex:2;font-size:13px;color:#6b7280">Manages facilities and users within a district</div>
+      <div style="width:80px;flex:none;font-size:13px;color:#374151;text-align:right">3</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid #f0f1f3">
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eef2f8;color:#25395c">Facility Admin</span></div>
+      <div style="flex:2;font-size:13px;color:#6b7280">Manages access and users within a single facility</div>
+      <div style="width:80px;flex:none;font-size:13px;color:#374151;text-align:right">2</div>
+    </div>
+    <div style="display:flex;align-items:center;padding:14px 16px">
+      <div style="flex:1"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#f3f4f6;color:#374151">Facility User</span></div>
+      <div style="flex:2;font-size:13px;color:#6b7280">Standard access within a single facility</div>
+      <div style="width:80px;flex:none;font-size:13px;color:#374151;text-align:right">1</div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(17,24,39,0.5);display:flex;align-items:center;justify-content:center;z-index:1000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <div style="background:#fff;border-radius:16px;width:760px;max-height:94vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.25)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:24px 24px 16px;border-bottom:1px solid #f0f1f3">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#111827">Edit User</div>
+        <div style="font-size:13px;color:#6b7280;margin-top:4px;max-width:440px">Email cannot be changed. Update the user details, scope, and access below.</div>
+      </div>
+      <button onClick="{{ closeModal }}" style="border:none;background:none;cursor:pointer;padding:4px;color:#9aa1ac;flex:none" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:20px 24px 24px;overflow-y:auto;flex:1;min-height:0">
+      <!-- Left column: User Information & Role -->
+      <div style="display:flex;flex-direction:column;gap:16px;padding-right:12px;border-right:1px solid #f0f1f3">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;border-radius:999px;background:#25395c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">1</div>
+            <div style="font-size:14px;font-weight:700;color:#111827">User Information</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:12px;font-weight:600;color:#374151">First Name <span style="color:#dc2626">*</span></span><input type="text" value="{{ modalFirst }}" style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;min-width:0;width:100%;box-sizing:border-box"></label><label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:12px;font-weight:600;color:#374151">Last Name <span style="color:#dc2626">*</span></span><input type="text" value="{{ modalLast }}" style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;min-width:0;width:100%;box-sizing:border-box"></label></div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:12px;font-weight:600;color:#374151">Title <span style="color:#dc2626">*</span></span><input type="text" value="{{ modalTitle }}" placeholder="e.g. Facility Manager" style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;min-width:0;width:100%;box-sizing:border-box"></label><label style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:12px;font-weight:600;color:#374151">Phone</span><input type="text" value="{{ modalPhone }}" placeholder="(XXX) XXX-XXXX" style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;min-width:0;width:100%;box-sizing:border-box"></label></div>
+
+          <label style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:600;color:#374151">Email Address <span style="color:#dc2626">*</span></span><input type="text" value="{{ modalEmail }}" disabled="{{ true }}" style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#9aa1ac;background:#f8f9fb;font-family:inherit"></label>
+
+          <div style="font-size:12px;color:#9aa1ac;line-height:1.5;padding-top:4px">Invited {{ modalInvitedAt }} by {{ modalInvitedBy }}</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;padding-top:8px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;border-radius:999px;background:#25395c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">2</div>
+            <div style="font-size:14px;font-weight:700;color:#111827">Role <span style="color:#dc2626">*</span></div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ roleOptions }}" as="opt" hint-placeholder-count="3">
+              <button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.label }}</button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ roleDescription }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;color:#6b7280;line-height:1.5;padding-top:4px">{{ roleDescription }}</div>
+          </sc-if>
+        </div>
+      </div>
+
+      <!-- Right column: Access & Facility -->
+      <div style="display:flex;flex-direction:column;gap:16px;padding-bottom:150px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;border-radius:999px;background:#25395c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">3</div>
+            <div style="font-size:14px;font-weight:700;color:#111827">Access</div>
+          </div>
+
+          <div style="display:flex;gap:8px">
+            <button onClick="{{ setReadonly }}" style="{{ accessReadonlyStyle }}">Read-only</button>
+            <button onClick="{{ setReadwrite }}" style="{{ accessReadwriteStyle }}">Read-write</button>
+          </div>
+          <sc-if value="{{ isReadwrite }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:12px;color:#6b7280;line-height:1.5;padding-top:4px"><strong style="color:#374151">Read-write Access:</strong> can view and change data (invite, acknowledge, SMS, save).</div>
+          </sc-if>
+          <sc-if value="{{ isReadonly }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:12px;color:#6b7280;line-height:1.5;padding-top:4px"><strong style="color:#374151">Read-only Access:</strong> can view data but cannot make changes.</div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;padding-top:8px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:20px;height:20px;border-radius:999px;background:#25395c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">4</div>
+            <div style="font-size:14px;font-weight:700;color:#111827">Facility Details</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+            <div style="display:flex;flex-direction:column;gap:6px;position:relative" data-dd="1">
+              <span style="font-size:12px;font-weight:600;color:#374151">State <span style="color:#dc2626">*</span></span>
+              <button onClick="{{ toggleState }}" style="height:38px;box-sizing:border-box;width:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;background:#fff;cursor:pointer;text-align:left"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ stateLabel }}</span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3"><path d="M6 9l6 6 6-6"></path></svg></button>
+              <sc-if value="{{ stateOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:5;display:flex;flex-direction:column;max-height:140px;overflow-y:auto">
+                <sc-for list="{{ stateOptions }}" as="s" hint-placeholder-count="3">
+                  <div onClick="{{ s.onClick }}" style="{{ s.style }}" style-hover="background:#eef0f3">{{ s.label }}</div>
+                </sc-for>
+              </div>
+              </sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;position:relative" data-dd="1">
+              <span style="font-size:12px;font-weight:600;color:#374151">Zip Codes <span style="color:#dc2626">*</span></span>
+              <button onClick="{{ toggleZip }}" style="height:38px;box-sizing:border-box;width:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;background:#fff;cursor:pointer;text-align:left"><span style="display:flex;align-items:center;gap:8px;min-width:0;flex:1"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ zipLabel }}</span><sc-if value="{{ zipMore }}" hint-placeholder-val="{{ false }}"><span style="flex:none;background:#eef2f8;color:#25395c;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700">{{ zipMoreCount }}</span></sc-if></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3"><path d="M6 9l6 6 6-6"></path></svg></button>
+              <sc-if value="{{ zipOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:5;display:flex;flex-direction:column;max-height:140px;overflow-y:auto">
+                <sc-for list="{{ zipOptions }}" as="z" hint-placeholder-count="3">
+                  <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px;color:#111827" style-hover="background:#f3f4f6"><input type="checkbox" checked="{{ z.checked }}" onChange="{{ z.onChange }}" style="cursor:pointer">{{ z.label }}</label>
+                </sc-for>
+              </div>
+              </sc-if>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:6px;position:relative" data-dd="1">
+            <span style="font-size:12px;font-weight:600;color:#374151">Select Districts <span style="color:#dc2626">*</span></span>
+            <button onClick="{{ toggleDist }}" style="height:38px;box-sizing:border-box;width:100%;min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#111827;font-family:inherit;background:#fff;cursor:pointer;text-align:left"><span style="display:flex;align-items:center;gap:8px;min-width:0;flex:1"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ distLabel }}</span><sc-if value="{{ distMore }}" hint-placeholder-val="{{ false }}"><span style="flex:none;background:#eef2f8;color:#25395c;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700">{{ distMoreCount }}</span></sc-if></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3"><path d="M6 9l6 6 6-6"></path></svg></button>
+            <sc-if value="{{ distOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;z-index:5;display:flex;flex-direction:column;max-height:150px;overflow-y:auto">
+              <sc-for list="{{ distOptions }}" as="d" hint-placeholder-count="3">
+                <label style="display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px;color:#111827" style-hover="background:#f3f4f6"><input type="checkbox" checked="{{ d.checked }}" onChange="{{ d.onChange }}" style="cursor:pointer">{{ d.label }}</label>
+              </sc-for>
+            </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 24px;border-top:1px solid #f0f1f3;flex:none">
+      <div style="display:flex;gap:10px;align-items:center">
+        <button onClick="{{ askDelete }}" style="border:1px solid #fecaca;background:#fff;color:#b91c1c;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px" style-hover="background:#fef2f2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>Delete User</button>
+        <sc-if value="{{ notDisabled }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ askDisable }}" style="border:1px solid #fcd34d;background:#fff;color:#b45309;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px" style-hover="background:#fffbeb"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M5.6 5.6l12.8 12.8"></path></svg>Disable User</button>
+        </sc-if>
+        <sc-if value="{{ isDisabled }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ reEnable }}" style="border:1px solid #c9d3e3;background:#eef2f8;color:#25395c;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px" style-hover="background:#dde4ef"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"></path><path d="M20 4v5h-5"></path></svg>Re-enable User</button>
+        <span style="font-size:12px;font-weight:600;color:#b91c1c">Disabled</span>
+        </sc-if>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button onClick="{{ closeModal }}" style="border:1px solid #e5e7eb;background:#fff;color:#374151;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer">Cancel</button>
+        <button onClick="{{ closeModal }}" style="border:none;background:#25395c;color:#fff;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#1c2c48">Save Changes</button>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ confirmOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;background:rgba(17,24,39,0.4);display:flex;align-items:center;justify-content:center;z-index:1100">
+    <div style="background:#fff;border-radius:14px;width:400px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:12px">
+      <div style="font-size:16px;font-weight:700;color:#111827">{{ confirmTitle }}</div>
+      <div style="font-size:13px;color:#6b7280;line-height:1.5">{{ confirmBody }}</div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;padding-top:8px">
+        <button onClick="{{ cancelConfirm }}" style="border:1px solid #e5e7eb;background:#fff;color:#374151;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer">Cancel</button>
+        <button onClick="{{ doConfirm }}" style="{{ confirmBtnStyle }}">{{ confirmBtnLabel }}</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { view: 'grid', tab: 'users', role: 'all', modalOpen: false, access: 'readwrite', selectedKey: 'PL' };
+  users = {
+    LA: { first: 'Lockout Dev', last: 'Super Admin', email: 'lockout-dev@infoservices.com', phone: '—', title: 'Super Admin', role: 'Super Admin', invitedAt: 'August 1, 2025 08:00:00 AM', invitedBy: 'System', access: 'readwrite', fullAccess: true },
+    PL: { first: 'Pavan', last: 'Sai Lankalapalli', email: 'pavan.lankalapalli@infoservices.com', phone: '857-230-8509', title: 'Super Admin', role: 'Super Admin', invitedAt: 'September 14, 2026 09:53:10 AM', invitedBy: 'Lockout Dev Super Admin', access: 'readwrite', fullAccess: true },
+    JD: { first: 'Jordan', last: 'Diaz', email: 'jordan.diaz@infoservices.com', phone: '—', title: 'Facility User', role: 'Facility User', invitedAt: 'July 3, 2025 02:15:00 PM', invitedBy: 'Lockout Dev Super Admin', access: 'readonly', fullAccess: false },
+    MC: { first: 'Maria', last: 'Chen', email: 'maria.chen@infoservices.com', phone: '—', title: 'Super Admin', role: 'Super Admin', invitedAt: 'March 10, 2025 11:20:00 AM', invitedBy: 'Lockout Dev Super Admin', access: 'readwrite', fullAccess: true },
+    TW: { first: 'Tom', last: 'Whitfield', email: 'tom.whitfield@infoservices.com', phone: '—', title: 'District Admin', role: 'District Admin', invitedAt: 'April 22, 2025 09:40:00 AM', invitedBy: 'Maria Chen', access: 'readwrite', fullAccess: false },
+    AB: { first: 'Angela', last: 'Brooks', email: 'angela.brooks@infoservices.com', phone: '—', title: 'District Admin', role: 'District Admin', invitedAt: 'May 5, 2025 01:05:00 PM', invitedBy: 'Maria Chen', access: 'readonly', fullAccess: false },
+    DO: { first: 'Derek', last: 'Osei', email: 'derek.osei@infoservices.com', phone: '—', title: 'Facility Admin', role: 'Facility Admin', invitedAt: 'June 18, 2025 10:30:00 AM', invitedBy: 'Tom Whitfield', access: 'readwrite', fullAccess: false },
+    SR: { first: 'Samantha', last: 'Ruiz', email: 'samantha.ruiz@infoservices.com', phone: '—', title: 'Facility Admin', role: 'Facility Admin', invitedAt: 'June 20, 2025 03:50:00 PM', invitedBy: 'Tom Whitfield', access: 'readonly', fullAccess: false },
+  };
+  componentDidMount() {
+    this._close = (e) => {
+      document.querySelectorAll('details[data-sch][open]').forEach(d => { if (!d.contains(e.target)) d.removeAttribute('open'); });
+      if (e.target.closest && e.target.closest('[data-dd]')) return;
+      if (this.state.zipOpen || this.state.distOpen || this.state.stateOpen) this.setState({ zipOpen: false, distOpen: false, stateOpen: false });
+    };
+    document.addEventListener('mousedown', this._close);
+  }
+  componentWillUnmount() { document.removeEventListener('mousedown', this._close); }
+  renderVals() {
+    const isGrid = this.state.view === 'grid';
+    const tab = this.state.tab;
+    const role = this.state.role;
+    const sel = this.users[this.state.selectedKey] || this.users.PL;
+    const chipStyle = (active) => 'border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;white-space:nowrap;border:1px solid ' + (active ? '#25395c' : '#e5e7eb') + ';background:' + (active ? '#25395c' : '#fff') + ';color:' + (active ? '#fff' : '#6b7280') + ';';
+    const chipCountStyle = (active) => 'font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:' + (active ? 'rgba(255,255,255,.2)' : '#f3f4f6') + ';color:' + (active ? '#fff' : '#6b7280') + ';';
+    const userRoles = { la: 'super', pl: 'district', jd: 'facility_user', mc: 'super', tw: 'district', ab: 'district', do_: 'facility_admin', sr: 'facility_admin' };
+    const show = {};
+    const deleted = this.state.deleted || {}, disabled = this.state.disabled || {};
+    for (const k in userRoles) show['show_' + k] = (role === 'all' || role === userRoles[k]) && !deleted[k.replace('_', '').toUpperCase()];
+    const selKey = this.state.selectedKey, confirm = this.state.confirm, sn = sel.first + ' ' + sel.last;
+    const activeBg = '#25395c', activeStroke = '#ffffff', idleStroke = '#9aa1ac';
+    const baseBtn = 'width:30px;height:30px;border-radius:7px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;';
+    const tabBtn = (active) => 'border:none;background:none;padding:0;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;color:' + (active ? '#111827' : '#6b7280') + ';';
+    const tabCount = (active) => 'font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:' + (active ? '#f3f4f6' : '#eef0f3') + ';color:' + (active ? '#111827' : '#6b7280') + ';';
+    return {
+      isGrid,
+      isList: !isGrid,
+      isUsers: tab === 'users',
+      isInactive: tab === 'inactive',
+      isRoles: tab === 'roles',
+      setGrid: () => this.setState({ view: 'grid' }),
+      setList: () => this.setState({ view: 'list' }),
+      setUsersTab: () => this.setState({ tab: 'users' }),
+      setInactiveTab: () => this.setState({ tab: 'inactive' }),
+      setRolesTab: () => this.setState({ tab: 'roles' }),
+      usersTabStyle: tabBtn(tab === 'users'),
+      usersTabCountStyle: tabCount(tab === 'users'),
+      inactiveTabStyle: tabBtn(tab === 'inactive'),
+      inactiveTabCountStyle: tabCount(tab === 'inactive'),
+      rolesTabStyle: tabBtn(tab === 'roles'),
+      rolesTabCountStyle: tabCount(tab === 'roles'),
+      gridBtnStyle: baseBtn + 'background:' + (isGrid ? activeBg : 'transparent') + ';',
+      listBtnStyle: baseBtn + 'background:' + (!isGrid ? activeBg : 'transparent') + ';',
+      gridIconColor: isGrid ? activeStroke : idleStroke,
+      listIconColor: !isGrid ? activeStroke : idleStroke,
+      setRoleAll: () => this.setState({ role: 'all' }),
+      setRoleSuper: () => this.setState({ role: 'super' }),
+      setRoleDistrict: () => this.setState({ role: 'district' }),
+      setRoleFacilityAdmin: () => this.setState({ role: 'facility_admin' }),
+      setRoleFacilityUser: () => this.setState({ role: 'facility_user' }),
+      chipAllStyle: chipStyle(role === 'all'), chipAllCountStyle: chipCountStyle(role === 'all'),
+      chipSuperStyle: chipStyle(role === 'super'), chipSuperCountStyle: chipCountStyle(role === 'super'),
+      chipDistrictStyle: chipStyle(role === 'district'), chipDistrictCountStyle: chipCountStyle(role === 'district'),
+      chipFacilityAdminStyle: chipStyle(role === 'facility_admin'), chipFacilityAdminCountStyle: chipCountStyle(role === 'facility_admin'),
+      chipFacilityUserStyle: chipStyle(role === 'facility_user'), chipFacilityUserCountStyle: chipCountStyle(role === 'facility_user'),
+      showLA: show.show_la, showPL: show.show_pl, showJD: show.show_jd, showMC: show.show_mc,
+      showTW: show.show_tw, showAB: show.show_ab, showDO: show.show_do_, showSR: show.show_sr,
+      modalOpen: this.state.modalOpen,
+      openModalLA: () => this.setState({ modalOpen: true, selectedKey: 'LA', access: this.users.LA.access, roleChoice: this.users.LA.role }),
+      openModalPL: () => this.setState({ modalOpen: true, selectedKey: 'PL', access: this.users.PL.access, roleChoice: this.users.PL.role }),
+      openModalJD: () => this.setState({ modalOpen: true, selectedKey: 'JD', access: this.users.JD.access, roleChoice: this.users.JD.role }),
+      openModalMC: () => this.setState({ modalOpen: true, selectedKey: 'MC', access: this.users.MC.access, roleChoice: this.users.MC.role }),
+      openModalTW: () => this.setState({ modalOpen: true, selectedKey: 'TW', access: this.users.TW.access, roleChoice: this.users.TW.role }),
+      openModalAB: () => this.setState({ modalOpen: true, selectedKey: 'AB', access: this.users.AB.access, roleChoice: this.users.AB.role }),
+      openModalDO: () => this.setState({ modalOpen: true, selectedKey: 'DO', access: this.users.DO.access, roleChoice: this.users.DO.role }),
+      openModalSR: () => this.setState({ modalOpen: true, selectedKey: 'SR', access: this.users.SR.access, roleChoice: this.users.SR.role }),
+      closeModal: () => this.setState({ modalOpen: false }),
+      isReadonly: this.state.access === 'readonly',
+      isReadwrite: this.state.access === 'readwrite',
+      setReadonly: () => this.setState({ access: 'readonly' }),
+      setReadwrite: () => this.setState({ access: 'readwrite' }),
+      accessReadonlyStyle: 'flex:1;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid ' + (this.state.access === 'readonly' ? '#25395c' : '#e5e7eb') + ';background:' + (this.state.access === 'readonly' ? '#25395c' : '#fff') + ';color:' + (this.state.access === 'readonly' ? '#fff' : '#374151') + ';',
+      accessReadwriteStyle: 'flex:1;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid ' + (this.state.access === 'readwrite' ? '#25395c' : '#e5e7eb') + ';background:' + (this.state.access === 'readwrite' ? '#25395c' : '#fff') + ';color:' + (this.state.access === 'readwrite' ? '#fff' : '#374151') + ';',
+      modalFirst: sel.first, modalLast: sel.last, modalEmail: sel.email, modalPhone: sel.phone,
+      modalTitle: sel.title, modalRole: sel.role, modalInvitedAt: sel.invitedAt, modalInvitedBy: sel.invitedBy,
+      modalFullAccess: sel.fullAccess,
+      roleOptions: ['Super Admin', 'District Admin', 'Facility Admin', 'Facility User'].map((r) => ({
+        label: r,
+        style: 'padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid ' + (this.state.roleChoice === r ? '#25395c' : '#e5e7eb') + ';background:' + (this.state.roleChoice === r ? '#25395c' : '#fff') + ';color:' + (this.state.roleChoice === r ? '#fff' : '#374151') + ';',
+        onClick: () => this.setState({ roleChoice: r }),
+      })),
+      roleDescription: (() => {
+        const desc = {
+          'Super Admin': 'Full system access across all facilities and districts.',
+          'District Admin': 'Access to all facilities within assigned district.',
+          'Facility Admin': 'Access to assigned facility only.',
+          'Facility User': 'Limited access to assigned facility.',
+        };
+        return desc[this.state.roleChoice] || '';
+      })(),
+      isDisabled: !!disabled[selKey],
+      notDisabled: !disabled[selKey],
+      askDelete: () => this.setState({ confirm: 'delete' }),
+      askDisable: () => this.setState({ confirm: 'disable' }),
+      reEnable: () => this.setState(s => ({ disabled: { ...(s.disabled || {}), [s.selectedKey]: false } })),
+      confirmOpen: !!confirm,
+      cancelConfirm: () => this.setState({ confirm: null }),
+      confirmTitle: confirm === 'delete' ? 'Delete ' + sn + '?' : 'Disable ' + sn + '?',
+      confirmBody: confirm === 'delete' ? 'This permanently removes the user and their access. This cannot be undone.' : 'The user will lose access until you re-enable them. Their data is kept.',
+      confirmBtnLabel: confirm === 'delete' ? 'Delete User' : 'Disable User',
+      confirmBtnStyle: 'border:none;color:#fff;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;background:' + (confirm === 'delete' ? '#dc2626' : '#d97706'),
+      doConfirm: () => this.setState(s => s.confirm === 'delete'
+        ? { deleted: { ...(s.deleted || {}), [s.selectedKey]: true }, confirm: null, modalOpen: false }
+        : { disabled: { ...(s.disabled || {}), [s.selectedKey]: true }, confirm: null }),
+      zipOpen: !!this.state.zipOpen,
+      stateOpen: !!this.state.stateOpen,
+      toggleState: () => this.setState(s => ({ stateOpen: !s.stateOpen, zipOpen: false, distOpen: false })),
+      stateLabel: this.state.usState || 'Select state',
+      stateOptions: ['MI', 'MD', 'OH', 'ME'].map(n => ({ label: n, onClick: () => this.setState({ usState: n, stateOpen: false }), style: 'padding:7px 8px;border-radius:6px;cursor:pointer;font-size:13px;color:#111827;font-weight:' + (this.state.usState === n ? '600' : '400') + ';background:' + (this.state.usState === n ? '#f3f4f6' : 'transparent') })),
+      distOpen: !!this.state.distOpen,
+      toggleDist: () => this.setState(s => ({ distOpen: !s.distOpen, zipOpen: false, stateOpen: false })),
+      distLabel: (() => { const a = this.state.dists || []; return a.length ? a.slice(0, 2).join(', ') : 'Select districts'; })(),
+      distMore: (this.state.dists || []).length > 2, distMoreCount: '+' + ((this.state.dists || []).length - 2),
+      distOptions: ['Roosevelt District', 'Westview School District', 'Central District', 'Lakeside District', 'Northgate District', 'Riverbend School District', 'Oakmont District', 'Summit Ridge District', 'Harborview District', 'Pinecrest School District'].map(d => ({ label: d, checked: (this.state.dists || []).includes(d), onChange: () => this.setState(s => { const c = s.dists || []; return { dists: c.includes(d) ? c.filter(x => x !== d) : [...c, d] }; }) })),
+      toggleZip: () => this.setState(s => ({ zipOpen: !s.zipOpen, distOpen: false, stateOpen: false })),
+      zipLabel: (() => { const a = this.state.zips || []; return a.length ? a.slice(0, 2).join(', ') : 'Select zip codes'; })(),
+      zipMore: (this.state.zips || []).length > 2, zipMoreCount: '+' + ((this.state.zips || []).length - 2),
+      zipOptions: ['48201', '48202', '48203', '48204', '48205', '48206', '48207', '48208', '48209', '48210', '48211', '48212'].map(z => ({ label: z, checked: (this.state.zips || []).includes(z), onChange: () => this.setState(s => { const c = s.zips || []; return { zips: c.includes(z) ? c.filter(x => x !== z) : [...c, z] }; }) })),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+{
+ "families": [
+  {
+   "name": "Brand navy",
+   "use": "Primary actions, selected states, links and focus. 600 is the brand color.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#f3f6fa",
+     "role": "Selected card"
+    },
+    {
+     "step": "100",
+     "hex": "#eaeef5",
+     "role": "Tint, badges"
+    },
+    {
+     "step": "200",
+     "hex": "#d5def0",
+     "role": "Tint pressed"
+    },
+    {
+     "step": "300",
+     "hex": "#a9b9d6",
+     "role": ""
+    },
+    {
+     "step": "400",
+     "hex": "#6b82ab",
+     "role": ""
+    },
+    {
+     "step": "500",
+     "hex": "#3f5a88",
+     "role": ""
+    },
+    {
+     "step": "600",
+     "hex": "#25395c",
+     "role": "Brand, primary button"
+    },
+    {
+     "step": "700",
+     "hex": "#1c2c48",
+     "role": "Hover"
+    },
+    {
+     "step": "800",
+     "hex": "#15233b",
+     "role": "Pressed"
+    },
+    {
+     "step": "900",
+     "hex": "#0e1829",
+     "role": ""
+    }
+   ]
+  },
+  {
+   "name": "Neutral",
+   "use": "Text, borders, dividers and surfaces. 900 is body ink, 600 is muted text, 300 and below are borders and fills.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#fafbfc",
+     "role": "Panel, selected tab"
+    },
+    {
+     "step": "100",
+     "hex": "#f4f6f9",
+     "role": "Page ground"
+    },
+    {
+     "step": "200",
+     "hex": "#e8ebf0",
+     "role": "Tab bar, disabled fill"
+    },
+    {
+     "step": "300",
+     "hex": "#dfe3ea",
+     "role": "Field border"
+    },
+    {
+     "step": "400",
+     "hex": "#c4cad4",
+     "role": "Checkbox border"
+    },
+    {
+     "step": "500",
+     "hex": "#9aa1ac",
+     "role": "Placeholder"
+    },
+    {
+     "step": "600",
+     "hex": "#6b7280",
+     "role": "Muted text"
+    },
+    {
+     "step": "700",
+     "hex": "#374151",
+     "role": "Body text"
+    },
+    {
+     "step": "800",
+     "hex": "#1f2937",
+     "role": ""
+    },
+    {
+     "step": "900",
+     "hex": "#111827",
+     "role": "Ink"
+    }
+   ]
+  },
+  {
+   "name": "Success",
+   "use": "Active status and positive confirmation.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#ecfdf3",
+     "role": "Active pill fill"
+    },
+    {
+     "step": "100",
+     "hex": "#d1fadf",
+     "role": ""
+    },
+    {
+     "step": "200",
+     "hex": "#a6f4c5",
+     "role": ""
+    },
+    {
+     "step": "300",
+     "hex": "#6ce9a6",
+     "role": ""
+    },
+    {
+     "step": "400",
+     "hex": "#32d583",
+     "role": ""
+    },
+    {
+     "step": "500",
+     "hex": "#12b76a",
+     "role": "Status dot"
+    },
+    {
+     "step": "600",
+     "hex": "#039855",
+     "role": ""
+    },
+    {
+     "step": "700",
+     "hex": "#027a48",
+     "role": "Active pill text"
+    },
+    {
+     "step": "800",
+     "hex": "#05603a",
+     "role": ""
+    },
+    {
+     "step": "900",
+     "hex": "#054f31",
+     "role": ""
+    }
+   ]
+  },
+  {
+   "name": "Warning",
+   "use": "In-progress and needs-attention states.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#fff7e0",
+     "role": "In progress fill"
+    },
+    {
+     "step": "100",
+     "hex": "#ffefc2",
+     "role": ""
+    },
+    {
+     "step": "200",
+     "hex": "#ffe08a",
+     "role": ""
+    },
+    {
+     "step": "300",
+     "hex": "#fbcb52",
+     "role": ""
+    },
+    {
+     "step": "400",
+     "hex": "#f5b524",
+     "role": ""
+    },
+    {
+     "step": "500",
+     "hex": "#e09a0c",
+     "role": ""
+    },
+    {
+     "step": "600",
+     "hex": "#b97a08",
+     "role": ""
+    },
+    {
+     "step": "700",
+     "hex": "#92600a",
+     "role": "In progress text"
+    },
+    {
+     "step": "800",
+     "hex": "#724a08",
+     "role": ""
+    },
+    {
+     "step": "900",
+     "hex": "#523506",
+     "role": ""
+    }
+   ]
+  },
+  {
+   "name": "Error",
+   "use": "Deactivated status, destructive actions and validation errors.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#fef2f2",
+     "role": "Deactivated fill"
+    },
+    {
+     "step": "100",
+     "hex": "#fee2e2",
+     "role": ""
+    },
+    {
+     "step": "200",
+     "hex": "#fecaca",
+     "role": ""
+    },
+    {
+     "step": "300",
+     "hex": "#fca5a5",
+     "role": ""
+    },
+    {
+     "step": "400",
+     "hex": "#f87171",
+     "role": ""
+    },
+    {
+     "step": "500",
+     "hex": "#ef4444",
+     "role": "Status dot"
+    },
+    {
+     "step": "600",
+     "hex": "#dc2626",
+     "role": ""
+    },
+    {
+     "step": "700",
+     "hex": "#b91c1c",
+     "role": "Deactivated text"
+    },
+    {
+     "step": "800",
+     "hex": "#991b1b",
+     "role": ""
+    },
+    {
+     "step": "900",
+     "hex": "#7f1d1d",
+     "role": ""
+    }
+   ]
+  },
+  {
+   "name": "Info",
+   "use": "System status labels and neutral informational notices.",
+   "shades": [
+    {
+     "step": "50",
+     "hex": "#eaf1fe",
+     "role": "System Clear fill"
+    },
+    {
+     "step": "100",
+     "hex": "#d6e4fc",
+     "role": ""
+    },
+    {
+     "step": "200",
+     "hex": "#bcd0f5",
+     "role": "System Clear border"
+    },
+    {
+     "step": "300",
+     "hex": "#93b4ee",
+     "role": ""
+    },
+    {
+     "step": "400",
+     "hex": "#6490e3",
+     "role": ""
+    },
+    {
+     "step": "500",
+     "hex": "#3b6fd4",
+     "role": ""
+    },
+    {
+     "step": "600",
+     "hex": "#2c58b0",
+     "role": ""
+    },
+    {
+     "step": "700",
+     "hex": "#25448a",
+     "role": ""
+    },
+    {
+     "step": "800",
+     "hex": "#1e3569",
+     "role": ""
+    },
+    {
+     "step": "900",
+     "hex": "#172850",
+     "role": ""
+    }
+   ]
+  }
+ ],
+ "rows": [
+  {
+   "k": "Font family",
+   "v": "-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
+  },
+  {
+   "k": "Sizes",
+   "v": "11, 12, 13 (labels, badges) / 14, 15 (body) / 17 (section) / 24 (overlay title) / 32 (page title, fluid 24 to 32)"
+  },
+  {
+   "k": "Weights",
+   "v": "500 titles, 600 labels and chips, 700 buttons and badges, 800 page headings"
+  },
+  {
+   "k": "Radius: pills, buttons, inputs",
+   "v": "999px"
+  },
+  {
+   "k": "Radius: cards, strips",
+   "v": "16px"
+  },
+  {
+   "k": "Radius: tables, tab bar, selected device card",
+   "v": "14px"
+  },
+  {
+   "k": "Radius: tabs",
+   "v": "12px 12px 0 0"
+  },
+  {
+   "k": "Heights",
+   "v": "button 46 (44 in overlay footer), field 38, close button 36"
+  },
+  {
+   "k": "Gaps",
+   "v": "6, 8, 10, 12, 16, 24"
+  },
+  {
+   "k": "Page padding",
+   "v": "24px content, 36px overlay"
+  }
+ ]
+}

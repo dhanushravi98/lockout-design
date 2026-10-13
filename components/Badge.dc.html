@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<span style="{{ style }}">{{ text }}</span>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:60,&quot;height&quot;:40},&quot;count&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;tsType&quot;:&quot;number&quot;},&quot;max&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:99,&quot;tsType&quot;:&quot;number&quot;},&quot;dot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;navy&quot;,&quot;options&quot;:[&quot;navy&quot;,&quot;neutral&quot;,&quot;error&quot;],&quot;tsType&quot;:&quot;'navy'|'neutral'|'error'&quot;},&quot;placement&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;inline&quot;,&quot;options&quot;:[&quot;inline&quot;,&quot;corner&quot;],&quot;tsType&quot;:&quot;'inline'|'corner'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, tone = p.tone || 'navy', dot = !!p.dot, corner = p.placement === 'corner';
+    const T = { navy: 'background:#25395c;color:#fff', neutral: 'background:#cfd5de;color:#111827', error: 'background:#ef4444;color:#fff' }[tone] || 'background:#25395c;color:#fff';
+    const n = Number(p.count), max = Number(p.max || 99);
+    const text = dot ? '' : (isNaN(n) ? '' : (n > max ? max + '+' : String(n)));
+    const base = 'display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;border-radius:999px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;line-height:1;' + T;
+    const size = dot ? 'width:8px;height:8px;' : 'min-width:20px;height:20px;padding:0 6px;font-size:12px;';
+    const pos = corner ? ';position:absolute;top:-6px;right:-6px;box-shadow:0 0 0 2px #fff' : '';
+    return { text, style: base + ';' + size + pos };
+  }
+}
+</script>
+</body>
+</html>

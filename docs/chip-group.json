@@ -1,0 +1,78 @@
+{
+ "id": "chip-group",
+ "title": "Chip group",
+ "component": "ChipGroup",
+ "file": "components/ChipGroup.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,40px",
+ "previewWidth": "100%",
+ "description": "A row of chips where the group manages the selection. Multi lets any number be on, as with issue choices. Single behaves like a radio group: choosing one turns the previous one off, and the chosen one cannot be turned off by clicking it again.",
+ "base": {
+  "options": [
+   "Tablet Damaged",
+   "Tablet not responding",
+   "Replace charger",
+   "Other Issues"
+  ]
+ },
+ "controls": [
+  {
+   "label": "Mode",
+   "type": "seg",
+   "prop": "mode",
+   "options": [
+    [
+     "multi",
+     "multi"
+    ],
+    [
+     "single",
+     "single"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "options",
+   "t": "string[]",
+   "d": "[]",
+   "x": "Labels, one chip each."
+  },
+  {
+   "n": "value",
+   "t": "string | string[]",
+   "d": "-",
+   "x": "Starting selection."
+  },
+  {
+   "n": "mode",
+   "t": "'multi' | 'single'",
+   "d": "'multi'",
+   "x": "Selection behavior."
+  },
+  {
+   "n": "onChange",
+   "t": "(value) => void",
+   "d": "-",
+   "x": "Fires with an array in multi mode, a string in single mode."
+  }
+ ],
+ "values": [
+  {
+   "k": "Layout",
+   "v": "wrap, gap 8px"
+  },
+  {
+   "k": "Chips",
+   "v": "see Chip"
+  },
+  {
+   "k": "Single mode",
+   "v": "one selected at all times once chosen; no deselect by clicking"
+  }
+ ],
+ "usedIn": "Service Request overlay (issue choices)."
+}

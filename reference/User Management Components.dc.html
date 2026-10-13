@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="300" y="220" width="600" height="90" rx="16" fill="#fff"></rect><rect x="300" y="350" width="290" height="230" rx="16" fill="#fff" opacity=".85"></rect><rect x="610" y="350" width="290" height="230" rx="16" fill="#fff" opacity=".85"></rect></svg></template></helmet>
+<div style="box-sizing:border-box;width:100%;background:#f8f9fb;padding:40px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;display:flex;flex-direction:column;gap:24px">
+
+  <div style="display:flex;flex-direction:column;gap:6px;max-width:900px">
+    <div style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9aa1ac">Lockout · Developer handoff</div>
+    <div style="font-size:28px;font-weight:700">User management components</div>
+    <div style="font-size:14px;color:#6b7280;line-height:1.6">Every component used in the User Management content area and the Edit User modal, with the exact sizes, colors and states to build. The left menu and page header are unchanged and not covered here.</div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px">
+    <div style="font-size:16px;font-weight:700">Design tokens</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">
+      <sc-for list="{{ tokens }}" as="t" hint-placeholder-count="8">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:32px;height:32px;border-radius:8px;border:1px solid #e5e7eb;flex:none;background:{{ t.hex }}"></div>
+          <div style="display:flex;flex-direction:column;min-width:0"><span style="font-size:12px;font-weight:600">{{ t.name }}</span><code style="font-size:11px;color:#6b7280">{{ t.hex }}</code></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-size:12px;color:#4b5563;line-height:1.7">Font: system UI stack (-apple-system, Segoe UI, sans-serif). Sizes: 20 page title, 18 modal title, 15 card name, 14 section heading, 13 body and controls, 12 labels and helper text, 11 badges and table headers. Weights: 400 body, 600 controls, 700 headings. Radii: 6 menu item, 8 input, 10 button, 12 table, 16 card and modal, 999 pill.</div>
+  </div>
+
+  <!-- 1 Page header -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">1. Page header</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Title on the left. Inactive and Roles tabs sit to the left of the primary action on the right.</div></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="font-size:20px;font-weight:700">User management</div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="font-size:13px;font-weight:600;color:#6b7280">Inactive (385+ days) <span style="font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:#f3f4f6">0</span></span>
+        <span style="font-size:13px;font-weight:600;color:#6b7280">Roles <span style="font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:#f3f4f6">6</span></span>
+        <span style="background:#25395c;color:#fff;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600">+ Invite user</span>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.header }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 2 Role chip -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">2. Role filter chip</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Single-select filter above the results. Clicking a chip filters the cards or rows to that role.</div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;border:1px solid #25395c;background:#25395c;color:#fff">All roles <span style="font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:rgba(255,255,255,.2)">8</span></span>
+        <span style="border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;border:1px solid #e5e7eb;background:#fff;color:#6b7280">Super Admin <span style="font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:#f3f4f6">2</span></span>
+      </div>
+      <div style="font-size:11px;color:#9aa1ac">Selected, then default</div>
+    </div>
+    <div><sc-for list="{{ specs.chip }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 3 View toggle + search -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">3. View toggle and search</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Toggle switches between the card grid and the list. Search sits on its own row below the role chips.</div></div>
+    <div style="display:flex;flex-direction:column;gap:14px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;gap:2px;background:#fff;border:1px solid #e5e7eb;padding:3px;border-radius:9px;width:fit-content">
+        <span style="width:32px;height:28px;border-radius:7px;background:#25395c;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect></svg></span>
+        <span style="width:32px;height:28px;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"></path></svg></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><span style="font-size:13px;color:#9aa1ac">Search users…</span></div>
+    </div>
+    <div><sc-for list="{{ specs.toggle }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 4 User card -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">4. User card (grid view)</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Fixed-width card. Role label and organization pill share one line. The arrow button opens the Edit User modal.</div></div>
+    <div style="background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px;width:340px;box-sizing:border-box">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start;min-width:0">
+            <div style="width:44px;height:44px;border-radius:999px;background:#2563eb;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">PL</div>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="font-size:15px;font-weight:700">Pavan Sai Lankalapalli</div>
+              <div style="font-size:13px;color:#6b7280">pavan.lankalapalli</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:2px"><span style="font-size:11px;font-weight:600;color:#1d4ed8;white-space:nowrap">District Admin</span><span style="padding:3px 9px;border-radius:999px;background:#f3f4f6;color:#6b7280;font-size:11px;font-weight:600;white-space:nowrap">The Lockout Co</span></div>
+            </div>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48;flex:none"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;color:#9aa1ac">Sep 18, 2026 · 10:00 AM</div><span style="width:30px;height:30px;border-radius:999px;background:#25395c;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg></span></div>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.card }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 5 List row -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">5. User table (list view)</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Same data as the card in a row. The Roles tab uses the same table pattern with Role, Description and Users columns.</div></div>
+    <div style="background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;font-size:11px">
+        <div style="display:flex;background:#f8f9fb;border-bottom:1px solid #e5e7eb;padding:10px 12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#9aa1ac"><span style="flex:2">User</span><span style="flex:1.4">Organization</span><span style="flex:1">Role</span><span style="flex:1">Status</span></div>
+        <div style="display:flex;align-items:center;padding:12px;font-size:12px"><span style="flex:2;display:flex;gap:8px;align-items:center"><span style="width:28px;height:28px;border-radius:999px;background:#2563eb;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">PL</span>Pavan L.</span><span style="flex:1.4;color:#6b7280">The Lockout Co</span><span style="flex:1"><span style="padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:#eff6ff;color:#1d4ed8">District</span></span><span style="flex:1;color:#027a48;font-weight:600">Active</span></div>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.table }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 6 Badges -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">6. Status pill and role badge</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Status uses a dot and a soft green or red ground. Role badges use one tint per role.</div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#ecfdf3;color:#027a48"><span style="width:6px;height:6px;border-radius:999px;background:#12b76a"></span>Active</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#fef3f2;color:#b42318"><span style="width:6px;height:6px;border-radius:999px;background:#f04438"></span>Deactivated</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ roleBadges }}" as="b" hint-placeholder-count="4"><span style="display:inline-flex;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;background:{{ b.bg }};color:{{ b.fg }}">{{ b.label }}</span></sc-for>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.badges }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 7 Back + empty -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">7. Back link and empty state</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Shown on the Inactive and Roles views to return to the users list.</div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <span style="font-size:13px;font-weight:600;color:#6b7280;display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 6l-6 6 6 6"></path></svg>Back to users</span>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:32px 0;background:#fff;border:1px solid #e5e7eb;border-radius:12px"><div style="font-size:14px;font-weight:600">No inactive users</div><div style="font-size:13px;color:#9aa1ac">Users inactive for 385+ days will show up here.</div></div>
+    </div>
+    <div><sc-for list="{{ specs.back }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 8 Modal shell -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">8. Edit User modal</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Two columns. Left: 1 User Information. Right: 2 Role, 3 Access, 4 Facility Details. Header and footer stay fixed.</div></div>
+    <div style="background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="background:#fff;border-radius:12px;border:1px solid #e5e7eb;overflow:hidden;font-size:11px;color:#6b7280">
+        <div style="padding:12px 14px;border-bottom:1px solid #f0f1f3"><div style="font-size:14px;font-weight:700;color:#111827">Edit User</div>Header, close button top right</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px"><div style="border:1px dashed #d1d5db;border-radius:8px;padding:14px">Left column<br>1 User Information</div><div style="border:1px dashed #d1d5db;border-radius:8px;padding:14px">Right column<br>2 Role · 3 Access · 4 Facility Details</div></div>
+        <div style="padding:12px 14px;border-top:1px solid #f0f1f3;display:flex;justify-content:space-between"><span>Delete · Disable</span><span>Cancel · Save</span></div>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.modal }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 9 Section heading + field -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">9. Numbered section heading and text field</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Each modal section starts with a numbered circle. Required fields carry a red asterisk. Paired fields sit in a two-column grid.</div></div>
+    <div style="display:flex;flex-direction:column;gap:14px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;align-items:center;gap:8px"><div style="width:20px;height:20px;border-radius:999px;background:#25395c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">1</div><div style="font-size:14px;font-weight:700">User Information</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:600;color:#374151">First Name <span style="color:#dc2626">*</span></span><div style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;background:#fff">Pavan</div></div>
+        <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:600;color:#374151">Phone</span><div style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#9aa1ac;background:#fff">(XXX) XXX-XXXX</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12px;font-weight:600;color:#374151">Email Address <span style="color:#dc2626">*</span></span><div style="border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;font-size:13px;color:#9aa1ac;background:#f8f9fb">pavan.lankalapalli@infoservices.com</div></div>
+    </div>
+    <div><sc-for list="{{ specs.field }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 10 Pills -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">10. Role pills and access selector</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Both are single-select. A helper line below each updates to describe the selected option.</div></div>
+    <div style="display:flex;flex-direction:column;gap:14px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid #25395c;background:#25395c;color:#fff">Super Admin</span>
+        <span style="padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid #e5e7eb;background:#fff;color:#374151">District Admin</span>
+        <span style="padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid #e5e7eb;background:#fff;color:#374151">Facility Admin</span>
+        <span style="padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid #e5e7eb;background:#fff;color:#374151">Facility User</span>
+      </div>
+      <div style="display:flex;gap:8px">
+        <span style="flex:1;text-align:center;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid #e5e7eb;background:#fff;color:#374151">Read-only</span>
+        <span style="flex:1;text-align:center;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid #25395c;background:#25395c;color:#fff">Read-write</span>
+      </div>
+      <div style="font-size:12px;color:#6b7280"><strong style="color:#374151">Read-write Access:</strong> can view and change data (invite, acknowledge, SMS, save).</div>
+    </div>
+    <div><sc-for list="{{ specs.pills }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 11 Dropdowns -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">11. Custom dropdowns (State, Zip Codes, Districts)</div><div style="font-size:13px;color:#6b7280;margin-top:4px">One shared look. State is single-select. Zip Codes and Districts are multi-select with checkboxes and a counter badge.</div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="height:38px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #e5e7eb;border-radius:8px;padding:0 12px;font-size:13px;background:#fff"><span style="display:flex;align-items:center;gap:8px;flex:1;min-width:0"><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">48201, 48202</span><span style="flex:none;background:#eef2ff;color:#3730a3;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700">+3</span></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3"><path d="M6 9l6 6 6-6"></path></svg></div>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:6px;font-size:13px">
+        <div style="display:flex;gap:8px;align-items:center;padding:7px 8px;background:#f3f4f6;border-radius:6px"><input type="checkbox" checked="{{ true }}">48201</div>
+        <div style="display:flex;gap:8px;align-items:center;padding:7px 8px"><input type="checkbox">48202</div>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.dropdown }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- 12 Actions + confirm -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:32px">
+    <div style="grid-column:1 / -1"><div style="font-size:16px;font-weight:700">12. Modal actions and confirmation dialog</div><div style="font-size:13px;color:#6b7280;margin-top:4px">Delete and Disable ask for confirmation. After a user is disabled, Disable is replaced by Re-enable.</div></div>
+    <div style="display:flex;flex-direction:column;gap:14px;background:#f8f9fb;border-radius:10px;padding:16px;align-self:start">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <span style="display:inline-flex;align-items:center;gap:7px;border:1px solid #fecaca;background:#fff;color:#b91c1c;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600">Delete User</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;border:1px solid #fcd34d;background:#fff;color:#b45309;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600">Disable User</span>
+        <span style="display:inline-flex;align-items:center;gap:7px;border:1px solid #a6f4c5;background:#ecfdf3;color:#027a48;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600">Re-enable User</span>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:16px;font-weight:700">Delete Pavan Sai Lankalapalli?</div>
+        <div style="font-size:13px;color:#6b7280;line-height:1.5">This permanently removes the user and their access. This cannot be undone.</div>
+        <div style="display:flex;justify-content:flex-end;gap:10px"><span style="border:1px solid #e5e7eb;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600;color:#374151">Cancel</span><span style="background:#dc2626;color:#fff;border-radius:10px;padding:10px 18px;font-size:13px;font-weight:600">Delete User</span></div>
+      </div>
+    </div>
+    <div><sc-for list="{{ specs.actions }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:130px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for></div>
+  </div>
+
+  <!-- State -->
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+    <div style="font-size:16px;font-weight:700">Data and state</div>
+    <sc-for list="{{ specs.state }}" as="r" hint-placeholder-count="4"><div style="display:flex;gap:12px;padding:7px 0;border-top:1px solid #f0f1f3;font-size:12px"><code style="flex:none;width:170px;color:#25395c;font-weight:600">{{ r.k }}</code><span style="color:#4b5563;line-height:1.5">{{ r.v }}</span></div></sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const s = (a) => a.map(([k, v]) => ({ k, v }));
+    return {
+      tokens: [
+        ['Navy (primary)', '#25395c'], ['Navy hover', '#1c2c48'], ['Ink', '#111827'], ['Body grey', '#6b7280'],
+        ['Muted', '#9aa1ac'], ['Border', '#e5e7eb'], ['Divider', '#f0f1f3'], ['Page ground', '#f8f9fb'],
+        ['Success text', '#027a48'], ['Success ground', '#ecfdf3'], ['Danger', '#dc2626'], ['Danger text', '#b91c1c'],
+        ['Warning text', '#b45309'], ['Warning border', '#fcd34d'], ['Badge ground', '#eef2ff'], ['Badge text', '#3730a3']
+      ].map(([name, hex]) => ({ name, hex })),
+      roleBadges: [
+        { label: 'Super Admin', bg: '#eef2ff', fg: '#3730a3' }, { label: 'District Admin', bg: '#eff6ff', fg: '#1d4ed8' },
+        { label: 'Facility Admin', bg: '#f0fdfa', fg: '#0f766e' }, { label: 'Facility User', bg: '#f3f4f6', fg: '#374151' }
+      ],
+      specs: {
+        header: s([['Layout', 'Flex row, space-between, centered. Title left, tabs and action right.'], ['Title', '20px / 700, text "User management"'], ['Tab buttons', 'Inactive (385+ days) and Roles, 13px / 600, grey. Each has a count pill. Gap 20px to the action.'], ['Primary action', 'Invite user. Background #25395c, hover #1c2c48, white text 13px / 600, radius 10, padding 10 18, plus icon 14px.'], ['Behavior', 'Inactive and Roles swap the content area. Both show a Back to users link.']]),
+        chip: s([['Props', 'label: string, count: number, active: boolean, onClick'], ['Shape', 'Pill, radius 999, padding 7 14, 13px / 600, gap 7 between label and count'], ['Default', 'Border #e5e7eb, background #fff, text #6b7280, count on #f3f4f6'], ['Selected', 'Border and background #25395c, text #fff, count on rgba(255,255,255,.2)'], ['Chips', 'All roles, Super Admin, District Admin, Facility Admin, Facility User'], ['Overflow', 'Row scrolls horizontally, no wrapping']]),
+        toggle: s([['View toggle', 'Props: value "grid" | "list", onChange. Container white, border #e5e7eb, radius 9, padding 3. Buttons 32 x 28, radius 7, icon 15px.'], ['Active button', 'Background #25395c, white icon'], ['Inactive button', 'Transparent, icon #6b7280'], ['Search field', 'Props: value, onChange, placeholder "Search users…". White, border #e5e7eb, radius 10, padding 10 14, 13px text, search icon #9aa1ac.'], ['Placement', 'Chips and toggle on one row, search on the row below, then results']]),
+        card: s([['Props', 'initials, avatarColor, name, username, role, organization, status, lastLogin, onOpen'], ['Container', 'White, border #e5e7eb, radius 16, padding 20, column gap 16'], ['Width', 'Fixed 380px. Grid: repeat(auto-fill, 380px), gap 20, justify-content start. Cards never stretch.'], ['Avatar', '44px circle, initials 14px / 700, white on a per-user color'], ['Name / username', 'Name 15px / 700, username 13px #6b7280. Both single-line with ellipsis, max-width 170px.'], ['Role + org', 'One line, gap 6. Role is colored text 11px / 600 and does not shrink. Organization is a grey pill (#f3f4f6, #6b7280, 11px / 600) that grows to fit the full name and only ellipsizes if the card is full.'], ['Status', 'Status pill, top right, does not shrink'], ['Footer', 'Last login 12px #9aa1ac on the left. 30px circular open button (#25395c, chevron icon) on the right.']]),
+        table: s([['Columns', 'User (2.2), Organization (1.4), Role (1), Status (1), Last login (1.2), Actions (76px fixed, right-aligned)'], ['Header row', 'Background #f8f9fb, 11px / 700 uppercase, letter-spacing .04em, #9aa1ac'], ['Body row', 'Padding 12 16, divider #f0f1f3, hover background #fafbfc'], ['Sortable', 'User and Last login show a chevron. Active sort chevron is #111827.'], ['Container', 'White, border #e5e7eb, radius 12, overflow hidden'], ['Roles table', 'Role badge (1), Description (2), Users count (80px, right). Rows: Super Admin 2, District Admin 3, Facility Admin 2, Facility User 1.']]),
+        badges: s([['Status pill', 'Props: status "active" | "deactivated". Padding 4 10, radius 999, 12px / 600, 6px dot, gap 6.'], ['Active', 'Ground #ecfdf3, text #027a48, dot #12b76a'], ['Deactivated', 'Ground #fef3f2, text #b42318, dot #f04438'], ['Role badge', 'Props: role. Padding 3 9, radius 999, 11px / 600.'], ['Super Admin', '#eef2ff / #3730a3'], ['District Admin', '#eff6ff / #1d4ed8'], ['Facility Admin', '#f0fdfa / #0f766e'], ['Facility User', '#f3f4f6 / #374151']]),
+        back: s([['Back link', 'Props: onClick. Text "Back to users", 13px / 600 #6b7280, hover #111827, chevron-left 14px, no background. Width fits content.'], ['Empty state', 'Props: title, message. White, border #e5e7eb, radius 12, padding 80 0, centered.'], ['Title / message', '14px / 600 #111827 and 13px #9aa1ac'], ['Inactive copy', '"No inactive users" and "Users inactive for 385+ days will show up here."']]),
+        modal: s([['Trigger', 'Open button on a user card or the row action'], ['Overlay', 'Fixed, full screen, rgba(17,24,39,.5), centered, z-index 1000'], ['Panel', 'White, radius 16, width 760, max-height 94vh, flex column, overflow hidden, shadow 0 20px 60px rgba(0,0,0,.25)'], ['Header', 'Padding 24 24 16, bottom divider. Title "Edit User" 18px / 700. Subtitle 13px #6b7280: "Email cannot be changed. Update the user details, scope, and access below." Close icon top right.'], ['Body', 'Two-column grid, padding 20 24 24. Only this area scrolls (flex 1, min-height 0). Right column has 150px bottom padding so open dropdowns have room.'], ['Left', '1 User Information: First Name, Last Name, Title, Phone, Email (read-only), and a muted "Invited [date] by [name]" line'], ['Right', '2 Role, 3 Access, 4 Facility Details'], ['Footer', 'Fixed. Delete User and Disable User on the left, Cancel and Save on the right.'], ['Removed', 'Dispatch and Installer roles, and the Title table column']]),
+        field: s([['Section heading', 'Props: number, title. 20px circle, #25395c, white 11px / 700 number, then 14px / 700 title. Gap 8.'], ['Text field', 'Props: label, value, placeholder, required, disabled, onChange'], ['Label', '12px / 600 #374151, gap 6 above the input. Required adds a red (#dc2626) asterisk.'], ['Input', 'Border #e5e7eb, radius 8, padding 9 12, 13px, text #111827'], ['Read-only', 'Email: background #f8f9fb, text #9aa1ac, not editable'], ['Placeholder', 'Phone: "(XXX) XXX-XXXX". Title: "e.g. Facility Manager".'], ['Layout', 'First/Last name and Title/Phone are paired in a 2-column grid (minmax(0,1fr), gap 12). Email is full width.'], ['Required', 'First Name, Last Name, Title, Email, Role, Access, State, Zip Codes, Districts']]),
+        pills: s([['Role pills', 'Props: options string[], value, onChange. Options: Super Admin, District Admin, Facility Admin, Facility User. Wrap, gap 8.'], ['Pill', 'Padding 7 14, radius 999, 13px / 600. Default: border #e5e7eb, #fff, text #374151. Selected: #25395c background and border, white text.'], ['Access selector', 'Two equal buttons (flex 1), radius 8, padding 10 14, same selected and default colors. Options: Read-only, Read-write.'], ['Helper text', '12px #6b7280, bold lead-in. Updates per selection.'], ['Read-write text', '"Read-write Access: can view and change data (invite, acknowledge, SMS, save)."'], ['Read-only text', '"Read-only Access: can view data but cannot make changes."'], ['Role text', 'Each role shows its own description line under the pills']]),
+        dropdown: s([['Props', 'label, options string[], value (string or string[]), multi: boolean, onChange'], ['Trigger', 'Full column width, fixed height 38px, border #e5e7eb, radius 8, padding 0 12, 13px, chevron 10px. Height never changes with content.'], ['Menu', 'Absolute, top 100% + 4px, white, border #e5e7eb, radius 8, padding 6, shadow 0 8px 24px rgba(0,0,0,.12), max-height 140px, scrolls internally. Opens downward.'], ['Option', 'Padding 7 8, radius 6, 13px, hover background #f3f4f6. Selected single: weight 600.'], ['State', 'Single-select. Options: MI, MD, OH, ME. Closes on pick.'], ['Zip Codes', 'Multi-select with checkboxes. Trigger shows the first two selections, comma separated, ellipsis if too long.'], ['Counter badge', 'When more than 2 are selected show "+N" (N = selected minus 2). Pinned right, background #eef2ff, text #3730a3, 11px / 700, radius 999.'], ['Districts', 'Same as Zip Codes'], ['Behavior', 'Opening one closes the others. Clicking outside closes all.'], ['Layout', 'State and Zip Codes side by side. Districts below at full width.']]),
+        actions: s([['Delete User', 'Outlined red: border #fecaca, text #b91c1c, white, hover #fef2f2. Trash icon 14px. Padding 10 18, radius 10.'], ['Disable User', 'Outlined yellow: border #fcd34d, text #b45309, white, hover #fffbeb. Circle-slash icon.'], ['Re-enable User', 'Shown only when disabled. Border #a6f4c5, ground #ecfdf3, text #027a48. Refresh icon. A red "Disabled" label sits beside it.'], ['Confirm dialog', 'Props: title, body, confirmLabel, tone "danger" | "warning", onConfirm, onCancel. Overlay z-index 1100, panel white, radius 14, width 400, padding 24.'], ['Delete copy', '"Delete [name]?" / "This permanently removes the user and their access. This cannot be undone."'], ['Disable copy', '"Disable [name]?" / "The user will lose access until you re-enable them. Their data is kept."'], ['Confirm button', 'Solid, white text. Delete #dc2626, Disable #d97706. Cancel is outlined #e5e7eb.'], ['On confirm', 'Delete removes the user and closes the modal. Disable keeps the modal open and swaps in Re-enable.']]),
+        state: s([['role', '"all" | "super" | "district" | "facility_admin" | "facility_user". Filters cards and rows.'], ['view', '"grid" | "list"'], ['tab', '"users" | "inactive" | "roles"'], ['selectedKey', 'Id of the user open in the modal'], ['roleChoice', 'Selected role pill in the modal'], ['access', '"readonly" | "readwrite"'], ['usState', 'Selected state code'], ['zips / dists', 'string[] of selected values'], ['zipOpen / distOpen / stateOpen', 'Dropdown open flags. Only one true at a time.'], ['confirm', 'null | "delete" | "disable"'], ['disabled / deleted', 'Maps of userKey to boolean. Deleted users are removed from all views.']])
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

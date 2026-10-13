@@ -1,0 +1,255 @@
+{
+ "id": "tab",
+ "title": "Tab",
+ "component": "Tab",
+ "file": "components/Tab.dc.html",
+ "status": "Approved",
+ "hintSize": "180px,46px",
+ "previewStyle": "background:#e8ebf0;border-radius:14px 14px 0 0;padding:10px 12px 0",
+ "description": "Browser-style tab for switching a table's content: icon, label, count. Place tabs inside a #e8ebf0 bar. The selected tab uses the same fill as the panel below it so the two read as one surface. Unselected labels stay near-black for readability.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Tablet List"
+  },
+  {
+   "label": "Icon",
+   "type": "seg",
+   "prop": null,
+   "options": [
+    [
+     "none",
+     {}
+    ],
+    [
+     "tablet",
+     {
+      "icon": "../uploads/Tablet Icon.png",
+      "iconWidth": 24.2,
+      "iconHeight": 24.2
+     }
+    ],
+    [
+     "boot",
+     {
+      "icon": "../uploads/Boot.png",
+      "iconWidth": 17,
+      "iconHeight": 16
+     }
+    ],
+    [
+     "pull",
+     {
+      "icon": "../uploads/PullBLE.png",
+      "iconWidth": 31,
+      "iconHeight": 25
+     }
+    ],
+    [
+     "light",
+     {
+      "icon": "../uploads/DomeBLE.png",
+      "iconWidth": 20,
+      "iconHeight": 19
+     }
+    ],
+    [
+     "alerts",
+     {
+      "icon": "../uploads/alarm-1a88b0cc.png",
+      "iconWidth": 18,
+      "iconHeight": 22
+     }
+    ],
+    [
+     "school",
+     {
+      "icon": "../uploads/school.png",
+      "iconWidth": 19,
+      "iconHeight": 22
+     }
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Count (number, optional)",
+   "type": "text",
+   "prop": "count",
+   "default": "110",
+   "numeric": true
+  },
+  {
+   "label": "Selected",
+   "type": "seg",
+   "prop": "selected",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  }
+ ],
+ "interactive": [
+  {
+   "handler": "onClick",
+   "toggle": "selected"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 190,
+   "items": [
+    {
+     "label": "unselected default",
+     "props": {
+      "label": "Smart Boot",
+      "count": 195,
+      "icon": "../uploads/Boot.png",
+      "iconWidth": 17,
+      "iconHeight": 16
+     }
+    },
+    {
+     "label": "unselected hover",
+     "props": {
+      "label": "Smart Boot",
+      "count": 195,
+      "state": "hover",
+      "icon": "../uploads/Boot.png",
+      "iconWidth": 17,
+      "iconHeight": 16
+     }
+    },
+    {
+     "label": "unselected pressed",
+     "props": {
+      "label": "Smart Boot",
+      "count": 195,
+      "state": "pressed",
+      "icon": "../uploads/Boot.png",
+      "iconWidth": 17,
+      "iconHeight": 16
+     }
+    },
+    {
+     "label": "unselected focus",
+     "props": {
+      "label": "Smart Boot",
+      "count": 195,
+      "state": "focus",
+      "icon": "../uploads/Boot.png",
+      "iconWidth": 17,
+      "iconHeight": 16
+     }
+    },
+    {
+     "label": "selected",
+     "props": {
+      "label": "Tablet List",
+      "count": 110,
+      "selected": true,
+      "icon": "../uploads/Tablet Icon.png",
+      "iconWidth": 24.2,
+      "iconHeight": 24.2
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Tab\"",
+   "x": "Tab text."
+  },
+  {
+   "n": "icon",
+   "t": "string (image path)",
+   "d": "-",
+   "x": "Icon file shown before the label, in a 22px box. Omit for no icon."
+  },
+  {
+   "n": "iconWidth / iconHeight",
+   "t": "number (px)",
+   "d": "22",
+   "x": "Rendered icon size inside the box. Sizes per icon are in Values."
+  },
+  {
+   "n": "count",
+   "t": "number",
+   "d": "-",
+   "x": "Device or record count badge."
+  },
+  {
+   "n": "selected",
+   "t": "boolean",
+   "d": "false",
+   "x": "Selected tab joins the panel below."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Switch tab."
+  }
+ ],
+ "values": [
+  {
+   "k": "Tab bar fill / radius",
+   "v": "#e8ebf0 / 14px 14px 0 0, padding 10px 12px 0"
+  },
+  {
+   "k": "Tab padding / radius",
+   "v": "11px 14px 12px / 12px 12px 0 0"
+  },
+  {
+   "k": "Label",
+   "v": "13px / 600"
+  },
+  {
+   "k": "Order and gap",
+   "v": "icon, label, count, 8px"
+  },
+  {
+   "k": "Icon box",
+   "v": "22 x 22px"
+  },
+  {
+   "k": "Icon sizes",
+   "v": "tablet 24.2 x 24.2, boot 17 x 16, pull box 31 x 25, light 20 x 19, alerts 18 x 22, school 19 x 22"
+  },
+  {
+   "k": "Selected",
+   "v": "fill #fafbfc, text #25395c, border 2px #25395c, bottom edge #fafbfc"
+  },
+  {
+   "k": "Unselected",
+   "v": "transparent, text #111827"
+  },
+  {
+   "k": "Hover / pressed",
+   "v": "rgba(255,255,255,.7) / rgba(255,255,255,.95)"
+  },
+  {
+   "k": "Divider between tabs",
+   "v": "1 x 24px, #b4bcc8, margin 0 6px, hidden next to the selected tab"
+  },
+  {
+   "k": "Count badge",
+   "v": "11px / 700, 2px 8px; selected #25395c / #fff, unselected #cfd5de / #111827"
+  }
+ ],
+ "usedIn": "School Screen (device tabs)."
+}

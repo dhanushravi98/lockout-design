@@ -1,0 +1,295 @@
+{
+ "id": "pill",
+ "title": "Pill",
+ "component": "Pill",
+ "file": "components/Pill.dc.html",
+ "status": "Approved",
+ "hintSize": "120px,32px",
+ "description": "Read-only text label or status. A pill has no hover, pressed or focus state and the cursor stays default. Use the status dot for Active, Deactivated and In progress. It never holds a count on its own; use a Badge for counts and a Chip for anything clickable.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Active"
+  },
+  {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "variant",
+   "options": [
+    [
+     "tint",
+     "tint"
+    ],
+    [
+     "solid",
+     "solid"
+    ],
+    [
+     "success",
+     "success"
+    ],
+    [
+     "warning",
+     "warning"
+    ],
+    [
+     "error",
+     "error"
+    ],
+    [
+     "info",
+     "info"
+    ]
+   ],
+   "default": 2
+  },
+  {
+   "label": "Size",
+   "type": "seg",
+   "prop": "size",
+   "options": [
+    [
+     "md",
+     "md"
+    ],
+    [
+     "s",
+     "s"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Status dot",
+   "type": "seg",
+   "prop": "dot",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  },
+  {
+   "label": "Leading icon",
+   "type": "seg",
+   "prop": "_icon",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "info",
+   "keep": true,
+   "when": "_icon"
+  }
+ ],
+ "grids": [
+  {
+   "title": "Tones",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "tint",
+     "props": {
+      "label": "Label",
+      "variant": "tint"
+     }
+    },
+    {
+     "label": "solid",
+     "props": {
+      "label": "Selected",
+      "variant": "solid"
+     }
+    },
+    {
+     "label": "success",
+     "props": {
+      "label": "Active",
+      "variant": "success"
+     }
+    },
+    {
+     "label": "warning",
+     "props": {
+      "label": "In progress",
+      "variant": "warning"
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "label": "Deactivated",
+      "variant": "error"
+     }
+    },
+    {
+     "label": "info",
+     "props": {
+      "label": "System Clear",
+      "variant": "info"
+     }
+    }
+   ]
+  },
+  {
+   "title": "Status dot",
+   "note": "The dot color matches the tone: Success #12b76a, Warning #e09a0c, Error #ef4444, Info #3b6fd4.",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "success with dot",
+     "props": {
+      "label": "Active",
+      "variant": "success",
+      "dot": true
+     }
+    },
+    {
+     "label": "warning with dot",
+     "props": {
+      "label": "In progress",
+      "variant": "warning",
+      "dot": true
+     }
+    },
+    {
+     "label": "error with dot",
+     "props": {
+      "label": "Deactivated",
+      "variant": "error",
+      "dot": true
+     }
+    },
+    {
+     "label": "info with dot",
+     "props": {
+      "label": "System Clear",
+      "variant": "info",
+      "dot": true
+     }
+    }
+   ]
+  },
+  {
+   "title": "Icon and size",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "icon",
+     "props": {
+      "label": "Notice",
+      "variant": "info",
+      "icon": "info"
+     }
+    },
+    {
+     "label": "size md",
+     "props": {
+      "label": "District Admin",
+      "variant": "tint"
+     }
+    },
+    {
+     "label": "size s",
+     "props": {
+      "label": "3 facilities",
+      "variant": "tint",
+      "size": "s"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Pill\"",
+   "x": "Text."
+  },
+  {
+   "n": "variant",
+   "t": "'tint' | 'solid' | 'success' | 'warning' | 'error' | 'info'",
+   "d": "'tint'",
+   "x": "Tone. Status tones use the Success, Warning, Error and Info scales."
+  },
+  {
+   "n": "size",
+   "t": "'md' | 's'",
+   "d": "'md'",
+   "x": "md 6px 14px, 13px text; s 4px 12px, 12px text."
+  },
+  {
+   "n": "dot",
+   "t": "boolean",
+   "d": "false",
+   "x": "6px status dot before the label. Replaces the icon."
+  },
+  {
+   "n": "icon",
+   "t": "string (icon name)",
+   "d": "-",
+   "x": "Name from the icon library (Phosphor, fill weight), drawn at 14px before the label."
+  }
+ ],
+ "values": [
+  {
+   "k": "Font / radius",
+   "v": "13px / 600 (12px for s) / 999px"
+  },
+  {
+   "k": "Tint",
+   "v": "fill #eaeef5, text #25395c"
+  },
+  {
+   "k": "Solid",
+   "v": "fill #25395c, text #fff"
+  },
+  {
+   "k": "Success",
+   "v": "fill #ecfdf3, text #027a48, dot #12b76a"
+  },
+  {
+   "k": "Warning",
+   "v": "fill #fff7e0, text #92600a, dot #e09a0c"
+  },
+  {
+   "k": "Error",
+   "v": "fill #fef2f2, text #b91c1c, dot #ef4444"
+  },
+  {
+   "k": "Info",
+   "v": "fill #eaf1fe, border #bcd0f5, text #25395c, dot #3b6fd4"
+  },
+  {
+   "k": "Dot / icon gap",
+   "v": "6px"
+  },
+  {
+   "k": "Interaction",
+   "v": "none"
+  }
+ ],
+ "usedIn": "Active and Deactivated status on user cards, System Clear label, role and facility labels."
+}

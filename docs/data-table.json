@@ -1,0 +1,340 @@
+{
+ "id": "data-table",
+ "title": "Data table",
+ "component": "DataTable",
+ "file": "components/DataTable.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,200px",
+ "previewWidth": "100%",
+ "description": "Read-only list of devices or records. Rows are not clickable and have no hover. Header stays fixed and only the rows scroll, set by maxHeight. Put the filter row above it and Pagination below it. IDs and MAC addresses use the monospace style; the name column uses medium weight.",
+ "base": {
+  "grid": "0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr",
+  "mono": [
+   4
+  ],
+  "strong": [
+   2
+  ],
+  "maxHeight": 260
+ },
+ "controls": [
+  {
+   "label": "Data",
+   "type": "seg",
+   "prop": null,
+   "options": [
+    [
+     "Tablets",
+     {
+      "columns": [
+       "ID",
+       "Zone",
+       "Tablet Name",
+       "Location",
+       "Device ID",
+       "App Version"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "Tablet 01",
+        "ROOM 114 – EAST WING, 1ST FLOOR",
+        "00:A0:50:4F:2A:91",
+        "3.3.3"
+       ],
+       [
+        "2",
+        "2",
+        "Tablet 02",
+        "ROOM 202 – NORTH CORRIDOR, 2ND FLOOR",
+        "00:A0:50:4F:2B:07",
+        "3.3.3"
+       ],
+       [
+        "3",
+        "1",
+        "Tablet 03",
+        "LIBRARY – NEAR MAIN OFFICE ENTRANCE",
+        "00:A0:50:4F:3C:5E",
+        "3.3.2"
+       ],
+       [
+        "4",
+        "4",
+        "Tablet 04",
+        "ROOM 401 – SOUTH STAIRWELL LANDING",
+        "00:A0:50:4F:4D:12",
+        "3.3.3"
+       ],
+       [
+        "5",
+        "4",
+        "Tablet 05",
+        "ROOM 402 – WEST WING, BESIDE GYMNASIUM",
+        "00:A0:50:4F:4D:9A",
+        "3.3.3"
+       ],
+       [
+        "6",
+        "4",
+        "Tablet 06",
+        "ROOM 411 – CAFETERIA SERVICE HALLWAY",
+        "00:A0:50:4F:5E:33",
+        "3.3.1"
+       ],
+       [
+        "7",
+        "4",
+        "Tablet 07",
+        "ROOM 412 – LIBRARY & MEDIA CENTER LEVEL",
+        "00:A0:50:4F:5E:71",
+        "3.3.3"
+       ],
+       [
+        "8",
+        "4",
+        "Tablet 08",
+        "ROOM 413 – ADMIN BUILDING, 3RD FLOOR",
+        "00:A0:50:4F:6A:08",
+        "3.3.3"
+       ],
+       [
+        "9",
+        "4",
+        "Tablet 09",
+        "ROOM 414 – FIELD HOUSE LOBBY",
+        "00:A0:50:4F:6A:C4",
+        "3.3.2"
+       ],
+       [
+        "10",
+        "4",
+        "Tablet 10",
+        "ROOM 415 – AUDITORIUM BACKSTAGE ACCESS",
+        "00:A0:50:4F:7B:26",
+        "3.3.3"
+       ]
+      ]
+     }
+    ],
+    [
+     "Other devices",
+     {
+      "columns": [
+       "ID",
+       "Zone",
+       "Device Name",
+       "Location",
+       "Device ID",
+       "Firmware Version"
+      ],
+      "rows": [
+       [
+        "1",
+        "3",
+        "Smart Boot 01",
+        "ROOM 534 – EAST WING, 1ST FLOOR",
+        "1A:9B:26",
+        "2.4.1"
+       ],
+       [
+        "2",
+        "1",
+        "Smart Boot 02",
+        "ROOM MS COPY RM – NORTH CORRIDOR",
+        "1B:62:E4",
+        "2.4.1"
+       ],
+       [
+        "3",
+        "2",
+        "Smart Boot 03",
+        "ROOM 331 – NEAR MAIN OFFICE ENTRANCE",
+        "3A:23:4C",
+        "2.3.8"
+       ],
+       [
+        "4",
+        "1",
+        "Smart Boot 04",
+        "ROOM MS G LCKR R – SOUTH STAIRWELL",
+        "3A:46:55",
+        "2.4.1"
+       ],
+       [
+        "5",
+        "5",
+        "Smart Boot 05",
+        "ROOM PAC GR BR – WEST WING",
+        "3A:89:D8",
+        "2.4.0"
+       ],
+       [
+        "6",
+        "1",
+        "Smart Boot 06",
+        "ROOM 222 – CAFETERIA SERVICE HALLWAY",
+        "3A:89:DD",
+        "2.4.1"
+       ],
+       [
+        "7",
+        "4",
+        "Smart Boot 07",
+        "ROOM TEAM RM – LIBRARY & MEDIA CENTER",
+        "3A:8A:1D",
+        "2.3.8"
+       ],
+       [
+        "8",
+        "4",
+        "Smart Boot 08",
+        "ROOM WEIGHT RM – ADMIN BUILDING",
+        "3A:8A:27",
+        "2.4.1"
+       ],
+       [
+        "9",
+        "1",
+        "Smart Boot 09",
+        "ROOM 219 – FIELD HOUSE LOBBY",
+        "3A:8A:2A",
+        "2.4.1"
+       ],
+       [
+        "10",
+        "1",
+        "Smart Boot 10",
+        "ROOM 215 – AUDITORIUM BACKSTAGE",
+        "3A:8A:4E",
+        "2.4.0"
+       ]
+      ]
+     }
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Rows",
+   "type": "seg",
+   "prop": null,
+   "options": [
+    [
+     "3",
+     {
+      "_rows": 3
+     }
+    ],
+    [
+     "6",
+     {
+      "_rows": 6
+     }
+    ],
+    [
+     "10",
+     {
+      "_rows": 10
+     }
+    ]
+   ],
+   "default": 1
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "columns",
+   "t": "string[]",
+   "d": "-",
+   "x": "Header labels."
+  },
+  {
+   "n": "rows",
+   "t": "(string | number)[][]",
+   "d": "[]",
+   "x": "One array per row, same order as columns."
+  },
+  {
+   "n": "grid",
+   "t": "string",
+   "d": "equal columns",
+   "x": "CSS grid-template-columns, for example 0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr."
+  },
+  {
+   "n": "mono",
+   "t": "number[]",
+   "d": "[]",
+   "x": "Column indexes shown in monospace, for IDs and MAC addresses."
+  },
+  {
+   "n": "strong",
+   "t": "number[]",
+   "d": "[]",
+   "x": "Column indexes shown in medium weight, for names."
+  },
+  {
+   "n": "minWidth",
+   "t": "number (px)",
+   "d": "820",
+   "x": "Narrowest the table gets. Below this the table scrolls sideways instead of squeezing columns."
+  },
+  {
+   "n": "maxHeight",
+   "t": "number (px)",
+   "d": "360",
+   "x": "Body height; rows scroll, header stays."
+  },
+  {
+   "n": "emptyText",
+   "t": "string",
+   "d": "\"No records to show.\"",
+   "x": "Shown when rows is empty."
+  }
+ ],
+ "values": [
+  {
+   "k": "Container",
+   "v": "#fff, border 1px #e5e7eb, radius 14px"
+  },
+  {
+   "k": "Header",
+   "v": "12px / 700, uppercase, .04em, #6b7280, padding 14px 20px, bottom 1px #eef0f3"
+  },
+  {
+   "k": "Row",
+   "v": "14px #111827, padding 15px 20px, bottom 1px #f0f1f3"
+  },
+  {
+   "k": "Cells",
+   "v": "#374151; mono 13px #6b7280; strong weight 500"
+  },
+  {
+   "k": "Column gap",
+   "v": "12px"
+  },
+  {
+   "k": "Min width",
+   "v": "820px, then horizontal scroll"
+  },
+  {
+   "k": "Long text",
+   "v": "wraps inside its column; IDs and MAC addresses never wrap"
+  },
+  {
+   "k": "Hover",
+   "v": "none, rows are not interactive"
+  },
+  {
+   "k": "Version column",
+   "v": "App Version for tablets, Firmware Version for other devices"
+  },
+  {
+   "k": "Device column widths",
+   "v": "ID 0.35fr, Zone 0.5fr, Name 1.5fr, Location 2.6fr, Device ID 1.8fr, Version 1.3fr"
+  }
+ ],
+ "usedIn": "School screen device tabs. Tablets show App Version; every other device tab shows Firmware Version."
+}
