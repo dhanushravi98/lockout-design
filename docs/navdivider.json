@@ -1,0 +1,65 @@
+{
+ "id": "navdivider",
+ "title": "Nav divider",
+ "component": "NavDivider",
+ "file": "components/NavDivider.dc.html",
+ "status": "In review",
+ "hintSize": "240px,17px",
+ "description": "A thin rule between groups of nav items. Decorative only, hidden from screen readers. Never place one above the first group or below the last.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Collapsed",
+   "type": "seg",
+   "prop": "collapsed",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Widths",
+   "cellWidth": 240,
+   "items": [
+    {
+     "label": "expanded",
+     "props": {}
+    },
+    {
+     "label": "collapsed",
+     "props": {
+      "collapsed": true
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "collapsed",
+   "t": "boolean",
+   "d": "false",
+   "x": "32px wide and centred, for the collapsed menu."
+  }
+ ],
+ "values": [
+  {
+   "k": "Line",
+   "v": "1px #eef0f3"
+  },
+  {
+   "k": "Margin",
+   "v": "8px 10px / collapsed 8px auto, 32px wide"
+  }
+ ],
+ "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
+}

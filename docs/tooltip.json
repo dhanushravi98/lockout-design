@@ -1,0 +1,69 @@
+{
+ "id": "tooltip",
+ "title": "Tooltip",
+ "component": "Tooltip",
+ "file": "components/Tooltip.dc.html",
+ "status": "In review",
+ "hintSize": "80px,30px",
+ "description": "A short label for an icon-only control, shown on hover and keyboard focus. One line, never wraps, no interactive content. The parent places it 12px from the trigger and shows or hides it; the Tooltip only draws the label.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Home"
+  }
+ ],
+ "grids": [
+  {
+   "title": "Examples",
+   "cellWidth": 170,
+   "items": [
+    {
+     "label": "short",
+     "props": {
+      "label": "Home"
+     }
+    },
+    {
+     "label": "long",
+     "props": {
+      "label": "User Management"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Home\"",
+   "x": "Tooltip text. Use the same words as the control's label."
+  }
+ ],
+ "values": [
+  {
+   "k": "Padding / radius",
+   "v": "6px 12px / 8px"
+  },
+  {
+   "k": "Font",
+   "v": "13px / 600, #111827"
+  },
+  {
+   "k": "Fill / border",
+   "v": "#fff / 1px #e5e7eb"
+  },
+  {
+   "k": "Shadow",
+   "v": "0 8px 24px rgba(0,0,0,.12)"
+  },
+  {
+   "k": "Offset",
+   "v": "12px from the trigger, vertically centred"
+  }
+ ],
+ "usedIn": "Nav item (collapsed)."
+}

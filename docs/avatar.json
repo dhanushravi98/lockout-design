@@ -1,0 +1,85 @@
+{
+ "id": "avatar",
+ "title": "Avatar",
+ "component": "Avatar",
+ "file": "components/Avatar.dc.html",
+ "status": "In review",
+ "hintSize": "36px,36px",
+ "description": "A person's initials in a navy circle: the first letters of the first two words of their name. 36px in the sidebar profile, 44px on the user card. The full name is its accessible label.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Full name",
+   "type": "text",
+   "prop": "fullName",
+   "default": "Lockout Admin"
+  },
+  {
+   "label": "Size",
+   "type": "seg",
+   "prop": "size",
+   "options": [
+    [
+     "36",
+     36
+    ],
+    [
+     "44",
+     44
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Sizes",
+   "cellWidth": 100,
+   "items": [
+    {
+     "label": "36",
+     "props": {
+      "fullName": "Lockout Admin",
+      "size": 36
+     }
+    },
+    {
+     "label": "44",
+     "props": {
+      "fullName": "Pavan Sai Lankalapalli",
+      "size": 44
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "fullName",
+   "t": "string",
+   "d": "\"Lockout Admin\"",
+   "x": "Person's name. Initials come from its first two words."
+  },
+  {
+   "n": "size",
+   "t": "36 | 44",
+   "d": "36",
+   "x": "36 in the sidebar, 44 on the user card."
+  }
+ ],
+ "values": [
+  {
+   "k": "Size / radius",
+   "v": "36px or 44px / 999px"
+  },
+  {
+   "k": "Fill / text",
+   "v": "#25395c / #fff"
+  },
+  {
+   "k": "Font",
+   "v": "12px / 700 at 36px, 14px / 700 at 44px"
+  }
+ ],
+ "usedIn": "Profile card (sidebar footer). The user card draws the same 44px avatar internally."
+}

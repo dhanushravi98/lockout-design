@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="component-dir" content="../components">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="120" y="120" width="200" height="560" fill="#fff" opacity=".4"></rect><rect x="360" y="120" width="340" height="110" rx="20" fill="#fff"></rect><rect x="740" y="120" width="340" height="110" rx="20" fill="#fff"></rect><rect x="360" y="270" width="340" height="110" rx="20" fill="#fff"></rect><rect x="740" y="270" width="340" height="110" rx="20" fill="#fff"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <div style="width:14.85%;min-width:220px;max-width:382px;flex:none;background:#fff;border-right:1px solid #eef0f3;display:flex;flex-direction:column;height:100vh;overflow:hidden">
+    <div style="height:56px;display:flex;align-items:center;gap:10px;padding:0 24px;border-bottom:1px solid #eef0f3"><img src="../uploads/LockOut Logo.png" style="width:26px;height:26px;object-fit:contain"><span style="font-size:18px;font-weight:800;color:#111827">LockOut USA</span></div>
+    <div style="display:flex;flex-direction:column;padding:10px 0;flex:1">
+      <sc-for list="{{ menu }}" as="m" hint-placeholder-count="11"><div onClick="{{ m.onClick }}" style="{{ m.style }}"><dc-import name="Icon" icon="{{ m.icon }}" weight="regular" size="20" color="currentColor" hint-size="20px,20px"></dc-import><span style="font-size:15px">{{ m.label }}</span></div></sc-for>
+    </div>
+    <div style="padding:16px 24px;font-size:11px;color:#6b7280;border-top:1px solid #eef0f3">Copyright LockOut USA© | 2026</div>
+  </div>
+  <div style="flex:1;min-width:0;height:100vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="height:56px;background:#fff;border-bottom:1px solid #eef0f3;display:flex;align-items:center;justify-content:space-between;padding:0 24px 0 16px;flex:none">
+      <div style="display:flex;align-items:center;gap:20px">
+        <div style="width:28px;height:28px;border:1px solid #e5e7eb;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280"><dc-import name="Icon" icon="caret-left" weight="bold" size="12" color="currentColor" hint-size="12px,12px"></dc-import></div>
+        <div style="display:flex;align-items:center;gap:7px;color:#3f8f4f;font-size:13px;font-weight:600"><dc-import name="Icon" icon="shield-check" weight="regular" size="16" color="currentColor" hint-size="16px,16px"></dc-import>No Active Alerts</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;border:1px solid #e5e7eb;border-radius:12px;padding:6px 12px">
+        <div style="width:28px;height:28px;border-radius:999px;background:#25395c;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center">LA</div>
+        <div style="display:flex;flex-direction:column"><span style="font-size:11px;color:#6b7280">Welcome back, <strong style="color:#111827">Lockout Dev Super Ad...</strong></span><span style="font-size:10px;color:#6b7280">Last login: Oct 19 · 05:09 PM</span></div>
+        <dc-import name="Icon" icon="caret-down" weight="bold" size="12" color="#6b7280" hint-size="12px,12px"></dc-import>
+      </div>
+    </div>
+    <div style="flex:1;min-height:0;display:flex;flex-direction:column;gap:16px;padding:20px 24px 24px;box-sizing:border-box">
+      <div style="flex:none;display:flex;align-items:center;gap:10px;font-size:22px;font-weight:500"><span>Dispatch</span><dc-import name="Icon" icon="caret-right" weight="bold" size="14" color="#6b7280" hint-size="14px,14px"></dc-import><span>ALL STATES</span><dc-import name="Icon" icon="caret-right" weight="bold" size="14" color="#6b7280" hint-size="14px,14px"></dc-import><span>ALL ZIP CODES</span></div>
+      <div style="flex:none;display:flex;flex-wrap:wrap;gap:12px">
+        <div style="flex:1 1 360px;max-width:536px;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:0 16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px"><dc-import name="Icon" icon="magnifying-glass" weight="regular" size="20" color="#6b7280" hint-size="20px,20px"></dc-import><input type="text" value="{{ q }}" onInput="{{ setQ }}" placeholder="Search dispatches..." style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:16px;font-family:inherit;color:#111827"></div>
+        <div style="width:290px;max-width:100%;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:0 16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:#b4bcc8"><dc-import name="Icon" icon="funnel-simple" weight="regular" size="18" color="#374151" hint-size="18px,18px"></dc-import><span style="flex:1">ALL STATES</span><dc-import name="Icon" icon="caret-down" weight="bold" size="12" color="#6b7280" hint-size="12px,12px"></dc-import></div>
+        <div style="width:340px;max-width:100%;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:0 16px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer" style-hover="border-color:#b4bcc8"><dc-import name="Icon" icon="funnel-simple" weight="regular" size="18" color="#374151" hint-size="18px,18px"></dc-import><span style="flex:1">ALL ZIP CODES</span><dc-import name="Icon" icon="caret-down" weight="bold" size="12" color="#6b7280" hint-size="12px,12px"></dc-import></div>
+      </div>
+      <div style="flex:none;display:flex;align-items:center;gap:16px"><span style="font-size:19px;font-weight:600">Search Results [{{ total }}] Dispatches</span><div title="Download" style="width:44px;height:36px;box-sizing:border-box;border:1px solid #e5e7eb;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;color:#111827;cursor:pointer" style-hover="background:#f4f6f9"><dc-import name="Icon" icon="download-simple" weight="regular" size="18" color="currentColor" hint-size="18px,18px"></dc-import></div></div>
+      <div style="flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:14px;align-content:start;padding-right:4px">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="20">
+          <div style="display:flex;align-items:center;gap:16px;height:74px;box-sizing:border-box;padding:0 20px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;min-width:0">
+            <div style="width:38px;height:38px;border-radius:999px;background:#eef0f4;color:#25395c;display:flex;align-items:center;justify-content:center;flex:none"><dc-import name="Icon" icon="broadcast" weight="regular" size="20" color="currentColor" hint-size="20px,20px"></dc-import></div>
+            <span style="flex:1;min-width:0;font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</span>
+            <div onClick="{{ c.onFac }}" style="flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;background:#fafbfc;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap" style-hover="background:#eef2f8;border-color:#bcc7da"><dc-import name="Icon" icon="buildings" weight="regular" size="16" color="currentColor" hint-size="16px,16px"></dc-import>{{ c.fac }}</div>
+            <div style="flex:none;display:inline-flex;align-items:center;border:1px solid #e5e7eb;background:#fafbfc;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap" style-hover="background:#eef2f8;border-color:#bcc7da">Dispatch Information</div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><div style="grid-column:1 / -1;padding:48px 0;text-align:center;font-size:14px;color:#6b7280">No dispatches match your search.</div></sc-if>
+      </div>
+      <div style="flex:none;background:#fff;border:1px solid #e5e7eb;border-radius:14px"><dc-import name="Pagination" total="{{ total }}" perPage="{{ per }}" page="{{ page }}" perOptions="{{ perOpts }}" onChange="{{ onPage }}" onPerPage="{{ onPer }}" hint-size="100%,60px"></dc-import></div>
+    </div>
+  </div>
+</div>
+<sc-if value="{{ showModal }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeModal }}" style="position:fixed;inset:0;background:rgba(17,24,39,.45);display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;z-index:100;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <div onClick="{{ stop }}" style="width:560px;max-width:100%;height:min(720px,92vh);background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);display:flex;flex-direction:column;overflow:hidden">
+    <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 24px 16px;border-bottom:1px solid #eef0f3"><div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:20px;font-weight:700">Facilities List</span><span style="font-size:13px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ modalTitle }}</span></div><dc-import name="IconButton" icon="x" label="Close" size="36" onClick="{{ closeModal }}" hint-size="36px,36px"></dc-import></div>
+    <div style="flex:none;display:flex;align-items:center;gap:16px;padding:16px 24px;flex-wrap:wrap"><div style="flex:1 1 220px;height:44px;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:0 16px;background:#f8f9fb;border:1px solid #dfe3ea;border-radius:999px"><dc-import name="Icon" icon="magnifying-glass" weight="regular" size="18" color="#6b7280" hint-size="18px,18px"></dc-import><input type="text" value="{{ mq }}" onInput="{{ setMq }}" placeholder="Search facilities..." style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:14px;font-family:inherit;color:#111827"></div><span style="font-size:14px;font-weight:700;white-space:nowrap">Search Results [{{ mtotal }}] Facilities</span></div>
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:0 24px 12px;display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2"><div style="flex:none;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><dc-import name="SectionHeader" title="{{ g.title }}" subtitle="{{ g.sub }}" icon="buildings" open="{{ g.open }}" onToggle="{{ g.toggle }}" hint-size="100%,60px"></dc-import><sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #eef0f3;padding:10px 12px 12px;display:flex;flex-direction:column;gap:10px"><div style="max-height:290px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:2px"><sc-for list="{{ g.items }}" as="f" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;cursor:pointer" style-hover="background:#eef2f8;border-color:#bcc7da"><span style="font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span><span style="flex:none;font-size:13px;color:#6b7280">{{ f.zip }}</span></div></sc-for></div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 0;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ g.shown }}</b> of <b style="color:#111827">{{ g.total }}</b></span><sc-if value="{{ g.hasMore }}" hint-placeholder-val="{{ false }}"><span onClick="{{ g.more }}" style="font-weight:600;color:#25395c;cursor:pointer;padding:6px 14px;border:1px solid #cbd2dc;border-radius:999px" style-hover="background:#eef2f8">{{ g.moreLabel }}</span></sc-if></div></div></sc-if></div></sc-for>
+      <sc-if value="{{ mEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;text-align:center;font-size:14px;color:#6b7280">No facilities match your search.</div></sc-if>
+    </div>
+    <div style="flex:none;border-top:1px solid #eef0f3;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ mtotal }}</b> {{ mWord }} in <b style="color:#111827">{{ mDistricts }}</b> {{ dWord }}</span><span onClick="{{ toggleAll }}" style="font-weight:600;color:#25395c;cursor:pointer;padding:6px 12px;border-radius:999px" style-hover="background:#eef2f8">{{ toggleAllLabel }}</span></div>
+  </div>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: '', page: 1, per: 20, modal: null, mq: '', gopen: {}, gshow: {} };
+  DISTS = ['Southgate Community Schools', 'Allen Park Public Schools', 'Davison Community Schools', 'Fenton Area Public Schools', 'Lenawee Intermediate School District'];
+  POOL = [['ALLEN ELEMENTARY SCHOOL', 0], ['ANDERSON HIGH SCHOOL', 0], ['CREATIVE MONTESSORI ACADEMY', 0], ['DAVIDSON MIDDLE ACADEMY', 0], ['DAVIDSON MIDDLE SCHOOL', 0], ['FORDLINE ELEMENTARY SCHOOL', 0], ['GERISCH MIDDLE SCHOOL', 0], ['GROGAN ELEMENTARY SCHOOL', 0], ['NORTH POINTE ELEMENTARY SCHOOL', 0], ['SHELTERS ELEMENTARY SCHOOL', 0], ['LINCOLN ELEMENTARY SCHOOL', 0], ['WASHINGTON MIDDLE SCHOOL', 0], ['ROOSEVELT HIGH SCHOOL', 0], ['JEFFERSON ACADEMY', 0]];
+  facs(d) { const zip = d[0].slice(3, 8); return Array.from({ length: d[1] }, (_, i) => { const b = this.POOL[i % this.POOL.length][0]; return { idx: i, name: i >= this.POOL.length ? b + ' ' + (Math.floor(i / this.POOL.length) + 1) : b, zip }; }); }
+  DATA = [["MI-00000_DISPATCH",3],["MI-48116_BRIGHTON-POLICE-DEPT",4],["MI-48125_DEARBORN-HEIGHTS-POLICE-DEPT",1],["MI-48134_FLAT-ROCK-POLICE-DEPT",6],["MI-48174_HURON-TOWNSHIP-PD",14],["MI-48180_TAYLOR-POLICE-DEPARTMENT",1],["MI-48183_GIBRALTAR-DISPATCH",2],["MI-48189_NORTHFIELD-TOWNSHIP-PD",2],["MI-48195_SOUTHGATE-POLICE-DEPT",6],["MI-48430_FENTON-PD",1],["MI-48201_DETROIT-PUBLIC-SAFETY",7],["MI-48220_FERNDALE-POLICE-DEPT",3],["MI-48226_WAYNE-COUNTY-DISPATCH",1],["MI-48229_ECORSE-POLICE-DEPT",8],["MI-48237_OAK-PARK-PUBLIC-SAFETY",2],["MI-48307_ROCHESTER-HILLS-DISPATCH",5],["MI-48316_SHELBY-TOWNSHIP-PD",1],["MI-48341_PONTIAC-POLICE-DEPT",9],["MI-48371_OXFORD-VILLAGE-PD",2],["MI-48413_BAD-AXE-POLICE-DEPT",1],["MI-48504_FLINT-CITY-DISPATCH",12],["MI-48532_GENESEE-COUNTY-DISPATCH",3],["MI-48603_SAGINAW-COUNTY-DISPATCH",6],["MI-48624_GLADWIN-COUNTY",2],["MI-48706_BAY-COUNTY-DISPATCH",4],["MI-48738_KAWKAWLIN-TOWNSHIP-PD",1],["MI-48823_EAST-LANSING-PD",3],["MI-48911_LANSING-CENTRAL-DISPATCH",5],["MI-49001_KALAMAZOO-PUBLIC-SAFETY",10],["MI-49085_ST-JOSEPH-POLICE-DEPT",2],["MI-49201_JACKSON-COUNTY-DISPATCH",3],["MI-49221_ADRIAN-LENAWEE-DISPATCH",8],["MI-49286_TECUMSEH-POLICE-DEPT",1],["MI-49301_ADA-TOWNSHIP-POLICE",2],["MI-49418_GRANDVILLE-DISPATCH",4],["MI-49503_GRAND-RAPIDS-CENTRAL",11],["MI-49684_TRAVERSE-CITY-DISPATCH",3],["MI-49770_PETOSKEY-PUBLIC-SAFETY",2],["MI-49801_IRON-MOUNTAIN-PD",1],["MI-49855_MARQUETTE-COUNTY-DISPATCH",6]];
+  renderVals() {
+    const st = this.state, q = st.q.trim().toLowerCase();
+    const all = this.DATA.filter(d => !q || d[0].toLowerCase().includes(q));
+    const last = Math.max(1, Math.ceil(all.length / st.per)), page = Math.min(last, st.page);
+    const cards = all.slice((page - 1) * st.per, page * st.per).map(d => ({ name: d[0], fac: d[1] + (d[1] === 1 ? ' Facility' : ' Facilities'), onFac: () => this.setState({ modal: d, mq: '', gopen: {}, gshow: {} }) }));
+    const md = st.modal, mq = st.mq.trim().toLowerCase();
+    const mall = md ? this.facs(md).filter(f => !mq || f.name.toLowerCase().includes(mq)) : [];
+    const di = md ? this.DATA.indexOf(md) : 0, nd = md && md[1] > 8 ? 2 : 1, cut = md ? Math.ceil(md[1] * 0.75) : 0, byD = {};
+    mall.forEach(f => { const k = this.DISTS[(di + (nd > 1 && f.idx >= cut ? 1 : 0)) % this.DISTS.length]; (byD[k] = byD[k] || []).push(f); });
+    const keys = Object.keys(byD), searching = !!mq;
+    const isOpen = k => searching || (st.gopen[k] !== undefined ? st.gopen[k] : keys[0] === k);
+    const groups = keys.map(k => ({ title: k, sub: byD[k].length + (byD[k].length === 1 ? ' facility' : ' facilities'), total: byD[k].length, shown: Math.min(byD[k].length, st.gshow[k] || 10), hasMore: byD[k].length > (st.gshow[k] || 10), moreLabel: 'Show ' + Math.min(10, byD[k].length - (st.gshow[k] || 10)) + ' more',
+      items: byD[k].slice(0, st.gshow[k] || 10), more: () => this.setState(s => ({ gshow: { ...s.gshow, [k]: (s.gshow[k] || 10) + 10 } })), open: isOpen(k), toggle: () => this.setState(s => ({ gopen: { ...s.gopen, [k]: !isOpen(k) } })) }));
+    const allOpen = keys.length > 0 && keys.every(isOpen);
+    const M = [['Home', 'squares-four'], ['School', 'buildings'], ['Dispatch', 'broadcast'], ['Reports', 'file-text'], ['Texting', 'chat'], ['User Management', 'users'], ['Services', 'wrench'], ['Assessments', 'clipboard-text'], ['Emergency Prep', 'shield'], ['Trainings', 'graduation-cap'], ['User Logs', 'clock-counter-clockwise']];
+    return { showModal: !!md, modalTitle: md ? md[0] : '', closeModal: () => this.setState({ modal: null }), stop: e => { if (e && e.stopPropagation) e.stopPropagation(); },
+      mq: st.mq, setMq: e => this.setState({ mq: e.target.value, gshow: {} }), mtotal: mall.length, mEmpty: !!md && mall.length === 0, groups, mWord: mall.length === 1 ? 'facility' : 'facilities', mDistricts: keys.length, dWord: keys.length === 1 ? 'district' : 'districts',
+      toggleAllLabel: allOpen ? 'Collapse all' : 'Expand all', toggleAll: () => this.setState({ gopen: Object.fromEntries(keys.map(k => [k, !allOpen])) }),
+      menu: M.map(([label, icon]) => ({ label, icon, onClick: () => { if (label === 'School') window.location.href = 'School Screen.dc.html'; }, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (label === 'School' ? 'cursor:pointer;' : '') + (label === 'Dispatch' ? 'background:#25395c;color:#fff' : 'color:#374151') })),
+      q: st.q, setQ: e => this.setState({ q: e.target.value, page: 1 }), total: all.length, per: st.per, page, perOpts: [10, 20, 40], cards, empty: all.length === 0,
+      onPage: n => this.setState({ page: n }), onPer: n => this.setState({ per: n, page: 1 }) };
+  }
+}
+</script>
+</body>
+</html>

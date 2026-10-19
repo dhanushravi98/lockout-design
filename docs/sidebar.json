@@ -1,0 +1,155 @@
+{
+ "id": "sidebar",
+ "title": "Sidebar",
+ "component": "Sidebar",
+ "file": "components/Sidebar.dc.html",
+ "status": "In review",
+ "hintSize": "264px,960px",
+ "description": "The main menu: logo and product name, groups of Nav items separated by Nav dividers, the Profile card at the foot and the Sidebar toggle on the right edge. Expanded it is 264px; collapsed it is an 80px icon rail, and the width animates between the two. Keep the menu order the product uses; groups only add dividers between neighbours.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Collapsed",
+   "type": "seg",
+   "prop": "collapsed",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Active",
+   "type": "text",
+   "prop": "active",
+   "default": "Home"
+  },
+  {
+   "label": "Full name",
+   "type": "text",
+   "prop": "fullName",
+   "default": "Lockout Dev Super Admin"
+  }
+ ],
+ "grids": [
+  {
+   "title": "Widths",
+   "note": "Width animates 264px to 80px over .24s ease; the brand name fades over .16s.",
+   "cellWidth": 300,
+   "items": [
+    {
+     "label": "expanded",
+     "props": {
+      "height": 720
+     }
+    },
+    {
+     "label": "collapsed",
+     "props": {
+      "collapsed": true,
+      "height": 720
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "collapsed",
+   "t": "boolean",
+   "d": "false",
+   "x": "80px icon rail instead of the 264px menu."
+  },
+  {
+   "n": "active",
+   "t": "string",
+   "d": "\"Home\"",
+   "x": "Label of the current page's Nav item."
+  },
+  {
+   "n": "groups",
+   "t": "{ items: { label, icon, href? }[] }[]",
+   "d": "LockOut main menu",
+   "x": "Nav items in order, split into groups. A Nav divider goes between groups."
+  },
+  {
+   "n": "brand",
+   "t": "string",
+   "d": "\"LockOut USA\"",
+   "x": "Product name beside the logo. Hidden when collapsed."
+  },
+  {
+   "n": "logoSrc",
+   "t": "string (url)",
+   "d": "\"\"",
+   "x": "The LockOut logo from Logos, 32px. Omit to show the name only."
+  },
+  {
+   "n": "fullName",
+   "t": "string",
+   "d": "\"Lockout Dev Super Admin\"",
+   "x": "Passed to the Profile card."
+  },
+  {
+   "n": "lastLogin",
+   "t": "string",
+   "d": "\"Oct 16, 2026 · 3:03 PM\"",
+   "x": "Passed to the Profile card."
+  },
+  {
+   "n": "height",
+   "t": "number (px)",
+   "d": "960",
+   "x": "Full viewport height in product."
+  },
+  {
+   "n": "onNavigate",
+   "t": "(label: string) => void",
+   "d": "-",
+   "x": "Called when a Nav item is chosen."
+  },
+  {
+   "n": "onToggle",
+   "t": "(collapsed: boolean) => void",
+   "d": "-",
+   "x": "Called with the new collapsed value."
+  }
+ ],
+ "values": [
+  {
+   "k": "Width",
+   "v": "264px / collapsed 80px"
+  },
+  {
+   "k": "Padding",
+   "v": "16px 12px / collapsed 16px 18px"
+  },
+  {
+   "k": "Fill / edge",
+   "v": "#fff / border-right 1px #e5e7eb"
+  },
+  {
+   "k": "Brand",
+   "v": "32px logo, gap 10px, 17px / 700 #111827"
+  },
+  {
+   "k": "Item gap",
+   "v": "2px"
+  },
+  {
+   "k": "Toggle",
+   "v": "top 70px, level with the first Nav item"
+  },
+  {
+   "k": "Motion",
+   "v": "width and padding .24s ease, labels fade .16s"
+  }
+ ],
+ "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
+}

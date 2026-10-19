@@ -1,0 +1,115 @@
+{
+ "id": "section-header",
+ "title": "Section header",
+ "component": "SectionHeader",
+ "file": "components/SectionHeader.dc.html",
+ "status": "In review",
+ "hintSize": "200px,50px",
+ "description": "Header row of a collapsible card section: icon tile, title, subtitle, optional add action and chevron. The whole row toggles; the action button does not.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Facility details"
+  },
+  {
+   "label": "Subtitle",
+   "type": "text",
+   "prop": "subtitle",
+   "default": "0 of 5 fields completed"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "buildings",
+   "keep": true
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "title",
+   "t": "string",
+   "d": "-",
+   "x": "Section title."
+  },
+  {
+   "n": "subtitle",
+   "t": "string",
+   "d": "-",
+   "x": "Grey line under the title."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"buildings\"",
+   "x": "Phosphor name for the 34px tile."
+  },
+  {
+   "n": "collapsible",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the chevron and makes the row toggle."
+  },
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "false",
+   "x": "Rotates the chevron 180 degrees."
+  },
+  {
+   "n": "actionIcon",
+   "t": "string",
+   "d": "-",
+   "x": "Adds an Icon button on the right. Omit for none."
+  },
+  {
+   "n": "actionLabel",
+   "t": "string",
+   "d": "\"Add\"",
+   "x": "Tooltip of the action."
+  },
+  {
+   "n": "onToggle",
+   "t": "() => void",
+   "d": "-",
+   "x": "Row click."
+  },
+  {
+   "n": "onAction",
+   "t": "() => void",
+   "d": "-",
+   "x": "Action click. Does not toggle."
+  }
+ ],
+ "values": [
+  {
+   "k": "Padding / gap",
+   "v": "12px 16px / 14px"
+  },
+  {
+   "k": "Icon tile",
+   "v": "34px, radius 8, fill #eef0f4, icon 18px #25395c"
+  },
+  {
+   "k": "Title",
+   "v": "14px / 700 #111827"
+  },
+  {
+   "k": "Subtitle",
+   "v": "13px #6b7280"
+  },
+  {
+   "k": "Chevron box",
+   "v": "28px, 1px #e5e7eb, radius 8, caret 12px #6b7280"
+  },
+  {
+   "k": "Hover",
+   "v": "bg #fafbfc when collapsible"
+  }
+ ],
+ "usedIn": "School Screen, Facility Information (Wi-Fi networks, Facility details, Direct contacts)."
+}

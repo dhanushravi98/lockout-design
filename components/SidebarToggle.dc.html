@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+.lo-sidetoggle-live:hover{background:#eef2f8!important;border-left-color:#eef2f8!important;color:#25395c!important}
+.lo-sidetoggle-live:active{background:#e1e8f3!important;border-left-color:#e1e8f3!important}
+.lo-sidetoggle-live:focus-visible{box-shadow:0 0 0 3px rgba(37,57,92,.25)!important}
+</style>
+</helmet>
+<button type="button" onClick="{{ onToggle }}" class="{{ cls }}" style="{{ style }}" aria-label="{{ ariaLabel }}" aria-expanded="{{ expanded }}"><dc-import name="Icon" icon="{{ caret }}" weight="regular" size="14" color="currentColor" hint-size="14px,14px"></dc-import></button>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:40,&quot;height&quot;:52},&quot;collapsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'&quot;},&quot;onToggle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, col = !!p.collapsed, st = p.state || '';
+    let style = 'display:flex;align-items:center;justify-content:center;width:24px;height:44px;box-sizing:border-box;padding:0;margin:0;background:#ffffff;border:1px solid #e5e7eb;border-left:1px solid #ffffff;border-radius:0 12px 12px 0;color:#6b7280;cursor:pointer;outline:none';
+    if (st === 'hover') style += ';background:#eef2f8;border-left-color:#eef2f8;color:#25395c';
+    if (st === 'pressed') style += ';background:#e1e8f3;border-left-color:#e1e8f3;color:#25395c';
+    if (st === 'focus') style += ';box-shadow:0 0 0 3px rgba(37,57,92,.25)';
+    return { caret: col ? 'caret-right' : 'caret-left', ariaLabel: col ? 'Expand menu' : 'Collapse menu', expanded: col ? 'false' : 'true',
+      onToggle: p.onToggle || (() => {}), style, cls: st ? '' : 'lo-sidetoggle-live' };
+  }
+}
+</script>
+</body>
+</html>

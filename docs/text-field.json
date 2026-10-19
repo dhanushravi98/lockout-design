@@ -138,6 +138,12 @@
    "x": "Hint text."
   },
   {
+   "n": "type",
+   "t": "'text' | 'password'",
+   "d": "'text'",
+   "x": "Use password to hide what is typed."
+  },
+  {
    "n": "value",
    "t": "string",
    "d": "-",

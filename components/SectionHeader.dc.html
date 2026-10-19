@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>.lo-sh-row:hover{background:#fafbfc!important}</style>
+</helmet>
+<div onClick="{{ onToggle }}" class="{{ cls }}" style="{{ style }}"><div style="width:34px;height:34px;border-radius:8px;background:#eef0f4;display:flex;align-items:center;justify-content:center;flex:none"><dc-import name="Icon" icon="{{ icon }}" weight="regular" size="18" color="#25395c" hint-size="18px,18px"></dc-import></div><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700;color:#111827">{{ title }}</span><sc-if value="{{ hasSub }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280">{{ subtitle }}</span></sc-if></div><sc-if value="{{ hasAction }}" hint-placeholder-val="{{ false }}"><dc-import name="IconButton" icon="{{ actionIcon }}" label="{{ actionLabel }}" variant="outline" size="32" onClick="{{ onActionClick }}" hint-size="32px,32px"></dc-import></sc-if><sc-if value="{{ collapsible }}" hint-placeholder-val="{{ false }}"><div style="{{ chevStyle }}"><dc-import name="Icon" icon="caret-down" weight="bold" size="12" color="#6b7280" hint-size="12px,12px"></dc-import></div></sc-if></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:64},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Facility details&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;0 of 5 fields completed&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;buildings&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;collapsible&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;open&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;actionIcon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;plus&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;actionLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Add&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onToggle&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onAction&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, col = p.collapsible !== false && p.collapsible !== 'false', open = !!p.open;
+    return { icon: p.icon || 'buildings', title: p.title || 'Section', subtitle: p.subtitle, hasSub: !!p.subtitle,
+      hasAction: !!p.actionIcon, actionIcon: p.actionIcon || 'plus', actionLabel: p.actionLabel || 'Add',
+      onActionClick: (e) => { if (e && e.stopPropagation) e.stopPropagation(); if (p.onAction) p.onAction(); },
+      collapsible: col, onToggle: col ? (p.onToggle || (() => {})) : (() => {}),
+      cls: col ? 'lo-sh-row' : '',
+      style: 'display:flex;align-items:center;gap:14px;padding:12px 16px;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif;' + (col ? 'cursor:pointer' : ''),
+      chevStyle: 'width:28px;height:28px;border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;transition:transform .15s;transform:rotate(' + (open ? 180 : 0) + 'deg)' };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+{
+ "id": "profilecard",
+ "title": "Profile card",
+ "component": "ProfileCard",
+ "file": "components/ProfileCard.dc.html",
+ "status": "In review",
+ "hintSize": "240px,58px",
+ "description": "The signed-in person at the foot of the sidebar: Avatar, full name and last login. A long name truncates with an ellipsis. Collapsed, only the Avatar shows, centred, with no card.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Full name",
+   "type": "text",
+   "prop": "fullName",
+   "default": "Lockout Dev Super Admin"
+  },
+  {
+   "label": "Last login",
+   "type": "text",
+   "prop": "lastLogin",
+   "default": "Oct 16, 2026 · 3:03 PM"
+  },
+  {
+   "label": "Collapsed",
+   "type": "seg",
+   "prop": "collapsed",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Widths",
+   "cellWidth": 240,
+   "items": [
+    {
+     "label": "expanded",
+     "props": {}
+    },
+    {
+     "label": "collapsed",
+     "props": {
+      "collapsed": true
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "fullName",
+   "t": "string",
+   "d": "\"Lockout Dev Super Admin\"",
+   "x": "Signed-in person's name."
+  },
+  {
+   "n": "lastLogin",
+   "t": "string",
+   "d": "\"Oct 16, 2026 · 3:03 PM\"",
+   "x": "Date and time, read as \"Sep 14, 2026 · 10:19 AM\"."
+  },
+  {
+   "n": "collapsed",
+   "t": "boolean",
+   "d": "false",
+   "x": "Avatar only, centred, no card."
+  }
+ ],
+ "values": [
+  {
+   "k": "Padding / radius",
+   "v": "10px / 16px"
+  },
+  {
+   "k": "Fill / border",
+   "v": "#fafbfc / 1px #e5e7eb"
+  },
+  {
+   "k": "Gap",
+   "v": "10px"
+  },
+  {
+   "k": "Name",
+   "v": "13px / 600, #111827, ellipsis"
+  },
+  {
+   "k": "Last login",
+   "v": "11px / 500, #6b7280"
+  },
+  {
+   "k": "Avatar",
+   "v": "36px"
+  }
+ ],
+ "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
+}

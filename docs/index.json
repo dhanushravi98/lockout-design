@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.0",
+ "version": "0.9.5",
  "categories": [
   {
    "name": "Foundations",
@@ -10,7 +10,8 @@
   {
    "name": "Buttons",
    "entries": [
-    "button"
+    "button",
+    "icon-button"
    ]
   },
   {
@@ -41,7 +42,8 @@
   {
    "name": "Cards",
    "entries": [
-    "user-card"
+    "user-card",
+    "section-header"
    ]
   },
   {
@@ -49,6 +51,24 @@
    "entries": [
     "data-table",
     "pagination"
+   ]
+  },
+  {
+   "name": "Modals and overlays",
+   "entries": [
+    "confirm-dialog"
+   ]
+  },
+  {
+   "name": "Navigation",
+   "entries": [
+    "sidebar",
+    "navitem",
+    "navdivider",
+    "sidebartoggle",
+    "profilecard",
+    "avatar",
+    "tooltip"
    ]
   },
   {
@@ -62,7 +82,7 @@
  "queued": [
   {
    "name": "Modals and overlays",
-   "note": "Modal shell, dropdown with checkboxes, confirmation dialog, review layout. Values are on the two spec pages in reference/."
+   "note": "Modal shell, dropdown with checkboxes, review layout."
   },
   {
    "name": "Device card",

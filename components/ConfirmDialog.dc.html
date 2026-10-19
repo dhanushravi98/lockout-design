@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ true }}"><div style="{{ overlayStyle }}"><div style="width:440px;max-width:100%;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:28px 32px;display:flex;flex-direction:column;gap:18px"><div style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:999px;background:#eaeef5;display:flex;align-items:center;justify-content:center;flex:none"><dc-import name="Icon" icon="{{ icon }}" weight="regular" size="22" color="#25395c" hint-size="22px,22px"></dc-import></div><span style="font-size:22px;font-weight:700">{{ title }}</span></div><span style="font-size:15px;line-height:1.5;color:#374151">{{ message }}</span><sc-if value="{{ hasInput }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" type="password" value="{{ value }}" onInput="{{ onInput }}" placeholder="{{ inputPlaceholder }}" error="{{ error }}" height="46" hint-size="100%,46px"></dc-import></sc-if><div style="display:flex;justify-content:flex-end;gap:10px;padding-top:4px"><dc-import name="Button" label="{{ cancelLabel }}" variant="secondary" height="44" onClick="{{ onCancel }}" hint-size="110px,44px"></dc-import><dc-import name="Button" label="{{ confirmLabel }}" variant="primary" height="44" onClick="{{ onConfirm }}" hint-size="110px,44px"></dc-import></div></div></div></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:340},&quot;inline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;open&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Confirm it's you&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;message&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Enter your LockOut account password to continue.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;lock&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;inputPlaceholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Your account password&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;error&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cancelLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Cancel&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;confirmLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Verify&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onInput&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(e: Event) =&gt; void&quot;},&quot;onCancel&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onConfirm&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const inline = !!p.inline;
+    return { overlayStyle: (inline ? 'position:relative;background:transparent;' : 'position:fixed;inset:0;background:rgba(17,24,39,.45);z-index:100;') + 'display:flex;align-items:center;justify-content:center;padding:20px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;color:#111827', open: p.open !== false && p.open !== 'false', icon: p.icon || 'lock', title: p.title || 'Confirm', message: p.message || '',
+      hasInput: !!p.inputPlaceholder, inputPlaceholder: p.inputPlaceholder || '', value: p.value, error: p.error || '', onInput: p.onInput || (() => {}),
+      cancelLabel: p.cancelLabel || 'Cancel', confirmLabel: p.confirmLabel || 'Confirm', onCancel: p.onCancel || (() => {}), onConfirm: p.onConfirm || (() => {}) };
+  }
+}
+</script>
+</body>
+</html>

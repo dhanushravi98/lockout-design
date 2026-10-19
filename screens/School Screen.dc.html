@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="component-dir" content="../components">
 <script src="../support.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
     <div style="height:56px;display:flex;align-items:center;gap:10px;padding:0 24px;border-bottom:1px solid #eef0f3"><img src="../uploads/LockOut Logo.png" style="width:26px;height:26px;object-fit:contain"><span style="font-size:18px;font-weight:800;color:#111827">LockOut USA</span></div>
     <div style="display:flex;flex-direction:column;padding:10px 0;flex:1">
       <sc-for list="{{ menu }}" as="m" hint-placeholder-count="10">
-        <div style="{{ m.style }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ m.path }}"></path></svg><span style="font-size:15px">{{ m.label }}</span></div>
+        <div onClick="{{ m.onClick }}" style="{{ m.style }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ m.path }}"></path></svg><span style="font-size:15px">{{ m.label }}</span></div>
       </sc-for>
     </div>
     <div style="padding:16px 24px;font-size:11px;color:#6b7280;border-top:1px solid #eef0f3">Copyright LockOut USA© | 2026</div>
@@ -53,20 +54,20 @@
 
       <!-- School strip (current design) -->
       <div style="flex:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:22px 24px;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px 24px;align-items:flex-start">
-        <div style="display:flex;flex-direction:column;gap:18px;min-width:260px;flex:1 1 420px">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:200px;flex:1 1 380px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px"><span style="font-size:clamp(24px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">ADRIAN MADISON SCHOOLS</span><span style="border:1px solid #bcd0f5;background:#eaf1fe;color:#25395c;flex:none;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:5px 14px">SYSTEM CLEAR</span></div>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=227+N+Madison+St+Adrian+MI+49221" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:-8px;font-size:14px;color:#25395c;text-decoration:none" style-hover="text-decoration:underline"><svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path></svg><span style="min-width:0">227 N Madison St, Adrian, MI 49221&nbsp;<svg style="vertical-align:-1px;display:inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span></a>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;font-size:13px">
             <span style="white-space:nowrap">DISPATCH: LENAWEE COUNTY</span><span style="white-space:nowrap">DISTRICT: ADRIAN MADISON SCHOOL DISTRICT</span><span style="white-space:nowrap">DEVICES: 477</span>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px;flex:0 1 auto;min-width:210px">
-        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
-          <sc-for list="{{ mainActions }}" as="a" hint-placeholder-count="2">
-            <div onClick="{{ a.onClick }}" style="{{ a.style }}" style-hover="{{ a.hover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.path }}"></path></svg>{{ a.label }}</div>
-          </sc-for>
-        </div>
-                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;justify-content:flex-end;margin-right:-12px">
+        <div style="display:flex;flex-direction:column;align-items:stretch;gap:14px;flex:0 1 auto;min-width:200px;max-width:100%;align-self:center">
+          <div style="display:flex;justify-content:flex-end">
+            <sc-for list="{{ mainActions }}" as="a" hint-placeholder-count="1">
+              <div onClick="{{ a.onClick }}" style="{{ a.style }}" style-hover="{{ a.hover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path><path d="M12 9v4M12 17h.01" stroke="#25395c" stroke-width="2"></path></svg>{{ a.label }}</div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;justify-content:flex-end;margin-right:-12px">
             <sc-for list="{{ refLinks }}" as="a" hint-placeholder-count="4">
               <div onMouseEnter="{{ a.enter }}" onMouseLeave="{{ a.leave }}" style="{{ a.style }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="{{ a.fill }}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.path }}"></path></svg>{{ a.label }}</div>
             </sc-for>
@@ -123,21 +124,44 @@
           </sc-if>
           <sc-if value="{{ showFacility }}" hint-placeholder-val="{{ false }}">
           <div style="padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow-y:auto">
-            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #eef0f3"><span style="font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Facility Info</span><span style="display:inline-flex;align-items:center;gap:8px;border:1px solid #e5e7eb;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg>Edit</span></div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #eef0f3"><span style="font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Facility Info</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;flex:none">
               <sc-for list="{{ facCards }}" as="f" hint-placeholder-count="3"><div style="background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.04em;color:#6b7280;text-transform:uppercase">{{ f.k }}</span><span style="font-size:15px;font-weight:500">{{ f.v }}</span></div></sc-for>
             </div>
-            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
-              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
-                <div onClick="{{ s.toggle }}" style="display:flex;align-items:center;gap:14px;padding:12px 16px;cursor:pointer" style-hover="background:#fafbfc">
-                  <div style="width:34px;height:34px;border-radius:8px;background:#eef0f4;color:#25395c;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none"><sc-if value="{{ s.hasIc }}" hint-placeholder-val="{{ false }}">{{ s.ic }}</sc-if><sc-if value="{{ s.hasBld }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"></path></svg></sc-if></div>
-                  <div style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700">{{ s.title }}</span><span style="font-size:13px;color:#6b7280">{{ s.sub }}</span></div>
-                  <div style="width:28px;height:28px;border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="{{ s.chev }}"><path d="M6 9l6 6 6-6"></path></svg></div>
+            <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+              <dc-import name="SectionHeader" title="Wi-Fi networks" subtitle="Network names and passwords used by this school's devices" icon="wifi-high" collapsible="false" hint-size="100%,60px"></dc-import>
+              <div style="border-top:1px solid #eef0f3;display:grid;grid-template-columns:minmax(160px,1fr) minmax(200px,1.4fr) auto;gap:0 20px;padding:10px 16px;font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase"><span>Network name (SSID)</span><span>Password</span><span style="min-width:200px"></span></div>
+              <sc-for list="{{ wifiRows }}" as="w" hint-placeholder-count="2">
+                <div style="border-top:1px solid #eef0f3;padding:14px 16px;display:grid;grid-template-columns:minmax(160px,1fr) minmax(200px,1.4fr) auto;gap:10px 20px;align-items:center">
+                  <span style="font-size:15px;font-weight:600">{{ w.ssid }}</span>
+                  <sc-if value="{{ w.editing }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <dc-import name="TextField" value="{{ w.editVal }}" onInput="{{ w.setEdit }}" placeholder="New password" helper="At least 8 characters." hint-size="100%,60px"></dc-import>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ w.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:15px;font-family:ui-monospace,Menlo,monospace;letter-spacing:{{ w.spacing }};color:#111827">{{ w.pwText }}</span></sc-if>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;min-width:200px">
+                    <sc-if value="{{ w.canShow }}" hint-placeholder-val="{{ true }}"><dc-import name="Button" label="Show password" variant="secondary" height="34" icon="eye" onClick="{{ w.onShow }}" hint-size="120px,34px"></dc-import></sc-if>
+                    <sc-if value="{{ w.canManage }}" hint-placeholder-val="{{ false }}">
+                      <dc-import name="Button" label="Hide" variant="secondary" height="34" icon="eye-slash" onClick="{{ w.onHide }}" hint-size="120px,34px"></dc-import>
+                      <dc-import name="Button" label="Update password" variant="primary" height="34" onClick="{{ w.onEdit }}" hint-size="120px,34px"></dc-import>
+                    </sc-if>
+                    <sc-if value="{{ w.editing }}" hint-placeholder-val="{{ false }}">
+                      <dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ w.onCancel }}" hint-size="120px,34px"></dc-import>
+                      <dc-import name="Button" label="Save" variant="primary" height="34" disabled="{{ w.saveOff }}" onClick="{{ w.onSave }}" hint-size="120px,34px"></dc-import>
+                    </sc-if>
+                  </div>
                 </div>
+              </sc-for>
+              <sc-if value="{{ hasWifiNote }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #eef0f3;padding:12px 16px;font-size:13px;font-weight:600;color:#027a48;background:#ecfdf3">{{ wifiNote }}</div></sc-if>
+            </div>
+            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
+              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+                <dc-import name="SectionHeader" title="{{ s.title }}" subtitle="{{ s.sub }}" icon="{{ s.icon }}" open="{{ s.open }}" actionIcon="plus" actionLabel="Add" onToggle="{{ s.toggle }}" onAction="{{ s.onAdd }}" hint-size="100%,60px"></dc-import>
                 <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
-                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 20px">
-                    <sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><span style="font-size:14px;color:#9aa1ac">-</span></div></sc-for>
-                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">No contacts added yet.</span></sc-if>
+                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px">
+                    <sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><span style="font-size:14px;color:{{ x.c }}">{{ x.v }}</span></div><dc-import name="IconButton" icon="pencil-simple" label="Edit" size="30" hint-size="30px,30px"></dc-import></div></sc-for>
+                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">{{ s.emptyText }}</span></sc-if>
                   </div>
                 </sc-if>
               </div>
@@ -149,11 +173,12 @@
     </div>
   </div>
 </div>
-<dc-import name="Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
+<sc-if value="{{ showVerify }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Confirm it's you" message="{{ verifyMsg }}" icon="lock" inputPlaceholder="Your account password" value="{{ verifyVal }}" onInput="{{ setVerify }}" error="{{ verifyErr }}" confirmLabel="Verify" onCancel="{{ cancelVerify }}" onConfirm="{{ confirmVerify }}" hint-size="0px,0px"></dc-import></sc-if>
+<dc-import name="../screens/Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'tablet', svc: false };
+  state = { active: 'tablet', svc: false, wifi: [{ id: 'a', ssid: 'ADRIAN-STAFF', pw: 'Mad!son#2026' }, { id: 'b', ssid: 'ADRIAN-GUEST', pw: 'GuestAccess47' }], shown: {}, edit: null, editVal: '', verify: null, verifyVal: '', verifyErr: '', wifiNote: '' };
   renderVals() {
     const defs = [
       { id: 'tablet', label: 'Tablet List', count: 110 },
@@ -209,8 +234,10 @@ class Component extends DCLogic {
     const pageNums = ['1', '2', '3', '4', '5', '...', String(lastPage)].filter((n, i) => lastPage > 6 || (n !== '...' && +n <= lastPage && i < 5));
     const fo = this.state.facOpen || {};
     const facCards = [['Facility Name', 'ADRIAN MADISON SCHOOLS'], ['District', 'ADRIAN MADISON SCHOOL DISTRICT'], ['Dispatch', 'LENAWEE COUNTY']].map(([k, v]) => ({ k, v }));
-    const facSections = [['details', '', 'Facility details', '0 of 5 fields completed', ['Address', 'City', 'ZIP Code', 'Main Phone', 'Principal']], ['contacts', 'DC', 'Direct contacts', '0 contacts added', []]].map(([id, ic, title, sub, fields]) => ({
-      ic, title, sub, hasIc: !!ic, hasBld: !ic, open: !!fo[id], fields: fields.map(f => ({ f })), noFields: !fields.length,
+    const F = (l) => ({ f: l, v: '-', c: '#9aa1ac' }), C = (l, v) => ({ f: l, v, c: '#111827' });
+    const facSections = [['details', 'buildings', 'Facility details', 'No details added yet', []], ['contacts', 'address-book', 'Direct contacts', '3 contacts added', [C('Principal', 'Dana Whitfield, 517-555-0142'), C('Dispatch liaison', 'Marcus Reyes, 517-555-0178'), C('IT contact', 'Priya Nair, 517-555-0113')]]].map(([id, icon, title, sub, fields]) => ({
+      icon, title, sub, open: !!fo[id], fields, noFields: !fields.length, emptyText: id === 'details' ? 'No facility details added yet. Use + to add them.' : 'No contacts added yet. Use + to add one.',
+      onAdd: () => {},
       toggle: () => this.setState(s => ({ facOpen: { ...(s.facOpen || {}), [id]: !(s.facOpen || {})[id] } })),
       chev: 'transform:rotate(' + (fo[id] ? 180 : 0) + 'deg)' }));
     const types = ['ADMIN', 'TEACHER/USER', 'ADMIN', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER'];
@@ -225,7 +252,7 @@ class Component extends DCLogic {
     ];
     const menu = menuDefs.map(([label, path]) => {
       const on = label === 'School';
-      return { label, path, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (on ? 'background:#25395c;color:#fff' : 'color:#374151') };
+      return { label, path, onClick: () => { if (label === 'Dispatch') window.location.href = 'Dispatch Screen.dc.html'; }, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (label === 'Dispatch' ? 'cursor:pointer;' : '') + (on ? 'background:#25395c;color:#fff' : 'color:#374151') };
     });
     const actions = [
       ['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Service Requests', menuDefs[6][1]], ['Report Issue', menuDefs[4][1]], 
@@ -233,11 +260,29 @@ class Component extends DCLogic {
     ].map(([label, path]) => ({ label, path }));
     const refLinks = [['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Trainings', menuDefs[9][1]], ['Emergency Prep', menuDefs[8][1]], ['Assessments', menuDefs[7][1]]].map(([label, path]) => { const on = this.state.refHover === label; return { label, path, fill: on ? 'currentColor' : 'none', enter: () => this.setState({ refHover: label }), leave: () => this.setState({ refHover: null }), style: 'display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#25395c;cursor:pointer;transition:background .12s;background:' + (on ? '#eaeef5' : 'transparent') }; });
     const mainActions = [
-      { label: 'Service Requests', onClick: () => this.setState({ svc: true }), path: menuDefs[6][1], style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c', hover: 'background:#1c2c48' },
-      { label: 'Report Issue', path: 'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01', style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#fff;color:#25395c;border:1.5px solid #25395c', hover: 'background:#eef2f8' }
+      { label: 'Report Issue', onClick: () => this.setState({ svc: true }), path: 'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01', style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c', hover: 'background:#1c2c48' }
     ];
     const pages = pageNums.map(n => ({ n, style: n === '...' ? 'color:#9aa1ac' : 'width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;' + (n === '1' ? 'background:#25395c;color:#fff;font-weight:700' : 'border:1px solid #e5e7eb;color:#111827') }));
-    return { svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? cfg.cols : [], gridStyle: 'display:grid;grid-template-columns:' + (cfg ? cfg.grid : G), total: cfg ? cfg.total : 0, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
+    const st = this.state;
+    const wifiRows = st.wifi.map(w => {
+      const shown = !!st.shown[w.id], editing = st.edit === w.id, ok = st.editVal.length >= 8;
+      return { ssid: w.ssid, editing, notEditing: !editing, canShow: !shown && !editing, canManage: shown && !editing,
+        pwText: shown ? w.pw : '\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022', spacing: shown ? '0' : '2px',
+        onShow: () => this.setState({ verify: w.id, verifyVal: '', verifyErr: '', wifiNote: '' }),
+        onHide: () => this.setState(s => ({ shown: { ...s.shown, [w.id]: false } })),
+        onEdit: () => this.setState({ edit: w.id, editVal: '', wifiNote: '' }),
+        editVal: st.editVal, setEdit: (e) => this.setState({ editVal: e.target.value }),
+        onCancel: () => this.setState({ edit: null, editVal: '' }),
+        onSave: () => { if (!ok) return; this.setState(s => ({ wifi: s.wifi.map(x => x.id === w.id ? { ...x, pw: s.editVal } : x), edit: null, editVal: '', wifiNote: 'Password updated for ' + w.ssid + '.' })); },
+        saveOff: !ok, saveStyle: 'display:inline-flex;align-items:center;height:34px;box-sizing:border-box;padding:0 20px;border-radius:999px;font-size:13px;font-weight:700;' + (ok ? 'background:#25395c;color:#fff;cursor:pointer' : 'background:#e8ebf0;color:#7b8494;cursor:not-allowed') };
+    });
+    const vw = st.verify ? st.wifi.find(x => x.id === st.verify) : null;
+    return { wifiRows, hasWifiNote: !!st.wifiNote, wifiNote: st.wifiNote,
+      showVerify: !!st.verify, verifyMsg: 'Enter your LockOut account password to view the password for ' + (vw ? vw.ssid : '') + '.', verifyVal: st.verifyVal, verifyErr: st.verifyErr, hasVerifyErr: !!st.verifyErr,
+      setVerify: (e) => this.setState({ verifyVal: e.target.value, verifyErr: '' }),
+      cancelVerify: () => this.setState({ verify: null, verifyVal: '', verifyErr: '' }),
+      confirmVerify: () => { if (!this.state.verifyVal.trim()) { this.setState({ verifyErr: 'Enter your password to continue.' }); return; } this.setState(s => ({ shown: { ...s.shown, [s.verify]: true }, verify: null, verifyVal: '', verifyErr: '' })); },
+      svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? cfg.cols : [], gridStyle: 'display:grid;grid-template-columns:' + (cfg ? cfg.grid : G), total: cfg ? cfg.total : 0, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
   }
 }
 </script>

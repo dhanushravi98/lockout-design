@@ -1,0 +1,184 @@
+{
+ "id": "icon-button",
+ "title": "Icon button",
+ "component": "IconButton",
+ "file": "components/IconButton.dc.html",
+ "status": "In review",
+ "hintSize": "200px,50px",
+ "description": "Round icon-only button for row actions such as edit or add. Always give it a label; it becomes the tooltip and screen reader name. Use the outline variant for a standalone action (add) and ghost for actions inside a row (edit).",
+ "base": {},
+ "controls": [
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "pencil-simple",
+   "keep": true
+  },
+  {
+   "label": "Variant",
+   "type": "seg",
+   "prop": "variant",
+   "options": [
+    [
+     "ghost",
+     "ghost"
+    ],
+    [
+     "outline",
+     "outline"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "",
+     ""
+    ],
+    [
+     "hover",
+     "hover"
+    ],
+    [
+     "pressed",
+     "pressed"
+    ],
+    [
+     "focus",
+     "focus"
+    ],
+    [
+     "disabled",
+     "disabled"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 100,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "icon": "pencil-simple",
+      "label": "Edit",
+      "variant": "outline"
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "icon": "pencil-simple",
+      "label": "Edit",
+      "variant": "outline",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "pressed",
+     "props": {
+      "icon": "pencil-simple",
+      "label": "Edit",
+      "variant": "outline",
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "icon": "pencil-simple",
+      "label": "Edit",
+      "variant": "outline",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "disabled",
+     "props": {
+      "icon": "pencil-simple",
+      "label": "Edit",
+      "variant": "outline",
+      "state": "disabled"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"pencil-simple\"",
+   "x": "Phosphor icon name."
+  },
+  {
+   "n": "label",
+   "t": "string",
+   "d": "-",
+   "x": "Tooltip and accessible name. Required."
+  },
+  {
+   "n": "variant",
+   "t": "'ghost' | 'outline'",
+   "d": "'ghost'",
+   "x": "Outline adds a 1px border."
+  },
+  {
+   "n": "size",
+   "t": "number (px)",
+   "d": "32",
+   "x": "Width and height. Icon is half the size."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
+   "d": "-",
+   "x": "Documentation only."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Click handler."
+  }
+ ],
+ "values": [
+  {
+   "k": "Shape",
+   "v": "circle, 999px"
+  },
+  {
+   "k": "Sizes",
+   "v": "32 default, 30 inside rows"
+  },
+  {
+   "k": "Icon",
+   "v": "Phosphor bold, 50% of size, color #25395c"
+  },
+  {
+   "k": "Outline border",
+   "v": "1px #dfe3ea, fill #fff"
+  },
+  {
+   "k": "Hover / pressed",
+   "v": "bg #eef2f8 / #e1e8f3"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Disabled",
+   "v": "icon #9aa1ac, not-allowed"
+  }
+ ],
+ "usedIn": "School Screen, Facility Information (row edit, section add)."
+}

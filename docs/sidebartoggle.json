@@ -1,0 +1,165 @@
+{
+ "id": "sidebartoggle",
+ "title": "Sidebar toggle",
+ "component": "SidebarToggle",
+ "file": "components/SidebarToggle.dc.html",
+ "status": "In review",
+ "hintSize": "24px,44px",
+ "description": "The flap on the sidebar's right edge that collapses and expands the menu. It sits half outside the sidebar, level with the first nav item, and its left edge matches the sidebar fill so it reads as part of the panel. The caret points the way the menu will move. Keep it quiet: muted grey until hovered.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Collapsed",
+   "type": "seg",
+   "prop": "collapsed",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "default",
+     ""
+    ],
+    [
+     "hover",
+     "hover"
+    ],
+    [
+     "pressed",
+     "pressed"
+    ],
+    [
+     "focus",
+     "focus"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 100,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "collapsed": false
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "collapsed": false,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "pressed",
+     "props": {
+      "collapsed": false,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "collapsed": false,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "default",
+     "props": {
+      "collapsed": true
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "collapsed": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "pressed",
+     "props": {
+      "collapsed": true,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "collapsed": true,
+      "state": "focus"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "collapsed",
+   "t": "boolean",
+   "d": "false",
+   "x": "Caret right and label \"Expand menu\" when true; caret left and \"Collapse menu\" when false."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus'",
+   "d": "-",
+   "x": "Forces a state for documentation. Leave unset in product code; real hover, press and focus work automatically."
+  },
+  {
+   "n": "onToggle",
+   "t": "() => void",
+   "d": "-",
+   "x": "Click handler."
+  }
+ ],
+ "values": [
+  {
+   "k": "Size / radius",
+   "v": "24 x 44px / 0 12px 12px 0"
+  },
+  {
+   "k": "Placement",
+   "v": "absolute, left 100%, margin-left -1px, top aligned with the first nav item"
+  },
+  {
+   "k": "Fill / border",
+   "v": "#fff / 1px #e5e7eb, left border #fff"
+  },
+  {
+   "k": "Icon",
+   "v": "14px Phosphor caret-left / caret-right, regular, #6b7280"
+  },
+  {
+   "k": "Hover",
+   "v": "bg #eef2f8, icon #25395c"
+  },
+  {
+   "k": "Pressed",
+   "v": "bg #e1e8f3"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  }
+ ],
+ "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
+}

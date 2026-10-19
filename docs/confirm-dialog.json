@@ -1,0 +1,133 @@
+{
+ "id": "confirm-dialog",
+ "title": "Confirm dialog",
+ "component": "ConfirmDialog",
+ "file": "components/ConfirmDialog.dc.html",
+ "status": "In review",
+ "hintSize": "100%,340px",
+ "description": "Small modal that asks the user to confirm. With inputPlaceholder it shows a password field, used to re-verify identity before a sensitive action. Cancel is secondary, confirm is primary.",
+ "base": {
+  "inline": true,
+  "open": true
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Confirm it's you"
+  },
+  {
+   "label": "Message",
+   "type": "text",
+   "prop": "message",
+   "default": "Enter your LockOut account password to continue."
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "lock",
+   "keep": true
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "inline",
+   "t": "boolean",
+   "d": "false",
+   "x": "Draws the dialog in place instead of over the page. Used only by the library preview."
+  },
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the dialog."
+  },
+  {
+   "n": "title",
+   "t": "string",
+   "d": "-",
+   "x": "Heading."
+  },
+  {
+   "n": "message",
+   "t": "string",
+   "d": "-",
+   "x": "Body text."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"lock\"",
+   "x": "Phosphor name in the circle."
+  },
+  {
+   "n": "inputPlaceholder",
+   "t": "string",
+   "d": "-",
+   "x": "Adds a password field when set."
+  },
+  {
+   "n": "value / onInput",
+   "t": "string / fn",
+   "d": "-",
+   "x": "Field value and handler."
+  },
+  {
+   "n": "error",
+   "t": "string",
+   "d": "-",
+   "x": "Red message under the field."
+  },
+  {
+   "n": "cancelLabel / confirmLabel",
+   "t": "string",
+   "d": "\"Cancel\" / \"Confirm\"",
+   "x": "Button text."
+  },
+  {
+   "n": "onCancel / onConfirm",
+   "t": "() => void",
+   "d": "-",
+   "x": "Handlers."
+  }
+ ],
+ "values": [
+  {
+   "k": "Width / radius",
+   "v": "440px / 20px"
+  },
+  {
+   "k": "Padding / gap",
+   "v": "28px 32px / 18px"
+  },
+  {
+   "k": "Backdrop",
+   "v": "rgba(17,24,39,.45)"
+  },
+  {
+   "k": "Title",
+   "v": "22px / 700"
+  },
+  {
+   "k": "Message",
+   "v": "15px #374151, line 1.5"
+  },
+  {
+   "k": "Icon circle",
+   "v": "44px, fill #eaeef5, icon 22px #25395c"
+  },
+  {
+   "k": "Buttons",
+   "v": "Button height 44, secondary then primary, right aligned"
+  },
+  {
+   "k": "Field",
+   "v": "Text field type password, height 46"
+  }
+ ],
+ "usedIn": "School Screen, Facility Information (verify before showing a Wi-Fi password).",
+ "previewWidth": "520px"
+}

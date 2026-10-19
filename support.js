@@ -1619,7 +1619,7 @@
   }
 
   // src/runtime.ts
-  var COMPONENT_DIR = ".";
+  var COMPONENT_DIR = (document.querySelector('meta[name="component-dir"]') || {}).content || ".";
   function createRuntime(doc = document) {
     const registry = createRegistry();
     const pseudoClass = createPseudoSheet(doc);
@@ -1643,7 +1643,7 @@
       const r = registry.get(name);
       if (r.fetched) return;
       r.fetched = true;
-      const url = COMPONENT_DIR + "/" + encodeURIComponent(name) + ".dc.html";
+      const url = COMPONENT_DIR + "/" + name.split("/").map(encodeURIComponent).join("/") + ".dc.html";
       const res = window.__resources;
       const pre = res ? res[url] : void 0;
       const target = typeof pre === "string" && pre ? pre : url;

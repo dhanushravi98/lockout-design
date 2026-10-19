@@ -39,7 +39,7 @@ CHANGELOG.md                What changed in each version
 1. `components/NewThing.dc.html`: the component.
 2. `docs/new-thing.json`: its library entry (copy an existing one: description, status, controls, states, props, values).
 3. `docs/index.json`: add the id to its category.
-4. `components/LibraryEntry.dc.html`: add one line to the marked registry for the new component name.
+4. `components/LibraryEntry.dc.html`: make three edits in the registry (playground, grid, name list). See CLAUDE.md.
 
 ## Working on it
 

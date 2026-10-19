@@ -1,0 +1,311 @@
+{
+ "id": "navitem",
+ "title": "Nav item",
+ "component": "NavItem",
+ "file": "components/NavItem.dc.html",
+ "status": "In review",
+ "hintSize": "240px,44px",
+ "description": "One destination in the main menu: an icon and a label in a fully rounded row. The current page is the active item, with a navy tint, semibold label and the fill icon; every other item uses the regular icon. Collapsed, the row shrinks to a 44px icon-only circle and shows its label in a Tooltip on hover and focus. It renders a real link, so it opens in a new tab and reads as a link to screen readers.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Home"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "house",
+   "keep": true
+  },
+  {
+   "label": "Active",
+   "type": "seg",
+   "prop": "active",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Collapsed",
+   "type": "seg",
+   "prop": "collapsed",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "default",
+     ""
+    ],
+    [
+     "hover",
+     "hover"
+    ],
+    [
+     "pressed",
+     "pressed"
+    ],
+    [
+     "focus",
+     "focus"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 240,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": false
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": false,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "pressed",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": false,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": false,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "active default",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": true
+     }
+    },
+    {
+     "label": "active hover",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "active pressed",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": true,
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "active focus",
+     "props": {
+      "label": "Home",
+      "icon": "house",
+      "active": true,
+      "state": "focus"
+     }
+    }
+   ]
+  },
+  {
+   "title": "Collapsed",
+   "note": "Icon only, 44px circle. Hover and focus show the label in a Tooltip 12px to the right.",
+   "cellWidth": 170,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": false,
+      "collapsed": true
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": false,
+      "collapsed": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": false,
+      "collapsed": true,
+      "state": "focus"
+     }
+    },
+    {
+     "label": "active default",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": true,
+      "collapsed": true
+     }
+    },
+    {
+     "label": "active hover",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": true,
+      "collapsed": true,
+      "state": "hover"
+     }
+    },
+    {
+     "label": "active focus",
+     "props": {
+      "label": "Dispatch",
+      "icon": "broadcast",
+      "active": true,
+      "collapsed": true,
+      "state": "focus"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Home\"",
+   "x": "Destination name. Also the accessible name and the Tooltip text when collapsed."
+  },
+  {
+   "n": "icon",
+   "t": "string (icon name)",
+   "d": "\"house\"",
+   "x": "Phosphor name, drawn at 24px. Regular weight, fill when active."
+  },
+  {
+   "n": "active",
+   "t": "boolean",
+   "d": "false",
+   "x": "The current page. Sets aria-current=\"page\"."
+  },
+  {
+   "n": "collapsed",
+   "t": "boolean",
+   "d": "false",
+   "x": "Icon-only 44px circle with a hover Tooltip."
+  },
+  {
+   "n": "href",
+   "t": "string",
+   "d": "\"#\"",
+   "x": "Destination URL."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus'",
+   "d": "-",
+   "x": "Forces a state for documentation. Leave unset in product code; real hover, press and focus work automatically."
+  },
+  {
+   "n": "onClick",
+   "t": "(e) => void",
+   "d": "-",
+   "x": "Click handler. Call e.preventDefault() when routing in the app."
+  }
+ ],
+ "values": [
+  {
+   "k": "Height / radius",
+   "v": "44px / 999px"
+  },
+  {
+   "k": "Padding / gap",
+   "v": "0 10px / 12px"
+  },
+  {
+   "k": "Font",
+   "v": "14px / 400, active 600"
+  },
+  {
+   "k": "Icon",
+   "v": "24px Phosphor, regular; fill when active; color follows label"
+  },
+  {
+   "k": "Default",
+   "v": "transparent, text #374151"
+  },
+  {
+   "k": "Hover",
+   "v": "bg #f4f6f9, text #111827"
+  },
+  {
+   "k": "Pressed",
+   "v": "bg #e8ebf0 / active #d5def0"
+  },
+  {
+   "k": "Active",
+   "v": "bg #eaeef5, text #25395c"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Collapsed",
+   "v": "44 x 44px, Tooltip at left 56px"
+  }
+ ],
+ "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
+}
