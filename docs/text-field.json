@@ -22,6 +22,28 @@
    "default": "Search by name or room"
   },
   {
+   "label": "Type",
+   "type": "seg",
+   "prop": "type",
+   "options": [
+    [
+     "text",
+     "text"
+    ],
+    [
+     "password",
+     "password"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Value (optional, shows dots when Type is password)",
+   "type": "text",
+   "prop": "value",
+   "default": ""
+  },
+  {
    "label": "Required (red star)",
    "type": "seg",
    "prop": "required",

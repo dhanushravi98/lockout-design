@@ -7,6 +7,7 @@
 - Screens: School Screen and the Report Issue overlay updated to the current design. They import library components (Button, Icon, Text field, Icon button, Section header, Confirm dialog). The Dispatch menu item opens the Dispatch screen.
 - support.js: components can load from another folder (component-dir meta) and from a path. Not breaking.
 - Confirm dialog docs: playground now has a password field placeholder control (on by default), so the password field shows in the preview.
+- Text field docs: playground gains Type (text / password) and Value controls, so the password option can be seen in the preview.
 - Housekeeping: README registry wording, docs/index.json version, removed components/INSTRUCTIONS.md.
 
 ## Unreleased
