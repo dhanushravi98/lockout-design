@@ -1,0 +1,179 @@
+{
+ "id": "modal-shell",
+ "title": "Modal shell",
+ "component": "ModalShell",
+ "file": "components/ModalShell.dc.html",
+ "status": "Approved",
+ "hintSize": "100%,300px",
+ "previewWidth": "560px",
+ "description": "Frame for every dialog: dark backdrop, white box, title with optional icon and subtitle, scrolling body and a fixed footer with Cancel and a primary button. Put the dialog content (text fields, lists) inside it. Confirm dialog and the Add dialogs use it.",
+ "base": {
+  "inline": true,
+  "open": true,
+  "title": "Add Wi-Fi network",
+  "bodyText": "Dialog content goes here."
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Add Wi-Fi network"
+  },
+  {
+   "label": "Subtitle (optional)",
+   "type": "text",
+   "prop": "subtitle",
+   "default": ""
+  },
+  {
+   "label": "Icon name (optional)",
+   "type": "icon",
+   "prop": "icon",
+   "default": "",
+   "keep": true
+  },
+  {
+   "label": "Body text",
+   "type": "text",
+   "prop": "bodyText",
+   "default": "Dialog content goes here."
+  },
+  {
+   "label": "Confirm label",
+   "type": "text",
+   "prop": "confirmLabel",
+   "default": "Confirm"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the dialog."
+  },
+  {
+   "n": "title",
+   "t": "string",
+   "d": "-",
+   "x": "Heading, 22px / 700."
+  },
+  {
+   "n": "subtitle",
+   "t": "string",
+   "d": "-",
+   "x": "Grey line under the title."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "-",
+   "x": "Phosphor name; adds a 44px circle before the title."
+  },
+  {
+   "n": "bodyText",
+   "t": "string",
+   "d": "-",
+   "x": "Plain paragraph above the content."
+  },
+  {
+   "n": "children",
+   "t": "content",
+   "d": "-",
+   "x": "Dialog content, such as Text fields. Scrolls when tall."
+  },
+  {
+   "n": "width",
+   "t": "number (px)",
+   "d": "460",
+   "x": "Box width. Never wider than the window."
+  },
+  {
+   "n": "height",
+   "t": "number (px)",
+   "d": "-",
+   "x": "Fixed height. Omit to size to the content."
+  },
+  {
+   "n": "cancelLabel / confirmLabel",
+   "t": "string",
+   "d": "\"Cancel\" / \"Confirm\"",
+   "x": "Footer button text."
+  },
+  {
+   "n": "confirmDisabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greys out the primary button."
+  },
+  {
+   "n": "hideFooter",
+   "t": "boolean",
+   "d": "false",
+   "x": "Removes the footer buttons."
+  },
+  {
+   "n": "onClose",
+   "t": "() => void",
+   "d": "-",
+   "x": "Adds a close button and closes on backdrop click."
+  },
+  {
+   "n": "onCancel / onConfirm",
+   "t": "() => void",
+   "d": "-",
+   "x": "Footer handlers."
+  },
+  {
+   "n": "inline",
+   "t": "boolean",
+   "d": "false",
+   "x": "Draws the dialog in place. Used only by the library preview."
+  }
+ ],
+ "values": [
+  {
+   "k": "Backdrop",
+   "v": "rgba(17,24,39,.45), padding 20px, z-index 100"
+  },
+  {
+   "k": "Box",
+   "v": "white, radius 20px, shadow 0 20px 60px rgba(0,0,0,.25), max height 92vh"
+  },
+  {
+   "k": "Header",
+   "v": "padding 28px 32px 0, gap 14px"
+  },
+  {
+   "k": "Title",
+   "v": "22px / 700 #111827"
+  },
+  {
+   "k": "Icon circle",
+   "v": "44px, fill #eaeef5, icon 22px #25395c"
+  },
+  {
+   "k": "Body",
+   "v": "padding 18px 32px, gap 16px, scrolls"
+  },
+  {
+   "k": "Body text",
+   "v": "15px #374151, line height 1.5"
+  },
+  {
+   "k": "Footer",
+   "v": "padding 4px 32px 28px, gap 10px, right aligned"
+  },
+  {
+   "k": "Buttons",
+   "v": "Button height 44: secondary then primary"
+  },
+  {
+   "k": "Fields inside",
+   "v": "Text field height 44"
+  }
+ ],
+ "usedIn": "Confirm dialog, Add Wi-Fi network and Add contact dialogs (School Screen, Facility Information)."
+}

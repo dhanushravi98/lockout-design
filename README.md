@@ -31,7 +31,7 @@ CHANGELOG.md                What changed in each version
 ## Status labels
 
 - Approved: signed off. Build to spec.
-- In review: do not build yet. (None right now: all 25 components are Approved.)
+- In review: do not build yet. (None right now: all 26 components are Approved.)
 - Deprecated: do not use in new work; the replacement is named in the library.
 
 ## Adding a component

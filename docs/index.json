@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.6",
+ "version": "0.9.7",
  "categories": [
   {
    "name": "Foundations",
@@ -56,6 +56,7 @@
   {
    "name": "Modals and overlays",
    "entries": [
+    "modal-shell",
     "confirm-dialog"
    ]
   },

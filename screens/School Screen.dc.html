@@ -181,17 +181,7 @@
     </div>
   </div>
 </div>
-<sc-if value="{{ showAdd }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;background:rgba(17,24,39,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
-  <div style="width:460px;max-width:100%;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:28px 32px;display:flex;flex-direction:column;gap:20px">
-    <span style="font-size:22px;font-weight:700">{{ addTitle }}</span>
-    <div style="display:flex;flex-direction:column;gap:16px">
-      <sc-for list="{{ addFields }}" as="f" hint-placeholder-count="3"><dc-import name="TextField" label="{{ f.label }}" required="{{ f.required }}" type="{{ f.type }}" placeholder="{{ f.placeholder }}" helper="{{ f.helper }}" error="{{ f.error }}" value="{{ f.value }}" onInput="{{ f.onInput }}" height="44" hint-size="100%,70px"></dc-import></sc-for>
-    </div>
-    <div style="display:flex;justify-content:flex-end;gap:10px"><dc-import name="Button" label="Cancel" variant="secondary" height="44" onClick="{{ cancelAdd }}" hint-size="110px,44px"></dc-import><dc-import name="Button" label="{{ addLabel }}" variant="primary" height="44" onClick="{{ confirmAdd }}" hint-size="130px,44px"></dc-import></div>
-  </div>
-</div>
-</sc-if>
+<sc-if value="{{ showAdd }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="{{ addTitle }}" width="460" confirmLabel="{{ addLabel }}" onCancel="{{ cancelAdd }}" onConfirm="{{ confirmAdd }}" hint-size="0px,0px"><sc-for list="{{ addFields }}" as="f" hint-placeholder-count="3"><dc-import name="TextField" label="{{ f.label }}" required="{{ f.required }}" type="{{ f.type }}" placeholder="{{ f.placeholder }}" helper="{{ f.helper }}" error="{{ f.error }}" value="{{ f.value }}" onInput="{{ f.onInput }}" height="44" hint-size="100%,70px"></dc-import></sc-for></dc-import></sc-if>
 <sc-if value="{{ showDel }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Delete this contact?" message="{{ delMsg }}" icon="trash" confirmLabel="Delete" onCancel="{{ cancelDel }}" onConfirm="{{ confirmDel }}" hint-size="0px,0px"></dc-import></sc-if>
 <sc-if value="{{ showVerify }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Confirm it's you" message="{{ verifyMsg }}" icon="lock" inputPlaceholder="Your account password" value="{{ verifyVal }}" onInput="{{ setVerify }}" error="{{ verifyErr }}" confirmLabel="Verify" onCancel="{{ cancelVerify }}" onConfirm="{{ confirmVerify }}" hint-size="0px,0px"></dc-import></sc-if>
 <dc-import name="../screens/Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>

@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.7 (draft)
+- New: Modal shell (Approved). The frame for dialogs: backdrop, white box, title with optional icon, scrolling body, footer with Cancel and a primary button.
+- Confirm dialog and the Add Wi-Fi network and Add contact dialogs are built on Modal shell. Fields inside dialogs are 44px (the Confirm dialog password field was 46px).
+- Still to build: dropdown with checkboxes, review layout. The Facilities List modal in the Dispatch screen is still inline; move it onto Modal shell later.
+
 ## v0.9.6 (draft)
 - Library: removed the duplicate queued "Modals and overlays" tab (the real category with Confirm dialog stays). Still to build: modal shell, dropdown with checkboxes, review layout.
 - All components Approved. The 10 that were In review (Icon button, Section header, Confirm dialog, Sidebar, Nav item, Nav divider, Sidebar toggle, Profile card, Avatar, Tooltip) are now signed off in their docs/*.json. Every library component is Approved.

@@ -3,7 +3,7 @@
  "title": "Section header",
  "component": "SectionHeader",
  "file": "components/SectionHeader.dc.html",
- "status": "Approved",
+ "status": "In review",
  "hintSize": "200px,50px",
  "description": "Header row of a collapsible card section: icon tile, title, subtitle, optional add action and chevron. The whole row toggles; the action button does not.",
  "base": {},

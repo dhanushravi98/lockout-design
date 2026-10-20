@@ -5,7 +5,7 @@
  "file": "components/ConfirmDialog.dc.html",
  "status": "Approved",
  "hintSize": "100%,340px",
- "description": "Small modal that asks the user to confirm. With inputPlaceholder it shows a password field, used to re-verify identity before a sensitive action. Cancel is secondary, confirm is primary.",
+ "description": "Small modal that asks the user to confirm. With inputPlaceholder it shows a password field, used to re-verify identity before a sensitive action. Cancel is secondary, confirm is primary. Built on the Modal shell.",
  "base": {
   "inline": true,
   "open": true
@@ -125,7 +125,7 @@
   },
   {
    "k": "Field",
-   "v": "Text field type password, height 46"
+   "v": "Text field type password, height 44"
   }
  ],
  "usedIn": "School Screen, Facility Information (verify before showing a Wi-Fi password).",
