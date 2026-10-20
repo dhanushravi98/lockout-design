@@ -1,6 +1,7 @@
 # Changelog
 
 ## v0.9.6 (draft)
+- Library: removed the duplicate queued "Modals and overlays" tab (the real category with Confirm dialog stays). Still to build: modal shell, dropdown with checkboxes, review layout.
 - All components Approved. The 10 that were In review (Icon button, Section header, Confirm dialog, Sidebar, Nav item, Nav divider, Sidebar toggle, Profile card, Avatar, Tooltip) are now signed off in their docs/*.json. Every library component is Approved.
 - Screens: School Screen updated to the current design (Button, Icon, Text field, Icon button, Section header, Confirm dialog). The Dispatch menu item opens the Dispatch screen.
 - Dispatch: Facilities List modal is an accordion (districts open one at a time).

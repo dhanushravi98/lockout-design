@@ -81,10 +81,6 @@
  ],
  "queued": [
   {
-   "name": "Modals and overlays",
-   "note": "Modal shell, dropdown with checkboxes, review layout."
-  },
-  {
    "name": "Device card",
    "note": "The device card from the Service Request overlay."
   }
