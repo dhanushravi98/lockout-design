@@ -64,14 +64,14 @@
       <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2"><div style="flex:none;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><dc-import name="SectionHeader" title="{{ g.title }}" subtitle="{{ g.sub }}" icon="buildings" open="{{ g.open }}" onToggle="{{ g.toggle }}" hint-size="100%,60px"></dc-import><sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #eef0f3;padding:10px 12px 12px;display:flex;flex-direction:column;gap:10px"><div style="max-height:290px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:2px"><sc-for list="{{ g.items }}" as="f" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;cursor:pointer" style-hover="background:#eef2f8;border-color:#bcc7da"><span style="font-size:14px;font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span><span style="flex:none;font-size:13px;color:#6b7280">{{ f.zip }}</span></div></sc-for></div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 0;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ g.shown }}</b> of <b style="color:#111827">{{ g.total }}</b></span><sc-if value="{{ g.hasMore }}" hint-placeholder-val="{{ false }}"><span onClick="{{ g.more }}" style="font-weight:600;color:#25395c;cursor:pointer;padding:6px 14px;border:1px solid #cbd2dc;border-radius:999px" style-hover="background:#eef2f8">{{ g.moreLabel }}</span></sc-if></div></div></sc-if></div></sc-for>
       <sc-if value="{{ mEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:40px 0;text-align:center;font-size:14px;color:#6b7280">No facilities match your search.</div></sc-if>
     </div>
-    <div style="flex:none;border-top:1px solid #eef0f3;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ mtotal }}</b> {{ mWord }} in <b style="color:#111827">{{ mDistricts }}</b> {{ dWord }}</span><span onClick="{{ toggleAll }}" style="font-weight:600;color:#25395c;cursor:pointer;padding:6px 12px;border-radius:999px" style-hover="background:#eef2f8">{{ toggleAllLabel }}</span></div>
+    <div style="flex:none;border-top:1px solid #eef0f3;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ mtotal }}</b> {{ mWord }} in <b style="color:#111827">{{ mDistricts }}</b> {{ dWord }}</span></div>
   </div>
 </div>
 </sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { q: '', page: 1, per: 20, modal: null, mq: '', gopen: {}, gshow: {} };
+  state = { q: '', page: 1, per: 20, modal: null, mq: '', gcur: undefined, gshow: {} };
   DISTS = ['Southgate Community Schools', 'Allen Park Public Schools', 'Davison Community Schools', 'Fenton Area Public Schools', 'Lenawee Intermediate School District'];
   POOL = [['ALLEN ELEMENTARY SCHOOL', 0], ['ANDERSON HIGH SCHOOL', 0], ['CREATIVE MONTESSORI ACADEMY', 0], ['DAVIDSON MIDDLE ACADEMY', 0], ['DAVIDSON MIDDLE SCHOOL', 0], ['FORDLINE ELEMENTARY SCHOOL', 0], ['GERISCH MIDDLE SCHOOL', 0], ['GROGAN ELEMENTARY SCHOOL', 0], ['NORTH POINTE ELEMENTARY SCHOOL', 0], ['SHELTERS ELEMENTARY SCHOOL', 0], ['LINCOLN ELEMENTARY SCHOOL', 0], ['WASHINGTON MIDDLE SCHOOL', 0], ['ROOSEVELT HIGH SCHOOL', 0], ['JEFFERSON ACADEMY', 0]];
   facs(d) { const zip = d[0].slice(3, 8); return Array.from({ length: d[1] }, (_, i) => { const b = this.POOL[i % this.POOL.length][0]; return { idx: i, name: i >= this.POOL.length ? b + ' ' + (Math.floor(i / this.POOL.length) + 1) : b, zip }; }); }
@@ -80,20 +80,20 @@ class Component extends DCLogic {
     const st = this.state, q = st.q.trim().toLowerCase();
     const all = this.DATA.filter(d => !q || d[0].toLowerCase().includes(q));
     const last = Math.max(1, Math.ceil(all.length / st.per)), page = Math.min(last, st.page);
-    const cards = all.slice((page - 1) * st.per, page * st.per).map(d => ({ name: d[0], fac: d[1] + (d[1] === 1 ? ' Facility' : ' Facilities'), onFac: () => this.setState({ modal: d, mq: '', gopen: {}, gshow: {} }) }));
+    const cards = all.slice((page - 1) * st.per, page * st.per).map(d => ({ name: d[0], fac: d[1] + (d[1] === 1 ? ' Facility' : ' Facilities'), onFac: () => this.setState({ modal: d, mq: '', gcur: undefined, gshow: {} }) }));
     const md = st.modal, mq = st.mq.trim().toLowerCase();
     const mall = md ? this.facs(md).filter(f => !mq || f.name.toLowerCase().includes(mq)) : [];
     const di = md ? this.DATA.indexOf(md) : 0, nd = md && md[1] > 8 ? 2 : 1, cut = md ? Math.ceil(md[1] * 0.75) : 0, byD = {};
     mall.forEach(f => { const k = this.DISTS[(di + (nd > 1 && f.idx >= cut ? 1 : 0)) % this.DISTS.length]; (byD[k] = byD[k] || []).push(f); });
     const keys = Object.keys(byD), searching = !!mq;
-    const isOpen = k => searching || (st.gopen[k] !== undefined ? st.gopen[k] : keys[0] === k);
+    const cur = st.gcur === undefined ? keys[0] : st.gcur;
+    const isOpen = k => searching || cur === k;
     const groups = keys.map(k => ({ title: k, sub: byD[k].length + (byD[k].length === 1 ? ' facility' : ' facilities'), total: byD[k].length, shown: Math.min(byD[k].length, st.gshow[k] || 10), hasMore: byD[k].length > (st.gshow[k] || 10), moreLabel: 'Show ' + Math.min(10, byD[k].length - (st.gshow[k] || 10)) + ' more',
-      items: byD[k].slice(0, st.gshow[k] || 10), more: () => this.setState(s => ({ gshow: { ...s.gshow, [k]: (s.gshow[k] || 10) + 10 } })), open: isOpen(k), toggle: () => this.setState(s => ({ gopen: { ...s.gopen, [k]: !isOpen(k) } })) }));
-    const allOpen = keys.length > 0 && keys.every(isOpen);
+      items: byD[k].slice(0, st.gshow[k] || 10), more: () => this.setState(s => ({ gshow: { ...s.gshow, [k]: (s.gshow[k] || 10) + 10 } })), open: isOpen(k), toggle: () => this.setState({ gcur: cur === k ? null : k }) }));
     const M = [['Home', 'squares-four'], ['School', 'buildings'], ['Dispatch', 'broadcast'], ['Reports', 'file-text'], ['Texting', 'chat'], ['User Management', 'users'], ['Services', 'wrench'], ['Assessments', 'clipboard-text'], ['Emergency Prep', 'shield'], ['Trainings', 'graduation-cap'], ['User Logs', 'clock-counter-clockwise']];
     return { showModal: !!md, modalTitle: md ? md[0] : '', closeModal: () => this.setState({ modal: null }), stop: e => { if (e && e.stopPropagation) e.stopPropagation(); },
       mq: st.mq, setMq: e => this.setState({ mq: e.target.value, gshow: {} }), mtotal: mall.length, mEmpty: !!md && mall.length === 0, groups, mWord: mall.length === 1 ? 'facility' : 'facilities', mDistricts: keys.length, dWord: keys.length === 1 ? 'district' : 'districts',
-      toggleAllLabel: allOpen ? 'Collapse all' : 'Expand all', toggleAll: () => this.setState({ gopen: Object.fromEntries(keys.map(k => [k, !allOpen])) }),
+      
       menu: M.map(([label, icon]) => ({ label, icon, onClick: () => { if (label === 'School') window.location.href = 'School Screen.dc.html'; }, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (label === 'School' ? 'cursor:pointer;' : '') + (label === 'Dispatch' ? 'background:#25395c;color:#fff' : 'color:#374151') })),
       q: st.q, setQ: e => this.setState({ q: e.target.value, page: 1 }), total: all.length, per: st.per, page, perOpts: [10, 20, 40], cards, empty: all.length === 0,
       onPage: n => this.setState({ page: n }), onPer: n => this.setState({ per: n, page: 1 }) };

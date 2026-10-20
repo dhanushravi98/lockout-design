@@ -3,7 +3,7 @@
  "title": "Confirm dialog",
  "component": "ConfirmDialog",
  "file": "components/ConfirmDialog.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,340px",
  "description": "Small modal that asks the user to confirm. With inputPlaceholder it shows a password field, used to re-verify identity before a sensitive action. Cancel is secondary, confirm is primary.",
  "base": {
@@ -29,12 +29,6 @@
    "prop": "icon",
    "default": "lock",
    "keep": true
-  },
-  {
-   "label": "Password field placeholder (clear to hide the field)",
-   "type": "text",
-   "prop": "inputPlaceholder",
-   "default": "Your account password"
   }
  ],
  "grids": [],

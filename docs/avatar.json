@@ -3,7 +3,7 @@
  "title": "Avatar",
  "component": "Avatar",
  "file": "components/Avatar.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "36px,36px",
  "description": "A person's initials in a navy circle: the first letters of the first two words of their name. 36px in the sidebar profile, 44px on the user card. The full name is its accessible label.",
  "base": {},

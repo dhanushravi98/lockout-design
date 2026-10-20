@@ -3,7 +3,7 @@
  "title": "Nav divider",
  "component": "NavDivider",
  "file": "components/NavDivider.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "240px,17px",
  "description": "A thin rule between groups of nav items. Decorative only, hidden from screen readers. Never place one above the first group or below the last.",
  "base": {},

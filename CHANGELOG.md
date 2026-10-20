@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.9.6 (draft)
+- All components Approved. The 10 that were In review (Icon button, Section header, Confirm dialog, Sidebar, Nav item, Nav divider, Sidebar toggle, Profile card, Avatar, Tooltip) are now signed off in their docs/*.json. Every library component is Approved.
+- New: Icon button, Section header, Confirm dialog (all In review).
+- TextField: new type prop ('text' | 'password'). Not breaking.
+- New screen: Dispatch (screens/Dispatch Screen.dc.html) with the Facilities List modal, grouped by district in collapsible Section headers. Districts open one at a time (accordion). Each district shows 10 facilities in a scrolling box with a Show 10 more button.
+- Screens: School Screen and the Report Issue overlay updated to the current design. They import library components (Button, Icon, Text field, Icon button, Section header, Confirm dialog). The Dispatch menu item opens the Dispatch screen.
+- School Screen, Facility Information: four collapsible sections that open one at a time (Facility overview, Facility details, Direct contacts, Wi-Fi networks). Section headers are 50px (compact). Inline edit with Cancel and Save per section, Direct contacts edit per contact (Role, Name, Phone) with add and delete, Wi-Fi networks with add, show password (verify dialog) and update password. Every save shows a confirmation bar that closes after 10 seconds. Saved values are held in the page only.
+- Section header: new compact prop (50px row); the action button shows only while the section is open.
+- support.js: components can load from another folder (component-dir meta) and from a path. Not breaking.
+- Housekeeping: README registry wording, docs/index.json version, removed components/INSTRUCTIONS.md.
+
 ## v0.9.5 (draft)
 - New: Icon button, Section header, Confirm dialog (all In review).
 - TextField: new type prop ('text' | 'password'). Not breaking.

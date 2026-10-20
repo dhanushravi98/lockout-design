@@ -3,7 +3,7 @@
  "title": "Icon button",
  "component": "IconButton",
  "file": "components/IconButton.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "200px,50px",
  "description": "Round icon-only button for row actions such as edit or add. Always give it a label; it becomes the tooltip and screen reader name. Use the outline variant for a standalone action (add) and ghost for actions inside a row (edit).",
  "base": {},

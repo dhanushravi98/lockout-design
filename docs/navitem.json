@@ -3,7 +3,7 @@
  "title": "Nav item",
  "component": "NavItem",
  "file": "components/NavItem.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "240px,44px",
  "description": "One destination in the main menu: an icon and a label in a fully rounded row. The current page is the active item, with a navy tint, semibold label and the fill icon; every other item uses the regular icon. Collapsed, the row shrinks to a 44px icon-only circle and shows its label in a Tooltip on hover and focus. It renders a real link, so it opens in a new tab and reads as a link to screen readers.",
  "base": {},

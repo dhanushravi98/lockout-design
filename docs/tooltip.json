@@ -3,7 +3,7 @@
  "title": "Tooltip",
  "component": "Tooltip",
  "file": "components/Tooltip.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "80px,30px",
  "description": "A short label for an icon-only control, shown on hover and keyboard focus. One line, never wraps, no interactive content. The parent places it 12px from the trigger and shows or hides it; the Tooltip only draws the label.",
  "base": {},

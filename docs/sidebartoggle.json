@@ -3,7 +3,7 @@
  "title": "Sidebar toggle",
  "component": "SidebarToggle",
  "file": "components/SidebarToggle.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "24px,44px",
  "description": "The flap on the sidebar's right edge that collapses and expands the menu. It sits half outside the sidebar, level with the first nav item, and its left edge matches the sidebar fill so it reads as part of the panel. The caret points the way the menu will move. Keep it quiet: muted grey until hovered.",
  "base": {},

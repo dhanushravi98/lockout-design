@@ -3,7 +3,7 @@
  "title": "Section header",
  "component": "SectionHeader",
  "file": "components/SectionHeader.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "200px,50px",
  "description": "Header row of a collapsible card section: icon tile, title, subtitle, optional add action and chevron. The whole row toggles; the action button does not.",
  "base": {},
@@ -55,6 +55,12 @@
    "x": "Shows the chevron and makes the row toggle."
   },
   {
+   "n": "compact",
+   "t": "boolean",
+   "d": "false",
+   "x": "Row height 50px (padding 8px 16px) to match table data rows. Default is 58px."
+  },
+  {
    "n": "open",
    "t": "boolean",
    "d": "false",
@@ -64,7 +70,7 @@
    "n": "actionIcon",
    "t": "string",
    "d": "-",
-   "x": "Adds an Icon button on the right. Omit for none."
+   "x": "Adds an Icon button on the right. On a collapsible header it shows only while the section is open. Omit for none."
   },
   {
    "n": "actionLabel",
@@ -88,7 +94,7 @@
  "values": [
   {
    "k": "Padding / gap",
-   "v": "12px 16px / 14px"
+   "v": "12px 16px / 14px (compact: 8px 16px, 50px row)"
   },
   {
    "k": "Icon tile",

@@ -3,7 +3,7 @@
  "title": "Sidebar",
  "component": "Sidebar",
  "file": "components/Sidebar.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "264px,960px",
  "description": "The main menu: logo and product name, groups of Nav items separated by Nav dividers, the Profile card at the foot and the Sidebar toggle on the right edge. Expanded it is 264px; collapsed it is an 80px icon rail, and the width animates between the two. Keep the menu order the product uses; groups only add dividers between neighbours.",
  "base": {},

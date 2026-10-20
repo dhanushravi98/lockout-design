@@ -54,20 +54,20 @@
 
       <!-- School strip (current design) -->
       <div style="flex:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:22px 24px;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px 24px;align-items:flex-start">
-        <div style="display:flex;flex-direction:column;gap:18px;min-width:200px;flex:1 1 380px">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:220px;flex:1 1 220px">
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px"><span style="font-size:clamp(24px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">ADRIAN MADISON SCHOOLS</span><span style="border:1px solid #bcd0f5;background:#eaf1fe;color:#25395c;flex:none;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:5px 14px">SYSTEM CLEAR</span></div>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=227+N+Madison+St+Adrian+MI+49221" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:-8px;font-size:14px;color:#25395c;text-decoration:none" style-hover="text-decoration:underline"><svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path></svg><span style="min-width:0">227 N Madison St, Adrian, MI 49221&nbsp;<svg style="vertical-align:-1px;display:inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span></a>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;font-size:13px">
             <span style="white-space:nowrap">DISPATCH: LENAWEE COUNTY</span><span style="white-space:nowrap">DISTRICT: ADRIAN MADISON SCHOOL DISTRICT</span><span style="white-space:nowrap">DEVICES: 477</span>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:stretch;gap:14px;flex:0 1 auto;min-width:200px;max-width:100%;align-self:center">
+        <div style="display:flex;flex-direction:column;align-items:stretch;gap:14px;flex:0 1 auto;min-width:0;max-width:100%;align-self:center">
           <div style="display:flex;justify-content:flex-end">
             <sc-for list="{{ mainActions }}" as="a" hint-placeholder-count="1">
               <div onClick="{{ a.onClick }}" style="{{ a.style }}" style-hover="{{ a.hover }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path><path d="M12 9v4M12 17h.01" stroke="#25395c" stroke-width="2"></path></svg>{{ a.label }}</div>
             </sc-for>
           </div>
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;justify-content:flex-end;margin-right:-12px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;justify-content:flex-end;min-width:0;flex-wrap:wrap">
             <sc-for list="{{ refLinks }}" as="a" hint-placeholder-count="4">
               <div onMouseEnter="{{ a.enter }}" onMouseLeave="{{ a.leave }}" style="{{ a.style }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="{{ a.fill }}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ a.path }}"></path></svg>{{ a.label }}</div>
             </sc-for>
@@ -125,18 +125,36 @@
           <sc-if value="{{ showFacility }}" hint-placeholder-val="{{ false }}">
           <div style="padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow-y:auto">
             <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #eef0f3"><span style="font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Facility Info</span></div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;flex:none">
-              <sc-for list="{{ facCards }}" as="f" hint-placeholder-count="3"><div style="background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.04em;color:#6b7280;text-transform:uppercase">{{ f.k }}</span><span style="font-size:15px;font-weight:500">{{ f.v }}</span></div></sc-for>
-            </div>
             <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
-              <dc-import name="SectionHeader" title="Wi-Fi networks" subtitle="Network names and passwords used by this school's devices" icon="wifi-high" collapsible="false" hint-size="100%,60px"></dc-import>
+              <dc-import name="SectionHeader" title="Facility overview" subtitle="Name, district and dispatch" icon="buildings" compact="true" open="{{ infoOpen }}" onToggle="{{ infoToggle }}" hint-size="100%,50px"></dc-import>
+              <sc-if value="{{ infoOpen }}" hint-placeholder-val="{{ true }}"><div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+              <sc-for list="{{ facCards }}" as="f" hint-placeholder-count="3"><div style="background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.04em;color:#6b7280;text-transform:uppercase">{{ f.f }}</span><sc-if value="{{ f.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:15px;font-weight:500;color:{{ f.c }}">{{ f.v }}</span></sc-if><sc-if value="{{ f.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" value="{{ f.val }}" onInput="{{ f.setVal }}" height="38" hint-size="100%,38px"></dc-import></sc-if></div></sc-for>
+            </div><div style="flex:none;display:flex;align-items:center;gap:8px"><sc-if value="{{ infoCtl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" label="Edit" size="30" onClick="{{ infoCtl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ infoCtl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ infoCtl.onCancel }}" hint-size="100px,34px"></dc-import><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ infoCtl.onSave }}" hint-size="90px,34px"></dc-import></sc-if></div></div></sc-if>
+              <sc-if value="{{ ntInfo.has }}" hint-placeholder-val="{{ false }}"><div style="{{ ntInfo.bar }}"><span>{{ ntInfo.m }}</span><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ ntInfo.close }}" hint-size="26px,26px"></dc-import></div></sc-if>
+            </div>
+            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
+              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+                <dc-import name="SectionHeader" title="{{ s.title }}" subtitle="{{ s.sub }}" icon="{{ s.icon }}" compact="true" open="{{ s.open }}" actionIcon="{{ s.actionIcon }}" actionLabel="Add" onToggle="{{ s.toggle }}" onAction="{{ s.onAdd }}" hint-size="100%,50px"></dc-import>
+                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px">
+                    <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px"><div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px 24px"><sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><sc-if value="{{ x.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;color:{{ x.c }}">{{ x.v }}</span></sc-if><sc-if value="{{ x.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" value="{{ x.val }}" onInput="{{ x.setVal }}" height="38" hint-size="100%,38px"></dc-import></sc-if></div></sc-for></div><div style="flex:none;display:flex;align-items:center;gap:8px"><sc-if value="{{ s.ctl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" label="Edit" size="30" onClick="{{ s.ctl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ s.ctl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ s.ctl.onCancel }}" hint-size="100px,34px"></dc-import><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ s.ctl.onSave }}" hint-size="90px,34px"></dc-import></sc-if></div></div></sc-if>
+                    <sc-if value="{{ s.notGrid }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:10px 14px;min-width:0"><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 180px"><sc-if value="{{ x.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.r.v }}</span><span style="font-size:14px;font-weight:600;color:#111827">{{ x.n.v }}</span><span style="font-size:13px;color:#6b7280">{{ x.p.v }}</span></sc-if><sc-if value="{{ x.editing }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;padding-top:2px"><dc-import name="TextField" label="Role" required="true" value="{{ x.r.val }}" onInput="{{ x.r.setVal }}" height="38" hint-size="100%,64px"></dc-import><dc-import name="TextField" label="Name" required="true" value="{{ x.n.val }}" onInput="{{ x.n.setVal }}" height="38" hint-size="100%,64px"></dc-import><dc-import name="TextField" label="Phone" placeholder="(XXX) XXX-XXXX" value="{{ x.p.val }}" onInput="{{ x.p.setVal }}" height="38" hint-size="100%,64px"></dc-import></div></sc-if></div><div style="flex:0 1 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;min-width:0"><sc-if value="{{ x.ctl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" label="Edit" size="30" onClick="{{ x.ctl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ x.ctl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Delete" variant="secondary" height="34" icon="trash" onClick="{{ x.onDelete }}" hint-size="100px,34px"></dc-import><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ x.ctl.onCancel }}" hint-size="100px,34px"></dc-import><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ x.ctl.onSave }}" hint-size="90px,34px"></dc-import></sc-if></div></div></sc-for></sc-if>
+                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">{{ s.emptyText }}</span></sc-if>
+                  </div>
+                  <sc-if value="{{ s.nt.has }}" hint-placeholder-val="{{ false }}"><div style="{{ s.nt.bar }}"><span>{{ s.nt.m }}</span><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ s.nt.close }}" hint-size="26px,26px"></dc-import></div></sc-if>
+                </sc-if>
+              </div>
+            </sc-for>
+            <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+              <dc-import name="SectionHeader" title="Wi-Fi networks" subtitle="Network names and passwords used by this school's devices" icon="wifi-high" compact="true" open="{{ wifiOpen }}" actionIcon="plus" actionLabel="Add network" onToggle="{{ wifiToggle }}" onAction="{{ wifiAdd }}" hint-size="100%,50px"></dc-import>
+              <sc-if value="{{ wifiOpen }}" hint-placeholder-val="{{ true }}"><div>
               <div style="border-top:1px solid #eef0f3;display:grid;grid-template-columns:minmax(160px,1fr) minmax(200px,1.4fr) auto;gap:0 20px;padding:10px 16px;font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase"><span>Network name (SSID)</span><span>Password</span><span style="min-width:200px"></span></div>
               <sc-for list="{{ wifiRows }}" as="w" hint-placeholder-count="2">
-                <div style="border-top:1px solid #eef0f3;padding:14px 16px;display:grid;grid-template-columns:minmax(160px,1fr) minmax(200px,1.4fr) auto;gap:10px 20px;align-items:center">
+                <div style="border-top:1px solid #eef0f3;padding:8px 16px;display:grid;grid-template-columns:minmax(160px,1fr) minmax(200px,1.4fr) auto;gap:10px 20px;align-items:center;min-height:50px;box-sizing:border-box">
                   <span style="font-size:15px;font-weight:600">{{ w.ssid }}</span>
                   <sc-if value="{{ w.editing }}" hint-placeholder-val="{{ false }}">
                     <div style="display:flex;flex-direction:column;gap:6px">
-                      <dc-import name="TextField" value="{{ w.editVal }}" onInput="{{ w.setEdit }}" placeholder="New password" helper="At least 8 characters." hint-size="100%,60px"></dc-import>
+                      <dc-import name="TextField" value="{{ w.editVal }}" onInput="{{ w.setEdit }}" placeholder="New password" helper="At least 8 characters." hint-size="100%,50px"></dc-import>
                     </div>
                   </sc-if>
                   <sc-if value="{{ w.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:15px;font-family:ui-monospace,Menlo,monospace;letter-spacing:{{ w.spacing }};color:#111827">{{ w.pwText }}</span></sc-if>
@@ -153,19 +171,9 @@
                   </div>
                 </div>
               </sc-for>
-              <sc-if value="{{ hasWifiNote }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #eef0f3;padding:12px 16px;font-size:13px;font-weight:600;color:#027a48;background:#ecfdf3">{{ wifiNote }}</div></sc-if>
+              <sc-if value="{{ ntWifi.has }}" hint-placeholder-val="{{ false }}"><div style="{{ ntWifi.bar }}"><span>{{ ntWifi.m }}</span><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ ntWifi.close }}" hint-size="26px,26px"></dc-import></div></sc-if>
+            </div></sc-if>
             </div>
-            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
-              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
-                <dc-import name="SectionHeader" title="{{ s.title }}" subtitle="{{ s.sub }}" icon="{{ s.icon }}" open="{{ s.open }}" actionIcon="plus" actionLabel="Add" onToggle="{{ s.toggle }}" onAction="{{ s.onAdd }}" hint-size="100%,60px"></dc-import>
-                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
-                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px">
-                    <sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><span style="font-size:14px;color:{{ x.c }}">{{ x.v }}</span></div><dc-import name="IconButton" icon="pencil-simple" label="Edit" size="30" hint-size="30px,30px"></dc-import></div></sc-for>
-                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">{{ s.emptyText }}</span></sc-if>
-                  </div>
-                </sc-if>
-              </div>
-            </sc-for>
           </div>
           </sc-if>
         </div>
@@ -173,12 +181,26 @@
     </div>
   </div>
 </div>
+<sc-if value="{{ showAdd }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;background:rgba(17,24,39,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:100;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <div style="width:460px;max-width:100%;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:28px 32px;display:flex;flex-direction:column;gap:20px">
+    <span style="font-size:22px;font-weight:700">{{ addTitle }}</span>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ addFields }}" as="f" hint-placeholder-count="3"><dc-import name="TextField" label="{{ f.label }}" required="{{ f.required }}" type="{{ f.type }}" placeholder="{{ f.placeholder }}" helper="{{ f.helper }}" error="{{ f.error }}" value="{{ f.value }}" onInput="{{ f.onInput }}" height="44" hint-size="100%,70px"></dc-import></sc-for>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px"><dc-import name="Button" label="Cancel" variant="secondary" height="44" onClick="{{ cancelAdd }}" hint-size="110px,44px"></dc-import><dc-import name="Button" label="{{ addLabel }}" variant="primary" height="44" onClick="{{ confirmAdd }}" hint-size="130px,44px"></dc-import></div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ showDel }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Delete this contact?" message="{{ delMsg }}" icon="trash" confirmLabel="Delete" onCancel="{{ cancelDel }}" onConfirm="{{ confirmDel }}" hint-size="0px,0px"></dc-import></sc-if>
 <sc-if value="{{ showVerify }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Confirm it's you" message="{{ verifyMsg }}" icon="lock" inputPlaceholder="Your account password" value="{{ verifyVal }}" onInput="{{ setVerify }}" error="{{ verifyErr }}" confirmLabel="Verify" onCancel="{{ cancelVerify }}" onConfirm="{{ confirmVerify }}" hint-size="0px,0px"></dc-import></sc-if>
 <dc-import name="../screens/Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { active: 'tablet', svc: false, wifi: [{ id: 'a', ssid: 'ADRIAN-STAFF', pw: 'Mad!son#2026' }, { id: 'b', ssid: 'ADRIAN-GUEST', pw: 'GuestAccess47' }], shown: {}, edit: null, editVal: '', verify: null, verifyVal: '', verifyErr: '', wifiNote: '' };
+  flash(k, m, e) { const tok = Math.random(); this._tk = this._tk || {}; this._tk[k] = tok; this.setState(s => ({ notes: { ...(s.notes || {}), [k]: { m, e: !!e } } })); setTimeout(() => { if (this._tk[k] === tok) this.setState(s => ({ notes: { ...(s.notes || {}), [k]: null } })); }, 10000); }
+  closeNote(k) { this._tk = this._tk || {}; this._tk[k] = 0; this.setState(s => ({ notes: { ...(s.notes || {}), [k]: null } })); }
   renderVals() {
     const defs = [
       { id: 'tablet', label: 'Tablet List', count: 110 },
@@ -232,13 +254,27 @@ class Component extends DCLogic {
     const tableRows = cfg ? cfg.rows.map(cells => ({ cells: cells.map(c => ({ v: c.v, style: c.s || '' })) })) : [];
     const lastPage = cfg ? Math.ceil(cfg.total / 10) : 1;
     const pageNums = ['1', '2', '3', '4', '5', '...', String(lastPage)].filter((n, i) => lastPage > 6 || (n !== '...' && +n <= lastPage && i < 5));
-    const fo = this.state.facOpen || {};
-    const facCards = [['Facility Name', 'ADRIAN MADISON SCHOOLS'], ['District', 'ADRIAN MADISON SCHOOL DISTRICT'], ['Dispatch', 'LENAWEE COUNTY']].map(([k, v]) => ({ k, v }));
-    const F = (l) => ({ f: l, v: '-', c: '#9aa1ac' }), C = (l, v) => ({ f: l, v, c: '#111827' });
-    const facSections = [['details', 'buildings', 'Facility details', 'No details added yet', []], ['contacts', 'address-book', 'Direct contacts', '3 contacts added', [C('Principal', 'Dana Whitfield, 517-555-0142'), C('Dispatch liaison', 'Marcus Reyes, 517-555-0178'), C('IT contact', 'Priya Nair, 517-555-0113')]]].map(([id, icon, title, sub, fields]) => ({
-      icon, title, sub, open: !!fo[id], fields, noFields: !fields.length, emptyText: id === 'details' ? 'No facility details added yet. Use + to add them.' : 'No contacts added yet. Use + to add one.',
-      onAdd: () => {},
-      toggle: () => this.setState(s => ({ facOpen: { ...(s.facOpen || {}), [id]: !(s.facOpen || {})[id] } })),
+    const cur = this.state.facCur === undefined ? 'details' : this.state.facCur, fo = { info: cur === 'info', details: cur === 'details', contacts: cur === 'contacts', wifi: cur === 'wifi' };
+    const pick = k => () => this.setState(s => ({ facCur: (s.facCur === undefined ? 'details' : s.facCur) === k ? null : k }));
+    const extras = this.state.extras || [];
+    const openAdd = k => this.setState({ add: k, form: { a: '', b: '', c: '' }, formTried: false });
+    const V = this.state.vals || {}, D = this.state.draft || {}, E = this.state.editing || {};
+    const DEF = { i_name: 'ADRIAN MADISON SCHOOLS', i_dist: 'ADRIAN MADISON SCHOOL DISTRICT', i_disp: 'LENAWEE COUNTY', d_county: 'LENAWEE', d_street: '227 N Madison St', d_zip: '49221', d_phone: '517-555-0100', d_sup: 'Dr. Robert Hale', c1r: 'Principal', c2r: 'Dispatch liaison', c3r: 'IT contact', c1n: 'Dana Whitfield', c1p: '517-555-0142', c2n: 'Marcus Reyes', c2p: '517-555-0178', c3n: 'Priya Nair', c3p: '517-555-0113' };
+    extras.forEach(x => { DEF[x.id + 'r'] = x.role; DEF[x.id + 'n'] = x.name; DEF[x.id + 'p'] = x.phone; });
+    const mk = (id, sec, f) => ({ f, id, editing: !!E[sec], notEditing: !E[sec], c: '#111827', v: V[id] !== undefined ? V[id] : DEF[id], val: D[id] !== undefined ? D[id] : (V[id] !== undefined ? V[id] : DEF[id]),
+      setVal: (e) => { const t = e.target.value; this.setState(s => ({ draft: { ...(s.draft || {}), [id]: t } })); } });
+    const ctl = (sec, ids, nk, msg, opt) => ({ editing: !!E[sec], notEditing: !E[sec],
+      onEdit: () => this.setState(s => ({ editing: { ...(s.editing || {}), [sec]: true }, draft: { ...(s.draft || {}), ...Object.fromEntries(ids.map(i => [i, (s.vals || {})[i] !== undefined ? s.vals[i] : DEF[i]])) } })),
+      onCancel: () => this.setState(s => ({ editing: { ...(s.editing || {}), [sec]: false } })),
+      onSave: () => { const dr = this.state.draft || {}, cv = this.state.vals || {}; const val = i => dr[i] !== undefined ? dr[i] : (cv[i] !== undefined ? cv[i] : DEF[i]); if (ids.some(i => !(opt || []).includes(i) && !String(val(i)).trim())) { this.flash(nk, 'Fill in every field before saving.', true); return; } this.setState(s => ({ vals: { ...(s.vals || {}), ...Object.fromEntries(ids.map(i => [i, val(i)])) }, editing: { ...(s.editing || {}), [sec]: false } })); this.flash(nk, msg); } });
+    const facCards = [['i_name', 'Facility Name'], ['i_dist', 'District'], ['i_disp', 'Dispatch']].map(([id, f]) => mk(id, 'info', f));
+    const infoCtl = ctl('info', ['i_name', 'i_dist', 'i_disp'], 'info', 'Facility overview updated.');
+    const NT = k => { const n = (this.state.notes || {})[k]; return { has: !!n, m: n ? n.m : '', bar: 'border-top:1px solid #eef0f3;padding:6px 10px 6px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:12px;' + (n && n.e ? 'color:#b91c1c;background:#fef2f2' : 'color:#027a48;background:#ecfdf3'), close: () => this.closeNote(k) }; };
+    const dIds = ['d_county', 'd_street', 'd_zip', 'd_phone', 'd_sup'];
+    const facSections = [['details', 'buildings', 'Facility details', '5 of 5 fields completed', [['d_county', 'County'], ['d_street', 'Street'], ['d_zip', 'Zip Code'], ['d_phone', 'Phone'], ['d_sup', 'Superintendent']].map(([id, f]) => mk(id, 'details', f)), ctl('details', dIds, 'details', 'Facility details updated.')], ['contacts', 'address-book', 'Direct contacts', ((3 + extras.length) - Object.keys(this.state.gone || {}).length) + ' contacts added', [['c1', 'Principal'], ['c2', 'Dispatch liaison'], ['c3', 'IT contact'], ...extras.map(x => [x.id, x.role])].filter(([id]) => !(this.state.gone || {})[id]).map(([id, f]) => ({ onDelete: () => this.setState({ del: id }), f, editing: !!E[id], notEditing: !E[id], r: mk(id + 'r', id, 'Role'), n: mk(id + 'n', id, 'Name'), p: mk(id + 'p', id, 'Phone'), ctl: ctl(id, [id + 'r', id + 'n', id + 'p'], 'contacts', 'Contact updated.', [id + 'p']) })), null]].map(([id, icon, title, sub, fields, sctl]) => ({
+      icon, title, sub, nt: NT(id), open: fo[id], isGrid: id === 'details', notGrid: id !== 'details', fields, ctl: sctl, actionIcon: id === 'details' ? '' : 'plus', noFields: !fields.length, emptyText: 'No contacts added yet. Use + to add one.',
+      onAdd: () => { if (id === 'contacts') openAdd('contact'); },
+      toggle: pick(id),
       chev: 'transform:rotate(' + (fo[id] ? 180 : 0) + 'deg)' }));
     const types = ['ADMIN', 'TEACHER/USER', 'ADMIN', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER'];
     const devs = ['UES Tab-3', 'AMES 511', 'ES Tab-5', 'HS 401', 'HS 402', 'HS 411', 'HS 412', 'HS 413', 'HS 414', 'HS 415'];
@@ -273,11 +309,22 @@ class Component extends DCLogic {
         onEdit: () => this.setState({ edit: w.id, editVal: '', wifiNote: '' }),
         editVal: st.editVal, setEdit: (e) => this.setState({ editVal: e.target.value }),
         onCancel: () => this.setState({ edit: null, editVal: '' }),
-        onSave: () => { if (!ok) return; this.setState(s => ({ wifi: s.wifi.map(x => x.id === w.id ? { ...x, pw: s.editVal } : x), edit: null, editVal: '', wifiNote: 'Password updated for ' + w.ssid + '.' })); },
+        onSave: () => { if (!ok) return; this.setState(s => ({ wifi: s.wifi.map(x => x.id === w.id ? { ...x, pw: s.editVal } : x), edit: null, editVal: '' })); this.flash('wifi', 'Password updated for ' + w.ssid + '.'); },
         saveOff: !ok, saveStyle: 'display:inline-flex;align-items:center;height:34px;box-sizing:border-box;padding:0 20px;border-radius:999px;font-size:13px;font-weight:700;' + (ok ? 'background:#25395c;color:#fff;cursor:pointer' : 'background:#e8ebf0;color:#7b8494;cursor:not-allowed') };
     });
+    const fm = st.form || { a: '', b: '', c: '' }, tried = !!st.formTried, isW = st.add === 'wifi';
+    const setF = k => e => { const t = e.target.value; this.setState(s => ({ form: { ...(s.form || {}), [k]: t } })); };
+    const spec = isW ? [['a', 'Network name (SSID)', true, 'text', '', ''], ['b', 'Password', true, 'password', '', 'At least 8 characters.']] : [['a', 'Role', true, 'text', 'e.g. Principal', ''], ['b', 'Name', true, 'text', '', ''], ['c', 'Phone', false, 'text', '(XXX) XXX-XXXX', '']];
+    const errOf = (k, req) => (req && !(fm[k] || '').trim()) ? 'Required' : (isW && k === 'b' && (fm.b || '').length < 8 ? 'At least 8 characters.' : '');
+    const addFields = st.add ? spec.map(([k, label, req, type, placeholder, helper]) => ({ label, required: req, type, placeholder, helper: tried ? '' : helper, value: fm[k] || '', onInput: setF(k), error: tried ? errOf(k, req) : '' })) : [];
+    const confirmAdd = () => {
+      if (spec.some(([k, , req]) => errOf(k, req))) { this.setState({ formTried: true }); return; }
+      if (isW) this.setState(s => ({ wifi: [...s.wifi, { id: 'w' + s.wifi.length + Date.now(), ssid: fm.a.trim(), pw: fm.b }], add: null, facCur: 'wifi' })), this.flash('wifi', 'Network ' + fm.a.trim() + ' added.');
+      else this.setState(s => ({ extras: [...(s.extras || []), { id: 'x' + (s.extras || []).length + Date.now(), role: fm.a.trim(), name: fm.b.trim(), phone: fm.c.trim() }], add: null, facCur: 'contacts' })), this.flash('contacts', 'Contact added.');
+    };
+    const delId = st.del, delName = delId ? ((V[delId + 'n'] !== undefined ? V[delId + 'n'] : DEF[delId + 'n']) || 'this contact') : '', delRole = delId ? ((V[delId + 'r'] !== undefined ? V[delId + 'r'] : DEF[delId + 'r']) || '') : '';
     const vw = st.verify ? st.wifi.find(x => x.id === st.verify) : null;
-    return { wifiRows, hasWifiNote: !!st.wifiNote, wifiNote: st.wifiNote,
+        return { showDel: !!delId, delMsg: 'Remove ' + delName + (delRole ? ' (' + delRole + ')' : '') + ' from direct contacts? This cannot be undone.', cancelDel: () => this.setState({ del: null }), confirmDel: () => { this.setState(s => ({ gone: { ...(s.gone || {}), [s.del]: true }, del: null })); this.flash('contacts', 'Contact deleted.'); }, infoCtl, infoOpen: fo.info, infoToggle: pick('info'), wifiOpen: fo.wifi, wifiToggle: pick('wifi'), wifiAdd: () => openAdd('wifi'), showAdd: !!st.add, addTitle: st.add === 'wifi' ? 'Add Wi-Fi network' : 'Add direct contact', addLabel: st.add === 'wifi' ? 'Add network' : 'Add contact', addFields, cancelAdd: () => this.setState({ add: null }), confirmAdd, wifiRows, ntInfo: NT('info'), ntWifi: NT('wifi'),
       showVerify: !!st.verify, verifyMsg: 'Enter your LockOut account password to view the password for ' + (vw ? vw.ssid : '') + '.', verifyVal: st.verifyVal, verifyErr: st.verifyErr, hasVerifyErr: !!st.verifyErr,
       setVerify: (e) => this.setState({ verifyVal: e.target.value, verifyErr: '' }),
       cancelVerify: () => this.setState({ verify: null, verifyVal: '', verifyErr: '' }),
