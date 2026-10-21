@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.7",
+ "version": "0.9.8",
  "categories": [
   {
    "name": "Foundations",
@@ -11,7 +11,8 @@
    "name": "Buttons",
    "entries": [
     "button",
-    "icon-button"
+    "icon-button",
+    "link-button"
    ]
   },
   {

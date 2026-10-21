@@ -4,8 +4,8 @@
  "component": "Tab",
  "file": "components/Tab.dc.html",
  "status": "Approved",
- "hintSize": "180px,46px",
- "previewStyle": "background:#e8ebf0;border-radius:14px 14px 0 0;padding:10px 12px 0",
+ "hintSize": "180px,40px",
+ "previewStyle": "background:#e8ebf0;border-radius:14px 14px 0 0;padding:7px 12px 0",
  "description": "Browser-style tab for switching a table's content: icon, label, count. Place tabs inside a #e8ebf0 bar. The selected tab uses the same fill as the panel below it so the two read as one surface. Unselected labels stay near-black for readability.",
  "base": {},
  "controls": [
@@ -208,11 +208,11 @@
  "values": [
   {
    "k": "Tab bar fill / radius",
-   "v": "#e8ebf0 / 14px 14px 0 0, padding 10px 12px 0"
+   "v": "#e8ebf0 / 14px 14px 0 0, padding 7px 12px 0"
   },
   {
    "k": "Tab padding / radius",
-   "v": "11px 14px 12px / 12px 12px 0 0"
+   "v": "6px 14px 7px / 12px 12px 0 0"
   },
   {
    "k": "Label",

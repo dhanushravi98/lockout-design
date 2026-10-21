@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.9.8 (draft)
+- Compact School screen for 13-inch laptops (new screens/School Screen Adjusted.dc.html). Breadcrumb, school strip, tabs row, search and filter row and pagination footer are shorter. Device count removed from the school strip. Secondary links sit edge to edge.
+- Tab: padding 11px 14px 12px becomes 6px 14px 7px; tab bar top padding 10px becomes 7px.
+- Pagination: padding 14px 20px becomes 11px 20px.
+- New: Link button (In review). The quiet secondary link with an icon for Site Map, Trainings, Emergency Prep and Assessments. Icon turns solid and a light background appears on hover.
+- Compact values for the School screen are listed in Foundations.
+
 ## v0.9.7 (draft)
 - New: Modal shell (Approved). The frame for dialogs: backdrop, white box, title with optional icon, scrolling body, footer with Cancel and a primary button.
 - Confirm dialog and the Add Wi-Fi network and Add contact dialogs are built on Modal shell. Fields inside dialogs are 44px (the Confirm dialog password field was 46px).

@@ -368,7 +368,7 @@
   },
   {
    "k": "Heights",
-   "v": "button 46 (44 in overlay footer), field 38, close button 36"
+   "v": "button 46 (44 in overlay footer), field 38, close button 36, tab about 39 (was 46), pagination footer about 56 (was 60)"
   },
   {
    "k": "Gaps",
@@ -377,6 +377,30 @@
   {
    "k": "Page padding",
    "v": "24px content, 36px overlay"
+  },
+  {
+   "k": "School screen: page padding",
+   "v": "8px 24px 16px, gap 10px between breadcrumb, strip and table"
+  },
+  {
+   "k": "School screen: breadcrumb",
+   "v": "12px text; Back button padding 1px 10px 1px 4px"
+  },
+  {
+   "k": "School screen: school strip",
+   "v": "padding 26px 24px, gap 10px between name, address and info line. Info line shows dispatch and district only (no device count)"
+  },
+  {
+   "k": "School screen: secondary links",
+   "v": "gap 0 between links (each link keeps 7px 14px padding), 2px between wrapped lines"
+  },
+  {
+   "k": "School screen: search and filter row",
+   "v": "padding 10px 20px, fill #fafbfc, gap 12px"
+  },
+  {
+   "k": "Compact density target",
+   "v": "13-inch laptop window (about 1280 x 720): at least 6 table rows visible"
   }
  ]
 }

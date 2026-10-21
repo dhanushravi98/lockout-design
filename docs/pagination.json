@@ -74,7 +74,7 @@
  "values": [
   {
    "k": "Layout",
-   "v": "space-between, padding 14px 20px, 13px #6b7280"
+   "v": "space-between, padding 11px 20px, 13px #6b7280"
   },
   {
    "k": "Count text",

@@ -1,0 +1,209 @@
+{
+ "id": "link-button",
+ "title": "Link button",
+ "component": "LinkButton",
+ "file": "components/LinkButton.dc.html",
+ "status": "In review",
+ "hintSize": "180px,40px",
+ "description": "Quiet secondary link with an icon, for reference and navigation destinations such as Site Map, Trainings, Emergency Prep and Assessments. It has no fill or border until hovered. On hover the icon turns solid and a light navy background appears. Use Button for actions the user takes, and put at most one primary Button beside a group of Link buttons.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Site Map"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "map-trifold",
+   "keep": true
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "",
+     ""
+    ],
+    [
+     "hover",
+     "hover"
+    ],
+    [
+     "pressed",
+     "pressed"
+    ],
+    [
+     "focus",
+     "focus"
+    ],
+    [
+     "disabled",
+     "disabled"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "default",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold"
+     }
+    },
+    {
+     "label": "hover",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold",
+      "state": "hover"
+     }
+    },
+    {
+     "label": "pressed",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold",
+      "state": "pressed"
+     }
+    },
+    {
+     "label": "focus",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold",
+      "state": "focus"
+     }
+    },
+    {
+     "label": "disabled",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold",
+      "state": "disabled"
+     }
+    }
+   ]
+  },
+  {
+   "title": "As used on the School screen",
+   "cellWidth": 170,
+   "items": [
+    {
+     "label": "Site Map",
+     "props": {
+      "label": "Site Map",
+      "icon": "map-trifold"
+     }
+    },
+    {
+     "label": "Trainings",
+     "props": {
+      "label": "Trainings",
+      "icon": "graduation-cap"
+     }
+    },
+    {
+     "label": "Emergency Prep",
+     "props": {
+      "label": "Emergency Prep",
+      "icon": "shield-check"
+     }
+    },
+    {
+     "label": "Assessments",
+     "props": {
+      "label": "Assessments",
+      "icon": "clipboard-text"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Link\"",
+   "x": "Text. Required."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"map-trifold\"",
+   "x": "Phosphor icon name. Regular weight, becomes fill on hover."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greys it out and blocks clicks."
+  },
+  {
+   "n": "state",
+   "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
+   "d": "-",
+   "x": "Documentation only."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Click handler, for example open the page."
+  }
+ ],
+ "values": [
+  {
+   "k": "Shape",
+   "v": "pill, radius 999px, no border"
+  },
+  {
+   "k": "Padding / gap",
+   "v": "7px 14px, gap 8px"
+  },
+  {
+   "k": "Font",
+   "v": "13px / 600, color #25395c"
+  },
+  {
+   "k": "Icon",
+   "v": "18px, regular, color follows the text"
+  },
+  {
+   "k": "Default",
+   "v": "transparent background"
+  },
+  {
+   "k": "Hover",
+   "v": "bg #eaeef5, icon becomes fill (solid), transition .12s"
+  },
+  {
+   "k": "Pressed",
+   "v": "bg #dde3ef, icon fill"
+  },
+  {
+   "k": "Focus",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25)"
+  },
+  {
+   "k": "Disabled",
+   "v": "text and icon #9aa1ac, not-allowed"
+  },
+  {
+   "k": "In a group",
+   "v": "gap 0 between links, 2px between wrapped lines, right aligned"
+  }
+ ],
+ "usedIn": "School Screen (reference links under the Report Issue button)."
+}
