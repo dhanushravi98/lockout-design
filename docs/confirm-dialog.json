@@ -92,6 +92,12 @@
    "t": "() => void",
    "d": "-",
    "x": "Handlers."
+  },
+  {
+   "n": "confirmVariant",
+   "t": "'primary' | 'danger'",
+   "d": "'primary'",
+   "x": "Style of the confirm button. Use danger for delete confirmations."
   }
  ],
  "values": [

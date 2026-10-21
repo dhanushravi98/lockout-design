@@ -58,6 +58,10 @@
     [
      "s",
      "s"
+    ],
+    [
+     "xs",
+     "xs"
     ]
    ],
    "default": 0
@@ -217,6 +221,14 @@
       "variant": "tint",
       "size": "s"
      }
+    },
+    {
+     "label": "size xs",
+     "props": {
+      "label": "Primary",
+      "variant": "tint",
+      "size": "xs"
+     }
     }
    ]
   }
@@ -236,9 +248,9 @@
   },
   {
    "n": "size",
-   "t": "'md' | 's'",
+   "t": "'md' | 's' | 'xs'",
    "d": "'md'",
-   "x": "md 6px 14px, 13px text; s 4px 12px, 12px text."
+   "x": "md 6px 14px, 13px text; s 4px 12px, 12px text; xs 3px 10px, 9px text (30% smaller than md, for small cards)."
   },
   {
    "n": "dot",

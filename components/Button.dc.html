@@ -11,6 +11,8 @@
 <style>
 .lo-button-primary:hover{background:#1c2c48!important}
 .lo-button-primary:active{background:#15233b!important}
+.lo-button-danger:hover{background:#fee2e2!important}
+.lo-button-danger:active{background:#fecaca!important}
 .lo-button-secondary:hover,.lo-button-tertiary:hover{background:#eef2f8!important}
 .lo-button-secondary:active,.lo-button-tertiary:active{background:#e1e8f3!important}
 .lo-button-live:focus{box-shadow:0 0 0 3px rgba(37,57,92,.25)!important}
@@ -18,7 +20,7 @@
 </helmet>
 <div onClick="{{ onClick }}" class="{{ cls }}" style="{{ style }}" tabindex="0"><sc-if value="{{ iconLeft }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="{{ icon }}" weight="fill" size="18" color="currentColor" hint-size="18px,18px"></dc-import></sc-if>{{ label }}<sc-if value="{{ iconRight }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="{{ icon }}" weight="fill" size="18" color="currentColor" hint-size="18px,18px"></dc-import></sc-if></div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:50},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Service Requests&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;primary&quot;,&quot;options&quot;:[&quot;primary&quot;,&quot;secondary&quot;,&quot;tertiary&quot;],&quot;tsType&quot;:&quot;'primary'|'secondary'|'tertiary'&quot;},&quot;height&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:46,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;iconPosition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;left&quot;,&quot;options&quot;:[&quot;left&quot;,&quot;right&quot;],&quot;tsType&quot;:&quot;'left'|'right'&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:50},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Service Requests&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;primary&quot;,&quot;options&quot;:[&quot;primary&quot;,&quot;secondary&quot;,&quot;tertiary&quot;,&quot;danger&quot;],&quot;tsType&quot;:&quot;'primary'|'secondary'|'tertiary'|'danger'&quot;},&quot;height&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:46,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;iconPosition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;left&quot;,&quot;options&quot;:[&quot;left&quot;,&quot;right&quot;],&quot;tsType&quot;:&quot;'left'|'right'&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     // Real hover, press and focus come from the classes in <helmet>: support.js does not fill {{ }} values in style-hover/active/focus.
@@ -27,7 +29,8 @@ class Component extends DCLogic {
     const V = {
       primary: ['background:#25395c;color:#fff;border:1.5px solid #25395c', 'background:#1c2c48', 'background:#15233b'],
       secondary: ['background:#fff;color:#25395c;border:1.5px solid #25395c', 'background:#eef2f8', 'background:#e1e8f3'],
-      tertiary: ['background:transparent;color:#25395c;border:1.5px solid transparent', 'background:#eef2f8', 'background:#e1e8f3']
+      tertiary: ['background:transparent;color:#25395c;border:1.5px solid transparent', 'background:#eef2f8', 'background:#e1e8f3'],
+      danger: ['background:#fef2f2;color:#b91c1c;border:1.5px solid #fecaca', 'background:#fee2e2', 'background:#fecaca']
     }[v];
     const ring = 'box-shadow:0 0 0 3px rgba(37,57,92,.25)';
     let style = base + (dis ? 'background:#e8ebf0;color:#7b8494;border:1.5px solid #e8ebf0;cursor:not-allowed' : V[0] + ';cursor:pointer');

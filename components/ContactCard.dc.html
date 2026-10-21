@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>.lo-cc:hover{background:#fafbfc!important}</style>
+</helmet>
+<div class="lo-cc" style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px 14px;box-sizing:border-box;min-width:0;width:100%;font-family:-apple-system,BlinkMacSystemFont,sans-serif;transition:background .12s">
+  <sc-if value="{{ showDelete }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:14px;bottom:10px"><dc-import name="Button" label="Delete" variant="danger" height="34" icon="trash" onClick="{{ onDelete }}" hint-size="100px,34px"></dc-import></div></sc-if>
+  <div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 180px">
+    <sc-if value="{{ notEditing }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ role }}</span><sc-if value="{{ hasType }}" hint-placeholder-val="{{ true }}"><dc-import name="Pill" label="{{ type }}" variant="tint" size="xs" hint-size="70px,20px"></dc-import></sc-if></div>
+      <span style="font-size:14px;font-weight:600;color:#111827">{{ name }}</span>
+      <span style="font-size:13px;color:#6b7280">{{ phone }}</span>
+    </sc-if>
+    <sc-if value="{{ editing }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;padding-top:2px">{{ body }}</div></sc-if>
+  </div>
+  <div style="flex:0 1 auto;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:8px;min-width:0">
+    <sc-if value="{{ notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" weight="fill" variant="outline" label="Edit" size="30" onClick="{{ onEdit }}" hint-size="30px,30px"></dc-import></sc-if>
+    <sc-if value="{{ editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Save" variant="primary" height="34" disabled="{{ saveDisabled }}" onClick="{{ onSave }}" hint-size="90px,34px"></dc-import><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ onCancel }}" hint-size="100px,34px"></dc-import></sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:110},&quot;role&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Principal&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;fullName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Dana Whitfield&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;phone&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;517-555-0142&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;type&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Primary&quot;,&quot;options&quot;:[&quot;&quot;,&quot;Primary&quot;,&quot;Secondary&quot;],&quot;tsType&quot;:&quot;'Primary'|'Secondary'&quot;},&quot;editing&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;saveDisabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onEdit&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onSave&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onCancel&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onDelete&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, ed = p.editing === true || p.editing === 'true', none = () => {};
+    return { role: p.role || 'Role', name: p.fullName || 'Full name', phone: p.phone || '', type: p.type || '', hasType: !!p.type,
+      editing: ed, notEditing: !ed, showDelete: ed && !!p.onDelete, body: p.children || null, saveDisabled: !!p.saveDisabled,
+      onEdit: p.onEdit || none, onSave: p.onSave || none, onCancel: p.onCancel || none, onDelete: p.onDelete || none };
+  }
+}
+</script>
+</body>
+</html>

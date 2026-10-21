@@ -6,7 +6,7 @@
  "status": "Approved",
  "hintSize": "100%,38px",
  "previewWidth": "320px",
- "description": "Single-line input for search and forms. Optional label with a red star when required, helper or error text below. Pill shape for search and filters, rounded for forms.",
+ "description": "Single-line input for search and forms. Optional label with a red star when required, helper or error text below. Rectangle with subtle 8px corners by default. A pill shape is available but not used on current screens.",
  "base": {},
  "controls": [
   {
@@ -65,12 +65,12 @@
    "prop": "shape",
    "options": [
     [
-     "pill",
-     "pill"
-    ],
-    [
      "rounded",
      "rounded"
+    ],
+    [
+     "pill",
+     "pill"
     ]
    ],
    "default": 0
@@ -185,9 +185,9 @@
   },
   {
    "n": "shape",
-   "t": "'pill' | 'rounded'",
-   "d": "'pill'",
-   "x": "Pill is 999px radius, rounded is 10px."
+   "t": "'rounded' | 'pill'",
+   "d": "'rounded'",
+   "x": "Rounded is a rectangle with 8px radius (default). Pill is 999px radius."
   },
   {
    "n": "height",
@@ -221,11 +221,11 @@
   },
   {
    "k": "Radius / padding",
-   "v": "999px / 0 16px (rounded: 10px / 0 12px)"
+   "v": "8px / 0 12px (pill: 999px / 0 16px)"
   },
   {
    "k": "Border / fill",
-   "v": "1px #dfe3ea / #f8f9fb"
+   "v": "1px #dfe3ea / #fff (white)"
   },
   {
    "k": "Text",
@@ -233,11 +233,11 @@
   },
   {
    "k": "Hover",
-   "v": "border #b4bcc8"
+   "v": "border #b4bcc8 only, fill unchanged"
   },
   {
    "k": "Focus",
-   "v": "border #25395c, ring 0 0 0 3px rgba(37,57,92,.12)"
+   "v": "fill #eaeef5, border stays #b4bcc8 (no extra border or ring)"
   },
   {
    "k": "Error",

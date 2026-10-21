@@ -1,0 +1,182 @@
+{
+ "id": "contact-card",
+ "title": "Contact card",
+ "component": "ContactCard",
+ "file": "components/ContactCard.dc.html",
+ "status": "In review",
+ "hintSize": "100%,110px",
+ "previewWidth": "440px",
+ "description": "One person on a contact list: role with a small Primary or Secondary pill, name and phone, and an outline Edit button. In edit mode the fields you pass in replace the text, Save and Cancel stack on the right and Delete sits in the bottom right corner. The card is white and takes a light fill on hover.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Role",
+   "type": "text",
+   "prop": "role",
+   "default": "Principal"
+  },
+  {
+   "label": "Name",
+   "type": "text",
+   "prop": "fullName",
+   "default": "Dana Whitfield"
+  },
+  {
+   "label": "Phone",
+   "type": "text",
+   "prop": "phone",
+   "default": "517-555-0142"
+  },
+  {
+   "label": "Contact type",
+   "type": "seg",
+   "prop": "type",
+   "options": [
+    [
+     "Primary",
+     "Primary"
+    ],
+    [
+     "Secondary",
+     "Secondary"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Editing",
+   "type": "seg",
+   "prop": "editing",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Views",
+   "cellWidth": 420,
+   "items": [
+    {
+     "label": "primary",
+     "props": {
+      "role": "Principal",
+      "phone": "517-555-0142",
+      "type": "Primary",
+      "fullName": "Dana Whitfield"
+     }
+    },
+    {
+     "label": "secondary",
+     "props": {
+      "role": "IT contact",
+      "phone": "517-555-0113",
+      "type": "Secondary",
+      "fullName": "Priya Nair"
+     }
+    },
+    {
+     "label": "editing (fields are passed in as children)",
+     "props": {
+      "role": "IT contact",
+      "phone": "517-555-0113",
+      "type": "Secondary",
+      "editing": true,
+      "fullName": "Priya Nair"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "role / fullName / phone",
+   "t": "string",
+   "d": "-",
+   "x": "Text shown in view mode."
+  },
+  {
+   "n": "type",
+   "t": "'Primary' | 'Secondary' | ''",
+   "d": "-",
+   "x": "Small Pill (xs, tint) beside the role. Leave empty for none. The screen enforces at most 3 of each."
+  },
+  {
+   "n": "editing",
+   "t": "boolean",
+   "d": "false",
+   "x": "Switches to edit mode."
+  },
+  {
+   "n": "children",
+   "t": "content",
+   "d": "-",
+   "x": "Edit mode: the Text fields and Radio buttons to show, for example Role, Name, Phone and Contact type."
+  },
+  {
+   "n": "saveDisabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greys out Save."
+  },
+  {
+   "n": "onEdit / onSave / onCancel",
+   "t": "() => void",
+   "d": "-",
+   "x": "Button handlers."
+  },
+  {
+   "n": "onDelete",
+   "t": "() => void",
+   "d": "-",
+   "x": "Shows Delete (danger Button) in edit mode."
+  }
+ ],
+ "values": [
+  {
+   "k": "Card",
+   "v": "white, 1px #e5e7eb, radius 12px, padding 10px 14px, hover fill #fafbfc"
+  },
+  {
+   "k": "Role",
+   "v": "11px uppercase, .04em, #9aa1ac"
+  },
+  {
+   "k": "Type pill",
+   "v": "Pill size xs, tone tint, baseline aligned with the role"
+  },
+  {
+   "k": "Name",
+   "v": "14px / 600 #111827"
+  },
+  {
+   "k": "Phone",
+   "v": "13px #6b7280"
+  },
+  {
+   "k": "Edit button",
+   "v": "Icon button 30px, variant outline, pencil in fill weight"
+  },
+  {
+   "k": "Save / Cancel",
+   "v": "Button height 34, stacked, right aligned, Save first"
+  },
+  {
+   "k": "Delete",
+   "v": "Button variant danger, height 34, absolute bottom 10px right 14px; adds no card height"
+  },
+  {
+   "k": "Fields in edit mode",
+   "v": "Text field height 38, gap 8px"
+  }
+ ],
+ "usedIn": "School Screen, Facility Information (Direct contacts)."
+}

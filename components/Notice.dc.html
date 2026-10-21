@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div role="status" style="{{ style }}"><span style="flex:1;min-width:0">{{ message }}</span><sc-if value="{{ showClose }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ onClose }}" hint-size="26px,26px"></dc-import></sc-if></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:40},&quot;message&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Facility details updated.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;success&quot;,&quot;options&quot;:[&quot;success&quot;,&quot;error&quot;],&quot;tsType&quot;:&quot;'success'|'error'&quot;},&quot;topBorder&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onClose&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, err = p.variant === 'error', top = p.topBorder !== false && p.topBorder !== 'false';
+    return { message: p.message || 'Saved.', showClose: !!p.onClose, onClose: p.onClose || (() => {}),
+      style: 'box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 10px 6px 16px;font-size:13px;font-weight:600;font-family:-apple-system,BlinkMacSystemFont,sans-serif;'
+        + (top ? 'border-top:1px solid #eef0f3;' : '') + (err ? 'color:#b91c1c;background:#fef2f2' : 'color:#027a48;background:#ecfdf3') };
+  }
+}
+</script>
+</body>
+</html>

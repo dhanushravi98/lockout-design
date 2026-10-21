@@ -114,7 +114,7 @@
   },
   {
    "k": "Hover",
-   "v": "bg #fafbfc when collapsible"
+   "v": "bg #fafbfc when collapsible. The header also keeps bg #fafbfc while its section is open."
   }
  ],
  "usedIn": "School Screen, Facility Information (Wi-Fi networks, Facility details, Direct contacts)."

@@ -131,6 +131,12 @@
    "t": "boolean",
    "d": "false",
    "x": "Draws the dialog in place. Used only by the library preview."
+  },
+  {
+   "n": "confirmVariant",
+   "t": "'primary' | 'danger'",
+   "d": "'primary'",
+   "x": "Style of the confirm button. Use danger for delete confirmations."
   }
  ],
  "values": [

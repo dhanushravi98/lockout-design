@@ -1,0 +1,132 @@
+{
+ "id": "notice",
+ "title": "Notice",
+ "component": "Notice",
+ "file": "components/Notice.dc.html",
+ "status": "In review",
+ "hintSize": "100%,40px",
+ "previewWidth": "460px",
+ "description": "One-line feedback bar that sits under the content it refers to, for example under the fields of a section after Save. Green for success, red for an error. It has an optional close button. The screen decides when it appears and when it goes away; the School screen hides it after 10 seconds.",
+ "base": {
+  "message": "Facility details updated."
+ },
+ "controls": [
+  {
+   "label": "Message",
+   "type": "text",
+   "prop": "message",
+   "default": "Facility details updated."
+  },
+  {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "variant",
+   "options": [
+    [
+     "success",
+     "success"
+    ],
+    [
+     "error",
+     "error"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Top border",
+   "type": "seg",
+   "prop": "topBorder",
+   "options": [
+    [
+     "On",
+     true
+    ],
+    [
+     "Off",
+     false
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Tones",
+   "cellWidth": 420,
+   "items": [
+    {
+     "label": "success",
+     "props": {
+      "message": "Contact updated.",
+      "variant": "success"
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "message": "Fill in every field before saving.",
+      "variant": "error"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "message",
+   "t": "string",
+   "d": "\"Saved.\"",
+   "x": "The text."
+  },
+  {
+   "n": "variant",
+   "t": "'success' | 'error'",
+   "d": "'success'",
+   "x": "Green or red."
+  },
+  {
+   "n": "topBorder",
+   "t": "boolean",
+   "d": "true",
+   "x": "1px #eef0f3 line on top, to separate it from the content above."
+  },
+  {
+   "n": "onClose",
+   "t": "() => void",
+   "d": "-",
+   "x": "Shows a close button (Icon button, 26px) when set."
+  }
+ ],
+ "values": [
+  {
+   "k": "Layout",
+   "v": "full width, padding 6px 10px 6px 16px, gap 12px"
+  },
+  {
+   "k": "Text",
+   "v": "13px / 600"
+  },
+  {
+   "k": "Success",
+   "v": "fill #ecfdf3, text #027a48"
+  },
+  {
+   "k": "Error",
+   "v": "fill #fef2f2, text #b91c1c"
+  },
+  {
+   "k": "Top border",
+   "v": "1px #eef0f3"
+  },
+  {
+   "k": "Close",
+   "v": "Icon button x, 26px"
+  },
+  {
+   "k": "Timing",
+   "v": "set by the screen (10 seconds on the School screen)"
+  }
+ ],
+ "usedIn": "School Screen, Facility Information (confirmation under each section)."
+}

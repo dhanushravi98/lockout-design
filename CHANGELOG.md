@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.9.9 (draft)
+- New: Contact card (In review). One contact with role, Primary or Secondary pill, name, phone and an outline Edit button; edit mode takes the fields as children, stacks Save and Cancel and puts Delete in the bottom right corner.
+- New: Notice (In review). One-line success or error feedback bar with an optional close button.
+- Button: new variant "danger" (fill #fef2f2, text #b91c1c, border #fecaca) for destructive actions.
+- BREAKING (visual): Text field default is now a rectangle with 8px corners (was a pill). Pill stays available as shape="pill". Fill is white; hover darkens only the border; focused fields fill #eaeef5. Hover and focus are tracked inside the component, which also fixes a border that stayed dark after hover.
+- Pill: new size "xs".
+- Section header: keeps a light fill while its section is open.
+- Modal shell and Confirm dialog: new prop confirmVariant; delete confirmations use "danger".
+
 ## v0.9.8 (draft)
 - Compact School screen for 13-inch laptops (new screens/School Screen Adjusted.dc.html). Breadcrumb, school strip, tabs row, search and filter row and pagination footer are shorter. Device count removed from the school strip. Secondary links sit edge to edge.
 - Tab: padding 11px 14px 12px becomes 6px 14px 7px; tab bar top padding 10px becomes 7px.

@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.8",
+ "version": "0.9.9",
  "categories": [
   {
    "name": "Foundations",
@@ -44,7 +44,8 @@
    "name": "Cards",
    "entries": [
     "user-card",
-    "section-header"
+    "section-header",
+    "contact-card"
    ]
   },
   {
@@ -59,6 +60,12 @@
    "entries": [
     "modal-shell",
     "confirm-dialog"
+   ]
+  },
+  {
+   "name": "Feedback",
+   "entries": [
+    "notice"
    ]
   },
   {

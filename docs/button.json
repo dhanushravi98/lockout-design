@@ -30,6 +30,10 @@
     [
      "tertiary",
      "tertiary"
+    ],
+    [
+     "danger",
+     "danger"
     ]
    ],
    "default": 0
@@ -237,6 +241,23 @@
       "variant": "tertiary",
       "state": "disabled"
      }
+    },
+    {
+     "label": "danger default",
+     "props": {
+      "label": "Delete",
+      "variant": "danger",
+      "icon": "trash"
+     }
+    },
+    {
+     "label": "danger hover",
+     "props": {
+      "label": "Delete",
+      "variant": "danger",
+      "icon": "trash",
+      "state": "hover"
+     }
     }
    ]
   },
@@ -332,9 +353,9 @@
   },
   {
    "n": "variant",
-   "t": "'primary' | 'secondary' | 'tertiary'",
+   "t": "'primary' | 'secondary' | 'tertiary' | 'danger'",
    "d": "'primary'",
-   "x": "Visual style."
+   "x": "Visual style. Use danger only for destructive actions such as Delete."
   },
   {
    "n": "height",
@@ -393,6 +414,10 @@
   {
    "k": "Tertiary",
    "v": "transparent, text #25395c, hover #eef2f8"
+  },
+  {
+   "k": "Danger",
+   "v": "fill #fef2f2, text #b91c1c, 1.5px border #fecaca, hover #fee2e2, pressed #fecaca"
   },
   {
    "k": "Icon gap",
