@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>.lo-mb-on div[tabindex="0"]{padding-right:44px!important}</style>
+</helmet>
+<div style="{{ wrapStyle }}"><div class="lo-mb-on" style="{{ onStyle }}"><sc-if value="{{ showDot }}" hint-placeholder-val="{{ false }}"><span title="{{ label }} is on" style="position:absolute;top:50%;right:17px;transform:translateY(-50%);width:10px;height:10px;border-radius:999px;background:#12b76a;box-shadow:0 0 0 2px #fff;pointer-events:none;z-index:1"></span></sc-if><dc-import name="Button" label="{{ label }}" variant="primary" icon="{{ icon }}" height="38" onClick="{{ onClick }}" hint-size="190px,38px"></dc-import></div><div style="{{ offStyle }}"><dc-import name="IconButton" icon="{{ icon }}" weight="fill" label="{{ label }}" variant="outline" size="38" onClick="{{ onClick }}" hint-size="38px,38px"></dc-import></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:220,&quot;height&quot;:50},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Maintenance Mode&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;wrench&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;dot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, on = p.active === true || p.active === 'true', dot = p.dot !== false && p.dot !== 'false';
+    return { label: p.label || 'Maintenance Mode', icon: p.icon || 'wrench', showDot: on && dot, onClick: p.onClick || (() => {}),
+      wrapStyle: 'position:relative;display:flex;height:38px;max-width:' + (on ? 300 : 38) + 'px;overflow:hidden;border-radius:999px;transition:max-width .3s ease',
+      onStyle: 'flex:none;position:relative;opacity:' + (on ? 1 : 0) + ';transition:opacity .25s ease;pointer-events:' + (on ? 'auto' : 'none'),
+      offStyle: 'position:absolute;left:0;top:0;opacity:' + (on ? 0 : 1) + ';transition:opacity .15s ease;pointer-events:' + (on ? 'none' : 'auto') };
+  }
+}
+</script>
+</body>
+</html>

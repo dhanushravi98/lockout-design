@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.9",
+ "version": "0.9.10",
  "categories": [
   {
    "name": "Foundations",
@@ -12,7 +12,8 @@
    "entries": [
     "button",
     "icon-button",
-    "link-button"
+    "link-button",
+    "mode-button"
    ]
   },
   {
@@ -29,6 +30,7 @@
    "entries": [
     "text-field",
     "text-area",
+    "rich-text-field",
     "checkbox",
     "radio",
     "dropzone"
@@ -65,7 +67,8 @@
   {
    "name": "Feedback",
    "entries": [
-    "notice"
+    "notice",
+    "toast"
    ]
   },
   {

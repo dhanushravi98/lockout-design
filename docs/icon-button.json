@@ -138,6 +138,18 @@
    "x": "Width and height. Icon is half the size."
   },
   {
+   "n": "weight",
+   "t": "'regular' | 'bold' | 'fill'",
+   "d": "'bold'",
+   "x": "Icon weight. Use fill for a solid icon, as in Mode button."
+  },
+  {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greys it out and blocks clicks."
+  },
+  {
    "n": "state",
    "t": "'hover' | 'pressed' | 'focus' | 'disabled'",
    "d": "-",

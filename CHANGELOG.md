@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.9.10 (draft)
+- New: Toast (In review). Pop-up confirmation with a round navy icon, title, optional second line and close button; floating places it at the top centre of the page.
+- New: Mode button (In review). Round outlined icon button that grows into a primary Button with a label and green dot while a mode is on (Maintenance Mode).
+- New: Rich text field (In review). One-line comment box that grows while typing and collapses when left; toolbar for bold, italic, underline and lists; paperclip for images only, 3 MB each.
+- Icon button docs: weight and disabled props listed.
+- New screen: screens/School Screen - Maintenance Mode.dc.html. Maintenance Mode on Tablet List, Smart Boot, Pull Box and Smart Light adds Checked, Replaced and Comments columns.
+
 ## v0.9.9 (draft)
 - New: Contact card (In review). One contact with role, Primary or Secondary pill, name, phone and an outline Edit button; edit mode takes the fields as children, stacks Save and Cancel and puts Delete in the bottom right corner.
 - New: Notice (In review). One-line success or error feedback bar with an optional close button.

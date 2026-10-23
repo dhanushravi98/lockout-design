@@ -1,0 +1,125 @@
+{
+ "id": "toast",
+ "title": "Toast",
+ "component": "Toast",
+ "file": "components/Toast.dc.html",
+ "status": "In review",
+ "hintSize": "100%,70px",
+ "previewWidth": "460px",
+ "description": "Short pop-up message that confirms an action, for example \"Maintenance mode enabled\". A round navy icon, a title, an optional second line and a close button. Set floating to place it fixed at the top centre of the page; the screen decides when it appears and how long it stays (5 seconds on the School screen). For feedback under a section, use Notice instead.",
+ "base": {
+  "title": "Maintenance mode enabled",
+  "subtitle": "ADRIAN MADISON SCHOOLS"
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Maintenance mode enabled"
+  },
+  {
+   "label": "Second line",
+   "type": "text",
+   "prop": "subtitle",
+   "default": "ADRIAN MADISON SCHOOLS"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "wrench",
+   "keep": true
+  }
+ ],
+ "grids": [
+  {
+   "title": "Examples",
+   "cellWidth": 440,
+   "items": [
+    {
+     "label": "with second line",
+     "props": {
+      "title": "Maintenance mode enabled",
+      "subtitle": "ADRIAN MADISON SCHOOLS",
+      "icon": "wrench"
+     }
+    },
+    {
+     "label": "title only",
+     "props": {
+      "title": "Maintenance mode disabled",
+      "icon": "wrench"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "title",
+   "t": "string",
+   "d": "\"Done\"",
+   "x": "First line, 15px / 700."
+  },
+  {
+   "n": "subtitle",
+   "t": "string",
+   "d": "-",
+   "x": "Second line, 13px #6b7280. Hidden when empty."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"wrench\"",
+   "x": "Phosphor icon name, shown in fill weight, white on navy."
+  },
+  {
+   "n": "floating",
+   "t": "boolean",
+   "d": "false",
+   "x": "Fixed at top 68px, centred, z-index 90. Off places it in the page flow."
+  },
+  {
+   "n": "onClose",
+   "t": "() => void",
+   "d": "-",
+   "x": "Shows a close Icon button (32px) when set."
+  }
+ ],
+ "values": [
+  {
+   "k": "Card",
+   "v": "width 420px (max viewport - 32px), white, 1px #e5e7eb, radius 16px"
+  },
+  {
+   "k": "Shadow",
+   "v": "0 12px 32px rgba(17,24,39,.16)"
+  },
+  {
+   "k": "Padding / gap",
+   "v": "14px 14px 14px 16px, gap 14px"
+  },
+  {
+   "k": "Icon circle",
+   "v": "40px, fill #25395c, Icon 20px fill, #fff"
+  },
+  {
+   "k": "Title",
+   "v": "15px / 700 #111827"
+  },
+  {
+   "k": "Second line",
+   "v": "13px #6b7280"
+  },
+  {
+   "k": "Close",
+   "v": "Icon button x, 32px"
+  },
+  {
+   "k": "Timing",
+   "v": "set by the screen"
+  }
+ ],
+ "usedIn": "School Screen, Maintenance Mode (confirms turning the mode on or off)."
+}

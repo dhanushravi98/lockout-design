@@ -1,0 +1,195 @@
+{
+ "id": "rich-text-field",
+ "title": "Rich text field",
+ "component": "RichTextField",
+ "file": "components/RichTextField.dc.html",
+ "status": "In review",
+ "hintSize": "100%,60px",
+ "previewWidth": "420px",
+ "description": "Compact comment box for table rows and other tight places. It is one line when idle and grows as the person types. When selected it shows a toolbar (bold, italic, underline, bullets, numbers and a bigger-box toggle) and it collapses again when the person moves on. A paperclip attaches images only, up to 3 MB each. Use Text box for a plain multi-line field.",
+ "base": {
+  "placeholder": "Add a comment"
+ },
+ "controls": [
+  {
+   "label": "Placeholder",
+   "type": "text",
+   "prop": "placeholder",
+   "default": "Add a comment"
+  },
+  {
+   "label": "Attach images",
+   "type": "seg",
+   "prop": "attach",
+   "options": [
+    [
+     "On",
+     true
+    ],
+    [
+     "Off",
+     false
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "",
+     ""
+    ],
+    [
+     "focus",
+     "focus"
+    ],
+    [
+     "expanded",
+     "expanded"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 400,
+   "items": [
+    {
+     "label": "idle",
+     "props": {
+      "placeholder": "Add a comment"
+     }
+    },
+    {
+     "label": "with text",
+     "props": {
+      "value": "Replaced the battery in <b>Room 534</b> and updated the firmware."
+     }
+    },
+    {
+     "label": "selected (toolbar shown)",
+     "props": {
+      "state": "focus",
+      "value": "Replaced the battery in <b>Room 534</b>."
+     }
+    },
+    {
+     "label": "expanded",
+     "props": {
+      "state": "expanded"
+     }
+    },
+    {
+     "label": "attach off",
+     "props": {
+      "attach": false
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "value",
+   "t": "string (HTML)",
+   "d": "\"\"",
+   "x": "Starting content. Read when the field first draws and again when resetKey changes."
+  },
+  {
+   "n": "resetKey",
+   "t": "string",
+   "d": "-",
+   "x": "Change it to load a different value into the same field, for example when a table row is reused."
+  },
+  {
+   "n": "placeholder",
+   "t": "string",
+   "d": "\"Add a comment\"",
+   "x": "Grey hint while empty."
+  },
+  {
+   "n": "attach",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the paperclip and the attached-image chips."
+  },
+  {
+   "n": "maxMB",
+   "t": "number",
+   "d": "3",
+   "x": "Largest image accepted, in MB. Anything that is not an image or is too large is refused, with the reason shown in red under the box."
+  },
+  {
+   "n": "files",
+   "t": "Array<{id, full, file}>",
+   "d": "-",
+   "x": "Attached images. Pass it to control the list; leave it out to let the field keep its own."
+  },
+  {
+   "n": "onChange",
+   "t": "(html: string) => void",
+   "d": "-",
+   "x": "Fires on every edit with the field HTML."
+  },
+  {
+   "n": "onFilesChange",
+   "t": "(files) => void",
+   "d": "-",
+   "x": "Fires when an image is added or removed."
+  },
+  {
+   "n": "state",
+   "t": "'focus' | 'expanded'",
+   "d": "-",
+   "x": "Documentation only: shows the selected or expanded look."
+  }
+ ],
+ "values": [
+  {
+   "k": "Box",
+   "v": "radius 10px, padding 7px 12px, 14px text, line height 1.4, fill #fff, border 1px #dfe3ea"
+  },
+  {
+   "k": "Idle",
+   "v": "one line (34px), longer text is cut with an ellipsis"
+  },
+  {
+   "k": "Hover",
+   "v": "border #b4bcc8"
+  },
+  {
+   "k": "Selected",
+   "v": "fill #eaeef5, border #b4bcc8, no ring; height grows with the text"
+  },
+  {
+   "k": "Bigger box",
+   "v": "min height 170px"
+  },
+  {
+   "k": "Toolbar",
+   "v": "pill under the box, white, 1px #e5e7eb, radius 999px, shadow 0 8px 24px rgba(17,24,39,.14); 28px Icon buttons: text-b, text-italic, text-underline, list-bullets, list-numbers, then arrows-out-simple / arrows-in-simple"
+  },
+  {
+   "k": "Paperclip",
+   "v": "Icon button paperclip, outline, 34px"
+  },
+  {
+   "k": "Image chips",
+   "v": "fill #eaeef5, text #25395c, 12px / 600, radius 999px, name cut at 18 characters"
+  },
+  {
+   "k": "Error",
+   "v": "12px #b91c1c"
+  },
+  {
+   "k": "Collapse",
+   "v": "box shrinks to one line 120 ms after it loses focus"
+  }
+ ],
+ "usedIn": "School Screen, Maintenance Mode (Comments column)."
+}

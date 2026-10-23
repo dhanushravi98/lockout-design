@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="{{ rootStyle }}">
+  <div style="display:flex;align-items:flex-start;gap:6px">
+    <div style="flex:1;min-width:0;position:relative">
+      <div ref="{{ setEd }}" contenteditable="true" role="textbox" aria-multiline="true" onInput="{{ onInput }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" style="{{ edStyle }}" style-hover="{{ hover }}"></div>
+      <sc-if value="{{ showPh }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:13px;top:8px;font-size:14px;color:#9aa1ac;pointer-events:none">{{ placeholder }}</span></sc-if>
+      <sc-if value="{{ focused }}" hint-placeholder-val="{{ false }}"><div onMouseDown="{{ keep }}" style="position:absolute;top:100%;left:0;margin-top:4px;z-index:5;background:#fff;border:1px solid #e5e7eb;border-radius:999px;box-shadow:0 8px 24px rgba(17,24,39,.14);padding:3px 6px;display:flex;align-items:center;gap:2px"><dc-import name="IconButton" icon="text-b" label="Bold" size="28" onClick="{{ tBold }}" hint-size="28px,28px"></dc-import><dc-import name="IconButton" icon="text-italic" label="Italic" size="28" onClick="{{ tItalic }}" hint-size="28px,28px"></dc-import><dc-import name="IconButton" icon="text-underline" label="Underline" size="28" onClick="{{ tUnder }}" hint-size="28px,28px"></dc-import><dc-import name="IconButton" icon="list-bullets" label="Bulleted list" size="28" onClick="{{ tUl }}" hint-size="28px,28px"></dc-import><dc-import name="IconButton" icon="list-numbers" label="Numbered list" size="28" onClick="{{ tOl }}" hint-size="28px,28px"></dc-import><span style="width:1px;height:18px;background:#dfe3ea;margin:0 4px"></span><dc-import name="IconButton" icon="{{ exIcon }}" label="{{ exLabel }}" size="28" onClick="{{ tEx }}" hint-size="28px,28px"></dc-import></div></sc-if>
+    </div>
+    <sc-if value="{{ showAttach }}" hint-placeholder-val="{{ true }}"><div style="flex:none"><dc-import name="IconButton" icon="paperclip" label="{{ attachLabel }}" variant="outline" size="34" onClick="{{ onAttach }}" hint-size="34px,34px"></dc-import></div><input ref="{{ setFile }}" type="file" multiple accept="image/*" onChange="{{ onFiles }}" style="display:none"></sc-if>
+  </div>
+  <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#b91c1c;line-height:1.4">{{ errText }}</span></sc-if>
+  <sc-if value="{{ hasFiles }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ fileChips }}" as="f" hint-placeholder-count="0"><span style="display:inline-flex;align-items:center;gap:6px;background:#eaeef5;color:#25395c;border-radius:999px;padding:3px 6px 3px 10px;font-size:12px;font-weight:600;max-width:100%"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="{{ f.full }}">{{ f.name }}</span><span onClick="{{ f.remove }}" style="cursor:pointer;display:inline-flex;width:16px;height:16px;align-items:center;justify-content:center;border-radius:999px;font-size:13px;line-height:1" style-hover="background:#d5dcea">×</span></span></sc-for></div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:80},&quot;value&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Add a comment&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;attach&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;maxMB&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;tsType&quot;:&quot;number&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;focus&quot;,&quot;expanded&quot;],&quot;tsType&quot;:&quot;'focus'|'expanded'&quot;},&quot;resetKey&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(html: string) =&gt; void&quot;},&quot;files&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;Array&lt;{id:number,full:string,file:File}&gt;&quot;},&quot;onFilesChange&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(files: Array) =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { foc: false, big: false, has: false, err: '', files: [] };
+  setEd = (el) => { this.ed = el; if (el && !this._init) { this._init = true; this.fillFrom(this.props.value); } };
+  setFile = (el) => { this.fi = el; };
+  fillFrom(v) { if (!this.ed) return; this.ed.innerHTML = v || ''; const has = (this.ed.textContent || '').trim().length > 0; if (has !== this.state.has) this.setState({ has }); }
+  componentDidUpdate(prev) { if (prev.resetKey !== this.props.resetKey) { this.fillFrom(this.props.value); this.setState({ err: '', big: false }); } }
+  emit() { if (this.props.onChange && this.ed) this.props.onChange(this.ed.innerHTML); }
+  onInput = () => { const has = (this.ed.textContent || '').trim().length > 0; if (has !== this.state.has) this.setState({ has }); this.emit(); };
+  onFocus = () => { this._f = true; this.setState({ foc: true }); };
+  onBlur = () => { this._f = false; setTimeout(() => { if (!this._f) this.setState({ foc: false, big: false }); }, 120); };
+  fmt(cmd) { if (this.ed) this.ed.focus(); document.execCommand(cmd, false, null); this.emit(); }
+  getFiles() { return this.props.files || this.state.files; }
+  setFiles(next) { if (this.props.onFilesChange) this.props.onFilesChange(next); if (!this.props.files) this.setState({ files: next }); }
+  onFiles = (e) => {
+    const max = Number(this.props.maxMB) || 3, all = Array.from(e.target.files || []); e.target.value = '';
+    const bad = [], add = [];
+    all.forEach(f => { if (!/^image\//.test(f.type)) bad.push(f.name + ' is not an image'); else if (f.size > max * 1024 * 1024) bad.push(f.name + ' is over ' + max + ' MB'); else add.push({ id: Math.random(), full: f.name, file: f }); });
+    if (add.length) this.setFiles([...this.getFiles(), ...add]);
+    this.setState({ err: bad.join('. ') });
+  };
+  renderVals() {
+    const p = this.props, st = p.state, max = Number(p.maxMB) || 3;
+    const foc = this.state.foc || st === 'focus' || st === 'expanded', big = this.state.big || st === 'expanded';
+    const files = this.getFiles();
+    const base = 'box-sizing:border-box;width:100%;border-width:1px;border-style:solid;border-color:#dfe3ea;border-radius:10px;padding:7px 12px;font-size:14px;line-height:1.4;color:#111827;outline:none;word-break:break-word;font-family:inherit;background:#fff;';
+    return { placeholder: p.placeholder || 'Add a comment', setEd: this.setEd, setFile: this.setFile, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onFiles: this.onFiles,
+      rootStyle: 'display:flex;flex-direction:column;gap:6px;min-width:0;width:100%;font-family:-apple-system,BlinkMacSystemFont,sans-serif;' + (st ? 'padding-bottom:44px;' : ''),
+      edStyle: base + (foc ? 'border-color:#b4bcc8;background:#eaeef5;' + (big ? 'min-height:170px' : 'min-height:34px') : 'height:34px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis'),
+      hover: foc ? 'border-color:#b4bcc8;background:#eaeef5' : 'border-color:#b4bcc8',
+      showPh: !this.state.has, focused: foc, keep: (e) => e.preventDefault(),
+      tBold: () => this.fmt('bold'), tItalic: () => this.fmt('italic'), tUnder: () => this.fmt('underline'), tUl: () => this.fmt('insertUnorderedList'), tOl: () => this.fmt('insertOrderedList'),
+      exIcon: big ? 'arrows-in-simple' : 'arrows-out-simple', exLabel: big ? 'Make the box smaller' : 'Make the box bigger', tEx: () => this.setState(s => ({ big: !s.big })),
+      showAttach: p.attach !== false && p.attach !== 'false', attachLabel: 'Attach images (max ' + max + ' MB each)', onAttach: () => { if (this.fi) this.fi.click(); },
+      hasErr: !!this.state.err, errText: this.state.err + '. Images only, up to ' + max + ' MB each.',
+      hasFiles: files.length > 0, fileChips: files.map(f => ({ full: f.full, name: f.full.length > 18 ? f.full.slice(0, 15) + '...' : f.full, remove: () => this.setFiles(this.getFiles().filter(x => x.id !== f.id)) })) };
+  }
+}
+</script>
+</body>
+</html>

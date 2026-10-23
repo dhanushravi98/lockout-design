@@ -1,0 +1,150 @@
+{
+ "id": "mode-button",
+ "title": "Mode button",
+ "component": "ModeButton",
+ "file": "components/ModeButton.dc.html",
+ "status": "In review",
+ "hintSize": "220px,50px",
+ "previewWidth": "260px",
+ "description": "On and off switch for a screen mode, such as Maintenance Mode. Off, it is a round outlined icon button with a solid icon. On, it grows sideways into a primary Button with the label and a green dot, and a click turns it off again. Built from Icon button and Button.",
+ "base": {},
+ "controls": [
+  {
+   "label": "Active",
+   "type": "seg",
+   "prop": "active",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Green dot",
+   "type": "seg",
+   "prop": "dot",
+   "options": [
+    [
+     "On",
+     true
+    ],
+    [
+     "Off",
+     false
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Maintenance Mode"
+  },
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "wrench",
+   "keep": true
+  }
+ ],
+ "interactive": [
+  {
+   "handler": "onClick",
+   "toggle": "active"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 240,
+   "items": [
+    {
+     "label": "off",
+     "props": {
+      "active": false
+     }
+    },
+    {
+     "label": "on",
+     "props": {
+      "active": true
+     }
+    },
+    {
+     "label": "on, no dot",
+     "props": {
+      "active": true,
+      "dot": false
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "active",
+   "t": "boolean",
+   "d": "false",
+   "x": "Off is the round icon button, on is the labelled primary Button."
+  },
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Maintenance Mode\"",
+   "x": "Button label and tooltip."
+  },
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"wrench\"",
+   "x": "Phosphor icon name."
+  },
+  {
+   "n": "dot",
+   "t": "boolean",
+   "d": "true",
+   "x": "Green dot at the end of the label while active."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Fires from either state; the screen flips active."
+  }
+ ],
+ "values": [
+  {
+   "k": "Height",
+   "v": "38px, both states"
+  },
+  {
+   "k": "Off",
+   "v": "Icon button 38px, variant outline, icon in fill weight"
+  },
+  {
+   "k": "On",
+   "v": "Button primary, height 38, right padding 44px to make room for the dot"
+  },
+  {
+   "k": "Dot",
+   "v": "10px circle #12b76a with a 2px white ring, 17px from the right edge"
+  },
+  {
+   "k": "Animation",
+   "v": "width .3s ease; the two layers cross-fade (.25s in, .15s out)"
+  },
+  {
+   "k": "Max width",
+   "v": "300px"
+  }
+ ],
+ "usedIn": "School Screen, Maintenance Mode (Smart Boot, Pull Box, Tablet List and Smart Light tabs)."
+}
