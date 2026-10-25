@@ -1,0 +1,89 @@
+{
+ "id": "device-counts",
+ "title": "Device counts",
+ "component": "DeviceCounts",
+ "file": "components/DeviceCounts.dc.html",
+ "status": "In review",
+ "hintSize": "240px,90px",
+ "previewWidth": "280px",
+ "description": "A small outlined box with an icon and a count for each device type (Tablets, Smart Boots, Pull Boxes, DomeBLE). Inside a Facility row it shrinks in steps as the row gets narrower: all four, then two with a \"+2\" button, then a single \"N devices\" button; both buttons open a list of every count. On its own it shows all four.",
+ "base": {
+  "items": [
+   {
+    "label": "Tablets",
+    "count": 60,
+    "icon": "../uploads/Tablet Icon.png"
+   },
+   {
+    "label": "Smart Boots",
+    "count": 40,
+    "icon": "../uploads/Boot.png"
+   },
+   {
+    "label": "Pull Boxes",
+    "count": 10,
+    "icon": "../uploads/PullBLE.png"
+   },
+   {
+    "label": "DomeBLE",
+    "count": 30,
+    "icon": "../uploads/DomeBLE.png"
+   }
+  ],
+  "total": 140
+ },
+ "controls": [
+  {
+   "label": "Total devices",
+   "type": "text",
+   "prop": "total",
+   "default": "140"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "items",
+   "t": "{ label, count, icon }[]",
+   "d": "[]",
+   "x": "One entry per device type. icon is an image URL. The first two are kept when the box narrows."
+  },
+  {
+   "n": "total",
+   "t": "number",
+   "d": "sum of counts",
+   "x": "Number shown on the single button when the box is at its narrowest."
+  }
+ ],
+ "values": [
+  {
+   "k": "Box",
+   "v": "white, 1px #dfe3ea, radius 12px, padding 9px 14px, gap 14px, min height 58px"
+  },
+  {
+   "k": "Width",
+   "v": "212px; 172px below 730px; 148px below 600px; 132px below 560px (width of the Facility row)"
+  },
+  {
+   "k": "Item",
+   "v": "34px wide, icon 22px (Smart Boots 17.6px) above a 16px / 700 count"
+  },
+  {
+   "k": "Hover on the row",
+   "v": "border #c4cad4"
+  },
+  {
+   "k": "+N and total buttons",
+   "v": "height 30, radius 999px, 1px #dfe3ea, 13px / 700 #25395c; chevron rotates when open"
+  },
+  {
+   "k": "Popover",
+   "v": "white, 1px #e5e7eb, radius 12px, shadow 0 12px 28px rgba(17,24,39,.14), min width 224px; rows hover #f4f6f9"
+  },
+  {
+   "k": "Breakpoints",
+   "v": "follow the nearest named container \"lofr\" (set by Facility row); with no Facility row around it, all four stay visible"
+  }
+ ],
+ "usedIn": "District Home (inside each Facility row)."
+}

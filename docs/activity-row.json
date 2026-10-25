@@ -1,0 +1,137 @@
+{
+ "id": "activity-row",
+ "title": "Activity row",
+ "component": "ActivityRow",
+ "file": "components/ActivityRow.dc.html",
+ "status": "In review",
+ "hintSize": "100%,66px",
+ "previewWidth": "440px",
+ "description": "One line in a Recent activity list: a round icon, a bold title and a grey line with where and when. Use the warm tone for events that need attention, such as a secure mode or a low battery report. Stack rows with no gaps; each row draws its own bottom divider.",
+ "base": {
+  "icon": "wrench",
+  "title": "Service request SR-1043 raised",
+  "where": "Bath Elementary · 2 devices",
+  "when": "Oct 23"
+ },
+ "controls": [
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "wrench",
+   "keep": true
+  },
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "Service request SR-1043 raised"
+  },
+  {
+   "label": "Where",
+   "type": "text",
+   "prop": "where",
+   "default": "Bath Elementary · 2 devices"
+  },
+  {
+   "label": "When",
+   "type": "text",
+   "prop": "when",
+   "default": "Oct 23"
+  },
+  {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "tone",
+   "options": [
+    [
+     "navy",
+     "navy"
+    ],
+    [
+     "warm",
+     "warm"
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Tones",
+   "cellWidth": 420,
+   "items": [
+    {
+     "label": "navy",
+     "props": {
+      "icon": "lock-simple-open",
+      "title": "Lockdown ended",
+      "where": "Bath Middle School",
+      "when": "Oct 21, 2:14 PM"
+     }
+    },
+    {
+     "label": "warm",
+     "props": {
+      "icon": "lock-simple",
+      "title": "Secure mode started",
+      "where": "Bath Career Center",
+      "when": "Oct 22, 3:02 PM",
+      "tone": "warm"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"wrench\"",
+   "x": "Phosphor icon name, regular weight, 18px."
+  },
+  {
+   "n": "title",
+   "t": "string",
+   "d": "\"Activity\"",
+   "x": "What happened, 14px / 600 #111827."
+  },
+  {
+   "n": "where",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Place or detail, shown before the time."
+  },
+  {
+   "n": "when",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Date and time, shown after a dot."
+  },
+  {
+   "n": "tone",
+   "t": "'navy' | 'warm'",
+   "d": "'navy'",
+   "x": "Icon circle colour."
+  }
+ ],
+ "values": [
+  {
+   "k": "Row",
+   "v": "padding 12px 20px, gap 12px, bottom divider 1px #eef0f3"
+  },
+  {
+   "k": "Icon circle",
+   "v": "34px; navy #25395c on #eaeef5, warm #92600a on #fff7e0"
+  },
+  {
+   "k": "Title",
+   "v": "14px / 600 #111827"
+  },
+  {
+   "k": "Second line",
+   "v": "12px #6b7280, \"where · when\""
+  }
+ ],
+ "usedIn": "District Home (Recent activity)."
+}

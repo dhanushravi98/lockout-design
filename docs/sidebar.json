@@ -74,9 +74,9 @@
   },
   {
    "n": "groups",
-   "t": "{ items: { label, icon, href? }[] }[]",
+   "t": "{ items: { label, icon, href?, disabled? }[] }[]",
    "d": "LockOut main menu",
-   "x": "Nav items in order, split into groups. A Nav divider goes between groups."
+   "x": "Nav items in order, split into groups. A Nav divider goes between groups. An item with disabled: true is greyed out and cannot be chosen."
   },
   {
    "n": "brand",
@@ -107,6 +107,12 @@
    "t": "number (px)",
    "d": "960",
    "x": "Full viewport height in product."
+  },
+  {
+   "n": "onSettings",
+   "t": "() => void",
+   "d": "-",
+   "x": "Called when the gear on the Profile card is pressed."
   },
   {
    "n": "onNavigate",

@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.10",
+ "version": "0.9.11",
  "categories": [
   {
    "name": "Foundations",
@@ -47,7 +47,11 @@
    "entries": [
     "user-card",
     "section-header",
-    "contact-card"
+    "contact-card",
+    "stat-card",
+    "facility-row",
+    "device-counts",
+    "activity-row"
    ]
   },
   {

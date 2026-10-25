@@ -29,10 +29,10 @@
       <sc-if value="{{ showSelect }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;flex-direction:column">
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:4px 4px 16px">
-                <div style="position:relative;display:inline-flex"><select value="{{ zoneVal }}" onChange="{{ setZone }}" style="height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 38px 0 16px;font-size:14px;font-family:inherit;color:#111827;background:#f8f9fb url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>') no-repeat right 14px center;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none">
+                <div style="position:relative;display:inline-flex"><select value="{{ zoneVal }}" onChange="{{ setZone }}" style="height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:8px;padding:0 38px 0 16px;font-size:14px;font-family:inherit;color:#111827;background:#f8f9fb url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2214%22 height=%2214%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236b7280%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M6 9l6 6 6-6%22/></svg>') no-repeat right 14px center;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none">
                   <sc-for list="{{ zones }}" as="z" hint-placeholder-count="6"><option value="{{ z.value }}">{{ z.label }}</option></sc-for>
                 </select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:14px;top:12px;pointer-events:none"><path d="M6 9l6 6 6-6"></path></svg></div>
-                <input type="text" value="{{ q }}" onInput="{{ setQ }}" placeholder="Search by name or room" style="flex:1;min-width:160px;height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:999px;padding:0 16px;font-size:14px;font-family:inherit;color:#111827;outline:none;background:#f8f9fb">
+                <input type="text" value="{{ q }}" onInput="{{ setQ }}" placeholder="Search by name or room" style="flex:1;min-width:160px;height:38px;box-sizing:border-box;border:1px solid #dfe3ea;border-radius:8px;padding:0 12px;font-size:14px;font-family:inherit;color:#111827;outline:none;background:#f8f9fb">
               </div>
         <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
           <div style="border-top:1px solid #eceef2">
@@ -81,6 +81,7 @@
       <sc-if value="{{ showReview }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-direction:column;gap:24px">
         <div style="display:flex;flex-direction:column;gap:12px;background:#f5f7fa;border-radius:16px;padding:18px 20px">
+          <sc-if value="{{ hasFac }}" hint-placeholder-val="{{ false }}"><span style="font-size:17px;font-weight:700;color:#111827">{{ summaryFacility }}</span></sc-if>
           <span style="font-size:15px;color:#374151">{{ summaryText }}</span>
           <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ summaryChips }}" as="c" hint-placeholder-count="3"><span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #dfe3ea;border-radius:999px;padding:6px 8px 6px 14px;font-size:13px;font-weight:600;color:#25395c">{{ c.label }}<span style="background:#25395c;color:#fff;border-radius:999px;min-width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;padding:0 6px;box-sizing:border-box">{{ c.count }}</span></span></sc-for></div>
         </div>
@@ -124,6 +125,9 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+  componentDidMount() { this.seed(); }
+  componentDidUpdate() { this.seed(); }
+  seed() { const p = this.props, open = !!p.open; if (open && !this._was && p.preset && p.preset.length) { const sel = {}; p.preset.forEach(x => { sel[x.id] = { type: String(x.id).replace(/\d+$/, ''), issues: (x.issues || []).slice(), fac: x.facility || '' }; }); this.setState({ sel, step: 'review', open: null }); } this._was = open; }
   state = { isOpen: true, step: 'select', open: null, zone: 'all', q: '', sel: {}, comments: '', doneId: null, n: 1043 };
   ISSUES = ['Device not functioning', 'Device malfunctioning', 'Replace Battery', 'Other comments'];
   TABLET_ISSUES = ['Tablet Damaged', 'Tablet not responding', 'Replace charger', 'Other comments'];
@@ -180,7 +184,7 @@ class Component extends DCLogic {
     const zones = ['all', '1', '2', '3', '4', '5'].map(z => ({ label: z === 'all' ? 'All zones' : 'Zone ' + z, value: z }));
     const groups = types.map(t => ({ t, rows: ids.filter(k => byId[k].type === t.id) })).filter(g => g.rows.length).map(g => ({
       label: g.t.label, iconStyle: iconStyle(g.t.id, 22), count: g.rows.length + (g.rows.length === 1 ? ' device' : ' devices'),
-      rows: g.rows.map(k => ({ name: byId[k].name, loc: byId[k].loc, chips: sel[k].issues.map(x => ({ label: x === 'Other comments' && sel[k].other ? 'Other comments: ' + sel[k].other : x })), onRemove: () => this.setState(s => { const n = { ...s.sel }; delete n[k]; return { sel: n }; }) })) }));
+      rows: g.rows.map(k => ({ name: byId[k].name, loc: (sel[k].fac ? sel[k].fac + ' · ' : '') + byId[k].loc, chips: sel[k].issues.map(x => ({ label: x === 'Other comments' && sel[k].other ? 'Other comments: ' + sel[k].other : x })), onRemove: () => this.setState(s => { const n = { ...s.sel }; delete n[k]; return { sel: n }; }) })) }));
     const tally = {}; ids.forEach(k => sel[k].issues.forEach(x => { tally[x] = (tally[x] || 0) + 1; }));
     const summaryChips = [...this.ISSUES, ...this.TABLET_ISSUES].filter((x, i, a) => a.indexOf(x) === i && tally[x]).map(x => ({ label: x, count: tally[x] }));
     const summaryText = nSel + (nSel === 1 ? ' device' : ' devices') + ' across ' + groups.length + (groups.length === 1 ? ' device type' : ' device types') + '. Issues reported:';
@@ -188,14 +192,14 @@ class Component extends DCLogic {
     let footerNote = '', primaryLabel = 'Review request', primaryClick = () => this.setState({ step: 'review' }), enabled = allTagged, cancelLabel = 'Cancel', showPrimary = true;
     if (showSelect) footerNote = nSel === 0 ? 'No devices selected yet' : allTagged ? nSel + (nSel === 1 ? ' device' : ' devices') + ' ready to review' : nTagged + ' of ' + nSel + ' devices have an issue. Choose an issue for the rest.';
     if (showReview) { footerNote = nSel + (nSel === 1 ? ' device' : ' devices') + ' in this request'; primaryLabel = 'Submit Request'; enabled = nSel > 0;
-      primaryClick = () => this.setState(s => ({ step: 'done', doneId: 'SR-' + s.n, n: s.n + 1, sel: {}, comments: '' })); }
+      primaryClick = () => { const rid = 'SR-' + st.n; if (this.props.onSubmit) this.props.onSubmit({ id: rid, devices: nSel, facilities: [...new Set(ids.map(k => sel[k].fac).filter(Boolean))], issues: [...new Set(ids.flatMap(k => sel[k].issues))] }); this.setState(s => ({ step: 'done', doneId: 'SR-' + s.n, n: s.n + 1, sel: {}, comments: '' })); }; }
     if (showDone) { cancelLabel = 'Close'; showPrimary = false; }
     return {
       ...icons, isOpen: emb ? !!this.props.open : st.isOpen, showTrigger: !emb, openModal: () => this.setState({ isOpen: true }), closeModal: () => { this.setState({ step: 'select', sel: {}, comments: '', isOpen: false }); if (this.props.onClose) this.props.onClose(); },
       title: showReview ? 'Review your request' : 'Report Issue',
       subtitle: showReview ? 'Check the devices and issues before you submit.' : showDone ? '' : 'Open a device type, select the devices that need service, then choose the issues.',
       showSelect, showReview, showDone, sections, zones, zoneVal: st.zone, setZone: (e) => this.setState({ zone: e.target.value }), q: st.q, setQ: (e) => this.setState({ q: e.target.value }),
-      reviewGroups: groups, summaryChips, summaryText, comments: st.comments, setComments: (e) => this.setState({ comments: e.target.value }),
+      reviewGroups: groups, summaryChips, summaryText, summaryFacility: [...new Set(ids.map(k => sel[k].fac).filter(Boolean))].join(', '), hasFac: ids.some(k => sel[k].fac), comments: st.comments, setComments: (e) => this.setState({ comments: e.target.value }),
       doneText: 'Your request ' + (st.doneId || '') + ' was sent to the service team.',
       footerNote, cancelLabel, showPrimary, primaryLabel, primaryClick: enabled ? primaryClick : () => {},
       showBack: showReview, goBack: () => this.setState({ step: 'select' }),

@@ -145,6 +145,12 @@
    "x": "Phosphor icon name. Regular weight, becomes fill on hover."
   },
   {
+   "n": "tone",
+   "t": "'default' | 'warning'",
+   "d": "'default'",
+   "x": "warning uses amber text #92600a with hover fill #fff7e0 (pressed #fdeec0), for links that point at something needing attention."
+  },
+  {
    "n": "disabled",
    "t": "boolean",
    "d": "false",
@@ -199,6 +205,10 @@
   {
    "k": "Disabled",
    "v": "text and icon #9aa1ac, not-allowed"
+  },
+  {
+   "k": "Warning tone",
+   "v": "text and icon #92600a, hover bg #fff7e0, pressed bg #fdeec0"
   },
   {
    "k": "In a group",

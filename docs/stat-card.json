@@ -1,0 +1,176 @@
+{
+ "id": "stat-card",
+ "title": "Stat card",
+ "component": "StatCard",
+ "file": "components/StatCard.dc.html",
+ "status": "In review",
+ "hintSize": "100%,72px",
+ "previewWidth": "260px",
+ "description": "One headline number with a round icon and a short label, for the row of summary cards at the top of a screen. Set action to make it clickable: it gets a small arrow badge in the corner and a darker border on hover, and it opens a list the person can act on. Tone sets the icon colour: navy for plain facts, warning for things that need attention, error for serious events.",
+ "base": {
+  "icon": "battery-low",
+  "value": 3,
+  "label": "Low batteries"
+ },
+ "controls": [
+  {
+   "label": "Icon name",
+   "type": "icon",
+   "prop": "icon",
+   "default": "battery-low",
+   "keep": true
+  },
+  {
+   "label": "Value",
+   "type": "text",
+   "prop": "value",
+   "default": "3"
+  },
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Low batteries"
+  },
+  {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "tone",
+   "options": [
+    [
+     "navy",
+     "navy"
+    ],
+    [
+     "warning",
+     "warning"
+    ],
+    [
+     "error",
+     "error"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Action",
+   "type": "seg",
+   "prop": "action",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "Tones",
+   "cellWidth": 250,
+   "items": [
+    {
+     "label": "navy",
+     "props": {
+      "icon": "buildings",
+      "value": 4,
+      "label": "Facilities"
+     }
+    },
+    {
+     "label": "warning, action",
+     "props": {
+      "icon": "battery-low",
+      "value": 3,
+      "label": "Low batteries",
+      "tone": "warning",
+      "action": true
+     }
+    },
+    {
+     "label": "error",
+     "props": {
+      "icon": "shield",
+      "value": 4,
+      "label": "Recent lockdowns",
+      "tone": "error"
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "icon",
+   "t": "string",
+   "d": "\"buildings\"",
+   "x": "Phosphor icon name, drawn in fill weight at 22px."
+  },
+  {
+   "n": "value",
+   "t": "number | string",
+   "d": "0",
+   "x": "The headline number, 26px / 700."
+  },
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Label\"",
+   "x": "Caption under the number, 12px #6b7280. Wraps to two lines."
+  },
+  {
+   "n": "tone",
+   "t": "'navy' | 'warning' | 'error'",
+   "d": "'navy'",
+   "x": "Icon colour and circle fill."
+  },
+  {
+   "n": "action",
+   "t": "boolean",
+   "d": "false",
+   "x": "Clickable card with an arrow badge and hover border."
+  },
+  {
+   "n": "onClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Fires when an action card is pressed."
+  }
+ ],
+ "values": [
+  {
+   "k": "Card",
+   "v": "white, 1px #e5e7eb, radius 14px, padding 14px, gap 12px"
+  },
+  {
+   "k": "Icon circle",
+   "v": "40px; navy #25395c on #eaeef5, warning #92600a on #fff7e0, error #b91c1c on #fef2f2"
+  },
+  {
+   "k": "Value",
+   "v": "26px / 700 #111827, line height 1.1"
+  },
+  {
+   "k": "Label",
+   "v": "12px #6b7280, line height 1.25"
+  },
+  {
+   "k": "Arrow badge",
+   "v": "22px circle #fff7e0, Icon arrow-up-right 13px #92600a, top right"
+  },
+  {
+   "k": "Hover (action)",
+   "v": "border #b4bcc8, pointer cursor"
+  },
+  {
+   "k": "Grid on District Home",
+   "v": "5 equal columns, gap 12px"
+  }
+ ],
+ "usedIn": "District Home (summary cards)."
+}

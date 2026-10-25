@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.9.11 (draft)
+- New: Stat card, Activity row, Device counts and Facility row (all In review), in the Cards category. Facility row is one school in a district list (logo, name, attention link, alert pill, device counts, recent lockdowns, View) and rearranges itself as its own width shrinks; Device counts collapses from four counts to two plus a +2 button to a single N devices button; Stat card is a headline number with an optional action badge; Activity row is one line of a Recent activity list.
+- New screen: screens/District Home.dc.html, for the district admin login, built from these components. School logo and name header with My requests and Report an issue; Secure Mode banner with a pulsing alert pill on the school row; news banner; stat cards; Facilities and Recent activity. Attention items open a list with a Raise request action that opens the Service Request overlay on its review step with the devices chosen; submitted requests appear under My requests and in Recent activity, and the school row shows a request-raised pill that collapses to a check after 10 seconds.
+- Sidebar and Nav item: items can be disabled (Assessments and Emergency Prep are disabled on this screen; Reports is removed from the district menu).
+- Profile card: gear button and an unclipped last-login line.
+- Link button: new tone prop ('warning'). Pill: text centred.
+- Service Request Classic: new props preset and onSubmit.
+
 ## v0.9.10 (draft)
 - New: Toast (In review). Pop-up confirmation with a round navy icon, title, optional second line and close button; floating places it at the top centre of the page.
 - New: Mode button (In review). Round outlined icon button that grows into a primary Button with a label and green dot while a mode is on (Maintenance Mode).

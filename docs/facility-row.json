@@ -1,0 +1,422 @@
+{
+ "id": "facility-row",
+ "title": "Facility row",
+ "component": "FacilityRow",
+ "file": "components/FacilityRow.dc.html",
+ "status": "In review",
+ "hintSize": "100%,110px",
+ "previewWidth": "900px",
+ "description": "One school in a district list: round logo, name, an attention link (for example \"2 low batteries\") with a request-raised pill, the alert pill, an All devices healthy pill when nothing needs attention, the Device counts box, the recent lockdown count and a View button. Rows alternate white and very light grey (shaded) and take a light fill on hover. A Secure mode alert gets pulsing rings. The row rearranges itself as its own width shrinks, so it works in any column. Built from Pill, Link button, Button, Device counts and Tooltip.",
+ "base": {
+  "school": "Bath Middle School",
+  "issueText": "1 low battery",
+  "issueIcon": "battery-low",
+  "alertLabel": "No alerts",
+  "lockCount": 3,
+  "lastLock": "Oct 21",
+  "total": 130,
+  "devices": [
+   {
+    "label": "Tablets",
+    "count": 60,
+    "icon": "../uploads/Tablet Icon.png"
+   },
+   {
+    "label": "Smart Boots",
+    "count": 40,
+    "icon": "../uploads/Boot.png"
+   },
+   {
+    "label": "Pull Boxes",
+    "count": 10,
+    "icon": "../uploads/PullBLE.png"
+   },
+   {
+    "label": "DomeBLE",
+    "count": 30,
+    "icon": "../uploads/DomeBLE.png"
+   }
+  ]
+ },
+ "controls": [
+  {
+   "label": "School",
+   "type": "text",
+   "prop": "school",
+   "default": "Bath Middle School"
+  },
+  {
+   "label": "Attention text",
+   "type": "text",
+   "prop": "issueText",
+   "default": "1 low battery"
+  },
+  {
+   "label": "Request pill",
+   "type": "seg",
+   "prop": "ack",
+   "options": [
+    [
+     "none",
+     ""
+    ],
+    [
+     "live",
+     "live"
+    ],
+    [
+     "done",
+     "done"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Alert",
+   "type": "seg",
+   "prop": "alert",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Alert label",
+   "type": "text",
+   "prop": "alertLabel",
+   "default": "No alerts"
+  },
+  {
+   "label": "Shaded",
+   "type": "seg",
+   "prop": "shaded",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Recent lockdowns",
+   "type": "text",
+   "prop": "lockCount",
+   "default": "3"
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 900,
+   "items": [
+    {
+     "label": "needs attention",
+     "props": {
+      "school": "Bath Elementary",
+      "issueText": "2 low batteries",
+      "issueIcon": "battery-low",
+      "lockCount": 0,
+      "total": 140,
+      "devices": [
+       {
+        "label": "Tablets",
+        "count": 60,
+        "icon": "../uploads/Tablet Icon.png"
+       },
+       {
+        "label": "Smart Boots",
+        "count": 40,
+        "icon": "../uploads/Boot.png"
+       },
+       {
+        "label": "Pull Boxes",
+        "count": 10,
+        "icon": "../uploads/PullBLE.png"
+       },
+       {
+        "label": "DomeBLE",
+        "count": 30,
+        "icon": "../uploads/DomeBLE.png"
+       }
+      ]
+     }
+    },
+    {
+     "label": "request raised",
+     "props": {
+      "school": "Bath Elementary",
+      "issueText": "2 low batteries",
+      "issueIcon": "battery-low",
+      "ack": "live",
+      "ackLabel": "SR-1043 raised",
+      "total": 140,
+      "devices": [
+       {
+        "label": "Tablets",
+        "count": 60,
+        "icon": "../uploads/Tablet Icon.png"
+       },
+       {
+        "label": "Smart Boots",
+        "count": 40,
+        "icon": "../uploads/Boot.png"
+       },
+       {
+        "label": "Pull Boxes",
+        "count": 10,
+        "icon": "../uploads/PullBLE.png"
+       },
+       {
+        "label": "DomeBLE",
+        "count": 30,
+        "icon": "../uploads/DomeBLE.png"
+       }
+      ],
+      "shaded": true
+     }
+    },
+    {
+     "label": "request addressed (check icon)",
+     "props": {
+      "school": "Bath Elementary",
+      "issueText": "2 low batteries",
+      "issueIcon": "battery-low",
+      "ack": "done",
+      "ackTip": "Request SR-1043 raised",
+      "total": 140,
+      "devices": [
+       {
+        "label": "Tablets",
+        "count": 60,
+        "icon": "../uploads/Tablet Icon.png"
+       },
+       {
+        "label": "Smart Boots",
+        "count": 40,
+        "icon": "../uploads/Boot.png"
+       },
+       {
+        "label": "Pull Boxes",
+        "count": 10,
+        "icon": "../uploads/PullBLE.png"
+       },
+       {
+        "label": "DomeBLE",
+        "count": 30,
+        "icon": "../uploads/DomeBLE.png"
+       }
+      ]
+     }
+    },
+    {
+     "label": "healthy",
+     "props": {
+      "school": "Bath High School",
+      "total": 190,
+      "devices": [
+       {
+        "label": "Tablets",
+        "count": 60,
+        "icon": "../uploads/Tablet Icon.png"
+       },
+       {
+        "label": "Smart Boots",
+        "count": 40,
+        "icon": "../uploads/Boot.png"
+       },
+       {
+        "label": "Pull Boxes",
+        "count": 10,
+        "icon": "../uploads/PullBLE.png"
+       },
+       {
+        "label": "DomeBLE",
+        "count": 30,
+        "icon": "../uploads/DomeBLE.png"
+       }
+      ],
+      "shaded": true
+     }
+    },
+    {
+     "label": "secure mode alert",
+     "props": {
+      "school": "Bath Career Center",
+      "alertLabel": "Secure mode active",
+      "alert": true,
+      "lockCount": 1,
+      "lastLock": "Oct 12",
+      "total": 64,
+      "devices": [
+       {
+        "label": "Tablets",
+        "count": 60,
+        "icon": "../uploads/Tablet Icon.png"
+       },
+       {
+        "label": "Smart Boots",
+        "count": 40,
+        "icon": "../uploads/Boot.png"
+       },
+       {
+        "label": "Pull Boxes",
+        "count": 10,
+        "icon": "../uploads/PullBLE.png"
+       },
+       {
+        "label": "DomeBLE",
+        "count": 30,
+        "icon": "../uploads/DomeBLE.png"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "school",
+   "t": "string",
+   "d": "\"School\"",
+   "x": "School name, 17px / 700. (Not called name, which is reserved.)"
+  },
+  {
+   "n": "logo",
+   "t": "string (url)",
+   "d": "-",
+   "x": "Round logo, 52px. Without it a grey building icon tile shows."
+  },
+  {
+   "n": "issueText",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Attention summary. Leave empty when nothing needs attention: the healthy pill shows instead."
+  },
+  {
+   "n": "issueIcon",
+   "t": "string",
+   "d": "\"warning\"",
+   "x": "Icon of the attention link: battery-low, shuffle, wifi-slash or warning."
+  },
+  {
+   "n": "onIssue",
+   "t": "() => void",
+   "d": "-",
+   "x": "Opens the list of issues."
+  },
+  {
+   "n": "ack",
+   "t": "'' | 'live' | 'done'",
+   "d": "\"\"",
+   "x": "A request was raised: live shows the green SR pill, done shows a small check circle with a tooltip."
+  },
+  {
+   "n": "ackLabel / ackTip",
+   "t": "string",
+   "d": "-",
+   "x": "Pill text and tooltip text."
+  },
+  {
+   "n": "alertLabel",
+   "t": "string",
+   "d": "\"No alerts\"",
+   "x": "Text of the alert pill."
+  },
+  {
+   "n": "alert",
+   "t": "boolean",
+   "d": "false",
+   "x": "Amber alert pill with a dot and pulsing rings."
+  },
+  {
+   "n": "onAlert / alertTip",
+   "t": "() => void / string",
+   "d": "-",
+   "x": "Makes the alert pill clickable (used for the demo) with a hover tip."
+  },
+  {
+   "n": "devices / total",
+   "t": "{ label, count, icon }[] / number",
+   "d": "-",
+   "x": "Passed to Device counts."
+  },
+  {
+   "n": "lockCount / lastLock",
+   "t": "number / string",
+   "d": "0 / \"\"",
+   "x": "Recent lockdowns number; shown only above 0. lastLock is the tooltip."
+  },
+  {
+   "n": "shaded",
+   "t": "boolean",
+   "d": "false",
+   "x": "Light grey fill for alternate rows. Pass true for every second row."
+  },
+  {
+   "n": "onView",
+   "t": "() => void",
+   "d": "-",
+   "x": "View button."
+  }
+ ],
+ "values": [
+  {
+   "k": "Row",
+   "v": "padding 18px 20px (14px below 730px), bottom divider 1px #dfe3ea, column gap 24px (14px below 730px)"
+  },
+  {
+   "k": "Fill",
+   "v": "white; shaded #fafbfc; hover #f4f6f9"
+  },
+  {
+   "k": "Columns",
+   "v": "52px logo, name column, devices column, 130px actions column"
+  },
+  {
+   "k": "Logo",
+   "v": "52px circle, 1px #e5e7eb, white, image at 68%"
+  },
+  {
+   "k": "Name",
+   "v": "17px / 700 #111827"
+  },
+  {
+   "k": "Attention link",
+   "v": "Link button, warning tone, offset -14px so the text lines up with the name"
+  },
+  {
+   "k": "Alert pill",
+   "v": "Pill md; tint when none, warning with dot when active; rings 1.5px #92600a, 2.8s"
+  },
+  {
+   "k": "Lockdowns",
+   "v": "30px / 700 number over 13px #4b5563 label, top right"
+  },
+  {
+   "k": "View",
+   "v": "Button secondary, height 34, bottom right"
+  },
+  {
+   "k": "Responsive (container \"lofr\")",
+   "v": "below 730px tighter; below 540px devices move under the name, actions in the right column; below 470px one column with devices and View on a third line"
+  },
+  {
+   "k": "Reduced motion",
+   "v": "rings stop animating"
+  }
+ ],
+ "usedIn": "District Home (Facilities)."
+}

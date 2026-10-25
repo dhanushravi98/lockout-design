@@ -23,7 +23,7 @@ class Component extends DCLogic {
     }[v] || [];
     const pad = s === 'xs' ? '3px 10px' : s === 's' ? '4px 12px' : '6px 14px';
     return { label: p.label || 'Pill', hasDot: !!p.dot, hasIcon: !!p.icon && !p.dot, icon: p.icon || '',
-      style: 'display:inline-flex;align-items:center;gap:6px;border-radius:999px;font-weight:600;font-size:' + (s === 'xs' ? 9 : s === 's' ? 12 : 13) + 'px;white-space:nowrap;cursor:default;user-select:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:' + pad + ';' + V[0],
+      style: 'display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;font-weight:600;font-size:' + (s === 'xs' ? 9 : s === 's' ? 12 : 13) + 'px;white-space:nowrap;cursor:default;user-select:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:' + pad + ';' + V[0],
       dotStyle: 'width:6px;height:6px;border-radius:999px;flex:none;background:' + V[1] };
   }
 }

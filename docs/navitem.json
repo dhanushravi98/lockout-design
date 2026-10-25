@@ -241,6 +241,12 @@
    "x": "The current page. Sets aria-current=\"page\"."
   },
   {
+   "n": "disabled",
+   "t": "boolean",
+   "d": "false",
+   "x": "Greys the item out, shows a not-allowed cursor, ignores clicks and removes it from keyboard focus. Used for sections that are not available yet."
+  },
+  {
    "n": "collapsed",
    "t": "boolean",
    "d": "false",
@@ -297,6 +303,10 @@
   {
    "k": "Active",
    "v": "bg #eaeef5, text #25395c"
+  },
+  {
+   "k": "Disabled",
+   "v": "text and icon #9aa1ac, no hover, cursor not-allowed"
   },
   {
    "k": "Focus",

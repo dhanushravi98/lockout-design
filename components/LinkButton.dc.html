@@ -9,15 +9,15 @@
 <x-dc>
 <div onClick="{{ onClick }}" onMouseEnter="{{ enter }}" onMouseLeave="{{ leave }}" role="link" aria-label="{{ label }}" style="{{ style }}" style-focus="{{ focus }}" tabindex="{{ tab }}"><dc-import name="Icon" icon="{{ icon }}" weight="{{ weight }}" size="18" color="currentColor" hint-size="18px,18px"></dc-import>{{ label }}</div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:200,&quot;height&quot;:44},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Site Map&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;map-trifold&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:200,&quot;height&quot;:44},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Site Map&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;map-trifold&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;default&quot;,&quot;options&quot;:[&quot;default&quot;,&quot;warning&quot;],&quot;tsType&quot;:&quot;'default'|'warning'&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
 class Component extends DCLogic {
   state = { over: false };
   renderVals() {
     const p = this.props, st = p.state, dis = !!p.disabled || st === 'disabled';
     const hov = !dis && (st === 'hover' || (!st && this.state.over)), prs = !dis && st === 'pressed', foc = !dis && st === 'focus';
-    const on = hov || prs;
+    const on = hov || prs, warm = p.tone === 'warning', fg = warm ? '#92600a' : '#25395c', hv = warm ? '#fff7e0' : '#eaeef5', pr = warm ? '#fdeec0' : '#dde3ef';
     let style = 'display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;box-sizing:border-box;user-select:none;outline:none;font-family:-apple-system,BlinkMacSystemFont,sans-serif;transition:background .12s;'
-      + (dis ? 'color:#9aa1ac;background:transparent;cursor:not-allowed' : 'color:#25395c;cursor:pointer;background:' + (prs ? '#dde3ef' : hov ? '#eaeef5' : 'transparent'));
+      + (dis ? 'color:#9aa1ac;background:transparent;cursor:not-allowed' : 'color:' + fg + ';cursor:pointer;background:' + (prs ? pr : hov ? hv : 'transparent'));
     if (foc) style += ';box-shadow:0 0 0 3px rgba(37,57,92,.25)';
     return { label: p.label || 'Link', icon: p.icon || 'map-trifold', weight: on ? 'fill' : 'regular', style, tab: dis ? '-1' : '0',
       focus: st || dis ? '' : 'box-shadow:0 0 0 3px rgba(37,57,92,.25)',

@@ -7,16 +7,16 @@
 </head>
 <body>
 <x-dc>
-<div style="{{ style }}"><dc-import name="Avatar" full-name="{{ fullName }}" size="36" hint-size="36px,36px"></dc-import><sc-if value="{{ showText }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;min-width:0;flex-grow:1"><span style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ fullName }}</span><span style="font-size:11px;font-weight:500;color:#6b7280;white-space:nowrap">Last login: {{ lastLogin }}</span></div></sc-if></div>
+<div style="{{ style }}"><dc-import name="Avatar" full-name="{{ fullName }}" size="36" hint-size="36px,36px"></dc-import><sc-if value="{{ showText }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;min-width:0;flex-grow:1"><span style="font-size:13px;font-weight:600;color:#111827;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ fullName }}</span><span style="font-size:11px;font-weight:500;line-height:1.35;color:#6b7280">Last login: {{ lastLogin }}</span></div><dc-import name="IconButton" icon="gear" label="Settings" size="30" onClick="{{ onSettings }}" hint-size="30px,30px"></dc-import></sc-if></div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:240,&quot;height&quot;:60},&quot;fullName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Lockout Dev Super Admin&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lastLogin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Oct 16, 2026 · 3:03 PM&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;collapsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:240,&quot;height&quot;:60},&quot;fullName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Lockout Dev Super Admin&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;lastLogin&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Oct 16, 2026 · 3:03 PM&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;collapsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onSettings&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const p = this.props, col = !!p.collapsed;
     const style = col
       ? 'display:flex;justify-content:center;padding:10px 0;width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif;'
       : 'display:flex;align-items:center;gap:10px;padding:10px;width:100%;box-sizing:border-box;border:1px solid #e5e7eb;border-radius:16px;background:#fafbfc;font-family:-apple-system,BlinkMacSystemFont,sans-serif;';
-    return { fullName: p.fullName || 'Lockout Dev Super Admin', lastLogin: p.lastLogin || 'Oct 16, 2026 · 3:03 PM', showText: !col, style };
+    return { fullName: p.fullName || 'Lockout Dev Super Admin', lastLogin: p.lastLogin || 'Oct 16, 2026 · 3:03 PM', showText: !col, style, onSettings: p.onSettings || (() => {}) };
   }
 }
 </script>
