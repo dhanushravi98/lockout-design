@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="{{ heading }}" subtitle="{{ subtitle }}" icon="{{ icon }}" width="{{ width }}" height="{{ height }}" inline="{{ inline }}" hideFooter="{{ true }}" onClose="{{ onClose }}" hint-size="0px,0px">
+  <dc-import name="TextField" value="{{ query }}" onInput="{{ onQuery }}" placeholder="{{ placeholder }}" height="44" hint-size="100%,44px"></dc-import>
+  <span style="font-size:14px;font-weight:700;color:#111827">{{ resultsText }}</span>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2"><div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff">
+      <dc-import name="SectionHeader" title="{{ g.title }}" subtitle="{{ g.sub }}" icon="{{ groupIcon }}" open="{{ g.open }}" onToggle="{{ g.onToggle }}" hint-size="100%,60px"></dc-import>
+      <sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid #eef0f3">
+        <sc-for list="{{ g.items }}" as="f" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;border-top:1px solid #eef0f3" style-hover="background:#f4f6f9"><span style="font-size:14px;font-weight:600;color:#111827;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.name }}</span><span style="flex:none;font-size:13px;color:#6b7280">{{ f.detail }}</span></div></sc-for>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid #eef0f3;background:#fafbfc;font-size:13px;color:#6b7280"><span>Showing <b style="color:#111827">{{ g.shown }}</b> of <b style="color:#111827">{{ g.total }}</b></span><sc-if value="{{ g.hasMore }}" hint-placeholder-val="{{ false }}"><dc-import name="LinkButton" label="{{ g.moreLabel }}" icon="caret-down" onClick="{{ g.onMore }}" hint-size="150px,34px"></dc-import></sc-if></div>
+      </div></sc-if></div></sc-for>
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 0;text-align:center;font-size:14px;color:#6b7280">{{ emptyText }}</div></sc-if>
+  </div>
+  <span style="font-size:13px;color:#6b7280">{{ footerText }}</span>
+</dc-import></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:600,&quot;height&quot;:740},&quot;open&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;inline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Facilities List&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;buildings&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;groupIcon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;buildings&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;width&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:560,&quot;tsType&quot;:&quot;number&quot;},&quot;height&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:720,&quot;tsType&quot;:&quot;number&quot;},&quot;query&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Search facilities&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;resultsText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;footerText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;emptyText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Nothing matches your search.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;groups&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{ title, sub, open, shown, total, hasMore, moreLabel, items: { name, detail }[], onToggle, onMore }[]&quot;},&quot;onQuery&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(event) =&gt; void&quot;},&quot;onClose&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, none = () => {};
+    const groups = (Array.isArray(p.groups) ? p.groups : []).map(g => ({ ...g, onToggle: g.onToggle || none, onMore: g.onMore || none, items: Array.isArray(g.items) ? g.items : [] }));
+    return { open: p.open !== false && p.open !== 'false', inline: !!p.inline, heading: p.heading || 'List', subtitle: p.subtitle || '', icon: p.icon || 'buildings', groupIcon: p.groupIcon || 'buildings',
+      width: p.width || 560, height: p.height || 720, query: p.query || '', placeholder: p.placeholder || 'Search', onQuery: p.onQuery || none, resultsText: p.resultsText || '',
+      groups, isEmpty: groups.length === 0, emptyText: p.emptyText || 'Nothing matches your search.', footerText: p.footerText || '', onClose: p.onClose || none };
+  }
+}
+</script>
+</body>
+</html>

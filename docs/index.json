@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.12",
+ "version": "0.9.13",
  "categories": [
   {
    "name": "Foundations",
@@ -67,6 +67,7 @@
    "entries": [
     "modal-shell",
     "confirm-dialog",
+    "grouped-list-modal",
     "video-modal"
    ]
   },

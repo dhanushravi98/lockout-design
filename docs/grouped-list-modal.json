@@ -1,0 +1,219 @@
+{
+ "id": "grouped-list-modal",
+ "title": "Grouped list modal",
+ "component": "GroupedListModal",
+ "file": "components/GroupedListModal.dc.html",
+ "status": "In review",
+ "hintSize": "100%,740px",
+ "previewWidth": "620px",
+ "description": "A dialog that lists items in collapsible groups, with a search box on top. It is the Facilities List on the Dispatch screen: facilities grouped by district. Groups start collapsed, opening one closes the others (the screen decides), and a group shows 10 rows with a Show more button. Built from Modal shell, Text field, Section header and Link button. The screen owns the data, the search and which group is open; the dialog only draws them.",
+ "base": {
+  "inline": true,
+  "open": true,
+  "heading": "Facilities List",
+  "subtitle": "MI-48195_SOUTHGATE-POLICE-DEPT",
+  "resultsText": "Search Results [14] Facilities",
+  "footerText": "Showing 14 facilities in 2 districts",
+  "placeholder": "Search facilities",
+  "groups": [
+   {
+    "title": "Southgate Community Schools",
+    "sub": "10 facilities",
+    "open": true,
+    "shown": 5,
+    "total": 10,
+    "hasMore": true,
+    "moreLabel": "Show 5 more",
+    "items": [
+     {
+      "name": "ALLEN ELEMENTARY SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "ANDERSON HIGH SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "DAVIDSON MIDDLE SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "FORDLINE ELEMENTARY SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "GERISCH MIDDLE SCHOOL",
+      "detail": "48195"
+     }
+    ]
+   },
+   {
+    "title": "Allen Park Public Schools",
+    "sub": "4 facilities",
+    "open": false,
+    "shown": 4,
+    "total": 4,
+    "hasMore": false,
+    "moreLabel": "",
+    "items": [
+     {
+      "name": "ALLEN ELEMENTARY SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "ANDERSON HIGH SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "DAVIDSON MIDDLE SCHOOL",
+      "detail": "48195"
+     },
+     {
+      "name": "FORDLINE ELEMENTARY SCHOOL",
+      "detail": "48195"
+     }
+    ]
+   }
+  ]
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "heading",
+   "default": "Facilities List"
+  },
+  {
+   "label": "Subtitle",
+   "type": "text",
+   "prop": "subtitle",
+   "default": "MI-48195_SOUTHGATE-POLICE-DEPT"
+  },
+  {
+   "label": "Search placeholder",
+   "type": "text",
+   "prop": "placeholder",
+   "default": "Search facilities"
+  },
+  {
+   "label": "Results line",
+   "type": "text",
+   "prop": "resultsText",
+   "default": "Search Results [14] Facilities"
+  },
+  {
+   "label": "Footer line",
+   "type": "text",
+   "prop": "footerText",
+   "default": "Showing 14 facilities in 2 districts"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the dialog."
+  },
+  {
+   "n": "heading / subtitle",
+   "t": "string",
+   "d": "\"List\" / \"\"",
+   "x": "Modal title and the grey line under it."
+  },
+  {
+   "n": "icon / groupIcon",
+   "t": "string",
+   "d": "\"buildings\"",
+   "x": "Phosphor names for the title circle and for each group header."
+  },
+  {
+   "n": "width / height",
+   "t": "number (px)",
+   "d": "560 / 720",
+   "x": "Fixed size; the body scrolls once."
+  },
+  {
+   "n": "query / onQuery",
+   "t": "string / (event) => void",
+   "d": "\"\" / -",
+   "x": "Search text and its input handler. The screen filters the data."
+  },
+  {
+   "n": "placeholder",
+   "t": "string",
+   "d": "\"Search\"",
+   "x": "Search box placeholder."
+  },
+  {
+   "n": "resultsText",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Bold line above the groups, for example \"Search Results [14] Facilities\"."
+  },
+  {
+   "n": "groups",
+   "t": "array",
+   "d": "[]",
+   "x": "Each group: title, sub, open, onToggle, items [{ name, detail }], shown, total, hasMore, moreLabel, onMore."
+  },
+  {
+   "n": "emptyText",
+   "t": "string",
+   "d": "\"Nothing matches your search.\"",
+   "x": "Shown when groups is empty."
+  },
+  {
+   "n": "footerText",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Plain line at the bottom, for example \"Showing 14 facilities in 2 districts\"."
+  },
+  {
+   "n": "onClose",
+   "t": "() => void",
+   "d": "-",
+   "x": "X button and click outside."
+  }
+ ],
+ "values": [
+  {
+   "k": "Shell",
+   "v": "Modal shell, width 560, height 720, hideFooter, X in the header"
+  },
+  {
+   "k": "Search",
+   "v": "Text field, height 44, 8px corners"
+  },
+  {
+   "k": "Results line",
+   "v": "14px / 700 #111827"
+  },
+  {
+   "k": "Group box",
+   "v": "1px #e5e7eb, radius 12px, white, 12px gap between groups"
+  },
+  {
+   "k": "Group header",
+   "v": "Section header (collapsible, round chevron button)"
+  },
+  {
+   "k": "Item row",
+   "v": "padding 12px 16px, top divider 1px #eef0f3, name 14px / 600, detail 13px #6b7280, hover #f4f6f9"
+  },
+  {
+   "k": "Group footer",
+   "v": "padding 12px 16px, fill #fafbfc, \"Showing N of M\" 13px, Link button (caret-down icon) for Show more"
+  },
+  {
+   "k": "Footer line",
+   "v": "13px #6b7280"
+  },
+  {
+   "k": "Defaults",
+   "v": "all groups collapsed; while searching the screen opens every matching group"
+  }
+ ],
+ "usedIn": "Dispatch screen (Facilities List overlay)."
+}

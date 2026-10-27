@@ -109,8 +109,8 @@
    "v": "13px #6b7280"
   },
   {
-   "k": "Chevron box",
-   "v": "28px, 1px #e5e7eb, radius 8, caret 12px #6b7280"
+   "k": "Chevron button",
+   "v": "28px circle, 1px #e5e7eb, radius 999, caret 12px #6b7280"
   },
   {
    "k": "Hover",

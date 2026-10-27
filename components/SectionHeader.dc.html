@@ -22,7 +22,7 @@ class Component extends DCLogic {
       collapsible: col, onToggle: col ? (p.onToggle || (() => {})) : (() => {}),
       cls: col ? 'lo-sh-row' : '',
       style: 'display:flex;align-items:center;gap:14px;padding:' + (p.compact ? '8px 16px' : '12px 16px') + ';box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif;' + (col ? 'cursor:pointer;' : '') + (open ? 'background:#fafbfc;' : ''),
-      chevStyle: 'width:28px;height:28px;border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;transition:transform .15s;transform:rotate(' + (open ? 180 : 0) + 'deg)' };
+      chevStyle: 'width:28px;height:28px;border:1px solid #e5e7eb;border-radius:999px;display:flex;align-items:center;justify-content:center;flex:none;transition:transform .15s;transform:rotate(' + (open ? 180 : 0) + 'deg)' };
   }
 }
 </script>

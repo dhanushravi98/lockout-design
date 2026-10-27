@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.13 (draft)
+- New: Grouped list modal (In review). A dialog with a search box and collapsible groups of rows, each group showing 10 rows with a Show more button. Built on Modal shell, Text field, Section header and Button.
+- Dispatch screen: the Facilities List overlay is built on Grouped list modal and uses library styling throughout. Districts start collapsed; opening one closes the others.
+- Section header: the chevron is a round button.
+
 ## v0.9.12
 - New: Progress bar, Training card and Video modal (all In review). Progress bar is a count with a thin bar; Training card is one video with a gradient cover, status pill, play badge, title, Watch and optional Handout; Video modal is a Modal shell with a 16 / 9 player, Handout, Open on YouTube, Mark as complete and Next training.
 - New screen: screens/Trainings.dc.html. Program tabs (Lockout Smart System, Violence Prevention and Response) with an icon and a count, a progress strip with a Start here / Next up button, a Show row of role chips (Administrators, Teachers and faculty, Students, For all roles; the page opens on the first chip) and cards with a light gradient cover, a status pill, a Watch button and, when available, a Handout button, both at the right of the card. The whole card opens a video modal with a Handout button, Open on YouTube, Mark as complete (toggles back to not complete) and Next training. Coming soon cards are not clickable.
