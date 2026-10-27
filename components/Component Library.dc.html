@@ -54,7 +54,7 @@ class Component extends DCLogic {
     const nav = idx.categories.map(c => mk(c.name, false)).concat(idx.queued.map(q => mk(q.name, true)));
     const q = idx.queued.find(x => x.name === cat);
     const f = st.found;
-    return { versionLabel: 'v' + (idx.version || '0') + ' draft', nav, catName: cat, loading: st.loading || !!st.err, loadingText: st.err || 'Loading…',
+    return { versionLabel: 'v' + (idx.version || '0'), nav, catName: cat, loading: st.loading || !!st.err, loadingText: st.err || 'Loading…',
       isFoundations: !!f, families: f ? f.families.map(fa => ({ name: fa.name, use: fa.use, shades: fa.shades.map(s => { const dark = +s.step >= 500; return { step: s.step, hex: s.hex, role: s.role, inUse: !!s.role,
         sw: 'height:56px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;box-sizing:border-box;background:' + s.hex + ';color:' + (dark ? '#fff' : '#111827') + (+s.step <= 100 ? ';box-shadow:inset 0 0 0 1px rgba(17,24,39,.08)' : ''),
         dot: 'width:8px;height:8px;border-radius:999px;background:' + (dark ? '#fff' : '#25395c') }; }) })) : [], foundationRows: f ? f.rows : [],
