@@ -10,7 +10,7 @@
 <x-dc>
 <helmet>
 <meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
-<style>.tr-main>*{flex-shrink:0}.tr-card:hover{border-color:#b4bcc8!important;box-shadow:0 6px 18px rgba(17,24,39,.08)}.tr-play:hover{background:#1c2c48!important;transform:scale(1.06)}</style>
+<style>.tr-main>*{flex-shrink:0}</style>
 <template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="300" y="200" width="600" height="340" rx="30" fill="#fff"></rect><circle cx="600" cy="370" r="70" fill="#25395c"></circle><path d="M580 335l55 35-55 35z" fill="#fff"></path></svg></template>
 </helmet>
 <div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
@@ -31,8 +31,7 @@
 
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 48px;padding:0 2px">
             <div style="flex:1 1 300px;max-width:520px;min-width:0;display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:26px;font-weight:700;line-height:1">{{ doneCount }}</span><span style="font-size:15px;color:#4b5563">of {{ total }} completed</span></div>
-              <div style="height:8px;border-radius:999px;background:#e8ebf0;overflow:hidden"><div style="{{ barStyle }}"></div></div>
+              <dc-import name="ProgressBar" value="{{ doneCount }}" total="{{ total }}" suffix="completed" hint-size="100%,64px"></dc-import>
             </div>
             <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
               <div style="flex:0 1 auto;display:flex;align-items:center;gap:16px;min-width:0">
@@ -52,20 +51,7 @@
             <sc-if value="{{ s.showLabel }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:12px;padding:0 2px"><div style="width:28px;height:1px;background:#d5dae2"></div><dc-import name="Icon" icon="users-three" weight="fill" size="16" color="#6b7280" hint-size="16px,16px"></dc-import><span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280">{{ s.label }}</span><div style="flex:1;height:1px;background:#d5dae2"></div></div></sc-if>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 24px">
             <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3">
-              <div class="tr-card" onClick="{{ c.onOpen }}" style="cursor:{{ c.cardCursor }};min-width:0;background:#fff;border:1px solid #eef0f3;border-radius:18px;padding:10px;box-shadow:0 1px 3px rgba(17,24,39,.05);display:flex;flex-direction:column;transition:border-color .12s,box-shadow .12s">
-                <div onClick="{{ c.onOpen }}" style="{{ c.thumbStyle }}">
-                  <sc-if value="{{ c.noThumb }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0 14px;text-align:center;height:100%;box-sizing:border-box"><span style="font-size:15px;font-weight:800;letter-spacing:.02em;line-height:1.2;color:#25395c;text-transform:uppercase">{{ c.tile }}</span></div></sc-if>
-                  <div style="position:absolute;top:8px;left:8px"><dc-import name="Pill" label="{{ c.status }}" variant="{{ c.statusVariant }}" size="s" icon="{{ c.statusIcon }}" hint-size="100px,24px"></dc-import></div>
-                  <sc-if value="{{ c.canPlay }}" hint-placeholder-val="{{ true }}"><div class="tr-play" style="position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:999px;background:#25395c;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(37,57,92,.25);transition:transform .12s,background .12s"><dc-import name="Icon" icon="play" weight="fill" size="14" color="#ffffff" hint-size="14px,14px"></dc-import></div></sc-if>
-                </div>
-                <div style="padding:16px 8px 6px;display:flex;flex-direction:column;gap:18px;flex:1">
-                  <div style="display:flex;flex-direction:column;gap:6px;min-height:39px"><span style="font-size:15px;font-weight:700;line-height:1.3">{{ c.title }}</span></div>
-                  <div style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:auto">
-                    <sc-if value="{{ c.handout }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Handout" variant="secondary" icon="file-text" size="sm" onClick="{{ stopClick }}" hint-size="110px,34px"></dc-import></sc-if>
-                    <dc-import name="Button" label="{{ c.watchLabel }}" variant="{{ c.watchVariant }}" icon="play" size="sm" disabled="{{ c.watchOff }}" onClick="{{ c.onOpen }}" hint-size="110px,34px"></dc-import>
-                  </div>
-                </div>
-              </div>
+              <dc-import name="TrainingCard" heading="{{ c.title }}" tile="{{ c.tile }}" seed="{{ c.id }}" index="{{ c.i }}" state="{{ c.state }}" handout="{{ c.handout }}" thumb="{{ c.thumb }}" onOpen="{{ c.onOpen }}" onHandout="{{ noop }}" hint-size="100%,300px"></dc-import>
             </sc-for>
           </div></div></sc-for></div></div></sc-for>
           </div>
@@ -75,14 +61,7 @@
   </div>
 </div>
 
-<sc-if value="{{ showPlayer }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="{{ pTitle }}" subtitle="{{ pSub }}" icon="play-circle" width="880" hideFooter="{{ true }}" onClose="{{ closePlayer }}" hint-size="0px,0px">
-  <div style="position:relative;width:100%;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#15233b 0%,#25395c 100%);display:flex;align-items:center;justify-content:center">
-    <sc-if value="{{ hasVideo }}" hint-placeholder-val="{{ false }}"><iframe src="{{ pVideo }}" title="{{ pTitle }}" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></sc-if>
-    <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;align-items:center;gap:12px;color:#fff"><div style="width:72px;height:72px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center"><dc-import name="Icon" icon="play" weight="fill" size="32" color="#25395c" hint-size="32px,32px"></dc-import></div><span style="font-size:14px;color:#b4c2dc">Video plays here</span></div></sc-if>
-  </div>
-  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;justify-content:space-between">
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
-      <sc-if value="{{ pHandout }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Handout" variant="secondary" icon="file-text" size="md" onClick="{{ noop }}" hint-size="130px,40px"></dc-import></sc-if>
+<sc-if value="{{ showPlayer }}" hint-placeholder-val="{{ false }}"><dc-import name="VideoModal" open="{{ showPlayer }}" heading="{{ pTitle }}" subtitle="{{ pSub }}" video="{{ pVideo }}" handout="{{ pHandout }}" watched="{{ pWatched }}" hasNext="{{ hasNextVideo }}" onClose="{{ closePlayer }}" onHandout="{{ noop }}" onYouTube="{{ noop }}" onToggleWatched="{{ markDone }}" onNext="{{ goNextVideo }}" hint-size="0px,0px"></dc-import></sc-if>
       <dc-import name="LinkButton" label="Open on YouTube" icon="arrow-square-out" onClick="{{ noop }}" hint-size="170px,34px"></dc-import>
       <dc-import name="LinkButton" label="{{ pConfirm }}" icon="{{ pIcon }}" onClick="{{ markDone }}" hint-size="200px,34px"></dc-import>
     </div>
@@ -105,8 +84,6 @@ class Component extends DCLogic {
       ['v1', 'Active Shooter: Staff', 'Active shooter: staff'], ['v2', 'Evacuation Re-Unification', 'Evacuation re-unification'], ['v3', 'Incident Command Training', 'Incident command training'], ['v4', 'Table-Top (E.P)', 'Table-top (E.P)']
     ].map(([id, title, tile]) => ({ id, title, tile, role: this.ROLE[id], handout: true, thumb: '', video: '' })) }
   };
-  GRAD = [['#eaf1fe', '#eaeef5'], ['#ecfdf3', '#eaf1fe'], ['#fff7e0', '#fef2f2'], ['#eaeef5', '#ecfdf3'], ['#fef2f2', '#eaeef5'], ['#fff7e0', '#ecfdf3'], ['#eaf1fe', '#fff7e0'], ['#eef2f8', '#fef2f2']];
-  grad(id, i) { let h = 0; for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0; const g = this.GRAD[(h + i * 3) % this.GRAD.length], a = [110, 135, 160, 200][(h >> 3) % 4]; return 'linear-gradient(' + a + 'deg,' + g[0] + ' 0%,' + g[1] + ' 100%)'; }
   componentDidMount() { this._rs = () => this.forceUpdate(); window.addEventListener('resize', this._rs); }
   componentWillUnmount() { window.removeEventListener('resize', this._rs); }
   renderVals() {
@@ -115,13 +92,7 @@ class Component extends DCLogic {
     const doneCount = items.filter(x => done[x.id]).length, total = items.length;
     const next = soon ? null : items.find(x => !done[x.id]);
     const openId = id => this.setState({ open: id });
-    const cards = items.map((x, i) => {
-      const w = !!done[x.id];
-      return { shared: x.role === 'For all roles', title: x.title, tile: x.tile, handout: x.handout, noThumb: !x.thumb, canPlay: !soon, cardCursor: soon ? 'default' : 'pointer', onOpen: soon ? () => {} : () => openId(x.id),
-        thumbStyle: 'position:relative;width:100%;aspect-ratio:16 / 9;overflow:hidden;border-radius:12px;cursor:' + (soon ? 'default' : 'pointer') + ';background:' + (x.thumb ? 'center / cover no-repeat url("' + encodeURI(x.thumb) + '")' : this.grad(x.id, i)),
-        status: soon ? 'Coming soon' : w ? 'Watched' : 'Not started', statusVariant: w ? 'success' : 'tint', statusIcon: w ? 'M20 6L9 17l-5-5' : '',
-        watchLabel: soon ? 'Watch' : w ? 'Watch again' : 'Watch', watchVariant: w ? 'secondary' : 'primary', watchOff: soon };
-    });
+    const cards = items.map((x, i) => ({ id: x.id, i, title: x.title, tile: x.tile, thumb: x.thumb, handout: x.handout, state: soon ? 'soon' : done[x.id] ? 'watched' : 'new', onOpen: soon ? () => {} : () => openId(x.id) }));
     const allGroups = this.ROLES.map(([label, icon]) => { const cs = cards.filter((c, i) => items[i].role === label); return { label, icon, count: cs.length, sections: [{ label: '', showLabel: false, cards: cs }] }; }).filter(g => g.count > 0);
     const role = allGroups.some(g => g.label === st.role) ? st.role : allGroups[0].label;
     const groups = allGroups.filter(g => g.label === role);
@@ -134,12 +105,12 @@ class Component extends DCLogic {
     return {
       groups, roleChips,
       sideGroups: [{ items: [{ label: 'Home', icon: 'house' }] }, { items: [{ label: 'School', icon: 'buildings' }, { label: 'Dispatch', icon: 'broadcast' }, { label: 'Texting', icon: 'chat-centered' }] }, { items: [{ label: 'User Management', icon: 'users' }, { label: 'Services', icon: 'wrench' }] }, { items: [{ label: 'Assessments', icon: 'clipboard-text', disabled: true }, { label: 'Emergency Prep', icon: 'shield', disabled: true }, { label: 'Trainings', icon: 'graduation-cap' }] }, { items: [{ label: 'User Logs', icon: 'clock-counter-clockwise' }] }],
-      sideLogo: RS('logo', '../uploads/LockOut Logo.png'), vh: window.innerHeight, noop: () => {}, stopClick: e => { if (e && e.stopPropagation) e.stopPropagation(); },
+      sideLogo: RS('logo', '../uploads/LockOut Logo.png'), vh: window.innerHeight, noop: () => {}, 
       nav: label => { const to = { Home: 'District Home.dc.html', School: 'School Screen Adjusted.dc.html', Dispatch: 'Dispatch Screen.dc.html' }[label]; if (to) window.location.href = to; },
-      tabs, cards, doneCount, total, soon, barStyle: 'height:100%;border-radius:999px;background:#25395c;transition:width .25s;width:' + Math.round(doneCount / total * 100) + '%',
+      tabs, cards, doneCount, total, soon,
       hasNext: !!next, nextLabel: doneCount === 0 ? 'START HERE' : 'NEXT UP', nextTitle: next ? next.title : '', nextButton: doneCount === 0 ? 'Start' : 'Resume', openNext: () => next && openId(next.id),
       allDone: !soon && doneCount === total,
-      showPlayer: !!cur, pTitle: cur ? cur.title : '', pSub: cur ? curProg.label + ' · Training ' + (idx + 1) + ' of ' + curProg.items.length : '', pIcon: cur && done[cur.id] ? 'arrow-counter-clockwise' : 'check-circle', pConfirm: cur && done[cur.id] ? 'Mark as not complete' : 'Mark as complete',
+      showPlayer: !!cur, pTitle: cur ? cur.title : '', pSub: cur ? curProg.label + ' · Training ' + (idx + 1) + ' of ' + curProg.items.length : '', pWatched: !!(cur && done[cur.id]),
       hasVideo: !!(cur && cur.video), noVideo: !(cur && cur.video), pVideo: cur ? cur.video : '', pHandout: !!(cur && cur.handout),
       hasNextVideo: !!nextVid, goNextVideo: () => nextVid && openId(nextVid.id), closePlayer: () => this.setState({ open: null }),
       markDone: () => cur && this.setState(s => { const d = { ...s.done }; if (d[cur.id]) delete d[cur.id]; else d[cur.id] = true; return { done: d }; })

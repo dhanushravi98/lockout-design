@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="{{ heading }}" subtitle="{{ subtitle }}" icon="play-circle" width="880" inline="{{ inline }}" hideFooter="{{ true }}" onClose="{{ onClose }}" hint-size="0px,0px">
+  <div style="position:relative;width:100%;aspect-ratio:16 / 9;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#15233b 0%,#25395c 100%);display:flex;align-items:center;justify-content:center">
+    <sc-if value="{{ hasVideo }}" hint-placeholder-val="{{ false }}"><iframe src="{{ video }}" title="{{ heading }}" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe></sc-if>
+    <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;align-items:center;gap:12px;color:#fff"><div style="width:72px;height:72px;border-radius:999px;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center"><dc-import name="Icon" icon="play" weight="fill" size="32" color="#25395c" hint-size="32px,32px"></dc-import></div><span style="font-size:14px;color:#b4c2dc">Video plays here</span></div></sc-if>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;justify-content:space-between">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+      <sc-if value="{{ handout }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Handout" variant="secondary" icon="file-text" size="md" onClick="{{ onHandout }}" hint-size="130px,40px"></dc-import></sc-if>
+      <dc-import name="LinkButton" label="Open on YouTube" icon="arrow-square-out" onClick="{{ onYouTube }}" hint-size="170px,34px"></dc-import>
+      <dc-import name="LinkButton" label="{{ watchedLabel }}" icon="{{ watchedIcon }}" onClick="{{ onToggleWatched }}" hint-size="200px,34px"></dc-import>
+    </div>
+    <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Next training" variant="secondary" icon="caret-right" size="md" onClick="{{ onNext }}" hint-size="160px,40px"></dc-import></sc-if>
+  </div>
+</dc-import></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:900,&quot;height&quot;:560},&quot;open&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;inline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;heading&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Administrative Safety Training Webinar&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;subtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Lockout — Smart System · Training 1 of 10&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;video&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;handout&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;watched&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;hasNext&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;onClose&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onHandout&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onYouTube&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onToggleWatched&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onNext&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props, none = () => {}, w = p.watched === true || p.watched === 'true';
+    return { open: p.open !== false && p.open !== 'false', inline: !!p.inline, heading: p.heading || 'Training', subtitle: p.subtitle || '', video: p.video || '', hasVideo: !!p.video, noVideo: !p.video,
+      handout: p.handout === true || p.handout === 'true', hasNext: p.hasNext === true || p.hasNext === 'true',
+      watchedLabel: w ? 'Mark as not complete' : 'Mark as complete', watchedIcon: w ? 'arrow-counter-clockwise' : 'check-circle',
+      onClose: p.onClose || none, onHandout: p.onHandout || none, onYouTube: p.onYouTube || none, onToggleWatched: p.onToggleWatched || none, onNext: p.onNext || none };
+  }
+}
+</script>
+</body>
+</html>

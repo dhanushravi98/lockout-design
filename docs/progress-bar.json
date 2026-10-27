@@ -1,0 +1,113 @@
+{
+ "id": "progress-bar",
+ "title": "Progress bar",
+ "component": "ProgressBar",
+ "file": "components/ProgressBar.dc.html",
+ "status": "In review",
+ "hintSize": "100%,64px",
+ "previewWidth": "440px",
+ "description": "A count with a thin bar under it, for how far someone is through a set of items, for example \"3 of 10 completed\". It shows progress only; put any Start or Resume button beside it, not inside it.",
+ "base": {
+  "value": 3,
+  "total": 10,
+  "suffix": "completed"
+ },
+ "controls": [
+  {
+   "label": "Value",
+   "type": "text",
+   "prop": "value",
+   "default": "3",
+   "numeric": true
+  },
+  {
+   "label": "Total",
+   "type": "text",
+   "prop": "total",
+   "default": "10",
+   "numeric": true
+  },
+  {
+   "label": "Suffix",
+   "type": "text",
+   "prop": "suffix",
+   "default": "completed"
+  }
+ ],
+ "grids": [
+  {
+   "title": "Progress",
+   "cellWidth": 300,
+   "items": [
+    {
+     "label": "none",
+     "props": {
+      "value": 0,
+      "total": 10
+     }
+    },
+    {
+     "label": "half",
+     "props": {
+      "value": 5,
+      "total": 10
+     }
+    },
+    {
+     "label": "done",
+     "props": {
+      "value": 10,
+      "total": 10
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "value",
+   "t": "number",
+   "d": "0",
+   "x": "Items finished. Clamped between 0 and total."
+  },
+  {
+   "n": "total",
+   "t": "number",
+   "d": "0",
+   "x": "Items in the set."
+  },
+  {
+   "n": "suffix",
+   "t": "string",
+   "d": "\"completed\"",
+   "x": "Text after \"of N\"."
+  }
+ ],
+ "values": [
+  {
+   "k": "Number",
+   "v": "26px / 700 #111827, line height 1"
+  },
+  {
+   "k": "Text",
+   "v": "15px #4b5563, baseline aligned with the number"
+  },
+  {
+   "k": "Track",
+   "v": "8px high, radius 999px, #e8ebf0"
+  },
+  {
+   "k": "Fill",
+   "v": "#25395c, width = value / total, transition .25s"
+  },
+  {
+   "k": "Gap",
+   "v": "12px between text and bar"
+  },
+  {
+   "k": "Role",
+   "v": "progressbar with aria-valuenow and aria-valuemax"
+  }
+ ],
+ "usedIn": "Trainings (program progress)."
+}

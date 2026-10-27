@@ -51,7 +51,8 @@
     "stat-card",
     "facility-row",
     "device-counts",
-    "activity-row"
+    "activity-row",
+    "training-card"
    ]
   },
   {
@@ -65,13 +66,15 @@
    "name": "Modals and overlays",
    "entries": [
     "modal-shell",
-    "confirm-dialog"
+    "confirm-dialog",
+    "video-modal"
    ]
   },
   {
    "name": "Feedback",
    "entries": [
     "notice",
+    "progress-bar",
     "toast"
    ]
   },

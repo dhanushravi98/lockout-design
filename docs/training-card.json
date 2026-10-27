@@ -1,0 +1,199 @@
+{
+ "id": "training-card",
+ "title": "Training card",
+ "component": "TrainingCard",
+ "file": "components/TrainingCard.dc.html",
+ "status": "In review",
+ "hintSize": "100%,300px",
+ "previewWidth": "300px",
+ "description": "One training video in a grid: a light gradient cover with the topic, a status pill, a small play badge, the title and, at the right, a Watch button and an optional Handout button. The whole card opens the video. The gradient comes from the seed, so a card keeps the same colours each time; pass a thumb image to replace it. A coming-soon card is not clickable and its Watch button is disabled.",
+ "base": {
+  "heading": "Administrative Safety Training Webinar",
+  "tile": "Admin safety training",
+  "seed": "s1",
+  "state": "new"
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "heading",
+   "default": "Administrative Safety Training Webinar"
+  },
+  {
+   "label": "Cover text",
+   "type": "text",
+   "prop": "tile",
+   "default": "Admin safety training"
+  },
+  {
+   "label": "State",
+   "type": "seg",
+   "prop": "state",
+   "options": [
+    [
+     "new",
+     "new"
+    ],
+    [
+     "watched",
+     "watched"
+    ],
+    [
+     "soon",
+     "soon"
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Handout",
+   "type": "seg",
+   "prop": "handout",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 280,
+   "items": [
+    {
+     "label": "not started",
+     "props": {
+      "heading": "Student Safety Training Webinar",
+      "tile": "Student safety training",
+      "seed": "s2"
+     }
+    },
+    {
+     "label": "watched",
+     "props": {
+      "heading": "Administrative Safety Training Webinar",
+      "tile": "Admin safety training",
+      "seed": "s1",
+      "state": "watched"
+     }
+    },
+    {
+     "label": "with handout",
+     "props": {
+      "heading": "Evacuation Re-Unification",
+      "tile": "Evacuation re-unification",
+      "seed": "v2",
+      "handout": true
+     }
+    },
+    {
+     "label": "coming soon",
+     "props": {
+      "heading": "Incident Command Training",
+      "tile": "Incident command training",
+      "seed": "v3",
+      "state": "soon",
+      "handout": true
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "heading",
+   "t": "string",
+   "d": "\"Training\"",
+   "x": "Title under the cover, 15px / 700. (Not title or name, which are reserved.)"
+  },
+  {
+   "n": "tile",
+   "t": "string",
+   "d": "heading",
+   "x": "Short text on the gradient cover, 15px / 800 uppercase navy."
+  },
+  {
+   "n": "state",
+   "t": "'new' | 'watched' | 'soon'",
+   "d": "'new'",
+   "x": "Sets the pill (Not started, Watched, Coming soon) and the Watch label (Watch or Watch again)."
+  },
+  {
+   "n": "handout",
+   "t": "boolean",
+   "d": "false",
+   "x": "Shows a secondary Handout button next to Watch."
+  },
+  {
+   "n": "thumb",
+   "t": "string (url)",
+   "d": "-",
+   "x": "Cover image. Without it the gradient shows."
+  },
+  {
+   "n": "seed / index",
+   "t": "string / number",
+   "d": "heading / 0",
+   "x": "Pick the gradient. Pass the training id and its position so neighbouring cards differ."
+  },
+  {
+   "n": "onOpen",
+   "t": "() => void",
+   "d": "-",
+   "x": "Whole card and Watch button."
+  },
+  {
+   "n": "onHandout",
+   "t": "() => void",
+   "d": "-",
+   "x": "Handout button only; does not open the video."
+  }
+ ],
+ "values": [
+  {
+   "k": "Card",
+   "v": "white, 1px #eef0f3, radius 18px, padding 10px, shadow 0 1px 3px rgba(17,24,39,.05)"
+  },
+  {
+   "k": "Hover",
+   "v": "border #b4bcc8, shadow 0 6px 18px rgba(17,24,39,.08); none on coming soon"
+  },
+  {
+   "k": "Cover",
+   "v": "16 / 9, radius 12px, gradient from the tints #eaf1fe #eaeef5 #ecfdf3 #fff7e0 #fef2f2 #eef2f8"
+  },
+  {
+   "k": "Status pill",
+   "v": "Pill size s at top 8px left 8px: tint \"Not started\", success \"Watched\", tint \"Coming soon\""
+  },
+  {
+   "k": "Play badge",
+   "v": "32px circle #25395c, white play icon 14px, bottom 10px right 10px; hover #1c2c48"
+  },
+  {
+   "k": "Title",
+   "v": "15px / 700, min height 39px"
+  },
+  {
+   "k": "Body",
+   "v": "padding 16px 8px 6px, gap 18px"
+  },
+  {
+   "k": "Buttons",
+   "v": "Button size sm, right aligned, gap 8px; Watch is primary, Watch again is secondary"
+  },
+  {
+   "k": "Grid on Trainings",
+   "v": "repeat(auto-fill, minmax(240px, 1fr)), gap 28px 24px"
+  }
+ ],
+ "usedIn": "Trainings (video grid)."
+}

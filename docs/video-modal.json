@@ -1,0 +1,166 @@
+{
+ "id": "video-modal",
+ "title": "Video modal",
+ "component": "VideoModal",
+ "file": "components/VideoModal.dc.html",
+ "status": "In review",
+ "hintSize": "100%,560px",
+ "previewWidth": "900px",
+ "description": "A Modal shell with a 16 / 9 video area, a row of secondary actions (Handout, Open on YouTube, Mark as complete) and a Next training button. It has no footer; the X in the corner closes it. Mark as complete toggles to Mark as not complete when the video is already watched. Without a video it shows a play placeholder.",
+ "base": {
+  "inline": true,
+  "heading": "Administrative Safety Training Webinar",
+  "subtitle": "Lockout — Smart System · Training 1 of 10",
+  "hasNext": true
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "heading",
+   "default": "Administrative Safety Training Webinar"
+  },
+  {
+   "label": "Subtitle",
+   "type": "text",
+   "prop": "subtitle",
+   "default": "Lockout — Smart System · Training 1 of 10"
+  },
+  {
+   "label": "Handout",
+   "type": "seg",
+   "prop": "handout",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Watched",
+   "type": "seg",
+   "prop": "watched",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  },
+  {
+   "label": "Next training",
+   "type": "seg",
+   "prop": "hasNext",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 1
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the modal."
+  },
+  {
+   "n": "heading",
+   "t": "string",
+   "d": "\"Training\"",
+   "x": "Modal title."
+  },
+  {
+   "n": "subtitle",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Grey line, for example \"Program · Training 1 of 10\"."
+  },
+  {
+   "n": "video",
+   "t": "string (embed url)",
+   "d": "-",
+   "x": "Embedded player source. Empty shows the placeholder."
+  },
+  {
+   "n": "handout",
+   "t": "boolean",
+   "d": "false",
+   "x": "Shows the Handout button."
+  },
+  {
+   "n": "watched",
+   "t": "boolean",
+   "d": "false",
+   "x": "Switches the toggle label to Mark as not complete."
+  },
+  {
+   "n": "hasNext",
+   "t": "boolean",
+   "d": "false",
+   "x": "Shows the Next training button."
+  },
+  {
+   "n": "onClose / onHandout / onYouTube / onToggleWatched / onNext",
+   "t": "() => void",
+   "d": "-",
+   "x": "Handlers."
+  },
+  {
+   "n": "inline",
+   "t": "boolean",
+   "d": "false",
+   "x": "Draws it in place. Used only by the library preview."
+  }
+ ],
+ "values": [
+  {
+   "k": "Shell",
+   "v": "Modal shell width 880, hideFooter, icon play-circle"
+  },
+  {
+   "k": "Video area",
+   "v": "16 / 9, radius 14px, gradient #15233b to #25395c while empty"
+  },
+  {
+   "k": "Placeholder",
+   "v": "72px white circle with a navy play icon, \"Video plays here\" 14px #b4c2dc"
+  },
+  {
+   "k": "Action row",
+   "v": "gap 8px; Handout is Button secondary size md; Open on YouTube and Mark as complete are Link buttons"
+  },
+  {
+   "k": "Mark as complete icon",
+   "v": "check-circle; undo icon arrow-counter-clockwise when watched"
+  },
+  {
+   "k": "Next training",
+   "v": "Button secondary size md, icon caret-right, right aligned"
+  },
+  {
+   "k": "Close",
+   "v": "X Icon button in the shell header; no footer buttons"
+  }
+ ],
+ "usedIn": "Trainings (video player)."
+}
