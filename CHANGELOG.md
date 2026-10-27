@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.12 (draft)
+- New screen: screens/Trainings.dc.html. Program tabs (Lockout Smart System, Violence Prevention and Response) with an icon and a count, a progress strip with a Start here / Next up button, a Show row of role chips (Administrators, Teachers and faculty, Students, For all roles; the page opens on the first chip) and cards with a light gradient cover, a status pill, a Watch button and, when available, a Handout button, both at the right of the card. The whole card opens a video modal with a Handout button, Open on YouTube, Mark as complete (toggles back to not complete) and Next training. Coming soon cards are not clickable.
+- Button: new size prop (lg 46, md 40, sm 34, xs 28). Default lg changes nothing on existing screens.
+- Tab: new iconName prop for a Phosphor icon.
+- Modal shell: new hideCancel prop.
+
 ## v0.9.11 (draft)
 - New: Stat card, Activity row, Device counts and Facility row (all In review), in the Cards category. Facility row is one school in a district list (logo, name, attention link, alert pill, device counts, recent lockdowns, View) and rearranges itself as its own width shrinks; Device counts collapses from four counts to two plus a +2 button to a single N devices button; Stat card is a headline number with an optional action badge; Activity row is one line of a Recent activity list.
 - New screen: screens/District Home.dc.html, for the district admin login, built from these components. School logo and name header with My requests and Report an issue; Secure Mode banner with a pulsing alert pill on the school row; news banner; stat cards; Facilities and Recent activity. Attention items open a list with a Raise request action that opens the Service Request overlay on its review step with the devices chosen; submitted requests appear under My requests and in Recent activity, and the school row shows a request-raised pill that collapses to a check after 10 seconds.

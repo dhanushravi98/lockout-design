@@ -39,6 +39,30 @@
    "default": 0
   },
   {
+   "label": "Size",
+   "type": "seg",
+   "prop": "size",
+   "options": [
+    [
+     "lg",
+     "lg"
+    ],
+    [
+     "md",
+     "md"
+    ],
+    [
+     "sm",
+     "sm"
+    ],
+    [
+     "xs",
+     "xs"
+    ]
+   ],
+   "default": 0
+  },
+  {
    "label": "State",
    "type": "seg",
    "prop": "state",
@@ -342,6 +366,81 @@
      }
     }
    ]
+  },
+  {
+   "title": "Sizes",
+   "note": "lg is the default for page actions. Use md or sm inside cards, lists and tables so buttons stay in proportion.",
+   "cellWidth": 150,
+   "items": [
+    {
+     "label": "lg",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "size": "lg"
+     }
+    },
+    {
+     "label": "md",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "size": "md"
+     }
+    },
+    {
+     "label": "sm",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "size": "sm"
+     }
+    },
+    {
+     "label": "xs",
+     "props": {
+      "label": "Button",
+      "variant": "primary",
+      "size": "xs"
+     }
+    },
+    {
+     "label": "lg with icon",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "size": "lg",
+      "icon": "play"
+     }
+    },
+    {
+     "label": "md with icon",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "size": "md",
+      "icon": "play"
+     }
+    },
+    {
+     "label": "sm with icon",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "size": "sm",
+      "icon": "play"
+     }
+    },
+    {
+     "label": "xs with icon",
+     "props": {
+      "label": "Button",
+      "variant": "secondary",
+      "size": "xs",
+      "icon": "play"
+     }
+    }
+   ]
   }
  ],
  "props": [
@@ -358,10 +457,16 @@
    "x": "Visual style. Use danger only for destructive actions such as Delete."
   },
   {
+   "n": "size",
+   "t": "'lg' | 'md' | 'sm' | 'xs'",
+   "d": "'lg'",
+   "x": "lg 46px (page actions), md 40px (cards and strips), sm 34px (inside cards and tables), xs 28px (dense toolbars). Sets height, side padding, text size, icon size and icon gap together. height still overrides the height alone."
+  },
+  {
    "n": "height",
    "t": "number (px)",
    "d": "46",
-   "x": "Use 44 in modal footers."
+   "x": "Overrides the height of the chosen size. Prefer size. Use 44 in modal footers."
   },
   {
    "n": "disabled",
@@ -396,12 +501,12 @@
  ],
  "values": [
   {
-   "k": "Padding / radius",
-   "v": "0 24px / 999px"
+   "k": "Sizes (height / side padding / text / icon / gap)",
+   "v": "lg 46 / 24 / 14 / 18 / 10 · md 40 / 20 / 14 / 18 / 8 · sm 34 / 16 / 13 / 16 / 8 · xs 28 / 12 / 12 / 14 / 6"
   },
   {
-   "k": "Font",
-   "v": "14px / 700"
+   "k": "Radius / weight",
+   "v": "999px / 700"
   },
   {
    "k": "Primary",
@@ -421,11 +526,11 @@
   },
   {
    "k": "Icon gap",
-   "v": "10px"
+   "v": "10px at lg; see Sizes"
   },
   {
    "k": "Icon",
-   "v": "18px, Phosphor fill, color follows label"
+   "v": "18px at lg, 16px sm, 14px xs; Phosphor fill, color follows label"
   },
   {
    "k": "Hover",
@@ -444,5 +549,5 @@
    "v": "fill #e8ebf0, text #7b8494, no hover, not-allowed"
   }
  ],
- "usedIn": "School Screen (school strip), Service Request overlay (footer, 44px height)."
+ "usedIn": "School Screen (school strip), Service Request overlay (footer, 44px height)., Trainings (sm in cards, md in the continue strip)."
 }

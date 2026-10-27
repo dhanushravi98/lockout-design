@@ -115,6 +115,12 @@
    "x": "Removes the footer buttons."
   },
   {
+   "n": "hideCancel",
+   "t": "boolean",
+   "d": "false",
+   "x": "Removes the Cancel button from the footer. Use when the dialog already has a close button at the top."
+  },
+  {
    "n": "onClose",
    "t": "() => void",
    "d": "-",
