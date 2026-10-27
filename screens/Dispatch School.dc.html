@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html[data-embed] .ds-side{display:none!important}html[data-embed],html[data-embed] body{background:transparent}</style>
+<script>try{if(window.top!==window.self){document.documentElement.setAttribute("data-embed","1");window.parent.postMessage({lockoutPage:decodeURIComponent(location.pathname.split("/").pop())},"*")}}catch(e){}</script>
+<meta name="component-dir" content="../components">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/Tablet Icon.png" data-resource-id="tabletIcon">
+<meta name="ext-resource-dependency" content="../uploads/Boot.png" data-resource-id="bootIcon">
+<meta name="ext-resource-dependency" content="../uploads/PullBLE.png" data-resource-id="pullIcon">
+<meta name="ext-resource-dependency" content="../uploads/DomeBLE.png" data-resource-id="domeIcon">
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="120" y="120" width="200" height="560" fill="#fff" opacity=".4"></rect><rect x="360" y="120" width="720" height="140" rx="20" fill="#fff"></rect><rect x="360" y="300" width="720" height="380" rx="20" fill="#fff"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+
+  <div class="ds-side" style="flex:none;display:flex"><dc-import name="Sidebar" groups="{{ sideGroups }}" active="Districts" height="{{ vh }}" logo-src="{{ sideLogo }}" full-name="Akhila Sai" last-login="Oct 22, 2026 · 3:13 PM" on-navigate="{{ nav }}" on-settings="{{ noop }}" hint-size="264px,100%"></dc-import></div>
+
+  <!-- Main -->
+  <div style="flex:1;min-width:0;height:100vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="padding:16px 24px 24px;display:flex;flex-direction:column;gap:16px;min-width:0;flex:1;min-height:0;overflow:hidden">
+      <div style="flex:none;margin:-4px 0 -8px -8px"><dc-import name="LinkButton" label="{{ backLabel }}" icon="arrow-left" onClick="{{ goBack }}" hint-size="260px,34px"></dc-import></div>
+      <!-- School strip -->
+      <div style="flex:none;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:22px 24px;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:20px 24px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:18px;min-width:220px;flex:1 1 220px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px"><span style="font-size:clamp(24px,2.6vw,32px);font-weight:500;letter-spacing:-.01em">{{ schoolName }}</span><span style="border:1px solid #bcd0f5;background:#eaf1fe;color:#25395c;flex:none;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:5px 14px">SYSTEM CLEAR</span></div>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=125+W+Front+St+Monroe+MI+48161" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:-8px;font-size:14px;color:#25395c;text-decoration:none" style-hover="text-decoration:underline"><svg width="16" height="16" style="flex:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0zM12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6"></path></svg><span style="min-width:0">125 W Front St, Monroe, MI 48161&nbsp;<svg style="vertical-align:-1px;display:inline" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span></a>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 32px;font-size:13px">
+            <span style="white-space:nowrap">DISPATCH: MONROE COUNTY</span><span style="white-space:nowrap">DISTRICT: {{ distUpper }}</span>
+          </div>
+        </div>
+        <div style="flex:none;align-self:center"><dc-import name="LinkButton" label="Facility map" icon="map-trifold" onClick="{{ openMap }}" hint-size="150px,34px"></dc-import></div>
+      </div>
+
+      <!-- Tabs + table -->
+      <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:flex-end;gap:2px;background:#e8ebf0;border-radius:14px 14px 0 0;padding:10px 12px 0;border:1px solid #e5e7eb;border-bottom:none;flex:none">
+          <div style="flex:1;min-width:0;display:flex;align-items:flex-end;gap:0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);padding-right:28px;box-sizing:border-box">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+              <div onClick="{{ t.onClick }}" style="{{ t.style }}" style-hover="{{ t.hover }}">
+                <div style="width:22px;height:22px;display:flex;align-items:center;justify-content:center;flex:none">
+                  <sc-if value="{{ t.isTablet }}" hint-placeholder-val="{{ false }}"><img src="../uploads/Tablet Icon.png" style="{{ t.imgStyle }}"></sc-if>
+                  <sc-if value="{{ t.isBoot }}" hint-placeholder-val="{{ false }}"><img src="../uploads/Boot.png" style="width: 17px; height: 16px"></sc-if>
+                  <sc-if value="{{ t.isPull }}" hint-placeholder-val="{{ false }}"><img src="../uploads/PullBLE.png" style="width: 31px; height: 25px"></sc-if>
+                  <sc-if value="{{ t.isLight }}" hint-placeholder-val="{{ false }}"><img src="../uploads/DomeBLE.png" style="width: 20px; height: 19px"></sc-if>
+                  <sc-if value="{{ t.isAlerts }}" hint-placeholder-val="{{ false }}"><img src="../uploads/alarm-1a88b0cc.png" style="width: 18px; height: 22px; object-fit: contain; display: block"></sc-if>
+                  <sc-if value="{{ t.isFacility }}" hint-placeholder-val="{{ false }}"><img src="../uploads/school.png" style="width: 19px; height: 22px; object-fit: contain; display: block"></sc-if>
+                  <sc-if value="{{ t.path }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.path }}"></path></svg></sc-if>
+                </div>
+                <span style="font-size:13px;font-weight:600;white-space:nowrap">{{ t.label }}</span>
+                <sc-if value="{{ t.hasCount }}" hint-placeholder-val="{{ true }}"><span style="{{ t.countStyle }}">{{ t.count }}</span></sc-if>
+              </div>
+              <sc-if value="{{ t.hasSlot }}" hint-placeholder-val="{{ true }}"><div style="{{ t.divStyle }}"></div></sc-if>
+            </sc-for>
+          </div>
+          <div style="flex:none;width:36px;height:36px;margin-bottom:6px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#6b7280;cursor:pointer" style-hover="background:#dfe3ea"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg></div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 14px 14px;overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column">
+          <sc-if value="{{ showTable }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:none;display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3">
+            <div style="flex:1;max-width:520px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9aa1ac" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg><span style="font-size:13px;color:#9aa1ac">Search by device ID, field, or classification</span></div>
+            <sc-if value="{{ showZone }}" hint-placeholder-val="{{ true }}"><span style="font-size:12px;font-weight:600;color:#6b7280">Filter by Zone</span>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 14px;font-size:13px;min-width:120px;display:flex;justify-content:space-between;align-items:center;gap:12px">All Zones<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+            <div style="width:36px;height:36px;border:1px solid #e5e7eb;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;color:#6b7280"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg></div></sc-if>
+          </div>
+          <div style="{{ gridStyle }};flex:none;padding:14px 20px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280;border-bottom:1px solid #eef0f3;text-transform:uppercase"><sc-for list="{{ cols }}" as="c" hint-placeholder-count="6"><span>{{ c }}</span></sc-for></div>
+          <div style="flex:1;min-height:0;overflow-y:auto">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="10">
+            <div style="{{ gridStyle }};padding:15px 20px;font-size:14px;border-bottom:1px solid #f0f1f3"><sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="6"><span style="{{ c.style }};justify-self:start">{{ c.v }}</span></sc-for></div>
+          </sc-for>
+          </div>
+          <div style="flex:none;border-top:1px solid #eef0f3;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-size:13px;color:#6b7280">
+            <span>Showing <b style="color:#111827">1-10</b> of <b style="color:#111827">{{ total }}</b> Records</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span>Items per page:</span><span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#111827">10 ⌄</span>
+              <span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#9aa1ac">‹ Prev</span>
+              <sc-for list="{{ pages }}" as="p" hint-placeholder-count="6"><span style="{{ p.style }}">{{ p.n }}</span></sc-for>
+              <span style="border:1px solid #e5e7eb;border-radius:999px;padding:7px 14px;color:#111827">Next ›</span>
+            </div>
+          </div>
+          </sc-if>
+          <sc-if value="{{ showFacility }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:16px 20px 28px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0;overflow-y:auto">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid #eef0f3"><span style="font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Facility Info</span></div>
+            <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+              <dc-import name="SectionHeader" title="Facility overview" subtitle="Name, district and dispatch" icon="buildings" compact="true" open="{{ infoOpen }}" onToggle="{{ infoToggle }}" hint-size="100%,50px"></dc-import>
+              <sc-if value="{{ infoOpen }}" hint-placeholder-val="{{ true }}"><div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px"><div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+              <sc-for list="{{ facCards }}" as="f" hint-placeholder-count="3"><div style="background:#fafbfc;border:1px solid #e5e7eb;border-radius:12px;padding:14px 18px;display:flex;flex-direction:column;gap:10px"><span style="font-size:12px;letter-spacing:.04em;color:#6b7280;text-transform:uppercase">{{ f.f }}</span><sc-if value="{{ f.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:15px;font-weight:500;color:{{ f.c }}">{{ f.v }}</span></sc-if><sc-if value="{{ f.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" value="{{ f.val }}" onInput="{{ f.setVal }}" disabled="{{ f.dis }}" height="38" hint-size="100%,38px"></dc-import></sc-if></div></sc-for>
+            </div><div style="flex:none;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:8px"><sc-if value="{{ infoCtl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" weight="fill" variant="outline" label="Edit" size="30" onClick="{{ infoCtl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ infoCtl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ infoCtl.onSave }}" hint-size="90px,34px"></dc-import><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ infoCtl.onCancel }}" hint-size="100px,34px"></dc-import></sc-if></div></div></sc-if>
+              <sc-if value="{{ ntInfo.has }}" hint-placeholder-val="{{ false }}"><div style="{{ ntInfo.bar }}"><span>{{ ntInfo.m }}</span><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ ntInfo.close }}" hint-size="26px,26px"></dc-import></div></sc-if>
+            </div>
+            <sc-for list="{{ facSections }}" as="s" hint-placeholder-count="2">
+              <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;flex:none">
+                <dc-import name="SectionHeader" title="{{ s.title }}" subtitle="{{ s.sub }}" icon="{{ s.icon }}" compact="true" open="{{ s.open }}" actionIcon="{{ s.actionIcon }}" actionLabel="Add" onToggle="{{ s.toggle }}" onAction="{{ s.onAdd }}" hint-size="100%,50px"></dc-import>
+                <sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}">
+                  <div style="border-top:1px solid #eef0f3;padding:14px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px">
+                    <sc-if value="{{ s.isGrid }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px"><div style="flex:1;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px 24px"><sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.f }}</span><sc-if value="{{ x.notEditing }}" hint-placeholder-val="{{ true }}"><span style="font-size:14px;color:{{ x.c }}">{{ x.v }}</span></sc-if><sc-if value="{{ x.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="TextField" value="{{ x.val }}" onInput="{{ x.setVal }}" height="38" hint-size="100%,38px"></dc-import></sc-if></div></sc-for></div><div style="flex:none;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:8px"><sc-if value="{{ s.ctl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" weight="fill" variant="outline" label="Edit" size="30" onClick="{{ s.ctl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ s.ctl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ s.ctl.onSave }}" hint-size="90px,34px"></dc-import><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ s.ctl.onCancel }}" hint-size="100px,34px"></dc-import></sc-if></div></div></sc-if>
+                    <sc-if value="{{ s.notGrid }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ s.fields }}" as="x" hint-placeholder-count="3"><div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px 14px;min-width:0;transition:background .12s" style-hover="background:#fafbfc"><sc-if value="{{ x.ctl.editing }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:14px;bottom:10px"><dc-import name="Button" label="Delete" variant="danger" height="34" icon="trash" onClick="{{ x.onDelete }}" hint-size="100px,34px"></dc-import></div></sc-if><div style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1 1 180px"><sc-if value="{{ x.notEditing }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font-size:11px;letter-spacing:.04em;color:#9aa1ac;text-transform:uppercase">{{ x.r.v }}</span><dc-import name="Pill" label="{{ x.typeLabel }}" variant="tint" size="xs" hint-size="70px,20px"></dc-import></div><span style="font-size:14px;font-weight:600;color:#111827">{{ x.n.v }}</span><span style="font-size:13px;color:#6b7280">{{ x.p.v }}</span></sc-if><sc-if value="{{ x.editing }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px;padding-top:2px"><dc-import name="TextField" label="Role" required="true" value="{{ x.r.val }}" onInput="{{ x.r.setVal }}" height="38" hint-size="100%,64px"></dc-import><dc-import name="TextField" label="Name" required="true" value="{{ x.n.val }}" onInput="{{ x.n.setVal }}" height="38" hint-size="100%,64px"></dc-import><dc-import name="TextField" label="Phone" placeholder="(XXX) XXX-XXXX" value="{{ x.p.val }}" onInput="{{ x.p.setVal }}" height="38" hint-size="100%,64px"></dc-import><div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;font-weight:600;color:#374151">Contact type<span style="color:#ef4444"> *</span></span><div style="display:flex;flex-wrap:wrap;gap:6px 24px"><sc-for list="{{ x.typeOpts }}" as="o" hint-placeholder-count="2"><dc-import name="Radio" label="{{ o.label }}" selected="{{ o.sel }}" disabled="{{ o.off }}" onSelect="{{ o.onSelect }}" hint-size="130px,24px"></dc-import></sc-for></div><span style="font-size:12px;color:#6b7280">{{ x.typeNote }}</span></div></div></sc-if></div><div style="flex:0 1 auto;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:8px;min-width:0"><sc-if value="{{ x.ctl.notEditing }}" hint-placeholder-val="{{ true }}"><dc-import name="IconButton" icon="pencil-simple" weight="fill" variant="outline" label="Edit" size="30" onClick="{{ x.ctl.onEdit }}" hint-size="30px,30px"></dc-import></sc-if><sc-if value="{{ x.ctl.editing }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Save" variant="primary" height="34" onClick="{{ x.ctl.onSave }}" hint-size="90px,34px"></dc-import><dc-import name="Button" label="Cancel" variant="secondary" height="34" onClick="{{ x.ctl.onCancel }}" hint-size="100px,34px"></dc-import></sc-if></div></div></sc-for></sc-if>
+                    <sc-if value="{{ s.noFields }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;grid-column:1 / -1">{{ s.emptyText }}</span></sc-if>
+                  </div>
+                  <sc-if value="{{ s.nt.has }}" hint-placeholder-val="{{ false }}"><div style="{{ s.nt.bar }}"><span>{{ s.nt.m }}</span><dc-import name="IconButton" icon="x" label="Close" size="26" onClick="{{ s.nt.close }}" hint-size="26px,26px"></dc-import></div></sc-if>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<sc-if value="{{ showAdd }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="{{ addTitle }}" width="460" cancelLabel="Cancel" confirmLabel="{{ addLabel }}" onCancel="{{ cancelAdd }}" onConfirm="{{ confirmAdd }}" hint-size="0px,0px"><sc-for list="{{ addFields }}" as="f" hint-placeholder-count="3"><dc-import name="TextField" label="{{ f.label }}" required="{{ f.required }}" type="{{ f.type }}" placeholder="{{ f.placeholder }}" helper="{{ f.helper }}" error="{{ f.error }}" value="{{ f.value }}" onInput="{{ f.onInput }}" height="44" hint-size="100%,70px"></dc-import></sc-for><sc-if value="{{ addIsContact }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;font-weight:600;color:#374151">Contact type<span style="color:#ef4444"> *</span></span><div style="display:flex;flex-wrap:wrap;gap:6px 24px"><sc-for list="{{ addTypeOpts }}" as="o" hint-placeholder-count="2"><dc-import name="Radio" label="{{ o.label }}" selected="{{ o.sel }}" disabled="{{ o.off }}" onSelect="{{ o.onSelect }}" hint-size="130px,24px"></dc-import></sc-for></div><span style="font-size:12px;color:#6b7280">{{ addTypeNote }}</span></div></sc-if></dc-import>
+</sc-if>
+<sc-if value="{{ showDel }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Delete this contact?" message="{{ delMsg }}" icon="trash" confirmLabel="Delete" confirmVariant="danger" onCancel="{{ cancelDel }}" onConfirm="{{ confirmDel }}" hint-size="0px,0px"></dc-import></sc-if>
+<sc-if value="{{ showDelWifi }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Delete this network?" message="{{ delWifiMsg }}" icon="trash" confirmLabel="Delete" confirmVariant="danger" onCancel="{{ cancelDelWifi }}" onConfirm="{{ confirmDelWifi }}" hint-size="0px,0px"></dc-import></sc-if>
+<sc-if value="{{ showVerify }}" hint-placeholder-val="{{ false }}"><dc-import name="ConfirmDialog" title="Confirm it's you" message="{{ verifyMsg }}" icon="lock" inputPlaceholder="Your account password" value="{{ verifyVal }}" onInput="{{ setVerify }}" error="{{ verifyErr }}" confirmLabel="Verify" onCancel="{{ cancelVerify }}" onConfirm="{{ confirmVerify }}" hint-size="0px,0px"></dc-import></sc-if>
+<dc-import name="../screens/Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
+<sc-if value="{{ showMap }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="Facility map" subtitle="{{ schoolName }}" icon="map-trifold" width="880" hideFooter="{{ true }}" onClose="{{ closeMap }}" hint-size="0px,0px"><div style="width:100%;aspect-ratio:16 / 10"><sc-if value="{{ hasMapImg }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Facility map" style="{{ mapImgStyle }}"></div></sc-if><sc-if value="{{ noMapImg }}" hint-placeholder-val="{{ true }}"><div style="width:100%;height:100%;box-sizing:border-box;border:1px dashed #cbd2dc;border-radius:14px;background:#f8f9fb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#6b7280"><dc-import name="Icon" icon="map-trifold" size="32" color="#9aa1ac" hint-size="32px,32px"></dc-import><span style="font-size:14px;font-weight:600;color:#374151">Facility map</span><span style="font-size:13px">The map for this school loads from its facility record.</span></div></sc-if></div></dc-import></sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'alerts', svc: false, wifi: [{ id: 'a', ssid: 'MONROE-STAFF', pw: 'Mad!son#2026' }, { id: 'b', ssid: 'MONROE-GUEST', pw: 'GuestAccess47' }], shown: {}, edit: null, editVal: '', verify: null, verifyVal: '', verifyErr: '', wifiNote: '' };
+  flash(k, m, e) { const tok = Math.random(); this._tk = this._tk || {}; this._tk[k] = tok; this.setState(s => ({ notes: { ...(s.notes || {}), [k]: { m, e: !!e } } })); setTimeout(() => { if (this._tk[k] === tok) this.setState(s => ({ notes: { ...(s.notes || {}), [k]: null } })); }, 10000); }
+  closeNote(k) { this._tk = this._tk || {}; this._tk[k] = 0; this.setState(s => ({ notes: { ...(s.notes || {}), [k]: null } })); }
+  renderVals() {
+    const QS = new URLSearchParams(window.location.search), SN = (QS.get('s') || 'MONROE HIGH SCHOOL').toUpperCase(), DN = QS.get('d') || 'Monroe Public Schools';
+    const defs = [
+      { id: 'alerts', label: 'Recent Alerts', count: 8 },
+      { id: 'facility', label: 'Facility Information' }
+    ];
+    const tabs = defs.map((d, di) => {
+      const on = this.state.active === d.id;
+      const nextOn = defs[di + 1] && defs[di + 1].id === this.state.active;
+      const showDiv = di < defs.length - 1 && !on && !nextOn;
+      return {
+        label: d.label, count: d.count, hasCount: d.count != null, path: d.path || '',
+        isTablet: d.id === 'tablet', isBoot: d.id === 'boot', isPull: d.id === 'pull', isLight: d.id === 'light', isAlerts: d.id === 'alerts', isFacility: d.id === 'facility',
+        imgStyle: 'flex:none;width:' + (d.id === 'tablet' ? '24.2px' : d.id === 'pull' ? '19.8px' : '22px') + ';height:' + (d.id === 'tablet' ? '24.2px' : d.id === 'pull' ? '19.8px' : '22px') + ';object-fit:contain;display:block;' + '',
+        onClick: () => this.setState({ active: d.id }),
+        hasSlot: di < defs.length - 1,
+        divStyle: 'flex:none;align-self:center;width:1px;height:24px;margin:0 6px;background:' + (showDiv ? '#b4bcc8' : 'transparent'),
+        style: 'position:relative;flex:none;display:flex;align-items:center;gap:8px;padding:11px 14px;border-radius:12px 12px 0 0;cursor:pointer;user-select:none;padding-bottom:12px;' + (on ? 'background:#fafbfc;color:#25395c;border:2px solid #25395c;border-bottom:2px solid #fafbfc;box-shadow:none' : 'background:transparent;color:#111827;border:2px solid transparent'),
+        hover: on ? '' : 'background:rgba(255,255,255,.7);color:#111827',
+        countStyle: 'font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;' + (on ? 'background:#25395c;color:#fff' : 'background:#cfd5de;color:#111827')
+      };
+    });
+    const act = this.state.active;
+    const P = '00:A0:50:';
+    const mono = 'color:#6b7280;font-family:ui-monospace,Menlo,monospace;font-size:13px';
+    const G = '0.35fr 0.5fr 1.5fr 2.6fr 1.8fr 1.3fr';
+    const SUF = ['EAST WING, 1ST FLOOR', 'NORTH CORRIDOR, 2ND FLOOR', 'NEAR MAIN OFFICE ENTRANCE', 'SOUTH STAIRWELL LANDING', 'WEST WING, BESIDE GYMNASIUM', 'CAFETERIA SERVICE HALLWAY', 'LIBRARY & MEDIA CENTER LEVEL', 'ADMIN BUILDING, 3RD FLOOR', 'FIELD HOUSE LOBBY', 'AUDITORIUM BACKSTAGE ACCESS'];
+    const dev = (cols, total, label, pre, vers, list) => ({ cols, total, grid: G, rows: list.map(([loc, z, id], i) => [
+      { v: i + 1 }, { v: z, s: 'color:#374151' }, { v: label + ' ' + String(i + 1).padStart(2, '0'), s: 'font-weight:500' }, { v: loc + ' – ' + SUF[i % 10], s: 'color:#374151' }, { v: pre + id, s: mono }, { v: vers[i], s: 'color:#374151' }]) });
+    const DC = ['ID', 'Zone', 'Device Name', 'Location', 'Device ID', 'Firmware Version'];
+    const dis = 'padding:5px 14px;border-radius:999px;background:#f3f4f6;color:#c4c9d1;font-size:12px;font-weight:700;border:1px solid #eef0f3', ena = 'padding:5px 14px;border-radius:999px;background:#25395c;color:#fff;font-size:12px;font-weight:700';
+    const al = [['Main Office', 'Lockdown', 'Front Office', 'Principal', 'October 21, 2026 02:02 PM', 1], ['Main Office', 'Lockdown cleared', 'Principal', 'Dispatch', 'October 21, 2026 02:14 PM', 1], ['Gymnasium', 'Secure Mode', 'Athletic Director', 'Principal', 'October 18, 2026 11:05 AM', 1], ['Main Office', 'Secure Mode cleared', 'Principal', 'Dispatch', 'October 18, 2026 11:40 AM', 1], ['Cafeteria', 'Assistance Request', 'Lunch Monitor', 'Front Office', 'October 14, 2026 12:20 PM', 0], ['Main Office', 'Lockdown drill', 'Principal', 'Dispatch', 'October 14, 2026 01:15 PM', 0], ['Library', 'Assistance Request', 'Librarian', 'Front Office', 'October 02, 2026 09:48 AM', 0], ['Main Office', 'Lockdown drill', 'Principal', 'Dispatch', 'September 17, 2026 10:30 AM', 0]];
+    const T = {
+      tablet: dev(['ID', 'Zone', 'Tablet Name', 'Location', 'Device ID', 'App Version'], 110, 'Tablet', P, ['3.3.3', '3.3.3', '3.3.2', '3.3.3', '3.3.3', '3.3.1', '3.3.3', '3.3.3', '3.3.2', '3.3.3'],
+        [['ROOM 114', '1', '4F:2A:91'], ['ROOM 202', '2', '4F:2B:07'], ['LIBRARY', '1', '4F:3C:5E'], ['ROOM 401', '4', '4F:4D:12'], ['ROOM 402', '4', '4F:4D:9A'], ['ROOM 411', '4', '4F:5E:33'], ['ROOM 412', '4', '4F:5E:71'], ['ROOM 413', '4', '4F:6A:08'], ['ROOM 414', '4', '4F:6A:C4'], ['ROOM 415', '4', '4F:7B:26']]),
+      boot: dev(DC, 195, 'Smart Boot', P, ['2.4.1', '2.4.1', '2.3.8', '2.4.1', '2.4.0', '2.4.1', '2.3.8', '2.4.1', '2.4.1', '2.4.0'],
+        [['ROOM 534', '3', '1A:9B:26'], ['ROOM MS COPY RM', '1', '1B:62:E4'], ['ROOM 331', '2', '3A:23:4C'], ['ROOM MS G LCKR R', '1', '3A:46:55'], ['ROOM PAC GR BR', '5', '3A:89:D8'], ['ROOM 222', '1', '3A:89:DD'], ['ROOM TEAM RM', '4', '3A:8A:1D'], ['ROOM WEIGHT RM', '4', '3A:8A:27'], ['ROOM 219', '1', '3A:8A:2A'], ['ROOM 215', '1', '3A:8A:4E']]),
+      pull: dev(DC, 17, 'Pull Box', P, ['1.9.2', '1.9.2', '1.9.0', '1.9.2', '1.8.7', '1.9.2', '1.9.2', '1.9.0', '1.9.2', '1.9.2'],
+        [['ROOM HSMAINOFF', '4', '45:69:17'], ['ROOM MSMAINOFF', '1', '3A:46:52'], ['ROOM ESKITCHEN', '1', '3B:67:AE'], ['ROOM ANNEX', '1', '44:3C:23'], ['ROOM ESCOMMONS', '3', '45:44:59'], ['ROOM MSGYMHALL', '1', '45:4B:97'], ['ROOM ESGYMNORTH', '3', '45:65:09'], ['ROOM ESGYMSOUTH', '3', '45:65:1F'], ['ROOM PACENTER', '5', '45:66:9C'], ['ROOM ESCAFE', '2', '45:69:0B']]),
+      light: dev(DC, 155, 'Smart Light', P, ['4.1.0', '4.1.0', '4.0.6', '4.1.0', '4.1.0', '4.0.6', '4.1.0', '4.1.0', '4.0.9', '4.1.0'],
+        [['HALL E508', '3', '02:2B:66'], ['HALL HSCOUNSLER', '-', '02:43:2A'], ['HALL HS410', '4', '02:56:51'], ['HALL MS208', '1', '16:88:6C'], ['ROOM EXIT536', '3', '16:89:D3'], ['ROOM HSWRKSHOP', '5', '16:8A:19'], ['ROOM MSGLCKRM', '1', '16:B5:48'], ['HALL EENTRY13', '3', '16:B5:69'], ['HALL HSPAC1', '5', '28:13:A6'], ['HALL HSPAC2', '5', '28:78:89']]),
+      alerts: { cols: ['ID', 'Location', 'Alert Type', 'Triggered By', 'Cleared By', 'Date'], total: 8, grid: '0.5fr 1.6fr 1.8fr 1.4fr 1.4fr 2.2fr',
+        rows: al.map(([loc, type, actor, inf, date, on], i) => [{ v: i + 1 }, { v: loc }, { v: type }, { v: actor }, { v: inf }, { v: date, s: 'color:#374151' }]) }
+    };
+    const act2 = this.state.active;
+    const cfg = T[act2];
+    const isFac = act2 === 'facility';
+    const tableRows = cfg ? cfg.rows.map(cells => ({ cells: cells.map(c => ({ v: c.v, style: c.s || '' })) })) : [];
+    const lastPage = cfg ? Math.ceil(cfg.total / 10) : 1;
+    const pageNums = ['1', '2', '3', '4', '5', '...', String(lastPage)].filter((n, i) => lastPage > 6 || (n !== '...' && +n <= lastPage && i < 5));
+    const cur = this.state.facCur === undefined ? 'details' : this.state.facCur, fo = { info: cur === 'info', details: cur === 'details', contacts: cur === 'contacts', wifi: cur === 'wifi' };
+    const pick = k => () => this.setState(s => ({ facCur: (s.facCur === undefined ? 'details' : s.facCur) === k ? null : k }));
+    const extras = this.state.extras || [];
+    const openAdd = k => this.setState({ add: k, form: { a: '', b: '', c: '', d: '' }, formTried: false });
+    const V = this.state.vals || {}, D = this.state.draft || {}, E = this.state.editing || {};
+    const DEF = { i_name: SN, i_dist: DN.toUpperCase(), i_disp: 'MONROE COUNTY', d_county: 'MONROE', d_street: '125 W Front St', d_zip: '48161', d_phone: '517-555-0100', d_sup: 'Dr. Robert Hale', c1r: 'Principal', c2r: 'Dispatch liaison', c3r: 'IT contact', c1n: 'Dana Whitfield', c1p: '517-555-0142', c2n: 'Marcus Reyes', c2p: '517-555-0178', c3n: 'Priya Nair', c3p: '517-555-0113', c1t: 'Primary', c2t: 'Primary', c3t: 'Secondary' };
+    extras.forEach(x => { DEF[x.id + 'r'] = x.role; DEF[x.id + 'n'] = x.name; DEF[x.id + 'p'] = x.phone; DEF[x.id + 't'] = x.type || 'Primary'; });
+    const mk = (id, sec, f) => ({ f, id, dis: id === 'i_name', editing: false, notEditing: true, c: '#111827', v: V[id] !== undefined ? V[id] : DEF[id], val: D[id] !== undefined ? D[id] : (V[id] !== undefined ? V[id] : DEF[id]),
+      setVal: (e) => { const t = e.target.value; this.setState(s => ({ draft: { ...(s.draft || {}), [id]: t } })); } });
+    const ctl = (sec, ids, nk, msg, opt) => ({ editing: false, notEditing: false,
+      onEdit: () => this.setState(s => ({ editing: { ...(s.editing || {}), [sec]: true }, draft: { ...(s.draft || {}), ...Object.fromEntries(ids.map(i => [i, (s.vals || {})[i] !== undefined ? s.vals[i] : DEF[i]])) } })),
+      onCancel: () => this.setState(s => ({ editing: { ...(s.editing || {}), [sec]: false } })),
+      onSave: () => { const dr = this.state.draft || {}, cv = this.state.vals || {}; const val = i => dr[i] !== undefined ? dr[i] : (cv[i] !== undefined ? cv[i] : DEF[i]); if (ids.some(i => !(opt || []).includes(i) && !String(val(i)).trim())) { this.flash(nk, 'Fill in every field before saving.', true); return; } this.setState(s => ({ vals: { ...(s.vals || {}), ...Object.fromEntries(ids.map(i => [i, val(i)])) }, editing: { ...(s.editing || {}), [sec]: false } })); this.flash(nk, msg); } });
+    const facCards = [['i_name', 'Facility Name'], ['i_dist', 'District'], ['i_disp', 'Dispatch']].map(([id, f]) => mk(id, 'info', f));
+    const infoCtl = ctl('info', ['i_name', 'i_dist', 'i_disp'], 'info', 'Facility overview updated.');
+    const NT = k => { const n = (this.state.notes || {})[k]; return { has: !!n, m: n ? n.m : '', bar: 'border-top:1px solid #eef0f3;padding:6px 10px 6px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:12px;' + (n && n.e ? 'color:#b91c1c;background:#fef2f2' : 'color:#027a48;background:#ecfdf3'), close: () => this.closeNote(k) }; };
+    const liveC = ['c1', 'c2', 'c3', ...extras.map(x => x.id)].filter(i => !(this.state.gone || {})[i]);
+    const savedT = i => V[i + 't'] !== undefined ? V[i + 't'] : DEF[i + 't'];
+    const cnt = (t, ex) => liveC.filter(i => i !== ex && savedT(i) === t).length;
+    const noteFor = (p, s) => 'Primary: ' + p + ' of 3 used. Secondary: ' + s + ' of 3 used.';
+    const typeInfo = id => { const cur = D[id + 't'] !== undefined ? D[id + 't'] : savedT(id), sv = savedT(id);
+      return { typeLabel: sv, typeVariant: sv === 'Primary' ? 'solid' : 'tint',
+        typeOpts: ['Primary', 'Secondary'].map(t => ({ label: t, sel: cur === t, off: cnt(t, id) >= 3, onSelect: () => this.setState(s => ({ draft: { ...(s.draft || {}), [id + 't']: t } })) })),
+        typeNote: noteFor(cnt('Primary', id) + (cur === 'Primary' ? 1 : 0), cnt('Secondary', id) + (cur === 'Secondary' ? 1 : 0)) }; };
+    const dIds = ['d_county', 'd_street', 'd_zip', 'd_phone', 'd_sup'];
+    const facSections = [['details', 'buildings', 'Facility details', '5 of 5 fields completed', [['d_county', 'County'], ['d_street', 'Street'], ['d_zip', 'Zip Code'], ['d_phone', 'Phone'], ['d_sup', 'Superintendent']].map(([id, f]) => mk(id, 'details', f)), ctl('details', dIds, 'details', 'Facility details updated.')], ['contacts', 'address-book', 'Direct contacts', ((3 + extras.length) - Object.keys(this.state.gone || {}).length) + ' contacts added', [['c1', 'Principal'], ['c2', 'Dispatch liaison'], ['c3', 'IT contact'], ...extras.map(x => [x.id, x.role])].filter(([id]) => !(this.state.gone || {})[id]).map(([id, f]) => ({ ...typeInfo(id), onDelete: () => this.setState({ del: id }), f, editing: !!E[id], notEditing: !E[id], r: mk(id + 'r', id, 'Role'), n: mk(id + 'n', id, 'Name'), p: mk(id + 'p', id, 'Phone'), ctl: ctl(id, [id + 'r', id + 'n', id + 'p', id + 't'], 'contacts', 'Contact updated.', [id + 'p']) })), null]].map(([id, icon, title, sub, fields, sctl]) => ({
+      icon, title, sub, nt: NT(id), open: fo[id], isGrid: id === 'details', notGrid: id !== 'details', fields, ctl: sctl, actionIcon: '', noFields: !fields.length, emptyText: 'No contacts added yet. Use + to add one.',
+      onAdd: () => { if (id === 'contacts') { if (cnt('Primary') >= 3 && cnt('Secondary') >= 3) this.flash('contacts', 'You already have 3 primary and 3 secondary contacts. Delete one to add another.', true); else openAdd('contact'); } },
+      toggle: pick(id),
+      chev: 'transform:rotate(' + (fo[id] ? 180 : 0) + 'deg)' }));
+    const types = ['ADMIN', 'TEACHER/USER', 'ADMIN', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER', 'TEACHER/USER'];
+    const devs = ['UES Tab-3', 'AMES 511', 'ES Tab-5', 'HS 401', 'HS 402', 'HS 411', 'HS 412', 'HS 413', 'HS 414', 'HS 415'];
+    const rows = devs.map((dev, i) => ({ id: i + 1, dev, type: types[i] }));
+    const menuDefs = [
+      ['Home', 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z'], ['School', 'M3 21h18M5 21V8l7-5 7 5v13M9 21v-5h6v5'], ['Dispatch', 'M12 12h.01M8 8a5.7 5.7 0 0 0 0 8M16 8a5.7 5.7 0 0 1 0 8'],
+      ['Reports', 'M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5'], ['Texting', 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'],
+      ['User Management', 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8'],
+      ['Services', 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z'], ['Assessments', 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 3h6v4H9zM9 14l2 2 4-4'],
+      ['Emergency Prep', 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'], ['Trainings', 'M22 10 12 5 2 10l10 5zM6 12v5c3 2 9 2 12 0v-5'], ['User Logs', 'M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5M12 7v5l3 2']
+    ];
+    const menu = menuDefs.map(([label, path]) => {
+      const on = label === 'School';
+      return { label, path, style: 'display:flex;align-items:center;gap:14px;padding:14px 24px;' + (on ? 'background:#25395c;color:#fff' : 'color:#374151') };
+    });
+    const actions = [
+      ['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Service Requests', menuDefs[6][1]], ['Report Issue', menuDefs[4][1]], 
+      ['Trainings', menuDefs[9][1]], ['Emergency Prep', menuDefs[8][1]], ['Assessments', menuDefs[7][1]]
+    ].map(([label, path]) => ({ label, path }));
+    const refLinks = [['Site Map', 'M1 6v16l7-4 8 4 7-4V2l-7 4-8-4zM8 2v16M16 6v16'], ['Trainings', menuDefs[9][1]], ['Emergency Prep', menuDefs[8][1]], ['Assessments', menuDefs[7][1]]].map(([label, path]) => { const on = this.state.refHover === label; return { label, path, fill: on ? 'currentColor' : 'none', enter: () => this.setState({ refHover: label }), leave: () => this.setState({ refHover: null }), style: 'display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;color:#25395c;cursor:pointer;transition:background .12s;background:' + (on ? '#eaeef5' : 'transparent') }; });
+    const mainActions = [
+      { label: 'Report Issue', onClick: () => this.setState({ svc: true }), path: 'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01', style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c', hover: 'background:#1c2c48' }
+    ];
+    const pages = pageNums.map(n => ({ n, style: n === '...' ? 'color:#9aa1ac' : 'width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;' + (n === '1' ? 'background:#25395c;color:#fff;font-weight:700' : 'border:1px solid #e5e7eb;color:#111827') }));
+    const st = this.state;
+    const wifiRows = st.wifi.map(w => {
+      const shown = !!st.shown[w.id], editing = st.edit === w.id, ok = st.editVal.length >= 8;
+      return { ssid: w.ssid, editing, notEditing: !editing, canShow: !shown && !editing, canManage: shown && !editing,
+        pwText: shown ? w.pw : '\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022', spacing: shown ? '0' : '2px',
+        onShow: () => this.setState({ verify: w.id, verifyVal: '', verifyErr: '', wifiNote: '' }),
+        onHide: () => this.setState(s => ({ shown: { ...s.shown, [w.id]: false } })),
+        onEdit: () => this.setState({ edit: w.id, editVal: '', wifiNote: '' }),
+        editVal: st.editVal, setEdit: (e) => this.setState({ editVal: e.target.value }),
+        onCancel: () => this.setState({ edit: null, editVal: '' }),
+        onDelete: () => this.setState({ delWifi: w.id }),
+        onSave: () => { if (!ok) return; this.setState(s => ({ wifi: s.wifi.map(x => x.id === w.id ? { ...x, pw: s.editVal } : x), edit: null, editVal: '' })); this.flash('wifi', 'Password updated for ' + w.ssid + '.'); },
+        saveOff: !ok, saveStyle: 'display:inline-flex;align-items:center;height:34px;box-sizing:border-box;padding:0 20px;border-radius:999px;font-size:13px;font-weight:700;' + (ok ? 'background:#25395c;color:#fff;cursor:pointer' : 'background:#e8ebf0;color:#7b8494;cursor:not-allowed') };
+    });
+    const fm = st.form || { a: '', b: '', c: '' }, tried = !!st.formTried, isW = st.add === 'wifi';
+    const setF = k => e => { const t = e.target.value; this.setState(s => ({ form: { ...(s.form || {}), [k]: t } })); };
+    const spec = isW ? [['a', 'Network name (SSID)', true, 'text', '', ''], ['b', 'Password', true, 'password', '', 'At least 8 characters.']] : [['a', 'Role', true, 'text', 'e.g. Principal', ''], ['b', 'Name', true, 'text', '', ''], ['c', 'Phone', false, 'text', '(XXX) XXX-XXXX', '']];
+    const addType = fm.d || (cnt('Primary') < 3 ? 'Primary' : 'Secondary');
+    const addTypeOpts = ['Primary', 'Secondary'].map(t => ({ label: t, sel: addType === t, off: cnt(t) >= 3, onSelect: () => this.setState(s => ({ form: { ...(s.form || {}), d: t } })) }));
+    const addTypeNote = noteFor(cnt('Primary') + (addType === 'Primary' ? 1 : 0), cnt('Secondary') + (addType === 'Secondary' ? 1 : 0));
+    const errOf = (k, req) => (req && !(fm[k] || '').trim()) ? 'Required' : (isW && k === 'b' && (fm.b || '').length < 8 ? 'At least 8 characters.' : '');
+    const addFields = st.add ? spec.map(([k, label, req, type, placeholder, helper]) => ({ label, required: req, type, placeholder, helper: tried ? '' : helper, value: fm[k] || '', onInput: setF(k), error: tried ? errOf(k, req) : '' })) : [];
+    const confirmAdd = () => {
+      if (spec.some(([k, , req]) => errOf(k, req))) { this.setState({ formTried: true }); return; }
+      if (isW) this.setState(s => ({ wifi: [...s.wifi, { id: 'w' + s.wifi.length + Date.now(), ssid: fm.a.trim(), pw: fm.b }], add: null, facCur: 'wifi' })), this.flash('wifi', 'Network ' + fm.a.trim() + ' added.');
+      else this.setState(s => ({ extras: [...(s.extras || []), { id: 'x' + (s.extras || []).length + Date.now(), role: fm.a.trim(), name: fm.b.trim(), phone: fm.c.trim(), type: addType }], add: null, facCur: 'contacts' })), this.flash('contacts', 'Contact added.');
+    };
+    const delId = st.del, delName = delId ? ((V[delId + 'n'] !== undefined ? V[delId + 'n'] : DEF[delId + 'n']) || 'this contact') : '', delRole = delId ? ((V[delId + 'r'] !== undefined ? V[delId + 'r'] : DEF[delId + 'r']) || '') : '';
+    const vw = st.verify ? st.wifi.find(x => x.id === st.verify) : null;
+        const dwId = st.delWifi, dwRow = dwId ? st.wifi.find(x => x.id === dwId) : null;
+    return { showDelWifi: !!dwRow, delWifiMsg: 'Remove ' + (dwRow ? dwRow.ssid : '') + ' and its password from this school? This cannot be undone.', cancelDelWifi: () => this.setState({ delWifi: null }), confirmDelWifi: () => { const nm = dwRow ? dwRow.ssid : ''; this.setState(s => ({ wifi: s.wifi.filter(x => x.id !== s.delWifi), delWifi: null, edit: null, editVal: '' })); this.flash('wifi', nm + ' was deleted'); },
+      showDel: !!delId, delMsg: 'Remove ' + delName + (delRole ? ' (' + delRole + ')' : '') + ' from direct contacts? This cannot be undone.', cancelDel: () => this.setState({ del: null }), confirmDel: () => { this.setState(s => ({ gone: { ...(s.gone || {}), [s.del]: true }, del: null })); this.flash('contacts', 'Contact deleted.'); }, infoCtl, infoOpen: fo.info, infoToggle: pick('info'), wifiOpen: fo.wifi, wifiToggle: pick('wifi'), wifiAdd: () => openAdd('wifi'), showAdd: !!st.add, addTitle: st.add === 'wifi' ? 'Add Wi-Fi network' : 'Add direct contact', addLabel: st.add === 'wifi' ? 'Add network' : 'Add contact', addFields, addIsContact: !!st.add && !isW, addTypeOpts, addTypeNote, cancelAdd: () => this.setState({ add: null }), confirmAdd, wifiRows, ntInfo: NT('info'), ntWifi: NT('wifi'),
+      showVerify: !!st.verify, verifyMsg: 'Enter your LockOut account password to view the password for ' + (vw ? vw.ssid : '') + '.', verifyVal: st.verifyVal, verifyErr: st.verifyErr, hasVerifyErr: !!st.verifyErr,
+      setVerify: (e) => this.setState({ verifyVal: e.target.value, verifyErr: '' }),
+      cancelVerify: () => this.setState({ verify: null, verifyVal: '', verifyErr: '' }),
+      confirmVerify: () => { if (!this.state.verifyVal.trim()) { this.setState({ verifyErr: 'Enter your password to continue.' }); return; } this.setState(s => ({ shown: { ...s.shown, [s.verify]: true }, verify: null, verifyVal: '', verifyErr: '' })); },
+      svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? cfg.cols : [], gridStyle: 'display:grid;grid-template-columns:' + (cfg ? cfg.grid : G), total: cfg ? cfg.total : 0, schoolName: SN, hasMapImg: false, noMapImg: true, mapSrc: '', mapImgStyle: '', showMap: !!this.state.fmapOpen, openMap: () => this.setState({ fmapOpen: true }), closeMap: () => this.setState({ fmapOpen: false }), mapId: 'facmap-' + SN.toLowerCase().replace(/[^a-z0-9]+/g, '-'), noop: () => {}, vh: window.innerHeight, sideLogo: '../uploads/LockOut Logo.png', sideGroups: [{ items: [{ label: 'Dispatch Home', icon: 'house' }, { label: 'Districts', icon: 'building-office' }] }], nav: label => { const to = { 'Dispatch Home': 'Dispatch Home.dc.html', Districts: 'Dispatch District.dc.html' }[label];if (to) window.location.href = to; }, distUpper: DN.toUpperCase(), crumbDistrict: DN, backLabel: 'Back to ' + DN, goBack: () => { window.location.href = 'Dispatch District.dc.html?d=' + encodeURIComponent(DN); }, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
+  }
+}
+</script>
+</body>
+</html>

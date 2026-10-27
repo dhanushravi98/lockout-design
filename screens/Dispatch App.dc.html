@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="component-dir" content="../components">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="120" y="120" width="200" height="560" fill="#fff" opacity=".4"></rect><rect x="360" y="120" width="720" height="80" rx="20" fill="#fff"></rect><rect x="360" y="240" width="720" height="60" rx="20" fill="#fff"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <dc-import name="Sidebar" groups="{{ sideGroups }}" active="{{ active }}" height="{{ vh }}" logo-src="{{ sideLogo }}" full-name="Akhila Sai" last-login="Oct 22, 2026 · 3:13 PM" on-navigate="{{ nav }}" on-settings="{{ noop }}" hint-size="264px,100%"></dc-import>
+  <iframe src="{{ src }}" title="Dispatch" style="{{ frameStyle }}"></iframe>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { src: 'Dispatch Home.dc.html', cur: 'Dispatch Home.dc.html', n: 0, active: 'Dispatch Home', fade: 1 };
+  componentDidMount() {
+    this._msg = e => { const p = e && e.data && e.data.lockoutPage; if (!p) return; this.setState({ cur: p, active: /^Dispatch Home/.test(p) ? 'Dispatch Home' : 'Districts', fade: 0 }); setTimeout(() => this.setState({ fade: 1 }), 40); };
+    window.addEventListener('message', this._msg);
+    this._rs = () => this.forceUpdate(); window.addEventListener('resize', this._rs);
+  }
+  componentWillUnmount() { window.removeEventListener('message', this._msg); window.removeEventListener('resize', this._rs); }
+  renderVals() {
+    const RS = (k, f) => (window.__resources && window.__resources[k]) || f;
+    return { src: this.state.src, active: this.state.active, vh: window.innerHeight, sideLogo: RS('logo', '../uploads/LockOut Logo.png'), noop: () => {},
+      sideGroups: [{ items: [{ label: 'Dispatch Home', icon: 'house' }, { label: 'Districts', icon: 'building-office' }] }],
+      nav: label => { const to = { 'Dispatch Home': 'Dispatch Home.dc.html', Districts: 'Dispatch District.dc.html' }[label]; if (!to || to === this.state.cur) return; const n = this.state.n + 1; this.setState({ src: to + '?n=' + n, n, cur: to, active: label, fade: 0 }); },
+      frameStyle: 'flex:1;min-width:0;height:100vh;border:0;margin-left:16px;background:#f8f9fb;transition:opacity .28s ease;opacity:' + this.state.fade };
+  }
+}
+</script>
+</body>
+</html>

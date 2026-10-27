@@ -55,7 +55,7 @@
     </div>
   </div>
 </div>
-<sc-if value="{{ showModal }}" hint-placeholder-val="{{ false }}"><dc-import name="GroupedListModal" open="{{ showModal }}" heading="Facilities List" subtitle="{{ modalTitle }}" icon="buildings" groupIcon="buildings" placeholder="Search facilities" query="{{ mq }}" onQuery="{{ setMq }}" resultsText="{{ resultsText }}" groups="{{ mgroups }}" emptyText="No facilities match your search." footerText="{{ footerText }}" onClose="{{ closeModal }}" hint-size="0px,0px"></dc-import></sc-if>
+<sc-if value="{{ showModal }}" hint-placeholder-val="{{ false }}"><dc-import name="GroupedListModal" open="{{ showModal }}" heading="Facilities List" subtitle="{{ modalTitle }}" icon="buildings" groupIcon="building-office" placeholder="Search facilities" query="{{ mq }}" onQuery="{{ setMq }}" resultsText="{{ resultsText }}" groups="{{ mgroups }}" emptyText="No facilities match your search." footerText="{{ footerText }}" onClose="{{ closeModal }}" hint-size="0px,0px"></dc-import></sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {

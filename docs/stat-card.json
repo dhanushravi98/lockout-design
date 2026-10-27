@@ -148,6 +148,10 @@
    "v": "white, 1px #e5e7eb, radius 14px, padding 14px, gap 12px"
   },
   {
+   "k": "Height",
+   "v": "min 88px so cards in a row stay the same height whether the label takes one or two lines"
+  },
+  {
    "k": "Icon circle",
    "v": "40px; navy #25395c on #eaeef5, warning #92600a on #fff7e0, error #b91c1c on #fef2f2"
   },
@@ -172,5 +176,5 @@
    "v": "5 equal columns, gap 12px"
   }
  ],
- "usedIn": "District Home (summary cards)."
+ "usedIn": "District Home (summary cards). Dispatch Home, Dispatch District."
 }

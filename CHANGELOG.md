@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.9.14 (draft)
+- New screens for the dispatch role: Dispatch App (shell with a menu that stays put), Dispatch Home (county districts and security events), Dispatch District (schools, Facility map link, district security events), Dispatch School (read-only; Recent Alerts with safety alerts only, and Facility Information). Side menu: Dispatch Home and Districts. Districts use the building-office icon; schools use buildings.
+- Facility row: new optional props subtitle, showHealth, onMap and onRowClick; device counts are optional (the row uses three columns without them). Existing rows are unchanged.
+- Stat card: minimum height 88px.
+- Facility map dialog: Modal shell showing the school's map image from its facility record (placeholder until wired). Nothing is uploaded by the user.
+
 ## v0.9.13 (draft)
 - New: Grouped list modal (In review). A dialog with a search box and collapsible groups of rows, each group showing 10 rows with a Show more button. Built on Modal shell, Text field, Section header and Button.
 - Dispatch screen: the Facilities List overlay is built on Grouped list modal and uses library styling throughout. Districts start collapsed; opening one closes the others.

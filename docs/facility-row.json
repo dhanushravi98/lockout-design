@@ -351,7 +351,7 @@
    "n": "devices / total",
    "t": "{ label, count, icon }[] / number",
    "d": "-",
-   "x": "Passed to Device counts."
+   "x": "Passed to Device counts. Leave empty to hide the device counts box; the row then uses three columns."
   },
   {
    "n": "lockCount / lastLock",
@@ -364,6 +364,30 @@
    "t": "boolean",
    "d": "false",
    "x": "Light grey fill for alternate rows. Pass true for every second row."
+  },
+  {
+   "n": "subtitle",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Grey line under the name, for example \"6 facilities\" on a district row."
+  },
+  {
+   "n": "showHealth",
+   "t": "boolean",
+   "d": "true",
+   "x": "Set false to hide the All devices healthy pill when no issue text is given (used by the district and school rows on the dispatch pages)."
+  },
+  {
+   "n": "onMap",
+   "t": "() => void",
+   "d": "-",
+   "x": "Shows a Facility map link button (map icon) right after the name; the screen opens its own map dialog. It does not trigger the row click."
+  },
+  {
+   "n": "onRowClick",
+   "t": "() => void",
+   "d": "-",
+   "x": "Makes the whole row a link: pointer cursor, and a click anywhere on the row calls it. The alert pill and the attention link keep their own action and do not trigger it."
   },
   {
    "n": "onView",
@@ -418,5 +442,5 @@
    "v": "rings stop animating"
   }
  ],
- "usedIn": "District Home (Facilities)."
+ "usedIn": "District Home (Facilities). Dispatch Home, Dispatch District (districts and schools)."
 }
