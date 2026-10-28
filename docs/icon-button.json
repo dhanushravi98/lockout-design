@@ -27,6 +27,10 @@
     [
      "outline",
      "outline"
+    ],
+    [
+     "danger",
+     "danger"
     ]
    ],
    "default": 0
@@ -127,9 +131,9 @@
   },
   {
    "n": "variant",
-   "t": "'ghost' | 'outline'",
+   "t": "'ghost' | 'outline' | 'danger'",
    "d": "'ghost'",
-   "x": "Outline adds a 1px border."
+   "x": "Outline adds a 1px border. Danger is a red icon on a light red fill, for Remove or Delete icons."
   },
   {
    "n": "size",
@@ -176,6 +180,10 @@
    "v": "Phosphor bold, 50% of size, color #25395c"
   },
   {
+   "k": "Danger",
+   "v": "text #b91c1c, fill #fef2f2, border #fecaca, hover #fee2e2, pressed #fecaca"
+  },
+  {
    "k": "Outline border",
    "v": "1px #dfe3ea, fill #fff"
   },
@@ -192,5 +200,5 @@
    "v": "icon #9aa1ac, not-allowed"
   }
  ],
- "usedIn": "School Screen, Facility Information (row edit, section add)."
+ "usedIn": "School Screen, Facility Information (row edit, section add). District Texting (Remove, danger variant)."
 }
