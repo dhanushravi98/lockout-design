@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.16 (draft)
+- Grouped list modal: optional alert status pill per row (status, statusVariant) and optional group pagination (paginated, per, page, perOptions, onPage, onPer). Groups without paginated keep the Show more button.
+- Dispatch screen: dialog titled District List, 672px wide, per-facility alert status pill, 5 facilities per page in each district, cards show "N Districts".
+
 ## v0.9.15 (draft)
 - Profile card: clicking the card opens a menu above it with Account preferences and Logout (new props onAccount and onLogout); the gear opens it too. Sidebar passes both through.
 - Dispatch School: the per-page chevron in the table footer is now the same 12px grey icon the Pagination component uses, centred beside the number (it was a text glyph that sat low).

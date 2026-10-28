@@ -6,7 +6,7 @@
  "status": "In review",
  "hintSize": "100%,740px",
  "previewWidth": "620px",
- "description": "A dialog that lists items in collapsible groups, with a search box on top. It is the Facilities List on the Dispatch screen: facilities grouped by district. Groups start collapsed, opening one closes the others (the screen decides), and a group shows 10 rows with a Show more button. Built from Modal shell, Text field, Section header and Link button. The screen owns the data, the search and which group is open; the dialog only draws them.",
+ "description": "A dialog that lists items in collapsible groups, with a search box on top. It is the Facilities List on the Dispatch screen: facilities grouped by district, each with its alert status pill. Groups start collapsed, opening one closes the others (the screen decides), and a group shows its rows 5 at a time with a Pagination footer (the older Show more button still works when paginated is not set). A row can show an alert status pill. Built from Modal shell, Text field, Section header and Link button. The screen owns the data, the search and which group is open; the dialog only draws them.",
  "base": {
   "inline": true,
   "open": true,
@@ -156,7 +156,7 @@
    "n": "groups",
    "t": "array",
    "d": "[]",
-   "x": "Each group: title, sub, open, onToggle, items [{ name, detail }], shown, total, hasMore, moreLabel, onMore."
+   "x": "Each group: title, sub, open, onToggle, items [{ name, detail, status?, statusVariant? }], shown, total, hasMore, moreLabel, onMore. A row with status shows an alert-status Pill (size s) before the detail; statusVariant is tint for no alerts, warning for secure mode, error for a lockdown (warning and error carry a dot). Add paginated: true with total, per (5), page, perOptions ([5, 10, 25]), onPage and onPer to page the rows with the Pagination component instead of the Show more button; items is then just the current page."
   },
   {
    "n": "emptyText",
@@ -213,7 +213,15 @@
   {
    "k": "Defaults",
    "v": "all groups collapsed; while searching the screen opens every matching group"
+  },
+  {
+   "k": "Item status pill",
+   "v": "Pill size s before the detail text with a 12px gap; tint No alerts, warning Secure mode active, error Lockdown active"
+  },
+  {
+   "k": "Group pagination",
+   "v": "Pagination component in the group footer on #fafbfc with a 1px #eef0f3 top border; 5 rows per page, per-page options 5, 10, 25"
   }
  ],
- "usedIn": "Dispatch screen (Facilities List overlay)."
+ "usedIn": "Dispatch screen (District List overlay)."
 }
