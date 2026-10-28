@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.15 (draft)
+- Profile card: clicking the card opens a menu above it with Account preferences and Logout (new props onAccount and onLogout); the gear opens it too. Sidebar passes both through.
+- Dispatch School: the per-page chevron in the table footer is now the same 12px grey icon the Pagination component uses, centred beside the number (it was a text glyph that sat low).
+
 ## v0.9.14 (draft)
 - New screens for the dispatch role: Dispatch App (shell with a menu that stays put), Dispatch Home (county districts and security events), Dispatch District (schools, Facility map link, district security events), Dispatch School (read-only; Recent Alerts with safety alerts only, and Facility Information). Side menu: Dispatch Home and Districts. Districts use the building-office icon; schools use buildings.
 - Facility row: new optional props subtitle, showHealth, onMap and onRowClick; device counts are optional (the row uses three columns without them). Existing rows are unchanged.

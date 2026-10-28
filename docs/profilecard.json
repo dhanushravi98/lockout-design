@@ -5,7 +5,7 @@
  "file": "components/ProfileCard.dc.html",
  "status": "Approved",
  "hintSize": "240px,58px",
- "description": "The signed-in person at the foot of the sidebar: Avatar, full name and last login. A long name truncates with an ellipsis. Collapsed, only the Avatar shows, centred, with no card. Expanded, a gear button sits at the right.",
+ "description": "The signed-in person at the foot of the sidebar: Avatar, full name and last login. A long name truncates with an ellipsis. Collapsed, only the Avatar shows, centred, with no card. Clicking the card opens a menu above it with Account preferences and Logout. Expanded, a gear button sits at the right.",
  "base": {},
  "controls": [
   {
@@ -78,7 +78,19 @@
    "n": "onSettings",
    "t": "() => void",
    "d": "-",
-   "x": "Shows a gear Icon button (30px) at the end of the card; called when it is pressed. Hidden when collapsed."
+   "x": "Called when the card opens its menu (kept for older screens)."
+  },
+  {
+   "n": "onAccount",
+   "t": "() => void",
+   "d": "-",
+   "x": "Called when Account preferences is chosen."
+  },
+  {
+   "n": "onLogout",
+   "t": "() => void",
+   "d": "-",
+   "x": "Called when Logout is chosen."
   }
  ],
  "values": [
@@ -105,6 +117,10 @@
   {
    "k": "Avatar",
    "v": "36px"
+  },
+  {
+   "k": "Menu",
+   "v": "opens above the card, width of the card (220px when collapsed), white, 1px #e5e7eb, radius 14px, shadow 0 12px 28px rgba(17,24,39,.16), padding 6px; rows are fully rounded buttons, 10px 16px, 14px / 600, hover #f4f6f9; no backdrop, closes on an outside click"
   }
  ],
  "usedIn": "Main menu (LockOut Main Menu canvas, Option A): expanded, collapsed and collapse interaction."
