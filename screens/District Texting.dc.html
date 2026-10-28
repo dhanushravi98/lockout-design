@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="component-dir" content="../components">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="120" y="120" width="200" height="560" fill="#fff" opacity=".4"></rect><rect x="360" y="140" width="720" height="120" rx="24" fill="#fff"></rect><rect x="360" y="300" width="720" height="260" rx="24" fill="#fff"></rect><rect x="900" y="330" width="140" height="60" rx="30" fill="#25395c"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <dc-import name="Sidebar" groups="{{ sideGroups }}" active="Texting" height="{{ vh }}" logo-src="{{ sideLogo }}" full-name="Akhila Sai" last-login="Oct 22, 2026 · 3:13 PM" on-navigate="{{ nav }}" on-settings="{{ noop }}" hint-size="264px,100%"></dc-import>
+  <div style="flex:1;min-width:0;height:100vh;display:flex;flex-direction:column;overflow:hidden">
+    <div style="flex:1;min-height:0;overflow-y:auto;padding:24px 24px 32px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="flex:none;display:flex;flex-direction:column;gap:6px"><span style="font-size:26px;font-weight:700;line-height:1.2;color:#111827">Texting Options</span><span style="font-size:15px;color:#4b5563">Configure SMS and email notification contacts for districts and facilities.</span></div>
+
+      <div style="flex:none">
+        <div style="display:flex;align-items:flex-end;gap:2px;background:#e8ebf0;border-radius:14px 14px 0 0;padding:7px 12px 0;border:1px solid #e5e7eb;border-bottom:none">
+          <dc-import name="Tab" label="SMS" iconName="chat-centered-text" iconWeight="{{ smsWeight }}" selected="{{ isSms }}" onClick="{{ goSms }}" hint-size="110px,44px"></dc-import>
+          <dc-import name="Tab" label="Email" iconName="envelope-simple" iconWeight="{{ emailWeight }}" selected="{{ isEmail }}" onClick="{{ goEmail }}" hint-size="120px,44px"></dc-import>
+          <div style="margin-left:0;align-self:center;padding:0 8px 6px 16px;min-width:0;display:flex"><sc-if value="{{ isSms }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;min-width:0"><dc-import name="Icon" icon="info" weight="regular" size="18" color="#6b7280" hint-size="18px,18px"></dc-import><span style="font-size:14px;line-height:1.4;color:#4b5563">SMS alerts are set for the whole district.</span></span></sc-if><sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:8px;min-width:0"><dc-import name="Icon" icon="info" weight="regular" size="18" color="#6b7280" hint-size="18px,18px"></dc-import><span style="font-size:14px;line-height:1.4;color:#4b5563">Email alerts are set for one facility at a time.</span></span></sc-if></div>
+        </div>
+        <div style="background:#fff;border:1px solid #e5e7eb;border-top:none;border-radius:0 0 14px 14px">
+        <sc-if value="{{ isSms }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:10px;background:#fafbfc;border-bottom:1px solid #eef0f3;padding:18px 20px 20px">
+          <span style="font-size:15px;font-weight:600;color:#111827">District</span>
+          <div style="display:flex;align-items:center;gap:14px"><span style="font-size:20px;font-weight:700;letter-spacing:.01em;color:#111827;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis">BATH COMMUNITY SCHOOLS</span><dc-import name="IconButton" icon="download-simple" label="Download contacts" variant="outline" size="40" weight="regular" onClick="{{ noop }}" hint-size="40px,40px"></dc-import><div style="display:flex;align-items:center;gap:14px;margin-left:auto;flex:none"><div onClick="{{ toggleEn }}" style="display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none"><span style="font-size:14px;font-weight:600;color:#111827;white-space:nowrap">SMS Enabled</span><dc-import name="Checkbox" checked="{{ enabled }}" onToggle="{{ noop }}" hint-size="24px,24px"></dc-import></div><dc-import name="Button" label="Add" variant="primary" height="44" disabled="{{ sAdding }}" onClick="{{ startSms }}" hint-size="110px,44px"></dc-import></div></div>
+        </div></sc-if>
+        <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;background:#fafbfc;border-bottom:1px solid #eef0f3;padding:18px 20px 20px">
+          <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:15px;font-weight:600;color:#111827">Available Facilities</span><span style="font-size:15px;color:#6b7280">({{ facCount }})</span></div>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div style="position:relative;width:480px;max-width:100%">
+              <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}"><div onClick="{{ closeDd }}" style="position:fixed;inset:0;z-index:20"></div></sc-if>
+              <div onClick="{{ toggleDd }}" role="button" aria-haspopup="listbox" style="{{ ddStyle }}" style-hover="border-color:#b4bcc8"><span style="{{ ddTextStyle }}">{{ ddText }}</span><dc-import name="Icon" icon="caret-down" weight="bold" size="14" color="#374151" hint-size="14px,14px"></dc-import></div>
+              <sc-if value="{{ ddOpen }}" hint-placeholder-val="{{ false }}"><div role="listbox" style="position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:21;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 28px rgba(17,24,39,.14);padding:6px;display:flex;flex-direction:column;gap:2px"><sc-for list="{{ facOpts }}" as="o" hint-placeholder-count="4"><div role="option" onClick="{{ o.onClick }}" style="{{ o.style }}" style-hover="{{ o.hover }}"><span style="flex:1;min-width:0">{{ o.label }}</span><sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="check" weight="bold" size="16" color="#25395c" hint-size="16px,16px"></dc-import></sc-if></div></sc-for></div></sc-if>
+            </div>
+            <sc-if value="{{ hasFac }}" hint-placeholder-val="{{ false }}"><dc-import name="IconButton" icon="download-simple" label="Download contacts" variant="outline" size="40" weight="regular" onClick="{{ noop }}" hint-size="40px,40px"></dc-import></sc-if><div style="margin-left:auto;flex:none"><sc-if value="{{ hasFac }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Add" variant="primary" height="44" disabled="{{ adding }}" onClick="{{ startAdd }}" hint-size="110px,44px"></dc-import></sc-if></div>
+          </div>
+        </div></sc-if>
+
+        <sc-if value="{{ isSms }}" hint-placeholder-val="{{ true }}"><div>
+        <div style="overflow-x:auto"><div style="min-width:1040px;min-height:220px">
+          <div style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(150px,1fr) 170px minmax(280px,2fr) 210px;gap:16px;align-items:center;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280"><span>NAME</span><span>PHONE NUMBER</span><span style="display:inline-flex;align-items:center;gap:6px;position:relative">LOW PRIORITY<span onMouseEnter="{{ tipOn }}" onMouseLeave="{{ tipOff }}" onClick="{{ tipToggle }}" role="button" aria-label="What is low priority?" style="display:inline-flex;cursor:pointer;line-height:0"><dc-import name="Icon" icon="info" weight="regular" size="15" color="#6b7280" hint-size="15px,15px"></dc-import></span><sc-if value="{{ tip }}" hint-placeholder-val="{{ false }}"><span role="tooltip" style="position:absolute;top:calc(100% + 8px);left:-8px;z-index:30;width:270px;box-sizing:border-box;padding:10px 12px;border-radius:8px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 8px 24px rgba(0,0,0,.12);font-size:13px;font-weight:500;letter-spacing:0;line-height:1.45;text-transform:none;color:#111827;white-space:normal">Yes: this contact also receives Low Battery alerts. No: this contact receives only the critical alerts (Lockdown, Assistance Required, Secure Mode).</span></sc-if></span><span>SMS CONFIGURATION</span><span style="text-align:right">ACTIONS</span></div>
+          <sc-if value="{{ sAdding }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(150px,1fr) 170px minmax(280px,2fr) 210px;gap:16px;align-items:start;padding:12px 20px;padding-bottom:{{ sPad }};border-bottom:1px solid #eef0f3">
+            <dc-import name="TextField" value="{{ sName }}" onInput="{{ setSName }}" placeholder="Contact name" error="{{ sNameErr }}" height="44" hint-size="100%,44px"></dc-import>
+            <dc-import name="TextField" value="{{ sPhone }}" onInput="{{ setSPhone }}" placeholder="(000-000-0000)" error="{{ sPhoneErr }}" height="44" hint-size="100%,44px"></dc-import>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="position:relative">
+              <sc-if value="{{ sDd }}" hint-placeholder-val="{{ false }}"><div onClick="{{ closeSDd }}" style="position:fixed;inset:0;z-index:20"></div></sc-if>
+              <div onClick="{{ toggleSDd }}" role="button" aria-haspopup="listbox" style="{{ sDdStyle }}" style-hover="border-color:#b4bcc8"><span style="{{ sDdText }}">{{ sPrioText }}</span><dc-import name="Icon" icon="caret-down" weight="bold" size="14" color="#374151" hint-size="14px,14px"></dc-import></div>
+              <sc-if value="{{ sDd }}" hint-placeholder-val="{{ false }}"><div role="listbox" style="position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:21;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 12px 28px rgba(17,24,39,.14);padding:6px;display:flex;flex-direction:column;gap:2px"><sc-for list="{{ prioOpts }}" as="o" hint-placeholder-count="2"><div role="option" onClick="{{ o.onClick }}" style="{{ o.style }}" style-hover="{{ o.hover }}"><span style="flex:1">{{ o.label }}</span><sc-if value="{{ o.on }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="check" weight="bold" size="16" color="#25395c" hint-size="16px,16px"></dc-import></sc-if></div></sc-for></div></sc-if>
+            </div><sc-if value="{{ sPrioErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;color:#b91c1c">Choose an option.</span></sc-if></div>
+            <div style="padding-top:2px"><sc-if value="{{ sNoPrio }}" hint-placeholder-val="{{ true }}"><span style="display:inline-block;padding-top:10px;color:#6b7280">—</span></sc-if><sc-if value="{{ sHasPrio }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:1.4;color:#374151"><span>Configured to receive the Critical Alerts - Lockdown, Assistance Required, Secure Mode</span><sc-if value="{{ sLow }}" hint-placeholder-val="{{ false }}"><span>• Low Battery Alerts</span></sc-if></div></sc-if></div>
+            <div style="display:flex;justify-content:flex-end;gap:8px"><dc-import name="Button" label="Cancel" variant="secondary" height="44" onClick="{{ cancelSms }}" hint-size="96px,44px"></dc-import><dc-import name="Button" label="Save" variant="primary" height="44" onClick="{{ saveSms }}" hint-size="80px,44px"></dc-import></div>
+          </div></sc-if>
+          <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ true }}"><div style="padding:48px 20px;text-align:center;font-size:16px;color:#6b7280">No phone numbers found.</div></sc-if>
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="0"><div style="display:grid;grid-template-columns:minmax(140px,1fr) minmax(150px,1fr) 170px minmax(280px,2fr) 210px;gap:16px;align-items:center;padding:12px 20px;border-bottom:1px solid #eef0f3" style-hover="background:#f4f6f9"><span style="font-size:15px;font-weight:600;color:#111827;min-width:0;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><span style="font-size:15px;color:#111827">{{ r.value }}</span><span style="font-size:14px;color:#374151">{{ r.prio }}</span><div style="display:flex;flex-direction:column;gap:2px;font-size:13px;line-height:1.4;color:#374151"><span>Configured to receive the Critical Alerts - Lockdown, Assistance Required, Secure Mode</span><sc-if value="{{ r.low }}" hint-placeholder-val="{{ false }}"><span>• Low Battery Alerts</span></sc-if></div><div style="display:flex;justify-content:flex-end"><dc-import name="IconButton" icon="trash" label="Remove" size="34" weight="regular" onClick="{{ r.remove }}" hint-size="34px,34px"></dc-import></div></div></sc-for>
+        </div></div>
+      </div></sc-if>
+
+      <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:0">
+        <sc-if value="{{ noFac }}" hint-placeholder-val="{{ true }}"><div style="padding:48px 20px;text-align:center;font-size:16px;color:#6b7280">Select a facility to view emails.</div></sc-if>
+        <sc-if value="{{ hasFac }}" hint-placeholder-val="{{ false }}"><div>
+                    <sc-if value="{{ emOpen }}" hint-placeholder-val="{{ true }}"><div>
+            <div style="display:grid;grid-template-columns:200px minmax(0,1fr) 220px;gap:16px;align-items:center;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280"><span></span><span>EMAIL</span><span style="text-align:right">ACTIONS</span></div>
+            <sc-if value="{{ adding }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:200px minmax(0,1fr) 220px;gap:16px;align-items:start;padding:12px 20px;border-bottom:1px solid #eef0f3"><span style="padding-top:10px;font-size:14px;color:#6b7280">{{ nextLabel }}</span><dc-import name="TextField" value="{{ ev }}" onInput="{{ setEv }}" placeholder="name@school.edu" error="{{ evErr }}" height="44" hint-size="100%,44px"></dc-import><div style="display:flex;justify-content:flex-end;gap:8px"><dc-import name="Button" label="Cancel" variant="secondary" height="40" onClick="{{ cancelAdd }}" hint-size="96px,40px"></dc-import><dc-import name="Button" label="Save" variant="primary" height="40" onClick="{{ saveEmail }}" hint-size="80px,40px"></dc-import></div></div></sc-if>
+            <sc-if value="{{ emEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:36px 20px;text-align:center;font-size:15px;color:#6b7280">No email addresses found.</div></sc-if>
+            <sc-for list="{{ emRows }}" as="r" hint-placeholder-count="0"><div style="display:grid;grid-template-columns:200px minmax(0,1fr) 220px;gap:16px;align-items:center;padding:12px 20px;border-bottom:1px solid #eef0f3" style-hover="background:#f4f6f9"><span style="font-size:14px;color:#6b7280">{{ r.label }}</span><span style="font-size:15px;font-weight:600;color:#111827;min-width:0;overflow:hidden;text-overflow:ellipsis">{{ r.value }}</span><div style="display:flex;justify-content:flex-end"><dc-import name="IconButton" icon="trash" label="Remove" size="34" weight="regular" onClick="{{ r.remove }}" hint-size="34px,34px"></dc-import></div></div></sc-for>
+          </div></sc-if>
+        </div></sc-if>
+      </div></sc-if>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<sc-if value="{{ showEnable }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="Enable SMS Alerts?" icon="chat-centered-text" width="460" cancelLabel="Cancel" confirmLabel="Enable" onClose="{{ closeEnable }}" onCancel="{{ closeEnable }}" onConfirm="{{ confirmEnable }}" hint-size="0px,0px">
+<span style="font-size:15px;line-height:1.5;color:#374151">By enabling SMS Alerts, all phone numbers listed below will be enabled to receive SMS alerts.</span>
+<span style="font-size:15px;font-weight:600;color:#111827">Do you want to proceed?</span>
+</dc-import></sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  FACS = ['Bath Elementary', 'Bath High School', 'Bath Middle School', 'Bath Career Center'];
+  state = { tab: 'sms', en: false, sms: [], emails: {}, fac: null, ddOpen: false, emOpen: true, adding: false, ev: '', etried: false, conf: false, tip: false, sAdding: false, sName: '', sPhone: '', sPrio: '', sTried: false, sDd: false };
+  componentDidMount() { this._rs = () => this.forceUpdate(); window.addEventListener('resize', this._rs); }
+  componentWillUnmount() { window.removeEventListener('resize', this._rs); }
+  renderVals() {
+    const RS = (k, f) => (window.__resources && window.__resources[k]) || f, st = this.state, sms = st.tab === 'sms', fac = st.fac, list = fac ? (st.emails[fac] || []) : [];
+    const phoneOk = v => v.replace(/\D/g, '').length === 10, mailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+    const up = s => s.toUpperCase();
+    return { vh: window.innerHeight, sideLogo: RS('logo', '../uploads/LockOut Logo.png'), noop: () => {},
+      sideGroups: [{ items: [{ label: 'Home', icon: 'house' }] }, { items: [{ label: 'School', icon: 'buildings' }, { label: 'Dispatch', icon: 'broadcast' }, { label: 'Texting', icon: 'chat-centered' }] }, { items: [{ label: 'User Management', icon: 'users' }, { label: 'Services', icon: 'wrench' }] }, { items: [{ label: 'Assessments', icon: 'clipboard-text', disabled: true }, { label: 'Emergency Prep', icon: 'shield', disabled: true }, { label: 'Trainings', icon: 'graduation-cap' }] }, { items: [{ label: 'User Logs', icon: 'clock-counter-clockwise' }] }],
+      nav: label => { if (label === 'Home') window.location.href = 'District Home.dc.html'; else if (label === 'School') window.location.href = 'School Screen Adjusted.dc.html'; else if (label === 'Dispatch') window.location.href = 'Dispatch Screen.dc.html'; },
+      isSms: sms, isEmail: !sms, smsWeight: sms ? 'fill' : 'regular', emailWeight: sms ? 'regular' : 'fill', goSms: () => this.setState({ tab: 'sms', ddOpen: false }), goEmail: () => this.setState({ tab: 'email' }),
+      // SMS (district level)
+      enabled: st.en, toggleEn: () => { if (st.en) this.setState({ en: false }); else this.setState({ conf: true }); },
+      showEnable: st.conf, closeEnable: () => this.setState({ conf: false }), confirmEnable: () => this.setState({ en: true, conf: false }),
+      isEmpty: st.sms.length === 0 && !st.sAdding, tip: st.tip, tipOn: () => this.setState({ tip: true }), tipOff: () => this.setState({ tip: false }), tipToggle: () => this.setState(s => ({ tip: !s.tip })), sPad: st.sDd ? '110px' : '12px', sHasPrio: !!st.sPrio, sNoPrio: !st.sPrio, sLow: st.sPrio === 'Yes', rows: st.sms.map((r, i) => ({ name: r.name, value: r.value, prio: r.prio, low: r.prio === 'Yes', remove: () => this.setState(s => ({ sms: s.sms.filter((_, j) => j !== i) })) })),
+      sAdding: st.sAdding, startSms: () => this.setState({ sAdding: true, sName: '', sPhone: '', sPrio: '', sTried: false, sDd: false }), cancelSms: () => this.setState({ sAdding: false, sDd: false }),
+      sName: st.sName, setSName: e => this.setState({ sName: e.target.value }), sNameErr: st.sTried && !st.sName.trim() ? 'Enter a name.' : '',
+      sPhone: st.sPhone, setSPhone: e => this.setState({ sPhone: e.target.value }), sPhoneErr: st.sTried && !phoneOk(st.sPhone) ? 'Enter a 10-digit number.' : '',
+      sDd: st.sDd, toggleSDd: () => this.setState(s => ({ sDd: !s.sDd })), closeSDd: () => this.setState({ sDd: false }), sPrioErr: st.sTried && !st.sPrio,
+      sPrioText: st.sPrio || 'Choose', sDdText: 'flex:1;font-size:16px;' + (st.sPrio ? 'color:#111827' : 'color:#9aa1ac'),
+      sDdStyle: 'box-sizing:border-box;height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;background:#fff;border:1px solid ' + (st.sDd ? '#b4bcc8' : '#dfe3ea') + ';border-radius:8px;cursor:pointer;user-select:none',
+      prioOpts: ['Yes', 'No'].map(o => { const on = o === st.sPrio; return { label: o, on, onClick: () => this.setState({ sPrio: o, sDd: false }), style: 'display:flex;align-items:center;gap:12px;padding:0 12px;height:40px;border-radius:8px;font-size:15px;font-weight:600;color:#111827;cursor:pointer;' + (on ? 'background:#eaeef5' : ''), hover: on ? '' : 'background:#f4f6f9' }; }),
+      saveSms: () => { if (!st.sName.trim() || !phoneOk(st.sPhone) || !st.sPrio) { this.setState({ sTried: true }); return; } const d = st.sPhone.replace(/\D/g, ''); this.setState(s => ({ sms: [...s.sms, { name: s.sName.trim(), value: d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6), prio: s.sPrio }], sAdding: false })); },
+      // Email (facility level)
+      facCount: this.FACS.length, hasFac: !!fac, noFac: !fac, facName: fac ? up(fac) : '',
+      ddOpen: st.ddOpen, toggleDd: () => this.setState(s => ({ ddOpen: !s.ddOpen })), closeDd: () => this.setState({ ddOpen: false }),
+      ddText: fac ? up(fac) : 'Select Facility', ddTextStyle: 'flex:1;min-width:0;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;' + (fac ? 'font-weight:600;color:#111827' : 'color:#9aa1ac'),
+      ddStyle: 'box-sizing:border-box;height:48px;display:flex;align-items:center;gap:12px;padding:0 16px;background:#fff;border:1px solid ' + (st.ddOpen ? '#b4bcc8' : '#dfe3ea') + ';border-radius:8px;cursor:pointer;user-select:none',
+      facOpts: this.FACS.map(f => { const on = f === fac; return { label: up(f), on, onClick: () => this.setState({ fac: f, ddOpen: false, adding: false, ev: '', etried: false, emOpen: true }),
+        style: 'display:flex;align-items:center;gap:12px;padding:0 12px;height:44px;border-radius:8px;font-size:15px;font-weight:600;color:#111827;cursor:pointer;' + (on ? 'background:#eaeef5' : ''), hover: on ? '' : 'background:#f4f6f9' }; }),
+      emOpen: st.emOpen, toggleEm: () => this.setState(s => ({ emOpen: !s.emOpen })), emChevron: st.emOpen ? 'caret-up' : 'caret-down',
+      adding: st.adding, startAdd: () => this.setState({ adding: true, ev: '', etried: false, emOpen: true }), cancelAdd: () => this.setState({ adding: false, ev: '', etried: false }),
+      ev: st.ev, setEv: e => this.setState({ ev: e.target.value }), evErr: st.etried && !mailOk(st.ev) ? 'Enter a valid email address.' : '',
+      saveEmail: () => { if (!mailOk(st.ev)) { this.setState({ etried: true }); return; } const val = st.ev.trim(); this.setState(s => ({ emails: { ...s.emails, [fac]: [...(s.emails[fac] || []), { value: val }] }, adding: false, ev: '', etried: false })); },
+      emEmpty: list.length === 0 && !st.adding, nextLabel: 'Email ' + (list.length + 1), emRows: list.map((r, i) => ({ label: 'Email ' + (i + 1), value: r.value, remove: () => this.setState(s => ({ emails: { ...s.emails, [fac]: s.emails[fac].filter((_, j) => j !== i) } })) })) };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.17 (draft)
+- New screen: screens/District Texting.dc.html. Texting Options with SMS and Email tabs and a one-line tip beside the tabs. SMS is set per district: SMS Enabled checkbox (asks for confirmation in a Modal shell), Add a contact with name, phone, Low priority (Yes or No) and the alerts that contact receives (critical alerts always; Low Battery alerts too when Low priority is Yes). Email is set per facility: choose a facility, add email addresses. Both lists are held in the page only.
+- Tab: new prop iconWeight ('regular' | 'fill').
+
 ## v0.9.16 (draft)
 - Grouped list modal: optional alert status pill per row (status, statusVariant) and optional group pagination (paginated, per, page, perOptions, onPage, onPer). Groups without paginated keep the Show more button.
 - Dispatch screen: dialog titled District List, 672px wide, per-facility alert status pill, 5 facilities per page in each district, cards show "N Districts".

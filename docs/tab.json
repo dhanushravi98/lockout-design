@@ -187,6 +187,12 @@
    "x": "Phosphor icon name (22px, regular). Use this for new screens; icon (an image URL) is for the device pictures. Colour follows the tab: navy when selected, #111827 otherwise."
   },
   {
+   "n": "iconWeight",
+   "t": "'regular' | 'fill'",
+   "d": "'regular'",
+   "x": "Weight of the Phosphor icon given by iconName. Use fill for the selected tab so its icon is solid."
+  },
+  {
    "n": "iconWidth / iconHeight",
    "t": "number (px)",
    "d": "22",
@@ -257,5 +263,5 @@
    "v": "11px / 700, 2px 8px; selected #25395c / #fff, unselected #cfd5de / #111827"
   }
  ],
- "usedIn": "School Screen (device tabs). Trainings (program tabs with a Phosphor icon)."
+ "usedIn": "School Screen (device tabs). Trainings (program tabs with a Phosphor icon). District Texting (SMS and Email tabs, filled icon when selected)."
 }
