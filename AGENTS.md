@@ -17,7 +17,7 @@ You are building production UI from design files in this repo.
 - Icons: use the Icon component and the icon names listed in the library (Icons category, `docs/icon.json`). Do not draw SVGs or invent icon names. Tab icons for devices (tablet, boot, pull box, light, alerts, school) are image files in `uploads/`.
 
 - The design repo is read-only for developers. Never edit or commit files in it. Report missing or wrong values instead.
-
+- Focus ring: show it only for keyboard focus (CSS :focus-visible). Do not add focus styles that appear after a mouse click. Text fields are the exception; they change fill while focused.
 
 ## Prompt to start a screen
 "Build the screen in `<file>` using the components in `components/Component Library.dc.html` and the data in `docs/`. Follow `AGENTS.md`. First list the library components the screen uses and any that are missing from our codebase, then build the missing ones, then the screen."

@@ -15,7 +15,7 @@
 .lo-button-danger:active{background:#fecaca!important}
 .lo-button-secondary:hover,.lo-button-tertiary:hover{background:#eef2f8!important}
 .lo-button-secondary:active,.lo-button-tertiary:active{background:#e1e8f3!important}
-.lo-button-live:focus{box-shadow:0 0 0 3px rgba(37,57,92,.25)!important}
+.lo-button-live:focus-visible{box-shadow:0 0 0 3px rgba(37,57,92,.25)!important}
 </style>
 </helmet>
 <div onClick="{{ onClick }}" class="{{ cls }}" style="{{ style }}" tabindex="0"><sc-if value="{{ iconLeft }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="{{ icon }}" weight="fill" size="{{ iconSize }}" color="currentColor" hint-size="18px,18px"></dc-import></sc-if>{{ label }}<sc-if value="{{ iconRight }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon="{{ icon }}" weight="fill" size="{{ iconSize }}" color="currentColor" hint-size="18px,18px"></dc-import></sc-if></div>

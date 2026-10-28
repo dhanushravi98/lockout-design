@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.9.18 (draft)
+- Focus ring is now keyboard-only (:focus-visible) on Button, Icon button, Chip, Tab, Checkbox, Radio and Link button. It no longer stays on a control after a mouse click. Text field is unchanged. Forced state="focus" in the docs still shows the ring.
+
 ## v0.9.17 (draft)
 - New screen: screens/District Texting.dc.html. Texting Options with SMS and Email tabs and a one-line tip beside the tabs. SMS is set per district: SMS Enabled checkbox (asks for confirmation in a Modal shell), Add a contact with name, phone, Low priority (Yes or No) and the alerts that contact receives (critical alerts always; Low Battery alerts too when Low priority is Yes). Email is set per facility: choose a facility, add email addresses. Both lists are held in the page only.
 - Icon button: new variant "danger" (red icon on a light red fill, for Remove or Delete icons). Removing a contact or email asks for confirmation in a Modal shell with a red button.

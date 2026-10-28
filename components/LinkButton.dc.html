@@ -7,7 +7,12 @@
 </head>
 <body>
 <x-dc>
-<div onClick="{{ onClick }}" onMouseEnter="{{ enter }}" onMouseLeave="{{ leave }}" role="link" aria-label="{{ label }}" style="{{ style }}" style-focus="{{ focus }}" tabindex="{{ tab }}"><dc-import name="Icon" icon="{{ icon }}" weight="{{ weight }}" size="18" color="currentColor" hint-size="18px,18px"></dc-import>{{ label }}</div>
+<helmet>
+<style>
+.lo-link-live:focus-visible{box-shadow:0 0 0 3px rgba(37,57,92,.25)!important}
+</style>
+</helmet>
+<div onClick="{{ onClick }}" onMouseEnter="{{ enter }}" onMouseLeave="{{ leave }}" role="link" aria-label="{{ label }}" style="{{ style }}" class="{{ cls }}" tabindex="{{ tab }}"><dc-import name="Icon" icon="{{ icon }}" weight="{{ weight }}" size="18" color="currentColor" hint-size="18px,18px"></dc-import>{{ label }}</div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:200,&quot;height&quot;:44},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Site Map&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;icon&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;map-trifold&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;tone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;default&quot;,&quot;options&quot;:[&quot;default&quot;,&quot;warning&quot;],&quot;tsType&quot;:&quot;'default'|'warning'&quot;},&quot;disabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;state&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;hover&quot;,&quot;pressed&quot;,&quot;focus&quot;,&quot;disabled&quot;],&quot;tsType&quot;:&quot;'hover'|'pressed'|'focus'|'disabled'&quot;},&quot;onClick&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
 class Component extends DCLogic {
@@ -20,7 +25,7 @@ class Component extends DCLogic {
       + (dis ? 'color:#9aa1ac;background:transparent;cursor:not-allowed' : 'color:' + fg + ';cursor:pointer;background:' + (prs ? pr : hov ? hv : 'transparent'));
     if (foc) style += ';box-shadow:0 0 0 3px rgba(37,57,92,.25)';
     return { label: p.label || 'Link', icon: p.icon || 'map-trifold', weight: on ? 'fill' : 'regular', style, tab: dis ? '-1' : '0',
-      focus: st || dis ? '' : 'box-shadow:0 0 0 3px rgba(37,57,92,.25)',
+      cls: st || dis ? '' : 'lo-link-live',
       onClick: dis ? (() => {}) : (p.onClick || (() => {})),
       enter: () => this.setState({ over: true }), leave: () => this.setState({ over: false }) };
   }

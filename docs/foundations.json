@@ -401,6 +401,10 @@
   {
    "k": "Compact density target",
    "v": "13-inch laptop window (about 1280 x 720): at least 6 table rows visible"
+  },
+  {
+   "k": "Focus ring",
+   "v": "ring 0 0 0 3px rgba(37,57,92,.25) on keyboard focus only (:focus-visible). Tab uses an inset 2px ring; Text field fills #eaeef5 when focused"
   }
  ]
 }
