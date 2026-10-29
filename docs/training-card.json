@@ -192,7 +192,7 @@
   },
   {
    "k": "Grid on Trainings",
-   "v": "repeat(auto-fill, minmax(240px, 1fr)), gap 28px 24px"
+   "v": "repeat(auto-fill, minmax(288px, 1fr)), gap 28px 24px"
   }
  ],
  "usedIn": "Trainings (video grid)."
