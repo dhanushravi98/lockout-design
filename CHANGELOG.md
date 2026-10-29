@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.19 (draft)
+- Trainings page updated: no Next up or Start here; the progress (small) sits at the right of the role chips row; tab icons go solid when selected; no Handout on the Violence Prevention and Response cards or dialog; video cards 20% bigger.
+- Progress bar: new size prop ('md' | 's'). s is a small count with a 4px bar.
+
 ## v0.9.18 (draft)
 - Focus ring is now keyboard-only (:focus-visible) on Button, Icon button, Chip, Tab, Checkbox, Radio and Link button. It no longer stays on a control after a mouse click. Text field is unchanged. Forced state="focus" in the docs still shows the ring.
 

@@ -20,36 +20,22 @@
       <div style="display:flex;flex-direction:column;gap:2px;padding:4px 2px">
         <span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#6b7280">EDUCATION</span>
         <span style="font-size:24px;font-weight:700;line-height:1.2">Trainings</span>
-        <span style="font-size:13px;color:#6b7280">Watch each short video and download the handout. Progress is saved for you.</span>
+        <span style="font-size:13px;color:#6b7280">Watch each short video. Progress is saved for you.</span>
       </div>
 
       <div style="display:flex;flex-direction:column">
         <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px;border-bottom:1px solid #e5e7eb;padding:0 2px">
-          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2"><div style="margin-bottom:-1px"><dc-import name="Tab" label="{{ t.label }}" iconName="{{ t.icon }}" count="{{ t.count }}" selected="{{ t.on }}" onClick="{{ t.onClick }}" hint-size="260px,44px"></dc-import></div></sc-for>
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2"><div style="margin-bottom:-1px"><dc-import name="Tab" label="{{ t.label }}" iconName="{{ t.icon }}" iconWeight="{{ t.weight }}" count="{{ t.count }}" selected="{{ t.on }}" onClick="{{ t.onClick }}" hint-size="260px,44px"></dc-import></div></sc-for>
         </div>
         <div style="padding:32px 2px 8px;display:flex;flex-direction:column;gap:32px">
 
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 48px;padding:0 2px">
-            <div style="flex:1 1 300px;max-width:520px;min-width:0;display:flex;flex-direction:column;gap:12px">
-              <dc-import name="ProgressBar" value="{{ doneCount }}" total="{{ total }}" suffix="completed" hint-size="100%,64px"></dc-import>
-            </div>
-            <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
-              <div style="flex:0 1 auto;display:flex;align-items:center;gap:16px;min-width:0">
-                <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#6b7280">{{ nextLabel }}</span><span style="font-size:16px;font-weight:700;color:#111827">{{ nextTitle }}</span></div>
-                <dc-import name="Button" label="{{ nextButton }}" variant="primary" icon="play" size="md" onClick="{{ openNext }}" hint-size="130px,40px"></dc-import>
-              </div>
-            </sc-if>
-            <sc-if value="{{ allDone }}" hint-placeholder-val="{{ false }}"><dc-import name="Pill" label="All trainings completed" variant="success" size="md" dot="{{ true }}" hint-size="190px,30px"></dc-import></sc-if>
-            <sc-if value="{{ soon }}" hint-placeholder-val="{{ false }}"><span style="flex:0 1 auto;font-size:14px;color:#4b5563;max-width:360px;line-height:1.45">Videos for this program are coming soon. Handouts are ready to download now.</span></sc-if>
-          </div>
-
           <div style="display:flex;flex-direction:column;gap:40px">
-          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 8px;padding:0 2px"><span style="font-size:14px;font-weight:600;color:#4b5563;margin-right:6px">Show</span><sc-for list="{{ roleChips }}" as="r" hint-placeholder-count="4"><dc-import name="Chip" label="{{ r.label }}" count="{{ r.count }}" selected="{{ r.on }}" onClick="{{ r.onClick }}" hint-size="120px,32px"></dc-import></sc-for></div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;padding:0 2px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 8px;min-width:0"><sc-for list="{{ roleChips }}" as="r" hint-placeholder-count="4"><dc-import name="Chip" label="{{ r.label }}" count="{{ r.count }}" selected="{{ r.on }}" onClick="{{ r.onClick }}" hint-size="120px,32px"></dc-import></sc-for></div><div style="margin-left:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 20px;min-width:0"><sc-if value="{{ allDone }}" hint-placeholder-val="{{ false }}"><dc-import name="Pill" label="All trainings completed" variant="success" size="s" dot="{{ true }}" hint-size="170px,26px"></dc-import></sc-if><sc-if value="{{ soon }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#6b7280;line-height:1.45">Videos coming soon.</span></sc-if><div style="flex:0 0 220px;min-width:180px"><dc-import name="ProgressBar" size="s" value="{{ doneCount }}" total="{{ total }}" suffix="completed" hint-size="100%,32px"></dc-import></div></div></div>
           <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:18px">
             <div style="display:flex;align-items:center;gap:10px;padding:0 2px"><dc-import name="Icon" icon="{{ g.icon }}" weight="fill" size="22" color="#25395c" hint-size="22px,22px"></dc-import><span style="font-size:18px;font-weight:700;color:#111827">{{ g.label }}</span></div>
           <div style="display:flex;flex-direction:column;gap:32px"><sc-for list="{{ g.sections }}" as="s" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:18px">
             <sc-if value="{{ s.showLabel }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:12px;padding:0 2px"><div style="width:28px;height:1px;background:#d5dae2"></div><dc-import name="Icon" icon="users-three" weight="fill" size="16" color="#6b7280" hint-size="16px,16px"></dc-import><span style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280">{{ s.label }}</span><div style="flex:1;height:1px;background:#d5dae2"></div></div></sc-if>
-          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 24px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));gap:28px 24px">
             <sc-for list="{{ s.cards }}" as="c" hint-placeholder-count="3">
               <dc-import name="TrainingCard" heading="{{ c.title }}" tile="{{ c.tile }}" seed="{{ c.id }}" index="{{ c.i }}" state="{{ c.state }}" handout="{{ c.handout }}" thumb="{{ c.thumb }}" onOpen="{{ c.onOpen }}" onHandout="{{ noop }}" hint-size="100%,300px"></dc-import>
             </sc-for>
@@ -62,12 +48,6 @@
 </div>
 
 <sc-if value="{{ showPlayer }}" hint-placeholder-val="{{ false }}"><dc-import name="VideoModal" open="{{ showPlayer }}" heading="{{ pTitle }}" subtitle="{{ pSub }}" video="{{ pVideo }}" handout="{{ pHandout }}" watched="{{ pWatched }}" hasNext="{{ hasNextVideo }}" onClose="{{ closePlayer }}" onHandout="{{ noop }}" onYouTube="{{ noop }}" onToggleWatched="{{ markDone }}" onNext="{{ goNextVideo }}" hint-size="0px,0px"></dc-import></sc-if>
-      <dc-import name="LinkButton" label="Open on YouTube" icon="arrow-square-out" onClick="{{ noop }}" hint-size="170px,34px"></dc-import>
-      <dc-import name="LinkButton" label="{{ pConfirm }}" icon="{{ pIcon }}" onClick="{{ markDone }}" hint-size="200px,34px"></dc-import>
-    </div>
-    <sc-if value="{{ hasNextVideo }}" hint-placeholder-val="{{ false }}"><dc-import name="Button" label="Next training" variant="secondary" icon="caret-right" size="md" onClick="{{ goNextVideo }}" hint-size="160px,40px"></dc-import></sc-if>
-  </div>
-</dc-import></sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
@@ -82,7 +62,7 @@ class Component extends DCLogic {
     ].map(([id, title, tile]) => ({ id, title, tile, role: this.ROLE[id], handout: false, thumb: '', video: '' })) },
     violence: { label: 'Violence Prevention and Response', soon: true, items: [
       ['v1', 'Active Shooter: Staff', 'Active shooter: staff'], ['v2', 'Evacuation Re-Unification', 'Evacuation re-unification'], ['v3', 'Incident Command Training', 'Incident command training'], ['v4', 'Table-Top (E.P)', 'Table-top (E.P)']
-    ].map(([id, title, tile]) => ({ id, title, tile, role: this.ROLE[id], handout: true, thumb: '', video: '' })) }
+    ].map(([id, title, tile]) => ({ id, title, tile, role: this.ROLE[id], handout: false, thumb: '', video: '' })) }
   };
   componentDidMount() { this._rs = () => this.forceUpdate(); window.addEventListener('resize', this._rs); }
   componentWillUnmount() { window.removeEventListener('resize', this._rs); }
@@ -97,7 +77,7 @@ class Component extends DCLogic {
     const role = allGroups.some(g => g.label === st.role) ? st.role : allGroups[0].label;
     const groups = allGroups.filter(g => g.label === role);
     const roleChips = allGroups.map(g => ({ label: g.label, count: g.count, on: role === g.label, onClick: () => this.setState({ role: g.label }) }));
-    const tabs = Object.keys(this.PROG).map(k => ({ icon: k === 'smart' ? 'devices' : 'shield-warning', label: this.PROG[k].label, count: this.PROG[k].items.length, on: st.tab === k, onClick: () => this.setState({ tab: k }) }));
+    const tabs = Object.keys(this.PROG).map(k => ({ icon: k === 'smart' ? 'devices' : 'shield-warning', label: this.PROG[k].label, count: this.PROG[k].items.length, weight: st.tab === k ? 'fill' : 'regular', on: st.tab === k, onClick: () => this.setState({ tab: k }) }));
     const all = [...this.PROG.smart.items, ...this.PROG.violence.items];
     const cur = st.open ? all.find(x => x.id === st.open) : null;
     const curProg = cur ? (this.PROG.smart.items.includes(cur) ? this.PROG.smart : this.PROG.violence) : null;
@@ -111,7 +91,7 @@ class Component extends DCLogic {
       hasNext: !!next, nextLabel: doneCount === 0 ? 'START HERE' : 'NEXT UP', nextTitle: next ? next.title : '', nextButton: doneCount === 0 ? 'Start' : 'Resume', openNext: () => next && openId(next.id),
       allDone: !soon && doneCount === total,
       showPlayer: !!cur, pTitle: cur ? cur.title : '', pSub: cur ? curProg.label + ' · Training ' + (idx + 1) + ' of ' + curProg.items.length : '', pWatched: !!(cur && done[cur.id]),
-      hasVideo: !!(cur && cur.video), noVideo: !(cur && cur.video), pVideo: cur ? cur.video : '', pHandout: !!(cur && cur.handout),
+      hasVideo: !!(cur && cur.video), noVideo: !(cur && cur.video), pVideo: cur ? cur.video : '', pHandout: false,
       hasNextVideo: !!nextVid, goNextVideo: () => nextVid && openId(nextVid.id), closePlayer: () => this.setState({ open: null }),
       markDone: () => cur && this.setState(s => { const d = { ...s.done }; if (d[cur.id]) delete d[cur.id]; else d[cur.id] = true; return { done: d }; })
     };

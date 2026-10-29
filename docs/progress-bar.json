@@ -28,6 +28,22 @@
    "numeric": true
   },
   {
+   "label": "Size",
+   "type": "seg",
+   "prop": "size",
+   "options": [
+    [
+     "md",
+     "md"
+    ],
+    [
+     "s",
+     "s"
+    ]
+   ],
+   "default": 0
+  },
+  {
    "label": "Suffix",
    "type": "text",
    "prop": "suffix",
@@ -59,6 +75,22 @@
       "value": 10,
       "total": 10
      }
+    },
+    {
+     "label": "size s, half",
+     "props": {
+      "value": 5,
+      "total": 10,
+      "size": "s"
+     }
+    },
+    {
+     "label": "size s, none",
+     "props": {
+      "value": 0,
+      "total": 10,
+      "size": "s"
+     }
     }
    ]
   }
@@ -75,6 +107,12 @@
    "t": "number",
    "d": "0",
    "x": "Items in the set."
+  },
+  {
+   "n": "size",
+   "t": "'md' | 's'",
+   "d": "'md'",
+   "x": "md is the large count with an 8px bar. s is a small 14px count with a 4px bar, for a quiet progress line beside other controls."
   },
   {
    "n": "suffix",
@@ -103,6 +141,10 @@
   {
    "k": "Gap",
    "v": "12px between text and bar"
+  },
+  {
+   "k": "Size s",
+   "v": "number 14px / 600 #374151, text 13px #6b7280, track 4px, gap 6px"
   },
   {
    "k": "Role",
