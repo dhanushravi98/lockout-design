@@ -19,7 +19,7 @@ components/                 Shared components, one file each
   Component Library.dc.html The library page (open this one)
   LibraryEntry.dc.html      Shows one library entry from its data file
 docs/                       One .json data file per component, plus index.json and foundations.json
-screens/                    Dispatch, School Screen, Service Request Classic, User Management
+screens/                    Dispatch, District, School, Trainings, Texting, Maintenance Mode, School Requests, Service Request Classic, User Management
 emails/                     Service request and suggestion email templates
 reference/                  Older spec pages, to be folded into the library
 uploads/                    Icons and logo

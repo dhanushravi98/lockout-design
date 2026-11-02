@@ -1,0 +1,112 @@
+{
+ "id": "comment-box",
+ "title": "Comment box",
+ "component": "CommentBox",
+ "file": "components/CommentBox.dc.html",
+ "status": "In review",
+ "hintSize": "100%,230px",
+ "previewWidth": "460px",
+ "description": "A comment field with an Attach a file button underneath. One file per comment: images, PDF, Word, Excel or CSV, up to 3 MB. The chosen file shows as a chip with its size and a remove button. A file of the wrong type or size shows a red message and is not added. The parent keeps the text and the file; this component checks the file.",
+ "base": {
+  "label": "Add a comment",
+  "placeholder": "Write your comment"
+ },
+ "controls": [
+  {
+   "label": "Label",
+   "type": "text",
+   "prop": "label",
+   "default": "Add a comment"
+  },
+  {
+   "label": "Placeholder",
+   "type": "text",
+   "prop": "placeholder",
+   "default": "Write your comment"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "label",
+   "t": "string",
+   "d": "\"Comment\"",
+   "x": "Text above the field."
+  },
+  {
+   "n": "placeholder",
+   "t": "string",
+   "d": "\"Write your comment\"",
+   "x": ""
+  },
+  {
+   "n": "value",
+   "t": "string",
+   "d": "\"\"",
+   "x": "Text in the field."
+  },
+  {
+   "n": "onInput",
+   "t": "(e) => void",
+   "d": "-",
+   "x": "Text changed."
+  },
+  {
+   "n": "file",
+   "t": "{ name, size, url } | null",
+   "d": "null",
+   "x": "The attached file, kept by the parent."
+  },
+  {
+   "n": "onFile",
+   "t": "(file) => void",
+   "d": "-",
+   "x": "Called with a file that passed the checks."
+  },
+  {
+   "n": "onRemove",
+   "t": "() => void",
+   "d": "-",
+   "x": "The remove button was pressed."
+  },
+  {
+   "n": "minHeight",
+   "t": "number (px)",
+   "d": "96",
+   "x": "Height of the text field."
+  },
+  {
+   "n": "hint",
+   "t": "string",
+   "d": "\"Up to 3 MB. Images, PDF, Word, Excel or CSV.\"",
+   "x": "Grey text beside the button."
+  }
+ ],
+ "values": [
+  {
+   "k": "Field",
+   "v": "Text box (see Text box), 96px minimum"
+  },
+  {
+   "k": "Button",
+   "v": "Button secondary, height 34, paperclip icon"
+  },
+  {
+   "k": "Hint",
+   "v": "12px #6b7280"
+  },
+  {
+   "k": "File chip",
+   "v": "pill #eaeef5, #25395c, 13px / 600, name + size + round × button (20px)"
+  },
+  {
+   "k": "Error",
+   "v": "13px / 600 #b91c1c"
+  },
+  {
+   "k": "Limits",
+   "v": "one file, 3 MB, images, PDF, Word, Excel, CSV"
+  }
+ ],
+ "usedIn": "School Requests - Self Service (Add a comment, in the summary panel and the full request page)."
+}

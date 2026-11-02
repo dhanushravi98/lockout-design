@@ -153,14 +153,42 @@
     </div>
   </div>
 </div>
+<sc-if value="{{ showSum }}" hint-placeholder-val="{{ false }}"><dc-import name="ModalShell" title="Maintenance summary" subtitle="ADRIAN MADISON SCHOOLS" width="728" hideCancel="{{ true }}" confirmLabel="{{ emailLabel }}" confirmDisabled="{{ emailDone }}" onConfirm="{{ emailSum }}" hideCloseButton="{{ true }}" onClose="{{ closeSum }}" hint-size="0px,0px"><div style="display:flex;flex-direction:column;gap:18px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px"><sc-for list="{{ sumStats }}" as="t" hint-placeholder-count="3"><dc-import name="StatCard" icon="{{ t.icon }}" value="{{ t.n }}" label="{{ t.label }}" tone="{{ t.tone }}" hint-size="100%,72px"></dc-import></sc-for></div>
+  <sc-if value="{{ hasEntries }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b7280">REPLACEMENTS AND NOTES</span><div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><div style="max-height:300px;overflow-y:auto"><div style="position:sticky;top:0;z-index:1;display:grid;grid-template-columns:minmax(0,1.2fr) 164px minmax(0,2fr) 104px;column-gap:14px;align-items:center;padding:10px 14px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280;text-transform:uppercase"><span>Device</span><span>Action</span><span>Note</span><span>Files</span></div><sc-for list="{{ sumEntries }}" as="e" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:minmax(0,1.2fr) 164px minmax(0,2fr) 104px;column-gap:14px;align-items:center;padding:12px 14px;border-bottom:1px solid #f0f1f3"><div style="min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font-size:14px;font-weight:700;color:#111827">{{ e.name }}</span></div><div style="justify-self:start"><dc-import name="Pill" label="{{ e.actionLabel }}" variant="{{ e.actionVariant }}" size="s" hint-size="170px,26px"></dc-import></div><span title="{{ e.noteFull }}" style="font-size:14px;line-height:1.45;color:#374151;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;min-width:0;cursor:default">{{ e.noteText }}</span><span style="font-size:13px;color:#6b7280">{{ e.fileCell }}</span></div></sc-for></div></div></div></sc-if>
+  <sc-if value="{{ hasCounts }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b7280">CHECKED, WITH NO ISSUES</span><div style="display:flex;gap:10px"><sc-for list="{{ sumCounts }}" as="c" hint-placeholder-count="4"><div title="{{ c.kind }}" style="flex:1 1 0;min-width:0;box-sizing:border-box;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px"><span style="{{ c.iconStyle }}"></span><div style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font-size:20px;font-weight:700;line-height:1.1;color:#111827">{{ c.n }}</span><span style="font-size:12px;color:#6b7280;white-space:nowrap">{{ c.kind }}</span></div></div></sc-for></div></div></sc-if>
+  <sc-if value="{{ sumEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 4px;text-align:center;font-size:14px;color:#6b7280">No devices were checked or changed in this session.</div></sc-if>
+  
+</div></dc-import></sc-if>
 <sc-if value="{{ showToast }}" hint-placeholder-val="{{ false }}"><dc-import name="Toast" floating="{{ true }}" icon="wrench" title="{{ toastTitle }}" subtitle="{{ toastSub }}" onClose="{{ closeToast }}" hint-size="0px,0px"></dc-import></sc-if>
 <dc-import name="../screens/Service Request Classic" embedded="{{ true }}" open="{{ svcOpen }}" on-close="{{ closeSvc }}" hint-size="0px,0px"></dc-import>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'tablet', svc: false, mm: false, toast: null };
+  state = { active: 'tablet', svc: false, mm: false, toast: null, sum: null, sumSent: false };
   _cm = {};
-  showMsg(on) { const tok = Math.random(); this._tt = tok; this.setState({ mm: on, toast: on }); setTimeout(() => { if (this._tt === tok) this.setState({ toast: null }); }, 5000); }
+  _by = {};
+  ME = 'Akhila Sai';
+  buildSummary() {
+    const T = this._T || {}, bc = this.state.bc || {}, br = this.state.br || {}, att = this.state.att || {};
+    const KIND = { tablet: ['Tablet', 'Tablet'], boot: ['Smart Boot', 'Battery'], pull: ['Pull Box', 'Battery'], light: ['Smart Light', 'Smart Light'] };
+    const RS = (k, f) => (window.__resources && window.__resources[k]) || f;
+    const ICON = { tablet: [RS('tabletIcon', '../uploads/Tablet Icon.png'), 28], boot: [RS('bootIcon', '../uploads/Boot.png'), 22.4], pull: [RS('pullIcon', '../uploads/PullBLE.png'), 25], light: [RS('domeIcon', '../uploads/DomeBLE.png'), 28] };
+    const people = new Set();
+    const strip = h => String(h || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+    const entries = [], counts = []; let checked = 0, replaced = 0, comments = 0;
+    Object.keys(KIND).forEach(id => { const cfg = T[id]; if (!cfg) return; let only = 0;
+      cfg.rows.forEach((cells, i) => { const k = id + i, c = !!bc[k], r = !!br[k], txt = strip(this._cm[k]), files = (att[k] || []).length;
+        if (c) checked++; if (r) replaced++; if (txt) comments++;
+        const who = this._by[k] || this.ME; if (c || r || txt || files) people.add(who);
+        if (r || txt || files) entries.push({ name: cells[2].v, kind: KIND[id][0] + ' · ' + who, checked: c, replaced: r, replacedLabel: KIND[id][1] + ' replaced', text: txt, hasText: !!txt, actionLabel: r ? KIND[id][1] + ' replaced' : (c ? 'Checked' : 'Note added'), actionVariant: r ? 'warning' : 'tint', noteText: txt || '—', noteFull: txt, fileCell: files ? files + (files === 1 ? ' attachment' : ' attachments') : '—', files, hasFiles: files > 0, filesText: files + (files === 1 ? ' attachment' : ' attachments') });
+        else if (c) only++; });
+      if (only) counts.push({ kind: KIND[id][0], n: only, iconStyle: 'flex:none;width:' + ICON[id][1] + 'px;height:' + ICON[id][1] + 'px;background:center / contain no-repeat url("' + encodeURI(ICON[id][0]) + '")' }); });
+    const t0 = this._t0 || new Date(), t1 = new Date(), tm = d => d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    const when = t0.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' · ' + tm(t0) + ' to ' + tm(t1);
+    return { entries, counts, checked, replaced, comments, people: [...people].join(', ') || this.ME, when };
+  }
+  showMsg(on) { if (!on) { this._tt = 0; this.setState({ mm: false, toast: null, sum: this.buildSummary() }); return; } const tok = Math.random(); this._tt = tok; this._t0 = new Date(); this._by = {}; this.setState({ mm: on, toast: on }); setTimeout(() => { if (this._tt === tok) this.setState({ toast: null }); }, 5000); }
   renderVals() {
     const defs = [
       { id: 'tablet', label: 'Tablet List', count: 110 },
@@ -208,6 +236,7 @@ class Component extends DCLogic {
       alerts: { cols: ['ID', 'Location', 'Type', 'Actor', 'Informant', 'Date', 'User Interactions'], total: 27, grid: '0.5fr 1.5fr 1.7fr 1.2fr 1.2fr 2fr 1.2fr',
         rows: al.map(([loc, type, actor, inf, date, on], i) => [{ v: i + 1 }, { v: loc }, { v: type }, { v: actor }, { v: inf }, { v: date, s: 'color:#374151' }, { v: 'VIEW', s: on ? ena : dis }]) }
     };
+    this._T = T;
     const act2 = this.state.active;
     const cfg = T[act2];
     const isFac = act2 === 'facility';
@@ -217,9 +246,9 @@ class Component extends DCLogic {
     const locIdx = cfg ? cfg.cols.indexOf('Location') : -1;
     const bc = this.state.bc || {}, br = this.state.br || {};
     const tableRows = cfg ? cfg.rows.map((cells, i) => { const k = act2 + i; return { cells: cells.map((c, ci) => mmCols && ci === locIdx && String(c.v).length > 8 ? { v: String(c.v).slice(0, 8) + '...', t: String(c.v), style: (c.s || '') + ';cursor:help' } : { v: c.v, t: '', style: c.s || '' }), mm: mmCols, bc: !!bc[k], br: !!br[k], k,
-      toggleBc: () => this.setState(s => ({ bc: { ...(s.bc || {}), [k]: !(s.bc || {})[k] } })), toggleBr: () => this.setState(s => ({ br: { ...(s.br || {}), [k]: !(s.br || {})[k] } })),
-      cmHtml: this._cm[k] || '', fileList: (this.state.att || {})[k] || [], onCmChange: (html) => { this._cm[k] = html; },
-      onFilesChange: (list) => this.setState(st => ({ att: { ...(st.att || {}), [k]: list } })) }; }) : [];
+      toggleBc: () => { this._by[k] = this.ME; this.setState(s => ({ bc: { ...(s.bc || {}), [k]: !(s.bc || {})[k] } })); }, toggleBr: () => { this._by[k] = this.ME; this.setState(s => ({ br: { ...(s.br || {}), [k]: !(s.br || {})[k] } })); },
+      cmHtml: this._cm[k] || '', fileList: (this.state.att || {})[k] || [], onCmChange: (html) => { this._cm[k] = html; this._by[k] = this.ME; },
+      onFilesChange: (list) => { this._by[k] = this.ME; this.setState(st => ({ att: { ...(st.att || {}), [k]: list } })); } }; }) : [];
     const lastPage = cfg ? Math.ceil(cfg.total / 10) : 1;
     const pageNums = ['1', '2', '3', '4', '5', '...', String(lastPage)].filter((n, i) => lastPage > 6 || (n !== '...' && +n <= lastPage && i < 5));
     const fo = this.state.facOpen || {};
@@ -251,7 +280,9 @@ class Component extends DCLogic {
       { label: 'Report Issue', onClick: () => this.setState({ svc: true }), path: 'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01', style: 'display:inline-flex;align-items:center;gap:10px;height:46px;box-sizing:border-box;padding:0 24px;border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;background:#25395c;color:#fff;border:1.5px solid #25395c', hover: 'background:#1c2c48' }
     ];
     const pages = pageNums.map(n => ({ n, style: n === '...' ? 'color:#9aa1ac' : 'width:28px;height:28px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;' + (n === '1' ? 'background:#25395c;color:#fff;font-weight:700' : 'border:1px solid #e5e7eb;color:#111827') }));
-    return { showMm: !!mmKinds[act2], tblMin: mmCols ? '1160px' : '0', mmActive: !!this.state.mm, mmToggle: () => this.showMsg(!this.state.mm), showToast: this.state.toast !== null, toastTitle: this.state.toast ? 'Maintenance mode enabled' : 'Maintenance mode disabled', toastSub: 'ADRIAN MADISON SCHOOLS', closeToast: () => { this._tt = 0; this.setState({ toast: null }); }, svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? (mmCols ? [...cfg.cols, mmWord + ' Checked', mmWord + ' Replaced', 'Comments'] : cfg.cols) : [], gridStyle: 'display:grid;column-gap:12px;grid-template-columns:' + (cfg ? (mmCols ? 'minmax(40px,0.35fr) minmax(48px,0.5fr) minmax(120px,1.5fr) minmax(110px,1.2fr) minmax(150px,1.8fr) minmax(90px,1.3fr) 110px 120px minmax(200px,2fr)' : cfg.grid) : G), total: cfg ? cfg.total : 0, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
+    const sm = this.state.sum;
+    const sumVals = sm ? { showSum: true, sumPeople: sm.people, sumWhen: sm.when, sumStats: [{ n: sm.checked, label: 'Devices checked', icon: 'check-circle', tone: 'navy' }, { n: sm.replaced, label: 'Replaced', icon: 'arrows-clockwise', tone: 'warning' }, { n: sm.comments, label: 'Comments', icon: 'chat-circle-text', tone: 'navy' }], sumEntries: sm.entries, hasEntries: sm.entries.length > 0, sumCounts: sm.counts, hasCounts: sm.counts.length > 0, sumEmpty: !sm.entries.length && !sm.counts.length } : { showSum: false, sumPeople: '', sumWhen: '', sumStats: [], sumEntries: [], hasEntries: false, sumCounts: [], hasCounts: false, sumEmpty: false };
+    return { ...sumVals, sumSent: !!this.state.sumSent, emailLabel: this.state.sumSent ? 'Report emailed' : 'Email report', emailDone: !!this.state.sumSent, emailSum: () => this.setState({ sumSent: true }), closeSum: () => { this._cm = {}; this._by = {}; this.setState({ sum: null, sumSent: false, bc: {}, br: {}, att: {} }); }, showMm: !!mmKinds[act2], tblMin: mmCols ? '1160px' : '0', mmActive: !!this.state.mm, mmToggle: () => this.showMsg(!this.state.mm), showToast: this.state.toast !== null, toastTitle: this.state.toast ? 'Maintenance mode enabled' : 'Maintenance mode disabled', toastSub: 'ADRIAN MADISON SCHOOLS', closeToast: () => { this._tt = 0; this.setState({ toast: null }); }, svcOpen: this.state.svc, closeSvc: () => this.setState({ svc: false }), tabs, rows: tableRows, cols: cfg ? (mmCols ? [...cfg.cols, mmWord + ' Checked', mmWord + ' Replaced', 'Comments'] : cfg.cols) : [], gridStyle: 'display:grid;column-gap:12px;grid-template-columns:' + (cfg ? (mmCols ? 'minmax(40px,0.35fr) minmax(48px,0.5fr) minmax(120px,1.5fr) minmax(110px,1.2fr) minmax(150px,1.8fr) minmax(90px,1.3fr) 110px 120px minmax(200px,2fr)' : cfg.grid) : G), total: cfg ? cfg.total : 0, showTable: !isFac, showFacility: isFac, showZone: act2 !== 'alerts', facCards, facSections, menu, refLinks, mainActions, actions, pages };
   }
 }
 </script>

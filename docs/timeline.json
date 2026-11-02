@@ -1,0 +1,66 @@
+{
+ "id": "timeline",
+ "title": "Timeline",
+ "component": "Timeline",
+ "file": "components/Timeline.dc.html",
+ "status": "In review",
+ "hintSize": "100%,230px",
+ "previewWidth": "440px",
+ "description": "A vertical list of events with a coloured dot and a line joining them, newest first. The newest event is bold with a soft ring around its dot. An event can carry a downloadable file shown as a small chip.",
+ "base": {
+  "events": [
+   {
+    "text": "Status changed to In progress",
+    "meta": "System · Oct 31, 3:02 PM",
+    "dot": "#92600a"
+   },
+   {
+    "text": "A support specialist took your request",
+    "meta": "Support team · Oct 31, 3:02 PM",
+    "dot": "#25395c"
+   },
+   {
+    "text": "You raised this request",
+    "meta": "You · Oct 31, 2:15 PM",
+    "dot": "#25395c"
+   }
+  ]
+ },
+ "controls": [],
+ "grids": [],
+ "props": [
+  {
+   "n": "events",
+   "t": "{ text, meta, dot?, fileName?, fileUrl?, fileSize? }[]",
+   "d": "[]",
+   "x": "Newest first. dot is the colour: navy for people, amber for status changes, green for resolved, grey for cancelled."
+  }
+ ],
+ "values": [
+  {
+   "k": "Dot",
+   "v": "12px circle; newest has a 4px ring #eaeef5"
+  },
+  {
+   "k": "Line",
+   "v": "2px #dfe3ea, 20px minimum between dots"
+  },
+  {
+   "k": "Text",
+   "v": "14px #111827 (newest 700)"
+  },
+  {
+   "k": "Meta line",
+   "v": "12px #6b7280"
+  },
+  {
+   "k": "File chip",
+   "v": "pill #eaeef5, #25395c, 12px / 600, paperclip 13px"
+  },
+  {
+   "k": "Spacing",
+   "v": "18px below each event, 14px between dot and text"
+  }
+ ],
+ "usedIn": "School Requests - Self Service (Activity, in the summary panel and the full request page)."
+}

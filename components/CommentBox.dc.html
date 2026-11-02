@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="display:flex;flex-direction:column;gap:12px;width:100%;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <dc-import name="TextArea" label="{{ label }}" placeholder="{{ placeholder }}" value="{{ value }}" onInput="{{ onInput }}" minHeight="{{ minHeight }}" hint-size="100%,140px"></dc-import>
+  <div style="display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><dc-import name="Button" label="Attach a file" variant="secondary" icon="paperclip" height="34" onClick="{{ pick }}" hint-size="160px,34px"></dc-import><span style="font-size:12px;color:#6b7280">{{ hint }}</span></div>
+    <sc-if value="{{ hasFile }}" hint-placeholder-val="{{ false }}"><div style="display:inline-flex;align-items:center;gap:8px;width:fit-content;max-width:100%;box-sizing:border-box;background:#eaeef5;color:#25395c;border-radius:999px;padding:5px 6px 5px 12px;font-size:13px;font-weight:600"><dc-import name="Icon" icon="paperclip" weight="regular" size="14" color="#25395c" hint-size="14px,14px"></dc-import><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ fileName }}</span><span style="flex:none;color:#6b7280;font-weight:500">{{ fileSize }}</span><span onClick="{{ remove }}" role="button" aria-label="Remove attachment" style="flex:none;width:20px;height:20px;border-radius:999px;background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;line-height:1;color:#374151">×</span></div></sc-if>
+    <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;font-weight:600;color:#b91c1c">{{ err }}</span></sc-if>
+    <input id="{{ inputId }}" type="file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv" onChange="{{ onPick }}" style="display:none">
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:260},&quot;label&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Comment&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;placeholder&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Write your comment&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Up to 3 MB. Images, PDF, Word, Excel or CSV.&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;minHeight&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:96,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;px&quot;},&quot;value&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;file&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;{ name: string, size: number, url: string } | null&quot;},&quot;onInput&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(e) =&gt; void&quot;},&quot;onFile&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(file) =&gt; void&quot;},&quot;onRemove&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = { err: '' };
+  id = 'cb-' + Math.random().toString(36).slice(2, 8);
+  fs(b) { return b < 1048576 ? Math.max(1, Math.round(b / 1024)) + ' KB' : (b / 1048576).toFixed(1) + ' MB'; }
+  renderVals() {
+    const p = this.props, f = p.file || null, none = () => {};
+    return { label: p.label || 'Comment', placeholder: p.placeholder || 'Write your comment', value: p.value || '', onInput: p.onInput || none, minHeight: p.minHeight || 96,
+      hint: p.hint || 'Up to 3 MB. Images, PDF, Word, Excel or CSV.', hasFile: !!f, fileName: f ? f.name : '', fileSize: f ? this.fs(f.size) : '', remove: () => { this.setState({ err: '' }); if (p.onRemove) p.onRemove(); },
+      hasErr: !!this.state.err, err: this.state.err, inputId: this.id, pick: () => { const el = document.getElementById(this.id); if (el) el.click(); },
+      onPick: e => { const x = (e.target.files || [])[0]; e.target.value = ''; if (!x) return;
+        if (!(/^image\//.test(x.type) || /\.(pdf|docx?|xlsx?|csv)$/i.test(x.name))) { this.setState({ err: 'This file type is not supported.' }); return; }
+        if (x.size > 3 * 1024 * 1024) { this.setState({ err: 'This file is larger than 3 MB.' }); return; }
+        this.setState({ err: '' }); if (p.onFile) p.onFile({ name: x.name, size: x.size, url: URL.createObjectURL(x) }); } };
+  }
+}
+</script>
+</body>
+</html>

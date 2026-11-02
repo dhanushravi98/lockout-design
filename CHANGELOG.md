@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.9.20 (draft)
+- New components (all In review): Progress steps (numbered steps with a Waiting state), Timeline (events with dots and a line, newest first, optional file), Collapsible bar (icon, title, hint and a round chevron; the content slides open), Side panel (slide-in summary with header, scrolling body and footer buttons) and Comment box (comment field with an Attach a file button, one file up to 3 MB).
+- New screen: School Requests - Self Service (screens/), the services page at school level for Bath Middle School, for schools that fix their own devices or ask for a technician. Tabs: Requests (search, status chips, table with a status pill, pagination with rows per page, a summary panel and a full request page with a five step progress line, Created, Assigned, In progress, Technician out and Resolved, plus Action needed, a timeline, comments with image attachments up to 3 MB, devices with rooms and photos), Needs attention (devices that need a report, with a count badge) and History log. It has a collapsed Fix it yourself bar and a Suggest a time for the visit block when a technician asks.
+- Report an issue overlay (Service Request Classic): optional Photos on the review step (images only, 3 MB each); onSubmit sends deviceList, comments, contact, photos and by in addition to the earlier fields.
+- Maintenance Mode screen: turning the mode off opens a Maintenance summary dialog: stat cards (checked, replaced, comments), a Replacements and notes table with its own scroll, the devices checked with no issues as icon counts, and Email report pinned in the footer.
+- Link button: new prop iconPosition ('left' | 'right'); right with a caret is used for View steps.
+- Modal shell: new prop hideCloseButton (hides the top × while onClose still closes on the backdrop).
+
 ## v0.9.19 (draft)
 - Trainings page updated: no Next up or Start here; the progress (small) sits at the right of the role chips row; tab icons go solid when selected; no Handout on the Violence Prevention and Response cards or dialog; video cards 20% bigger.
 - Progress bar: new size prop ('md' | 's'). s is a small count with a 4px bar.

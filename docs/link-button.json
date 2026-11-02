@@ -22,6 +22,22 @@
    "keep": true
   },
   {
+   "label": "Icon position",
+   "type": "seg",
+   "prop": "iconPosition",
+   "options": [
+    [
+     "left",
+     "left"
+    ],
+    [
+     "right",
+     "right"
+    ]
+   ],
+   "default": 0
+  },
+  {
    "label": "State",
    "type": "seg",
    "prop": "state",
@@ -127,6 +143,14 @@
       "label": "Assessments",
       "icon": "clipboard-text"
      }
+    },
+    {
+     "label": "icon on the right",
+     "props": {
+      "label": "View steps",
+      "icon": "caret-right",
+      "iconPosition": "right"
+     }
     }
    ]
   }
@@ -143,6 +167,12 @@
    "t": "string",
    "d": "\"map-trifold\"",
    "x": "Phosphor icon name. Regular weight, becomes fill on hover."
+  },
+  {
+   "n": "iconPosition",
+   "t": "'left' | 'right'",
+   "d": "'left'",
+   "x": "Side of the icon. Use right with a caret-right icon for links that lead to another view, such as View steps."
   },
   {
    "n": "tone",
@@ -215,5 +245,5 @@
    "v": "gap 0 between links, 2px between wrapped lines, right aligned"
   }
  ],
- "usedIn": "School Screen (reference links under the Report Issue button)."
+ "usedIn": "School Screen (reference links under the Report Issue button). School Requests (View steps)."
 }

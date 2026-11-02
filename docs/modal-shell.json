@@ -121,6 +121,12 @@
    "x": "Removes the Cancel button from the footer. Use when the dialog already has a close button at the top."
   },
   {
+   "n": "hideCloseButton",
+   "t": "boolean",
+   "d": "false",
+   "x": "Hides the × at the top while keeping onClose for a click on the dark backdrop. Use when the footer already has the only action the dialog needs."
+  },
+  {
    "n": "onClose",
    "t": "() => void",
    "d": "-",
@@ -187,5 +193,5 @@
    "v": "Text field height 44"
   }
  ],
- "usedIn": "Confirm dialog, Add Wi-Fi network and Add contact dialogs (School Screen, Facility Information)."
+ "usedIn": "Confirm dialog, Add Wi-Fi network and Add contact dialogs (School Screen, Facility Information). Maintenance summary (Maintenance Mode)."
 }

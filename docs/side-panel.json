@@ -1,0 +1,139 @@
+{
+ "id": "side-panel",
+ "title": "Side panel",
+ "component": "SidePanel",
+ "file": "components/SidePanel.dc.html",
+ "status": "In review",
+ "hintSize": "100%,440px",
+ "previewWidth": "640px",
+ "description": "A panel that slides in from the right over a dimmed page, to show a summary of the row that was pressed without leaving the list. Header with the title, a status pill and up to three grey lines; a button to open the full page and a close button; a scrolling body for your content; a footer of buttons. It covers the whole window, menu included, like a dialog, so it can be placed anywhere in a screen.",
+ "base": {
+  "inline": true,
+  "open": true,
+  "title": "SR-1046",
+  "status": "In progress",
+  "statusVariant": "info",
+  "lines": [
+   "Bath Middle School",
+   "Raised Oct 31, 2:15 PM",
+   {
+    "text": "Assigned to Akhila Sai",
+    "strong": true
+   }
+  ],
+  "actions": [
+   {
+    "label": "Close",
+    "variant": "secondary"
+   },
+   {
+    "label": "Add comment",
+    "variant": "primary"
+   }
+  ]
+ },
+ "controls": [
+  {
+   "label": "Title",
+   "type": "text",
+   "prop": "title",
+   "default": "SR-1046"
+  },
+  {
+   "label": "Status",
+   "type": "text",
+   "prop": "status",
+   "default": "In progress"
+  }
+ ],
+ "grids": [],
+ "props": [
+  {
+   "n": "open",
+   "t": "boolean",
+   "d": "true",
+   "x": "Shows the panel."
+  },
+  {
+   "n": "title",
+   "t": "string",
+   "d": "-",
+   "x": "22px / 700."
+  },
+  {
+   "n": "status / statusVariant",
+   "t": "string",
+   "d": "-",
+   "x": "Pill beside the title. Variants: tint, solid, success, warning, error, info."
+  },
+  {
+   "n": "lines",
+   "t": "(string | { text, strong? })[]",
+   "d": "[]",
+   "x": "Grey lines under the title. Strong makes a line 600 #374151."
+  },
+  {
+   "n": "actions",
+   "t": "{ label, variant?, icon?, side?, disabled?, onClick }[]",
+   "d": "[]",
+   "x": "Footer buttons (height 44). side \"left\" groups them at the left, the rest at the right."
+  },
+  {
+   "n": "onClose",
+   "t": "() => void",
+   "d": "-",
+   "x": "Close button and a press on the dimmed area."
+  },
+  {
+   "n": "onExpand",
+   "t": "() => void",
+   "d": "-",
+   "x": "Shows an outline button that opens the full page."
+  },
+  {
+   "n": "width",
+   "t": "number (px)",
+   "d": "520",
+   "x": "Panel width, never wider than its container."
+  },
+  {
+   "n": "inline",
+   "t": "boolean",
+   "d": "false",
+   "x": "Draws the panel inside a 440px box. Library preview only."
+  },
+  {
+   "n": "children",
+   "t": "content",
+   "d": "-",
+   "x": "Body, scrolls with 22px between blocks."
+  }
+ ],
+ "values": [
+  {
+   "k": "Panel",
+   "v": "white, fixed to the right edge of the window, shadow -12px 0 40px rgba(17,24,39,.18), z-index 91"
+  },
+  {
+   "k": "Dim",
+   "v": "rgba(17,24,39,.35) over the whole window, menu included, z-index 90; a press on it closes the panel"
+  },
+  {
+   "k": "Header",
+   "v": "padding 22px 24px 14px, bottom line #eef0f3"
+  },
+  {
+   "k": "Lines",
+   "v": "first 14px #4b5563; then 13px #6b7280; strong 13px / 600 #374151"
+  },
+  {
+   "k": "Body",
+   "v": "padding 18px 24px, gap 22px"
+  },
+  {
+   "k": "Footer",
+   "v": "padding 14px 24px, top line #eef0f3, gap 10px"
+  }
+ ],
+ "usedIn": "School Requests - Self Service (request summary)."
+}

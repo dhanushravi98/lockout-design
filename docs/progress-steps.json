@@ -1,0 +1,127 @@
+{
+ "id": "progress-steps",
+ "title": "Progress steps",
+ "component": "ProgressSteps",
+ "file": "components/ProgressSteps.dc.html",
+ "status": "In review",
+ "hintSize": "100%,70px",
+ "previewWidth": "520px",
+ "description": "A row of numbered steps joined by a line, for a request or order that moves through stages. Finished steps are navy with a check, the current step is bold, steps still to come are grey. Set warn to show the current step in amber with a different label, for a request that is waiting on the person (Action needed).",
+ "base": {
+  "current": 3
+ },
+ "controls": [
+  {
+   "label": "Current step",
+   "type": "text",
+   "prop": "current",
+   "default": "3"
+  },
+  {
+   "label": "Waiting on the person",
+   "type": "seg",
+   "prop": "warn",
+   "options": [
+    [
+     "Off",
+     false
+    ],
+    [
+     "On",
+     true
+    ]
+   ],
+   "default": 0
+  }
+ ],
+ "grids": [
+  {
+   "title": "States",
+   "cellWidth": 520,
+   "items": [
+    {
+     "label": "created",
+     "props": {
+      "current": 1
+     }
+    },
+    {
+     "label": "in progress",
+     "props": {
+      "current": 3
+     }
+    },
+    {
+     "label": "action needed",
+     "props": {
+      "current": 3,
+      "warn": true
+     }
+    },
+    {
+     "label": "resolved",
+     "props": {
+      "current": 5
+     }
+    }
+   ]
+  }
+ ],
+ "props": [
+  {
+   "n": "current",
+   "t": "number",
+   "d": "0",
+   "x": "The step the request is on, 1 to the number of steps. Steps before it show a check."
+  },
+  {
+   "n": "steps",
+   "t": "string[]",
+   "d": "Created, Assigned, In progress, Technician out, Resolved",
+   "x": "Step labels."
+  },
+  {
+   "n": "warn",
+   "t": "boolean",
+   "d": "false",
+   "x": "Shows the current step in amber."
+  },
+  {
+   "n": "warnLabel",
+   "t": "string",
+   "d": "\"Action needed\"",
+   "x": "Label of the amber step."
+  }
+ ],
+ "values": [
+  {
+   "k": "Circle",
+   "v": "28px, 13px / 700, 2px border"
+  },
+  {
+   "k": "Done",
+   "v": "fill #25395c, text #fff, check mark"
+  },
+  {
+   "k": "Current",
+   "v": "same circle; label 12px / 700 #111827"
+  },
+  {
+   "k": "Upcoming",
+   "v": "fill #fff, border #cbd2dc, number #9aa1ac, label #6b7280"
+  },
+  {
+   "k": "Warn",
+   "v": "fill #fff7e0, border #d99a1d, number #92600a"
+  },
+  {
+   "k": "Line",
+   "v": "2px, #25395c when reached, #e5e7eb after"
+  },
+  {
+   "k": "Layout",
+   "v": "steps share the width equally, labels centred 6px below"
+  }
+ ],
+ "usedIn": "School Requests - Self Service (request summary panel)."
+}

@@ -1,6 +1,6 @@
 {
  "name": "LockOut USA Component Library",
- "version": "0.9.19",
+ "version": "0.9.20",
  "categories": [
   {
    "name": "Foundations",
@@ -33,7 +33,8 @@
     "rich-text-field",
     "checkbox",
     "radio",
-    "dropzone"
+    "dropzone",
+    "comment-box"
    ]
   },
   {
@@ -52,7 +53,8 @@
     "facility-row",
     "device-counts",
     "activity-row",
-    "training-card"
+    "training-card",
+    "collapsible-bar"
    ]
   },
   {
@@ -68,7 +70,8 @@
     "modal-shell",
     "confirm-dialog",
     "grouped-list-modal",
-    "video-modal"
+    "video-modal",
+    "side-panel"
    ]
   },
   {
@@ -76,7 +79,9 @@
    "entries": [
     "notice",
     "progress-bar",
-    "toast"
+    "toast",
+    "progress-steps",
+    "timeline"
    ]
   },
   {
