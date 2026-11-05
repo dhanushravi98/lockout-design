@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.9.21 (draft)
+- Service requests are now three steps: Created, In progress, Resolved. Action needed is a pause on In progress. The assignee is shown beside the title, not as a step. Progress steps defaults to three steps.
+- New screens: Ticket Inbox and Services Dashboard (support side, screens/). Dashboard: New requests, Open requests and Overdue stat cards, Recent requests, Overdue, Workload by person, Activity, Create request dialog. Inbox: three stat cards (Waiting on school, In progress, Overdue), search and status chips, 5 / 10 / 25 rows per page, summary panel with Message to school and Internal note, full request page, Back to Services, optional visit-time request for the school.
+- School Requests - Self Service: attachments are part of the Activity with a preview and a preview dialog (the Photos section is gone); Attach a file is a link button; requests, Needs attention and History log use the three-step pipeline.
+- Timeline: an event's attachment shows as an image thumbnail or a file chip and opens a preview dialog.
+- Comment box: Attach a file is a Link button.
+- Pagination: new props controlled (parent owns the page) and hidePerPage.
+- New folder specs/ with three functional specs.
+
 ## v0.9.20 (draft)
 - New components (all In review): Progress steps (numbered steps with a Waiting state), Timeline (events with dots and a line, newest first, optional file), Collapsible bar (icon, title, hint and a round chevron; the content slides open), Side panel (slide-in summary with header, scrolling body and footer buttons) and Comment box (comment field with an Attach a file button, one file up to 3 MB).
 - New screen: School Requests - Self Service (screens/), the services page at school level for Bath Middle School, for schools that fix their own devices or ask for a technician. Tabs: Requests (search, status chips, table with a status pill, pagination with rows per page, a summary panel and a full request page with a five step progress line, Created, Assigned, In progress, Technician out and Resolved, plus Action needed, a timeline, comments with image attachments up to 3 MB, devices with rooms and photos), Needs attention (devices that need a report, with a count badge) and History log. It has a collapsed Fix it yourself bar and a Suggest a time for the visit block when a technician asks.

@@ -6,16 +6,16 @@
  "status": "In review",
  "hintSize": "100%,70px",
  "previewWidth": "520px",
- "description": "A row of numbered steps joined by a line, for a request or order that moves through stages. Finished steps are navy with a check, the current step is bold, steps still to come are grey. Set warn to show the current step in amber with a different label, for a request that is waiting on the person (Action needed).",
+ "description": "A row of numbered steps joined by a line, for a request or order that moves through stages (three by default). Finished steps are navy with a check, the current step is bold, steps still to come are grey. Set warn to show the current step in amber with a different label, for a request that is waiting on the person (Action needed).",
  "base": {
-  "current": 3
+  "current": 2
  },
  "controls": [
   {
    "label": "Current step",
    "type": "text",
    "prop": "current",
-   "default": "3"
+   "default": "2"
   },
   {
    "label": "Waiting on the person",
@@ -48,20 +48,20 @@
     {
      "label": "in progress",
      "props": {
-      "current": 3
+      "current": 2
      }
     },
     {
      "label": "action needed",
      "props": {
-      "current": 3,
+      "current": 2,
       "warn": true
      }
     },
     {
      "label": "resolved",
      "props": {
-      "current": 5
+      "current": 3
      }
     }
    ]
@@ -77,7 +77,7 @@
   {
    "n": "steps",
    "t": "string[]",
-   "d": "Created, Assigned, In progress, Technician out, Resolved",
+   "d": "Created, In progress, Resolved",
    "x": "Step labels."
   },
   {
@@ -123,5 +123,5 @@
    "v": "steps share the width equally, labels centred 6px below"
   }
  ],
- "usedIn": "School Requests - Self Service (request summary panel)."
+ "usedIn": "School Requests - Self Service and Ticket Inbox (Progress, in the summary panel and the full request page)."
 }

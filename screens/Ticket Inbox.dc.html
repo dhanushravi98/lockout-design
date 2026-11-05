@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="component-dir" content="../components">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="ext-resource-dependency" content="../uploads/LockOut Logo.png" data-resource-id="logo">
+<meta name="ext-resource-dependency" content="../uploads/Tablet Icon.png" data-resource-id="tabletIcon">
+<meta name="ext-resource-dependency" content="../uploads/Boot.png" data-resource-id="bootIcon">
+<meta name="ext-resource-dependency" content="../uploads/PullBLE.png" data-resource-id="pullIcon">
+<meta name="ext-resource-dependency" content="../uploads/DomeBLE.png" data-resource-id="domeIcon">
+<style>.ti-row{cursor:pointer;transition:background .12s}.ti-row:hover{background:#f4f6f9!important}.ti-main>*{flex-shrink:0}</style>
+<template id="__bundler_thumbnail" data-bg-color="#25395c"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#25395c"></rect><rect x="260" y="140" width="680" height="90" rx="20" fill="#fff"></rect><rect x="260" y="270" width="680" height="60" rx="14" fill="#fff"></rect><rect x="260" y="350" width="680" height="60" rx="14" fill="#fff"></rect><rect x="260" y="430" width="680" height="60" rx="14" fill="#fff"></rect></svg></template>
+</helmet>
+<div style="box-sizing:border-box;width:100%;height:100vh;overflow:hidden;background:#f8f9fb;display:flex;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827">
+  <dc-import name="Sidebar" groups="{{ sideGroups }}" active="Services" height="{{ vh }}" logo-src="{{ sideLogo }}" full-name="Lockout Dev Super Admin" last-login="Nov 1, 2026 · 9:12 AM" on-navigate="{{ nav }}" hint-size="264px,100%"></dc-import>
+
+  <div style="position:relative;flex:1;min-width:0;height:100vh;display:flex;flex-direction:column;overflow:hidden">
+    <div class="ti-main" style="flex:1;min-height:0;overflow-y:auto;padding:16px 24px 24px;display:flex;flex-direction:column;gap:14px">
+
+      <div style="margin:0 0 -6px -14px"><dc-import name="LinkButton" label="Back to Services" icon="arrow-left" onClick="{{ backHome }}" hint-size="170px,34px"></dc-import></div>
+
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:4px 2px">
+        <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#6b7280">SERVICES</span><span style="font-size:24px;font-weight:700;line-height:1.2">Service requests</span><span style="font-size:13px;color:#6b7280">Every request raised by schools and districts.</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
+        <sc-for list="{{ stats }}" as="t" hint-placeholder-count="3"><dc-import name="StatCard" icon="{{ t.icon }}" value="{{ t.value }}" label="{{ t.label }}" tone="{{ t.tone }}" hint-size="100%,72px"></dc-import></sc-for>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;flex:1;min-height:500px">
+        <div style="display:flex;flex-direction:column;gap:10px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3">
+          <div style="display:flex;align-items:center;gap:12px"><div style="flex:1 1 200px;min-width:160px;max-width:320px"><dc-import name="TextField" placeholder="Search by ID, school or device" value="{{ q }}" onInput="{{ setQ }}" height="38" hint-size="100%,38px"></dc-import></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ chips }}" as="c" hint-placeholder-count="8"><dc-import name="Chip" label="{{ c.label }}" count="{{ c.count }}" selected="{{ c.on }}" onClick="{{ c.onClick }}" hint-size="130px,32px"></dc-import></sc-for></div>
+        </div>
+
+        <div style="flex:1;min-height:0;overflow-x:auto;overflow-y:hidden;display:flex;flex-direction:column"><div style="min-width:800px;flex:1;min-height:0;display:flex;flex-direction:column">
+          <div style="display:grid;grid-template-columns:76px minmax(0,1.3fr) minmax(0,1.1fr) 52px minmax(90px,0.9fr) 108px;column-gap:12px;align-items:center;padding:12px 16px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#6b7280;text-transform:uppercase;border-bottom:1px solid #eef0f3;background:#fff"><span>ID</span><span>School</span><span>Issues and devices</span><span>Age</span><span>Assignee</span><span>Status</span></div>
+          <div style="flex:1;min-height:0;overflow-y:auto"><sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+            <div class="ti-row" onClick="{{ r.open }}" style="display:grid;grid-template-columns:76px minmax(0,1.3fr) minmax(0,1.1fr) 52px minmax(90px,0.9fr) 108px;column-gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #f0f1f3;background:#fff">
+              <span style="font-size:14px;font-weight:700;color:#25395c;white-space:nowrap">{{ r.id }}</span>
+              <div style="min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:600">{{ r.fac }}</span><span style="font-size:12px;color:#6b7280">{{ r.sub }}<span style="{{ r.cStyle }}">{{ r.contract }}</span></span></div>
+                            <div style="min-width:0;display:flex;flex-direction:column;gap:2px"><span title="{{ r.issueFull }}" style="font-size:14px">{{ r.issueText }}</span><span style="font-size:12px;color:#6b7280">{{ r.devText }}</span></div>
+              <span style="{{ r.ageStyle }}">{{ r.age }}</span>
+              <span style="{{ r.asnStyle }}">{{ r.assignee }}</span>
+              <div style="justify-self:start"><dc-import name="Pill" label="{{ r.status }}" variant="{{ r.variant }}" size="s" hint-size="140px,26px"></dc-import></div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><div style="padding:48px 20px;text-align:center;font-size:14px;color:#6b7280">No requests match these filters.</div></sc-if></div>
+        </div></div>
+        <div style="flex:none;border-top:1px solid #eef0f3"><dc-import name="Pagination" total="{{ pgTotal }}" perPage="{{ per }}" page="{{ page }}" controlled="{{ true }}" perOptions="{{ perOpts }}" onPerPage="{{ setPer }}" onChange="{{ setPage }}" hint-size="100%,56px"></dc-import></div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showFull }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;z-index:50;background:#f8f9fb;display:flex;flex-direction:column;overflow:hidden">
+        <div style="flex:none;padding:16px 24px 16px;display:flex;flex-direction:column;gap:16px;background:#f8f9fb;border-bottom:1px solid #e5e7eb">
+          <div><dc-import name="LinkButton" label="Back to requests" icon="arrow-left" onClick="{{ backFull }}" hint-size="170px,34px"></dc-import></div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:2px">
+            <div style="display:flex;flex-direction:column;gap:6px;min-width:0"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="font-size:28px;font-weight:700;line-height:1.2;white-space:nowrap">{{ d.id }}</span><div style="flex:none"><dc-import name="Pill" label="{{ d.status }}" variant="{{ d.variant }}" size="md" hint-size="160px,30px"></dc-import></div></div><span style="font-size:15px;color:#4b5563">{{ d.subline }}</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px"><sc-for list="{{ fullActions }}" as="a" hint-placeholder-count="1"><dc-import name="Button" label="{{ a.label }}" variant="{{ a.variant }}" height="44" onClick="{{ a.onClick }}" hint-size="170px,44px"></dc-import></sc-for></div>
+          </div>
+          <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827">Progress</div><div style="padding:16px 20px;display:flex;flex-direction:column;gap:14px"><dc-import name="ProgressSteps" current="{{ d.stage }}" warn="{{ d.warn }}" hint-size="100%,70px"></dc-import><sc-if value="{{ d.waiting }}" hint-placeholder-val="{{ false }}"><div style="background:#fff7e0;border:1px solid #f6e4b0;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;color:#92600a"><b>Waiting for the school:</b> {{ d.ask }}</div></sc-if></div></div>
+        </div>
+        <div style="flex:1;min-height:0;overflow-y:auto;padding:16px 24px 32px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;align-items:start">
+            <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:16px">
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Request</span><span style="font-size:13px;font-weight:500;color:#6b7280">{{ d.deviceCount }}</span></div><div style="padding:16px 20px;display:flex;flex-direction:column;gap:14px"><div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><sc-for list="{{ d.devRows }}" as="v" hint-placeholder-count="2"><div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-bottom:1px solid #eef0f3"><span style="flex:none;width:28px;height:28px;margin-top:2px;background:{{ v.bg }}"></span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><div style="display:flex;flex-direction:column;gap:1px"><span style="font-size:14px;font-weight:600">{{ v.name }}</span><span style="font-size:13px;color:#6b7280">{{ v.loc }}</span></div><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ v.issues }}" as="x" hint-placeholder-count="1"><dc-import name="Pill" label="{{ x }}" variant="tint" size="s" hint-size="170px,26px"></dc-import></sc-for></div><sc-if value="{{ v.hasOther }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#4b5563;overflow-wrap:anywhere">Other comments: {{ v.other }}</span></sc-if></div></div></sc-for></div><div style="display:flex;align-items:center;gap:8px;font-size:14px;color:#374151"><dc-import name="Icon" icon="phone" weight="regular" size="18" color="#25395c" hint-size="18px,18px"></dc-import><span style="color:#6b7280">On-site contact</span><b>{{ d.contactText }}</b></div></div></div>
+              <sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}"><div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Message to the school</span></div><div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px"><dc-import name="CommentBox" label="Message" placeholder="Visible to {{ d.by }} and the school" value="{{ msg }}" file="{{ msgFile }}" onInput="{{ setMsg }}" onFile="{{ setMsgFile }}" onRemove="{{ clearMsgFile }}" minHeight="84" hint-size="100%,170px"></dc-import><div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><dc-import name="LinkButton" label="Ask for a reply" icon="chat-circle-dots" disabled="{{ msgOff }}" onClick="{{ askReply }}" hint-size="170px,34px"></dc-import><sc-if value="{{ d.selfService }}" hint-placeholder-val="{{ false }}"><dc-import name="Chip" label="Also ask for a visit time" selected="{{ askTime }}" onClick="{{ toggleAskTime }}" hint-size="230px,32px"></dc-import></sc-if></div><dc-import name="Button" label="Send message" variant="secondary" height="38" disabled="{{ msgOff }}" onClick="{{ sendMsg }}" hint-size="150px,38px"></dc-import></div></div></div></sc-if>
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Activity</span></div><div style="padding:16px 20px"><dc-import name="Timeline" events="{{ d.timeline }}" hint-size="100%,200px"></dc-import></div></div>
+            </div>
+            <div style="min-width:0;display:flex;flex-direction:column;gap:16px">
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Details</span></div><div style="padding:6px 20px 12px"><sc-for list="{{ details }}" as="k" hint-placeholder-count="8"><div style="display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid #f0f1f3;font-size:14px"><span style="color:#6b7280">{{ k.k }}</span><span style="font-weight:600;text-align:right;min-width:0;overflow-wrap:anywhere">{{ k.v }}</span></div></sc-for></div></div>
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Assigned to</span></div><div style="padding:16px 20px;display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ asnChips }}" as="c" hint-placeholder-count="4"><dc-import name="Chip" label="{{ c.label }}" selected="{{ c.on }}" onClick="{{ c.onClick }}" hint-size="130px,32px"></dc-import></sc-for></div></div>
+              <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#fafbfc;border-bottom:1px solid #eef0f3;font-size:16px;font-weight:700;color:#111827"><span>Internal note</span></div><div style="padding:16px 20px;display:flex;flex-direction:column;gap:12px"><dc-import name="TextArea" label="Note" placeholder="Only support can see this" value="{{ note }}" onInput="{{ setNote }}" minHeight="84" hint-size="100%,130px"></dc-import><div style="display:flex;justify-content:flex-end"><dc-import name="Button" label="Save note" variant="secondary" height="38" disabled="{{ noteOff }}" onClick="{{ saveNote }}" hint-size="130px,38px"></dc-import></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+<sc-if value="{{ syncMsg }}" hint-placeholder-val="{{ false }}"><div style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:120;width:min(560px,92vw);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(17,24,39,.18);border:1px solid #cfeedd"><dc-import name="Notice" message="{{ syncMsg }}" variant="success" topBorder="{{ false }}" onClose="{{ closeSync }}" hint-size="100%,40px"></dc-import></div></sc-if>
+  <sc-if value="{{ showDetail }}" hint-placeholder-val="{{ false }}"><dc-import name="SidePanel" title="{{ d.id }}" status="{{ d.status }}" statusVariant="{{ d.variant }}" lines="{{ panelLines }}" actions="{{ panelActions }}" onExpand="{{ expand }}" onClose="{{ closeDetail }}" hint-size="0px,0px">
+    <div style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:1px solid #eef0f3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px"><span style="font-size:15px;font-weight:700;color:#111827">Progress</span></div><dc-import name="ProgressSteps" current="{{ d.stage }}" warn="{{ d.warn }}" hint-size="100%,70px"></dc-import><sc-if value="{{ d.waiting }}" hint-placeholder-val="{{ false }}"><div style="background:#fff7e0;border:1px solid #f6e4b0;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5;color:#92600a"><b>Waiting for the school:</b> {{ d.ask }}</div></sc-if></div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:1px solid #eef0f3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px"><span style="font-size:15px;font-weight:700;color:#111827">Request</span><span style="font-size:13px;color:#6b7280">{{ d.deviceCount }}</span></div><div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><sc-for list="{{ d.devRows }}" as="v" hint-placeholder-count="2"><div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border-bottom:1px solid #eef0f3"><span style="flex:none;width:28px;height:28px;margin-top:2px;background:{{ v.bg }}"></span><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><div style="display:flex;flex-direction:column;gap:1px"><span style="font-size:14px;font-weight:600">{{ v.name }}</span><span style="font-size:13px;color:#6b7280">{{ v.loc }}</span></div><div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ v.issues }}" as="x" hint-placeholder-count="1"><dc-import name="Pill" label="{{ x }}" variant="tint" size="s" hint-size="170px,26px"></dc-import></sc-for></div><sc-if value="{{ v.hasOther }}" hint-placeholder-val="{{ false }}"><span style="font-size:13px;color:#4b5563;overflow-wrap:anywhere">Other comments: {{ v.other }}</span></sc-if></div></div></sc-for></div><div style="display:flex;align-items:center;gap:8px;font-size:14px;color:#374151"><dc-import name="Icon" icon="phone" weight="regular" size="18" color="#25395c" hint-size="18px,18px"></dc-import><span style="color:#6b7280">On-site contact</span><b>{{ d.contactText }}</b></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:1px solid #eef0f3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px"><span style="font-size:15px;font-weight:700;color:#111827">Assigned to</span></div><div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ asnChips }}" as="c" hint-placeholder-count="4"><dc-import name="Chip" label="{{ c.label }}" selected="{{ c.on }}" onClick="{{ c.onClick }}" hint-size="130px,32px"></dc-import></sc-for></div></div>
+    <div style="display:flex;flex-direction:column;gap:12px;padding-bottom:22px;border-bottom:1px solid #eef0f3"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px"><span style="font-size:15px;font-weight:700;color:#111827">Reply or note</span></div><sc-if value="{{ d.open }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:8px"><sc-for list="{{ mTabs }}" as="c" hint-placeholder-count="2"><dc-import name="Chip" label="{{ c.label }}" selected="{{ c.on }}" onClick="{{ c.onClick }}" hint-size="170px,32px"></dc-import></sc-for></div></sc-if><sc-if value="{{ showMsgTab }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:12px"><dc-import name="CommentBox" label="Message to the school" placeholder="Visible to {{ d.by }} and the school" value="{{ msg }}" file="{{ msgFile }}" onInput="{{ setMsg }}" onFile="{{ setMsgFile }}" onRemove="{{ clearMsgFile }}" minHeight="84" hint-size="100%,170px"></dc-import><div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px"><dc-import name="LinkButton" label="Ask for a reply" icon="chat-circle-dots" disabled="{{ msgOff }}" onClick="{{ askReply }}" hint-size="170px,34px"></dc-import><sc-if value="{{ d.selfService }}" hint-placeholder-val="{{ false }}"><dc-import name="Chip" label="Also ask for a visit time" selected="{{ askTime }}" onClick="{{ toggleAskTime }}" hint-size="230px,32px"></dc-import></sc-if></div><dc-import name="Button" label="Send message" variant="secondary" height="38" disabled="{{ msgOff }}" onClick="{{ sendMsg }}" hint-size="150px,38px"></dc-import></div></div></sc-if><sc-if value="{{ showNoteTab }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:12px"><dc-import name="TextArea" label="Internal note" placeholder="Only support can see this" value="{{ note }}" onInput="{{ setNote }}" minHeight="84" hint-size="100%,130px"></dc-import><div style="display:flex;justify-content:flex-end"><dc-import name="Button" label="Save note" variant="secondary" height="38" disabled="{{ noteOff }}" onClick="{{ saveNote }}" hint-size="130px,38px"></dc-import></div></div></sc-if></div>
+    <div style="display:flex;flex-direction:column;gap:12px;"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:24px"><span style="font-size:15px;font-weight:700;color:#111827">Activity</span></div><dc-import name="Timeline" events="{{ d.timeline }}" hint-size="100%,200px"></dc-import></div>
+  </dc-import></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { syncMsg: '', page: 1, per: 5, tab: 'All', mine: false, q: '', open: (q0 => q0.get('f') ? null : q0.get('r'))(new URLSearchParams(window.location.search)) || null, full: (q0 => q0.get('f') ? q0.get('r') : null)(new URLSearchParams(window.location.search)) || null, msg: '', msgFile: null, askTime: false, note: '', mtab: 'msg', tickets: null };
+  ME = 'Akhila Sai';
+  TEAM = ['Akhila Sai', 'Priya Nair', 'Marcus Lee', 'Unassigned'];
+  STAT = ['Created', 'In progress', 'Action needed', 'Resolved', 'Cancelled'];
+  VAR = { Created: 'tint', 'In progress': 'info', 'Action needed': 'warning', Resolved: 'success', Cancelled: 'tint' };
+  NAME = ['', 'Created', 'In progress'];
+  CONTRACT = { 'Adrian Madison Schools': 'Under contract' };
+  NOW = new Date(2026, 10, 1, 17, 0).getTime();
+  T(m, d, h, mi) { return new Date(2026, m, d, h, mi).getTime(); }
+  fmt(ts) { const x = new Date(ts), h = x.getHours(), mm = String(x.getMinutes()).padStart(2, '0'), t = (h % 12 || 12) + ':' + mm + ' ' + (h >= 12 ? 'PM' : 'AM'), M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; return (x.getMonth() === 10 && x.getDate() === 1 ? 'Today' : M[x.getMonth()] + ' ' + x.getDate()) + ', ' + t; }
+  ev(text, by, dot, extra) { const ts = Date.now() + (this._n = (this._n || 0) + 1); return { text, by, dot: dot || '#25395c', ts, time: 'Just now', who: by === 'System' ? 'system' : 'support', ...(extra || {}) }; }
+  seed() {
+    const D = (name, type, loc, issues, other) => ({ name, type, loc, issues, other: other || '' });
+    const E = (text, by, dot, m, d, h, mi) => { const ts = this.T(m, d, h, mi); return { text, by, dot, ts, time: this.fmt(ts) }; };
+    const A = '#92600a', G = '#12b76a', N = '#25395c';
+    const mk = (id, fac, district, by, status, stage, assignee, ask, askTime, devices, log, contact) => ({ id, fac, district, by, status, stage, assignee, ask, askTime, devices, log, contact, photos: [], created: log[0].ts });
+    return [
+      mk('SR-1050', 'Adrian Madison Schools', 'Adrian Madison Schools', 'LockOut (automatic)', 'Created', 1, 'Unassigned', '', false, [D('Smart Boot 08', 'Smart Boot', 'Gym Lobby', ['Low Battery'])], [E('Opened automatically from a low battery alert', 'System', N, 10, 1, 6, 15)], ['Lena Brooks', '(517) 555-0164']),
+      mk('SR-1048', 'Bath Elementary', 'Bath Community Schools', 'Dana Whitfield', 'Created', 1, 'Unassigned', '', false, [D('Smart Boot 01', 'Smart Boot', 'Room 534 · East Wing', ['Low Battery']), D('Smart Boot 02', 'Smart Boot', 'Room 536 · East Wing', ['Low Battery'])], [E('Request raised', 'Dana Whitfield', N, 10, 1, 8, 40), E('Both boots in the east wing stopped charging.', 'Dana Whitfield', N, 10, 1, 8, 41)], ['Dana Whitfield', '(517) 555-0142']),
+      mk('SR-1047', 'Monroe High School', 'Monroe Public Schools', 'Rick Alvarez', 'Created', 1, 'Unassigned', '', false, [D('Pull Box 04', 'Pull Box', 'Main Office', ['Device malfunctioning'])], [E('Request raised', 'Rick Alvarez', N, 10, 1, 7, 20)], ['Rick Alvarez', '(734) 555-0187']),
+      mk('SR-1049', 'Bath Middle School', 'Bath Community Schools', 'Akhila Sai', 'Action needed', 2, 'Marcus Lee', 'The technician is ready to visit. Please suggest a day and time that works for you.', true, [D('Smart Boot 11', 'Smart Boot', 'Room 331 · Gym Lobby', ['Device malfunctioning'])], [E('Request raised', 'Akhila Sai', N, 9, 30, 9, 10), E('Asked the school for a visit time', 'Marcus Lee', A, 9, 30, 11, 45)], ['Dana Whitfield', '(517) 555-0142']),
+      mk('SR-1046', 'Bath Middle School', 'Bath Community Schools', 'Akhila Sai', 'In progress', 2, 'Priya Nair', '', false, [D('Tablet 03', 'Tablet', 'Library', ['Tablet Damaged']), D('Tablet 07', 'Tablet', 'Room 114', ['Replace charger']), D('Tablet 09', 'Tablet', 'Room 202', ['Tablet not responding'])], [E('Request raised', 'Akhila Sai', N, 9, 31, 14, 15), E('Assigned to Priya Nair', 'Akhila Sai', N, 9, 31, 15, 2), E('Status changed to In progress', 'Priya Nair', A, 9, 31, 15, 20)], ['Dana Whitfield', '(517) 555-0142']),
+      mk('SR-1045', 'Adrian Madison Schools', 'Adrian Madison Schools', 'Lena Brooks', 'Created', 1, 'Priya Nair', '', false, [D('Smart Light 12', 'Smart Light', 'Hall E508', ['Replace Battery'])], [E('Request raised', 'Lena Brooks', N, 9, 29, 10, 0), E('Assigned to Priya Nair', 'Akhila Sai', N, 9, 29, 10, 25)], ['Lena Brooks', '(517) 555-0164']),
+      mk('SR-1044', 'Monroe Middle School', 'Monroe Public Schools', 'Rick Alvarez', 'Action needed', 2, 'Marcus Lee', 'Which classroom is Smart Boot 21 in?', false, [D('Smart Boot 21', 'Smart Boot', 'Room 331', ['Device not functioning'])], [E('Request raised', 'Rick Alvarez', N, 9, 28, 13, 5), E('Asked the school: Which classroom is Smart Boot 21 in?', 'Marcus Lee', A, 9, 29, 9, 40)], ['Rick Alvarez', '(734) 555-0187']),
+      mk('SR-1043', 'Bath Career Center', 'Bath Community Schools', 'Dana Whitfield', 'In progress', 2, 'Akhila Sai', '', false, [D('Smart Boot 05', 'Smart Boot', 'Room 222 · North Corridor', ['Low Battery']), D('Pull Box 02', 'Pull Box', 'Annex · Near Main Office', ['Other comments'], 'The pull handle feels loose.')], [E('Request raised', 'Dana Whitfield', N, 9, 27, 10, 5), E('Status changed to In progress', 'Akhila Sai', A, 9, 27, 11, 30), E('Visit planned for Nov 3', 'Akhila Sai', A, 10, 1, 9, 5)], ['Dana Whitfield', '(517) 555-0142']),
+      mk('SR-1040', 'Bath Elementary', 'Bath Community Schools', 'Dana Whitfield', 'Resolved', 3, 'Priya Nair', '', false, [D('Pull Box 04', 'Pull Box', 'Main Office', ['Replace Battery'])], [E('Request raised', 'Dana Whitfield', N, 9, 18, 13, 20), E('Battery replaced and the pull box tested', 'Priya Nair', G, 9, 22, 10, 40), E('Status changed to Resolved', 'Priya Nair', G, 9, 22, 10, 40)], ['Dana Whitfield', '(517) 555-0142'])
+    ];
+  }
+  toCanon(t) { return { id: t.id, fac: t.fac, district: t.district, by: t.by, contact: t.contact, status: t.status, stage: t.stage, assignee: t.assignee, ask: t.ask || '', askTime: !!t.askTime, created: t.created, photos: (t.photos || []).map(p => ({ name: p.name, url: p.url })), devices: t.devices.map(d => ({ name: d.name, type: d.type, loc: d.loc, issues: d.issues, other: d.other || '' })), log: t.log.map(e => ({ text: e.text, who: e.who || (e.by === 'System' ? 'system' : e.by === t.by ? 'school' : 'support'), name: e.by, dot: e.dot, ts: e.ts, internal: !!e.internal, file: e.file ? { name: e.file.name, size: e.file.size, url: e.file.url } : undefined })) }; }
+  fromCanon(c) { return { ...c, photos: (c.photos || []).map(p => ({ name: p.name, url: p.url || '' })), log: c.log.map(e => ({ text: e.text, by: e.name || (e.who === 'support' ? 'Support' : 'System'), who: e.who, dot: e.dot, ts: e.ts, time: Date.now() - e.ts < 90000 ? 'Just now' : this.fmt(e.ts), internal: !!e.internal, file: e.file ? { name: e.file.name, size: e.file.size, url: e.file.url || '' } : undefined })) }; }
+  DEMO = new URLSearchParams(window.location.search).get('demo') === '1';
+  pub(t) { if (this.DEMO && t && window.DemoSync) window.DemoSync.publish(this.toCanon(t)); }
+  initSync() {
+    if (!this.DEMO) return;
+    if (!window.DemoSync) { this._r = (this._r || 0) + 1; if (this._r < 24) setTimeout(() => this.initSync(), 250); return; }
+    const D = window.DemoSync;
+    this.setState({ tickets: D.seed().map(c => this.fromCanon(c)) });
+    D.provide(() => this.list().map(t => this.toCanon(t)));
+    D.subscribe((c, quiet) => { const t = this.fromCanon(c), cur = this.list(), had = cur.some(x => x.id === t.id);
+      this.setState({ tickets: had ? cur.map(x => x.id === t.id ? t : x) : [t, ...cur] });
+      if (!quiet) { const last = t.log[t.log.length - 1], m = (had ? t.id + ': ' : 'New request ' + t.id + ' from ' + t.fac + ' · ') + (last ? last.text : ''), tok = Math.random(); this._st = tok; this.setState({ syncMsg: m.length > 110 ? m.slice(0, 110) + '...' : m }); setTimeout(() => { if (this._st === tok) this.setState({ syncMsg: '' }); }, 7000); } });
+    D.hello();
+  }
+  componentDidMount() { this.initSync(); }
+  list() { return this.state.tickets || (this._t = this._t || this.seed()); }
+  upd(id, fn) { const l = this.list().map(t => t.id === id ? fn(t) : t); this.setState({ tickets: l }); this.pub(l.find(t => t.id === id)); }
+  ageText(t) { const h = (this.NOW - t.created) / 36e5; return h < 24 ? Math.max(1, Math.round(h)) + ' h' : Math.round(h / 24) + ' d'; }
+  isOpen(t) { return t.status !== 'Resolved' && t.status !== 'Cancelled'; }
+  overdue(t) { return this.isOpen(t) && (this.NOW - t.created) / 864e5 >= 3; }
+  renderVals() {
+    const st = this.state, all = this.list(), RS = (k, f) => (window.__resources && window.__resources[k]) || f, V = this.VAR, ME = this.ME;
+    const BGI = u => 'center / contain no-repeat url("' + encodeURI(u || '') + '")';
+    const IC = { Tablet: RS('tabletIcon', '../uploads/Tablet Icon.png'), 'Smart Boot': RS('bootIcon', '../uploads/Boot.png'), 'Pull Box': RS('pullIcon', '../uploads/PullBLE.png'), 'Smart Light': RS('domeIcon', '../uploads/DomeBLE.png') };
+    const contractOf = t => this.CONTRACT[t.district] || 'Self service';
+    const cnt = s => all.filter(t => s === 'All' ? true : s === 'Open' ? this.isOpen(t) : t.status === s).length;
+    const q = st.q.trim().toLowerCase();
+    const shown = all.filter(t => (st.tab === 'All' || (st.tab === 'Open' ? this.isOpen(t) : t.status === st.tab)) && (!st.mine || t.assignee === ME) && (!q || (t.id + ' ' + t.fac + ' ' + t.district + ' ' + t.devices.map(d => d.name).join(' ')).toLowerCase().includes(q)));
+    const perN = st.per, lastP = Math.max(1, Math.ceil(shown.length / perN)), pageN = Math.min(st.page, lastP);
+    const trim = x => x.length > 40 ? x.slice(0, 40) + '...' : x;
+    const rows = shown.slice((pageN - 1) * perN, pageN * perN).map(t => { const iss = [...new Set(t.devices.flatMap(d => d.issues))].join(' · '); return { id: t.id, fac: t.fac, district: t.district, contract: contractOf(t), sub: t.district === t.fac ? '' : t.district + ' · ', cStyle: contractOf(t) === 'Under contract' ? 'font-weight:700;color:#25395c' : '', status: t.status, variant: V[t.status], assignee: t.assignee, age: this.ageText(t),
+      issueFull: iss, issueText: trim(iss), devText: t.devices.length + (t.devices.length === 1 ? ' device' : ' devices'),
+      ageStyle: 'font-size:14px;' + (this.overdue(t) ? 'font-weight:700;color:#b91c1c' : 'color:#374151'), asnStyle: 'font-size:14px;' + (t.assignee === 'Unassigned' ? 'color:#9aa1ac;font-style:italic' : 'color:#374151'),
+      open: () => this.setState({ open: t.id, msg: '', msgFile: null, askTime: false, note: '' }) }; });
+    const cur = all.find(t => t.id === (st.full || st.open));
+    const log = (t, text, by, dot, extra) => ({ ...t, log: [...t.log, this.ev(text, by, dot, extra)] });
+    const setStatus = (t, status, text) => { const stage = { Created: 1, 'In progress': 2, Resolved: 3 }[status] || t.stage; return log({ ...t, status, stage, ask: '', askTime: false, prev: undefined }, text || 'Status changed to ' + status, ME, status === 'Resolved' ? '#12b76a' : '#92600a'); };
+    const setAsn = a => this.upd(cur.id, t => { let n = log({ ...t, assignee: a }, a === 'Unassigned' ? 'Unassigned' : 'Assigned to ' + a, ME, '#25395c'); return n; });
+    let d = {}, panelLines = [], panelActions = [];
+    if (cur) {
+      const groups = [], locs = [];
+      cur.devices.forEach(x => { let g = groups.find(z => z.type === x.type); if (!g) { g = { type: x.type, n: 0, issues: [], bg: BGI(IC[x.type]) }; groups.push(g); } g.n++; x.issues.forEach(i => { if (!g.issues.includes(i)) g.issues.push(i); }); locs.push({ name: x.name, loc: x.loc, other: x.other, hasOther: !!x.other }); });
+      const waiting = cur.status === 'Action needed', fin = !this.isOpen(cur);
+      d = { id: cur.id, status: cur.status, variant: V[cur.status], by: cur.by, stage: cur.status === 'Cancelled' ? 0 : cur.stage, warn: waiting, waiting, ask: cur.ask, open: !fin, selfService: contractOf(cur) !== 'Under contract',
+        deviceCount: cur.devices.length + (cur.devices.length === 1 ? ' device' : ' devices'), devRows: cur.devices.map(x => ({ name: x.name, loc: x.loc || 'Location not given', issues: x.issues, other: x.other || '', hasOther: !!x.other, bg: BGI(IC[x.type]) })), groups: groups.map(g => ({ type: g.type, count: g.n + (g.n === 1 ? ' device' : ' devices'), issues: g.issues, bg: g.bg })), locs, contactText: cur.contact ? cur.contact[0] + ' · ' + cur.contact[1] : 'Not given',
+        hasPhotos: cur.photos.length > 0, photos: cur.photos.map(p => ({ name: p.name, bg: 'center / cover no-repeat url("' + encodeURI(p.url || '') + '")' })),
+        timeline: [...cur.log].sort((a, b) => b.ts - a.ts).map(e => ({ text: e.text, meta: (e.internal ? 'Only support can see this · ' : '') + e.by + ' · ' + e.time, dot: e.dot, files: [...(e === cur.log[0] ? cur.photos.map(p => ({ name: p.name, url: p.url, size: p.size })) : []), ...(e.file ? [{ name: e.file.name, url: e.file.url, size: e.file.size }] : [])] })) };
+      panelLines = [cur.fac + ' · ' + cur.district, contractOf(cur) + ' · Raised by ' + cur.by + ' · ' + this.fmt(cur.created), { text: cur.assignee === 'Unassigned' ? 'Not assigned yet' : 'Assigned to ' + cur.assignee, strong: true }];
+      d.subline = cur.fac + ' · ' + cur.district + ' · ' + contractOf(cur) + ' · Raised ' + this.fmt(cur.created) + ' · ' + (cur.assignee === 'Unassigned' ? 'Not assigned yet' : 'Assigned to ' + cur.assignee);
+      const nxt = { Created: ['Start work', () => this.upd(cur.id, t => setStatus(t.assignee === 'Unassigned' ? log({ ...t, assignee: ME }, 'Assigned to ' + ME, ME, '#25395c') : t, 'In progress'))], 'In progress': ['Mark resolved', () => this.upd(cur.id, t => setStatus(t, 'Resolved'))] }[cur.status];
+      if (nxt) panelActions.push({ label: nxt[0], variant: 'primary', side: 'right', onClick: nxt[1] });
+      if (waiting) panelActions.push({ label: 'Demo: school replied', variant: 'secondary', side: 'left', onClick: () => this.upd(cur.id, t => { const back = this.NAME[t.stage] || 'In progress'; return setStatus(log(t, 'The school replied', t.by, '#25395c', { who: 'school' }), back); }) });
+    }
+    const msg = st.msg.trim(), msgOff = !msg && !st.msgFile, isOpenReq = !!cur && this.isOpen(cur);
+    const attach = () => st.msgFile ? { file: { name: st.msgFile.name, size: st.msgFile.size, url: st.msgFile.url } } : {};
+    const cnts = { new: all.filter(t => t.status === 'Created').length, wait: all.filter(t => t.status === 'Action needed').length, prog: all.filter(t => t.status === 'In progress').length, over: all.filter(t => this.overdue(t)).length };
+    return { sideGroups: [{ items: [{ label: 'Home', icon: 'house' }] }, { items: [{ label: 'School', icon: 'buildings' }, { label: 'Dispatch', icon: 'broadcast' }, { label: 'Texting', icon: 'chat-centered' }] }, { items: [{ label: 'User Management', icon: 'users' }, { label: 'Services', icon: 'wrench' }] }, { items: [{ label: 'Assessments', icon: 'clipboard-text', disabled: true }, { label: 'Emergency Prep', icon: 'shield', disabled: true }, { label: 'Trainings', icon: 'graduation-cap' }] }, { items: [{ label: 'User Logs', icon: 'clock-counter-clockwise' }] }],
+      sideLogo: RS('logo', '../uploads/LockOut Logo.png'), vh: window.innerHeight, nav: l => { if (l === 'Services') window.location.href = 'Services Dashboard.dc.html'; else if (l === 'Texting') window.location.href = 'District Texting.dc.html'; else if (l === 'Trainings') window.location.href = 'Trainings.dc.html'; else if (l === 'Home') window.location.href = 'District Home.dc.html'; },
+      backHome: () => { window.location.href = 'Services Dashboard.dc.html'; }, stats: [{ icon: 'hourglass', value: cnts.wait, label: 'Waiting on school', tone: 'navy' }, { icon: 'wrench', value: cnts.prog, label: 'In progress', tone: 'navy' }, { icon: 'warning-circle', value: cnts.over, label: 'Overdue', tone: 'error' }],
+      q: st.q, setQ: e => this.setState({ q: e.target.value, page: 1 }),
+      chips: ['All', 'Created', 'Action needed', 'In progress', 'Resolved'].map(s => ({ label: s, count: cnt(s), on: st.tab === s, onClick: () => this.setState({ tab: s, page: 1 }) })),
+      perOpts: [5, 10, 25], setPer: n => this.setState({ per: n, page: 1 }), pgTotal: shown.length, per: perN, page: pageN, setPage: n => this.setState({ page: n }),
+      rows, empty: rows.length === 0,
+      mTabs: [{ label: 'Message to school', on: st.mtab === 'msg', onClick: () => this.setState({ mtab: 'msg' }) }, { label: 'Internal note', on: st.mtab === 'note', onClick: () => this.setState({ mtab: 'note' }) }], showMsgTab: isOpenReq && st.mtab === 'msg', showNoteTab: !isOpenReq || st.mtab === 'note',
+      syncMsg: st.syncMsg, closeSync: () => this.setState({ syncMsg: '' }),
+      showDetail: !!cur && !st.full, showFull: !!cur && !!st.full, expand: () => this.setState({ full: st.open, open: null }), backFull: () => this.setState({ full: null }), fullActions: panelActions.filter(a => a.label !== 'Close'), details: cur ? [{ k: 'School', v: cur.fac }, { k: 'District', v: cur.district }, { k: 'Contract', v: contractOf(cur) }, { k: 'Raised by', v: cur.by }, { k: 'On-site contact', v: cur.contact ? cur.contact[0] + ' · ' + cur.contact[1] : 'Not given' }, { k: 'Assigned to', v: cur.assignee === 'Unassigned' ? 'Not assigned yet' : cur.assignee }, { k: 'Raised', v: this.fmt(cur.created) }, { k: 'Last update', v: cur.log[cur.log.length - 1].time }, { k: 'Devices', v: String(cur.devices.length) }] : [], d, panelLines, panelActions, closeDetail: () => this.setState({ open: null }),
+      asnChips: this.TEAM.map(a => ({ label: a, on: !!cur && cur.assignee === a, onClick: () => setAsn(a) })),
+      msg: st.msg, msgFile: st.msgFile, setMsg: e => this.setState({ msg: e.target.value }), setMsgFile: f => this.setState({ msgFile: f }), clearMsgFile: () => this.setState({ msgFile: null }), msgOff,
+      askTime: st.askTime, toggleAskTime: () => this.setState(s => ({ askTime: !s.askTime })),
+      sendMsg: () => { this.upd(cur.id, t => log(t, msg ? 'Message to the school: ' + msg : 'Sent an attachment', ME, '#25395c', attach())); this.setState({ msg: '', msgFile: null }); },
+      askReply: () => { const q2 = msg || 'Please reply when you can.'; this.upd(cur.id, t => ({ ...log(t, 'Asked the school: ' + q2, ME, '#92600a', attach()), status: 'Action needed', ask: q2, askTime: st.askTime && contractOf(t) !== 'Under contract' })); this.setState({ msg: '', msgFile: null, askTime: false }); },
+      note: st.note, setNote: e => this.setState({ note: e.target.value }), noteOff: !st.note.trim(),
+      saveNote: () => { const n = st.note.trim(); this.upd(cur.id, t => log(t, 'Internal note: ' + n, ME, '#9aa1ac', { internal: true })); this.setState({ note: '' }); } };
+  }
+}
+</script>
+</body>
+</html>

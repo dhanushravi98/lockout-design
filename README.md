@@ -19,9 +19,10 @@ components/                 Shared components, one file each
   Component Library.dc.html The library page (open this one)
   LibraryEntry.dc.html      Shows one library entry from its data file
 docs/                       One .json data file per component, plus index.json and foundations.json
-screens/                    Dispatch, District, School, Trainings, Texting, Maintenance Mode, School Requests, Service Request Classic, User Management
+screens/                    Dispatch, District, School, Trainings, Texting, Maintenance Mode, School Requests, Ticket Inbox, Services Dashboard, Service Request Classic, User Management
 emails/                     Service request and suggestion email templates
 reference/                  Older spec pages, to be folded into the library
+specs/                      Functional specs for developers and AI agents, one per feature area
 uploads/                    Icons and logo
 support.js                  Runtime for the .dc.html files
 AGENTS.md / CLAUDE.md       Rules for AI coding assistants
@@ -58,6 +59,8 @@ For each new design requirement, give the developer two things:
 Screens built from library components (Dispatch, School Screen) are the current standard. Service Request Classic and User Management use inline styles and no library components; they are layout references only and will be discarded. Do not hand them over as the pattern to follow.
 
 Before handing off: everything is committed, the version is tagged, and CHANGELOG.md lists what is new.
+
+For the self-service service requests feature also give them the three files in specs/, starting with System Overview - Self Service Requests.md.
 
 ## Building a screen in the product
 

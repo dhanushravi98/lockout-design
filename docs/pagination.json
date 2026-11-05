@@ -7,7 +7,7 @@
  "hintSize": "100%,60px",
  "previewWidth": "100%",
  "previewStyle": "background:#fff;border-radius:12px",
- "description": "Record count on the left, page controls on the right. Prev and Next grey out at the ends. Long lists collapse to the first page, the last page and the pages around the current one, joined by an ellipsis. The Items per page pill opens a menu of 10, 25 and 50 that opens upward; picking one resets to page 1, and clicking anywhere outside closes it.",
+ "description": "Record count on the left, page controls on the right. Prev and Next grey out at the ends. Long lists collapse to the first page, the last page and the pages around the current one, joined by an ellipsis. The Items per page pill opens a menu of 10, 25 and 50 that opens upward; picking one resets to page 1, and clicking anywhere outside closes it. With controlled the page comes from the page prop instead of the component, and with hidePerPage the Items per page pill is removed.",
  "base": {},
  "controls": [
   {
@@ -57,6 +57,18 @@
    "t": "number",
    "d": "1",
    "x": "Starting page."
+  },
+  {
+   "n": "controlled",
+   "t": "boolean",
+   "d": "false",
+   "x": "The parent owns the current page: the component shows the page prop and only reports changes through onChange. Use it with server paging or when filters reset the page."
+  },
+  {
+   "n": "hidePerPage",
+   "t": "boolean",
+   "d": "false",
+   "x": "Hides the Items per page pill and menu."
   },
   {
    "n": "onChange",
@@ -109,5 +121,5 @@
    "v": "1 ... current-1, current, current+1 ... last"
   }
  ],
- "usedIn": "School screen, below the data table."
+ "usedIn": "School screen, below the data table; School Requests, Ticket Inbox (controlled, with a 5, 10, 25 menu)."
 }

@@ -6,7 +6,7 @@
  "status": "In review",
  "hintSize": "100%,230px",
  "previewWidth": "440px",
- "description": "A vertical list of events with a coloured dot and a line joining them, newest first. The newest event is bold with a soft ring around its dot. An event can carry a downloadable file shown as a small chip.",
+ "description": "A vertical list of events with a coloured dot and a line joining them, newest first. The newest event is bold with a soft ring around its dot. An event can carry one attachment shown under its text as a preview: an image as a thumbnail, any other file as a chip with its name and size. Pressing the preview opens a dialog (Modal shell, no footer buttons) with the full image, or the file details and a Download link when the file has an address, and a close button.",
  "base": {
   "events": [
    {
@@ -33,7 +33,7 @@
    "n": "events",
    "t": "{ text, meta, dot?, fileName?, fileUrl?, fileSize? }[]",
    "d": "[]",
-   "x": "Newest first. dot is the colour: navy for people, amber for status changes, green for resolved, grey for cancelled."
+   "x": "Newest first. dot is the colour: navy for people, amber for status changes, green for resolved, grey for cancelled. fileSize is a number of bytes or ready text. An image is recognised from the file extension and needs fileUrl for the thumbnail."
   }
  ],
  "values": [
@@ -54,13 +54,21 @@
    "v": "12px #6b7280"
   },
   {
-   "k": "File chip",
-   "v": "pill #eaeef5, #25395c, 12px / 600, paperclip 13px"
-  },
-  {
    "k": "Spacing",
    "v": "18px below each event, 14px between dot and text"
+  },
+  {
+   "k": "Image preview",
+   "v": "168 x 112px, radius 10px, 1px #e5e7eb, shown under the event text; border darkens on hover"
+  },
+  {
+   "k": "File chip",
+   "v": "pill #eaeef5, #25395c, 12px / 600, icon 13px (image or paperclip), name and size"
+  },
+  {
+   "k": "Preview dialog",
+   "v": "Modal shell 720px wide, no footer; image max height 56vh on #f4f6f9; Download link (outline pill) when fileUrl exists"
   }
  ],
- "usedIn": "School Requests - Self Service (Activity, in the summary panel and the full request page)."
+ "usedIn": "School Requests - Self Service and Ticket Inbox (Activity, in the summary panel and the full request page)."
 }

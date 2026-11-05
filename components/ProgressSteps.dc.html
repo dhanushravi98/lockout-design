@@ -12,7 +12,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:70},&quot;current&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:0,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;},&quot;warn&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;warnLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Action needed&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;steps&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string[]&quot;}}">
 class Component extends DCLogic {
   renderVals() {
-    const p = this.props, steps = Array.isArray(p.steps) && p.steps.length ? p.steps : ['Created', 'Assigned', 'In progress', 'Technician out', 'Resolved'];
+    const p = this.props, steps = Array.isArray(p.steps) && p.steps.length ? p.steps : ['Created', 'In progress', 'Resolved'];
     const cur = Math.max(0, Math.min(steps.length, Number(p.current) || 0)), warn = p.warn === true || p.warn === 'true';
     const items = steps.map((l, i) => { const n = i + 1, on = n <= cur, here = n === cur, w = here && warn;
       return { label: w ? (p.warnLabel || 'Action needed') : l, mark: on && !here ? '\u2713' : String(n),
