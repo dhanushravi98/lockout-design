@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.22 (draft)
+- School screen: new Schedule a drill button and overlay. Two tabs (Schedule, Upcoming and past) in the standard grey tab bar. A school chooses Lockdown, Secure mode or both, a future date and start time, a duration window (30 minutes, 1 hour, 2 hours) and optional notes for dispatch. Drills are Scheduled, Running, Completed or Cancelled; scheduled drills can be edited (Cancel while editing returns to the list) or cancelled with confirmation; every change tells dispatch (dispatch side not built, see specs/Scheduled Drills.md). Only the panel under the tabs scrolls.
+- Chip: new prop tone ('error' | 'warning'), used for the Lockdown (red) and Secure mode (yellow) chips.
+- School screen catches up with earlier changes: contact type Primary or Secondary (max 3 each), red danger Delete buttons and confirmations, Wi-Fi Delete after password verification, section headers keep their fill while open.
+
 ## v0.9.21 (draft)
 - Service requests are now three steps: Created, In progress, Resolved. Action needed is a pause on In progress. The assignee is shown beside the title, not as a step. Progress steps defaults to three steps.
 - New screens: Ticket Inbox and Services Dashboard (support side, screens/). Dashboard: New requests, Open requests and Overdue stat cards, Recent requests, Overdue, Workload by person, Activity, Create request dialog. Inbox: three stat cards (Waiting on school, In progress, Overdue), search and status chips, 5 / 10 / 25 rows per page, summary panel with Message to school and Internal note, full request page, Back to Services, optional visit-time request for the school.

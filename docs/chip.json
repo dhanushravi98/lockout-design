@@ -73,6 +73,17 @@
    "when": "_icon"
   },
   {
+   "label": "Tone",
+   "type": "seg",
+   "prop": "tone",
+   "options": [
+    ["none", ""],
+    ["error", "error"],
+    ["warning", "warning"]
+   ],
+   "default": 0
+  },
+  {
    "label": "Count (number, optional)",
    "type": "text",
    "prop": "count",
@@ -199,6 +210,16 @@
      }
     }
    ]
+  },
+  {
+   "title": "Tones",
+   "cellWidth": 200,
+   "items": [
+    { "label": "error, off", "props": { "label": "Lockdown", "icon": "lock-key", "tone": "error" } },
+    { "label": "error, on", "props": { "label": "Lockdown", "icon": "lock-key", "tone": "error", "selected": true } },
+    { "label": "warning, off", "props": { "label": "Secure mode", "icon": "shield-check", "tone": "warning" } },
+    { "label": "warning, on", "props": { "label": "Secure mode", "icon": "shield-check", "tone": "warning", "selected": true } }
+   ]
   }
  ],
  "props": [
@@ -225,6 +246,12 @@
    "t": "string (icon name)",
    "d": "-",
    "x": "Name from the icon library (Phosphor, fill weight), drawn at 14px before the label."
+  },
+  {
+   "n": "tone",
+   "t": "'error' | 'warning'",
+   "d": "-",
+   "x": "Colours the chip red (error) or yellow (warning) for a choice that stands for a risk level, such as Lockdown and Secure mode. Leave empty for the normal navy chip."
   },
   {
    "n": "count",
@@ -281,6 +308,14 @@
    "v": "14px, Phosphor fill, gap 8px"
   },
   {
+   "k": "Tone error",
+   "v": "off: fill #fef2f2, text #b91c1c, border #fecaca; on: solid #b91c1c, text #fff; hover off #fee2e2, on #991b1b; pressed off #fecaca, on #7f1d1d"
+  },
+  {
+   "k": "Tone warning",
+   "v": "off: fill #fff7e0, text #92600a, border #f6e4b0; on: solid #f5c242, text #4a3200, border #e0a823; hover off #fdeec0, on #f0b429; pressed off #fbe3a0, on #e8a91c"
+  },
+  {
    "k": "Count",
    "v": "20px high circle, 12px; off #eaeef5 / #25395c, on #fff / #25395c"
   },
@@ -289,5 +324,5 @@
    "v": "18px circle, Icon x, bold, 10px, follows label color; hover #e8ebf0"
   }
  ],
- "usedIn": "Service Request overlay issue choices."
+ "usedIn": "Service Request overlay issue choices. Scheduled drills overlay (Lockdown, Secure mode and duration chips)."
 }
