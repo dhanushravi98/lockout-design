@@ -3,7 +3,7 @@
  "title": "Grouped list modal",
  "component": "GroupedListModal",
  "file": "components/GroupedListModal.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,740px",
  "previewWidth": "620px",
  "description": "A dialog that lists items in collapsible groups, with a search box on top. It is the Facilities List on the Dispatch screen: facilities grouped by district, each with its alert status pill. Groups start collapsed, opening one closes the others (the screen decides), and a group shows its rows 5 at a time with a Pagination footer (the older Show more button still works when paginated is not set). A row can show an alert status pill. Built from Modal shell, Text field, Section header and Link button. The screen owns the data, the search and which group is open; the dialog only draws them.",

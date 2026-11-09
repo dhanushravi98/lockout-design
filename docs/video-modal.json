@@ -3,7 +3,7 @@
  "title": "Video modal",
  "component": "VideoModal",
  "file": "components/VideoModal.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,560px",
  "previewWidth": "900px",
  "description": "A Modal shell with a 16 / 9 video area, a row of secondary actions (Handout, Open on YouTube, Mark as complete) and a Next training button. It has no footer; the X in the corner closes it. Mark as complete toggles to Mark as not complete when the video is already watched. Without a video it shows a play placeholder.",

@@ -3,7 +3,7 @@
  "title": "Timeline",
  "component": "Timeline",
  "file": "components/Timeline.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,230px",
  "previewWidth": "440px",
  "description": "A vertical list of events with a coloured dot and a line joining them, newest first. The newest event is bold with a soft ring around its dot. An event can carry one attachment shown under its text as a preview: an image as a thumbnail, any other file as a chip with its name and size. Pressing the preview opens a dialog (Modal shell, no footer buttons) with the full image, or the file details and a Download link when the file has an address, and a close button.",

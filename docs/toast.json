@@ -3,7 +3,7 @@
  "title": "Toast",
  "component": "Toast",
  "file": "components/Toast.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,70px",
  "previewWidth": "460px",
  "description": "Short pop-up message that confirms an action, for example \"Maintenance mode enabled\". A round navy icon, a title, an optional second line and a close button. Set floating to place it fixed at the top centre of the page; the screen decides when it appears and how long it stays (5 seconds on the School screen). For feedback under a section, use Notice instead.",

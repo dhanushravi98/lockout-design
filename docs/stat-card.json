@@ -3,7 +3,7 @@
  "title": "Stat card",
  "component": "StatCard",
  "file": "components/StatCard.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,72px",
  "previewWidth": "260px",
  "description": "One headline number with a round icon and a short label, for the row of summary cards at the top of a screen. Set action to make it clickable: it gets a small arrow badge in the corner and a darker border on hover, and it opens a list the person can act on. Tone sets the icon colour: navy for plain facts, warning for things that need attention, error for serious events.",

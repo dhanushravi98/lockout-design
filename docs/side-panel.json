@@ -3,7 +3,7 @@
  "title": "Side panel",
  "component": "SidePanel",
  "file": "components/SidePanel.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,440px",
  "previewWidth": "640px",
  "description": "A panel that slides in from the right over a dimmed page, to show a summary of the row that was pressed without leaving the list. Header with the title, a status pill and up to three grey lines; a button to open the full page and a close button; a scrolling body for your content; a footer of buttons. It covers the whole window, menu included, like a dialog, so it can be placed anywhere in a screen.",

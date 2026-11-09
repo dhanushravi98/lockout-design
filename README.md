@@ -24,7 +24,7 @@ emails/                     Service request and suggestion email templates
 reference/                  Older spec pages, to be folded into the library
 specs/                      Functional specs for developers and AI agents, one per feature area
 uploads/                    Icons and logo
-support.js                  Runtime for the .dc.html files
+support.js                  Runtime for the .dc.html files. A second copy lives at components/support.js; screens load the root copy and components load the one beside them. The two copies must stay identical: when you change one, copy it over the other in the same commit.
 AGENTS.md / CLAUDE.md       Rules for AI coding assistants
 CHANGELOG.md                What changed in each version
 ```
@@ -32,7 +32,7 @@ CHANGELOG.md                What changed in each version
 ## Status labels
 
 - Approved: signed off. Build to spec.
-- In review: do not build yet. (None right now: all 26 components are Approved.)
+- In review: do not build yet. (None right now: all 45 components are Approved.)
 - Deprecated: do not use in new work; the replacement is named in the library.
 
 ## Adding a component

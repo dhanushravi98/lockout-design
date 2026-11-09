@@ -3,7 +3,7 @@
  "title": "Training card",
  "component": "TrainingCard",
  "file": "components/TrainingCard.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,300px",
  "previewWidth": "300px",
  "description": "One training video in a grid: a light gradient cover with the topic, a status pill, a small play badge, the title and, at the right, a Watch button and an optional Handout button. The whole card opens the video. The gradient comes from the seed, so a card keeps the same colours each time; pass a thumb image to replace it. A coming-soon card is not clickable and its Watch button is disabled.",

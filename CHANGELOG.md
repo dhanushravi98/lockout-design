@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.9.23 (draft)
+- Status: all 21 components that were In review are now Approved (docs/*.json). No props or values changed.
+- README: corrected the component count (45, all Approved) and documented that support.js has two copies (root and components/) that must stay identical.
+
 ## v0.9.22 (draft)
 - School screen: new Schedule a drill button and overlay. Two tabs (Schedule, Upcoming and past) in the standard grey tab bar. A school chooses Lockdown, Secure mode or both, a future date and start time, a duration window (30 minutes, 1 hour, 2 hours) and optional notes for dispatch. Drills are Scheduled, Running, Completed or Cancelled; scheduled drills can be edited (Cancel while editing returns to the list) or cancelled with confirmation; every change tells dispatch (dispatch side not built, see specs/Scheduled Drills.md). Only the panel under the tabs scrolls.
 - Chip: new prop tone ('error' | 'warning'), used for the Lockdown (red) and Secure mode (yellow) chips.

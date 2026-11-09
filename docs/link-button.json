@@ -3,7 +3,7 @@
  "title": "Link button",
  "component": "LinkButton",
  "file": "components/LinkButton.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "180px,40px",
  "description": "Quiet secondary link with an icon, for reference and navigation destinations such as Site Map, Trainings, Emergency Prep and Assessments. It has no fill or border until hovered. On hover the icon turns solid and a light navy background appears. Use Button for actions the user takes, and put at most one primary Button beside a group of Link buttons.",
  "base": {},

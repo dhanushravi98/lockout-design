@@ -3,7 +3,7 @@
  "title": "Notice",
  "component": "Notice",
  "file": "components/Notice.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,40px",
  "previewWidth": "460px",
  "description": "One-line feedback bar that sits under the content it refers to, for example under the fields of a section after Save. Green for success, red for an error. It has an optional close button. The screen decides when it appears and when it goes away; the School screen hides it after 10 seconds.",

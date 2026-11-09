@@ -3,7 +3,7 @@
  "title": "Contact card",
  "component": "ContactCard",
  "file": "components/ContactCard.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,110px",
  "previewWidth": "440px",
  "description": "One person on a contact list: role with a small Primary or Secondary pill, name and phone, and an outline Edit button. In edit mode the fields you pass in replace the text, Save and Cancel stack on the right and Delete sits in the bottom right corner. The card is white and takes a light fill on hover.",

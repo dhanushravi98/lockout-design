@@ -3,7 +3,7 @@
  "title": "Rich text field",
  "component": "RichTextField",
  "file": "components/RichTextField.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,60px",
  "previewWidth": "420px",
  "description": "Compact comment box for table rows and other tight places. It is one line when idle and grows as the person types. When selected it shows a toolbar (bold, italic, underline, bullets, numbers and a bigger-box toggle) and it collapses again when the person moves on. A paperclip attaches images only, up to 3 MB each. Use Text box for a plain multi-line field.",

@@ -3,7 +3,7 @@
  "title": "Mode button",
  "component": "ModeButton",
  "file": "components/ModeButton.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "220px,50px",
  "previewWidth": "260px",
  "description": "On and off switch for a screen mode, such as Maintenance Mode. Off, it is a round outlined icon button with a solid icon. On, it grows sideways into a primary Button with the label and a green dot, and a click turns it off again. Built from Icon button and Button.",

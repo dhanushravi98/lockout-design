@@ -3,7 +3,7 @@
  "title": "Progress steps",
  "component": "ProgressSteps",
  "file": "components/ProgressSteps.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,70px",
  "previewWidth": "520px",
  "description": "A row of numbered steps joined by a line, for a request or order that moves through stages (three by default). Finished steps are navy with a check, the current step is bold, steps still to come are grey. Set warn to show the current step in amber with a different label, for a request that is waiting on the person (Action needed).",

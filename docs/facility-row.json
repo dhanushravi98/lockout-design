@@ -3,7 +3,7 @@
  "title": "Facility row",
  "component": "FacilityRow",
  "file": "components/FacilityRow.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,110px",
  "previewWidth": "900px",
  "description": "One school in a district list: round logo, name, an attention link (for example \"2 low batteries\") with a request-raised pill, the alert pill, an All devices healthy pill when nothing needs attention, the Device counts box, the recent lockdown count and a View button. Rows alternate white and very light grey (shaded) and take a light fill on hover. A Secure mode alert gets pulsing rings. The row rearranges itself as its own width shrinks, so it works in any column. Built from Pill, Link button, Button, Device counts and Tooltip.",

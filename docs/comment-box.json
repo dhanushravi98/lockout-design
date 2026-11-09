@@ -3,7 +3,7 @@
  "title": "Comment box",
  "component": "CommentBox",
  "file": "components/CommentBox.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,230px",
  "previewWidth": "460px",
  "description": "A comment field with an Attach a file link button underneath. One file per comment: images, PDF, Word, Excel or CSV, up to 3 MB. The chosen file shows as a chip with its size and a remove button. A file of the wrong type or size shows a red message and is not added. The parent keeps the text and the file; this component checks the file.",

@@ -3,7 +3,7 @@
  "title": "Activity row",
  "component": "ActivityRow",
  "file": "components/ActivityRow.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,66px",
  "previewWidth": "440px",
  "description": "One line in a Recent activity list: a round icon, a bold title and a grey line with where and when. Use the warm tone for events that need attention, such as a secure mode or a low battery report. Stack rows with no gaps; each row draws its own bottom divider.",

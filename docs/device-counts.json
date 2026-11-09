@@ -3,7 +3,7 @@
  "title": "Device counts",
  "component": "DeviceCounts",
  "file": "components/DeviceCounts.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "240px,90px",
  "previewWidth": "280px",
  "description": "A small outlined box with an icon and a count for each device type (Tablets, Smart Boots, Pull Boxes, DomeBLE). Inside a Facility row it shrinks in steps as the row gets narrower: all four, then two with a \"+2\" button, then a single \"N devices\" button; both buttons open a list of every count. On its own it shows all four.",

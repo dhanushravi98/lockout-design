@@ -3,7 +3,7 @@
  "title": "Progress bar",
  "component": "ProgressBar",
  "file": "components/ProgressBar.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,64px",
  "previewWidth": "440px",
  "description": "A count with a thin bar under it, for how far someone is through a set of items, for example \"3 of 10 completed\". It shows progress only; put any Start or Resume button beside it, not inside it.",

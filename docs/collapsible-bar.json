@@ -3,7 +3,7 @@
  "title": "Collapsible bar",
  "component": "CollapsibleBar",
  "file": "components/CollapsibleBar.dc.html",
- "status": "In review",
+ "status": "Approved",
  "hintSize": "100%,64px",
  "previewWidth": "520px",
  "description": "A bordered bar with an icon, a title, a short hint and a round chevron button. Pressing it slides the content open and closed over about a quarter of a second, and the chevron turns upside down. Use it for help that people want sometimes (guides) so it does not take page space. Content goes inside it; the note shows as a grey strip at the bottom.",
