@@ -136,6 +136,12 @@
    "x": "Clickable card with an arrow badge and hover border."
   },
   {
+   "n": "compact",
+   "t": "boolean",
+   "d": "false",
+   "x": "Opt in to the narrow layout: below 150px card width the icon stacks above the number and label. Leave off to keep the single-row layout at any width."
+  },
+  {
    "n": "onClick",
    "t": "() => void",
    "d": "-",
@@ -150,6 +156,10 @@
   {
    "k": "Height",
    "v": "min 88px so cards in a row stay the same height whether the label takes one or two lines"
+  },
+  {
+   "k": "Narrow cards (compact only)",
+   "v": "container query: below 150px card width the icon circle (30px) stacks above the value (22px) and label, padding 10px 12px, gap 8px, arrow badge moves to the top right corner"
   },
   {
    "k": "Icon circle",
@@ -176,5 +186,5 @@
    "v": "5 equal columns, gap 12px"
   }
  ],
- "usedIn": "District Home (summary cards). Dispatch Home, Dispatch District."
+ "usedIn": "District Home, District Home - Device Health (summary cards, compact). Dispatch Home, Dispatch District."
 }

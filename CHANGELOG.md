@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.9.24 (draft)
+- New screen: screens/District Home - Device Health.dc.html, the District Home with device health. A primary split button Do a health check (the chevron part opens a settings pane to schedule the daily automatic check) and Check this facility on each row; a health row under each facility with the last updated time, healthy, low battery and offline counts (icons and numbers, tooltips on every status), a 10 second result and a Missed in the last check log; expandable details by device type with a needs attention list and Report an issue. A floating progress card follows the check through the backend steps (waiting, assigned, collecting, paused, saving, completed, failed), can be hidden to a small pill, and shows a "taking longer than usual" notice. Spec: specs/Device Health.md. The backend does not poll on a schedule yet.
+- Stat card: new optional prop compact (stacks the icon above the number below 150px wide). Off by default.
+- Facility row: new optional props logoSize (default 52) and viewMode ('button' | 'chevron'). Defaults leave existing rows unchanged.
+
 ## v0.9.23 (draft)
 - Status: all 21 components that were In review are now Approved (docs/*.json). No props or values changed.
 - README: corrected the component count (45, all Approved) and documented that support.js has two copies (root and components/) that must stay identical.

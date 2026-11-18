@@ -390,6 +390,18 @@
    "x": "Makes the whole row a link: pointer cursor, and a click anywhere on the row calls it. The alert pill and the attention link keep their own action and do not trigger it."
   },
   {
+   "n": "logoSize",
+   "t": "number (px)",
+   "d": "52",
+   "x": "Logo diameter. The logo column and the left alignment follow it. The Device Health screen uses 68."
+  },
+  {
+   "n": "viewMode",
+   "t": "'button' | 'chevron'",
+   "d": "'button'",
+   "x": "chevron removes the View button and puts a round outline chevron button next to the school name (it calls onView). It also moves the recent lockdowns count to a text line below the school name and right aligns the device counts box."
+  },
+  {
    "n": "onView",
    "t": "() => void",
    "d": "-",
@@ -411,7 +423,7 @@
   },
   {
    "k": "Logo",
-   "v": "52px circle, 1px #e5e7eb, white, image at 68%"
+   "v": "52px circle (logoSize), 1px #e5e7eb, white, image at 68%"
   },
   {
    "k": "Name",
@@ -434,6 +446,10 @@
    "v": "Button secondary, height 34, bottom right"
   },
   {
+   "k": "Chevron mode",
+   "v": "viewMode chevron: View button replaced by an outline Icon button (caret-right, 28px) beside the name; lockdowns as 13px #4b5563 text under the name; device counts box right aligned"
+  },
+  {
    "k": "Responsive (container \"lofr\")",
    "v": "below 730px tighter; below 540px devices move under the name, actions in the right column; below 470px one column with devices and View on a third line"
   },
@@ -442,5 +458,5 @@
    "v": "rings stop animating"
   }
  ],
- "usedIn": "District Home (Facilities). Dispatch Home, Dispatch District (districts and schools)."
+ "usedIn": "District Home (Facilities). District Home - Device Health (facilities, chevron mode). Dispatch Home, Dispatch District (districts and schools)."
 }
